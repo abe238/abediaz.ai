@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abe Diaz | Seattle/Tech/Evangelist</title>
+  <meta name="description" content="A passionate technologist. Sr. Technical Program Manager on the Disaster Relief by Amazon team.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Abe Diaz">
+  <meta property="og:description" content="Seattle/Tech/Evangelist">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abediaz.ai/">
+  <meta property="og:image" content="https://abediaz.ai/images/profile.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@abe238">
+  <meta name="twitter:creator" content="@abe238">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========================================
+       ABE DIAZ DESIGN SYSTEM - CSS VARIABLES
+       ======================================== */
+    :root {
+      /* Colors - Primitives */
+      --color-black: #000000;
+      --color-white: #FFFFFF;
+      --color-gray-50: #F3F3F3;
+      --color-gray-100: #F1F1F1;
+      --color-gray-200: #DDDDDD;
+      --color-gray-300: #AAAAAA;
+      --color-gray-500: #767676;
+      --color-gray-600: #666666;
+      --color-gray-700: #555555;
+      --color-gray-800: #32373C;
+      --color-gray-900: #222222;
+      --color-teal-500: #36BCAB;
+      --color-blue-500: #0073B1;
+      --color-blue-700: #2E4453;
+
+      /* Typography */
+      --font-heading: "Oswald", Helvetica, Arial, sans-serif;
+      --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --font-system: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+
+      /* Font Sizes */
+      --text-xs: 11px;
+      --text-sm: 12px;
+      --text-base: 13px;
+      --text-md: 14px;
+      --text-lg: 16px;
+      --text-4xl: 80px;
+
+      /* Font Weights */
+      --font-light: 300;
+      --font-normal: 400;
+      --font-bold: 700;
+
+      /* Spacing */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --space-header: 70px;
+
+      /* Layout */
+      --content-width: 580px;
+      --sidebar-width: 240px;
+      --container-max: 860px;
+      --gap: 40px;
+
+      /* Borders */
+      --radius-sm: 2px;
+      --radius-md: 3px;
+
+      /* Transitions */
+      --transition-fast: 0.15s ease;
+      --transition-normal: 0.2s ease;
+    }
+
+    /* ========================================
+       RESET & BASE
+       ======================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      font-weight: var(--font-normal);
+      line-height: 1.75;
+      color: var(--color-gray-700);
+      background-color: var(--color-white);
+    }
+
+    /* ========================================
+       TYPOGRAPHY
+       ======================================== */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: var(--font-bold);
+      line-height: 1;
+    }
+
+    h1 {
+      font-size: var(--text-4xl);
+      color: var(--color-black);
+      text-transform: uppercase;
+      letter-spacing: 0;
+      margin-bottom: 0;
+    }
+
+    h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1 a:hover {
+      color: var(--color-teal-500);
+    }
+
+    h2.tagline {
+      font-family: var(--font-body);
+      font-size: var(--text-md);
+      font-weight: var(--font-light);
+      color: var(--color-gray-600);
+      text-transform: none;
+      margin-top: var(--space-1);
+    }
+
+    h2.section-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-md);
+      font-weight: var(--font-bold);
+      color: var(--color-black);
+      text-transform: uppercase;
+      margin-bottom: var(--space-5);
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      color: var(--color-gray-700);
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+
+    p {
+      margin-bottom: 13px;
+    }
+
+    a {
+      color: var(--color-black);
+      text-decoration: none;
+      transition: color var(--transition-normal);
+    }
+
+    a:hover {
+      color: var(--color-teal-500);
+    }
+
+    .accent-link {
+      color: var(--color-teal-500);
+    }
+
+    .accent-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ========================================
+       LAYOUT
+       ======================================== */
+    .site-container {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 var(--space-5);
+    }
+
+    .site-header {
+      padding-top: var(--space-header);
+      padding-bottom: var(--space-6);
+    }
+
+    .site-nav {
+      margin-top: var(--space-5);
+    }
+
+    .site-nav ul {
+      list-style: none;
+      display: flex;
+      gap: var(--space-5);
+    }
+
+    .site-nav a {
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      color: var(--color-gray-700);
+    }
+
+    .site-nav a:hover {
+      color: var(--color-teal-500);
+    }
+
+    .site-main {
+      display: flex;
+      gap: var(--gap);
+      padding-bottom: var(--space-10);
+    }
+
+    .content {
+      flex: 0 0 var(--content-width);
+      max-width: var(--content-width);
+    }
+
+    .sidebar {
+      flex: 0 0 var(--sidebar-width);
+      max-width: var(--sidebar-width);
+    }
+
+    .site-footer {
+      font-size: var(--text-sm);
+      color: var(--color-gray-600);
+      padding: var(--space-5) 0;
+      border-top: 1px solid var(--color-gray-200);
+    }
+
+    .site-footer a {
+      color: var(--color-gray-600);
+    }
+
+    /* ========================================
+       COMPONENTS
+       ======================================== */
+
+    /* Profile Image */
+    .profile-image {
+      width: 100%;
+      max-width: var(--content-width);
+      height: auto;
+      margin: var(--space-5) 0;
+    }
+
+    /* Widget */
+    .widget {
+      margin-bottom: var(--space-6);
+    }
+
+    .widget-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: var(--font-bold);
+      text-transform: uppercase;
+      color: var(--color-gray-700);
+      margin-bottom: var(--space-3);
+    }
+
+    .widget p {
+      font-size: var(--text-base);
+      color: var(--color-gray-700);
+    }
+
+    /* Email Form */
+    .email-form {
+      margin-top: var(--space-3);
+    }
+
+    .email-form label {
+      display: block;
+      font-size: var(--text-base);
+      color: var(--color-gray-700);
+      margin-bottom: var(--space-2);
+    }
+
+    .email-form input[type="email"] {
+      width: 100%;
+      padding: var(--space-2) var(--space-3);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      border: 1px solid var(--color-gray-500);
+      border-radius: 0;
+      background: var(--color-white);
+      margin-bottom: var(--space-3);
+    }
+
+    .email-form input[type="email"]:focus {
+      outline: none;
+      border-color: var(--color-teal-500);
+    }
+
+    /* Button */
+    .btn {
+      display: inline-block;
+      font-family: var(--font-system);
+      font-size: var(--text-xs);
+      font-weight: var(--font-normal);
+      padding: var(--space-2) var(--space-3);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background-color var(--transition-normal);
+    }
+
+    .btn-primary {
+      background-color: var(--color-blue-500);
+      color: var(--color-white);
+    }
+
+    .btn-primary:hover {
+      background-color: #005a8c;
+      color: var(--color-white);
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .social-links a {
+      color: var(--color-gray-700);
+    }
+
+    /* Share Section */
+    .share-section {
+      margin-top: var(--space-6);
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--color-gray-200);
+    }
+
+    .share-title {
+      font-size: var(--text-sm);
+      font-weight: var(--font-bold);
+      color: var(--color-gray-700);
+      margin-bottom: var(--space-3);
+    }
+
+    .share-buttons {
+      display: flex;
+      gap: var(--space-4);
+      align-items: center;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      color: var(--color-gray-600);
+      padding: var(--space-1) var(--space-2);
+      border: 1px solid var(--color-gray-200);
+      border-radius: var(--radius-sm);
+      background: var(--color-white);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .share-btn:hover {
+      border-color: var(--color-teal-500);
+      color: var(--color-teal-500);
+    }
+
+    /* Likes */
+    .like-section {
+      margin-top: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .like-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--color-gray-600);
+      cursor: pointer;
+    }
+
+    .like-btn:hover {
+      color: var(--color-teal-500);
+    }
+
+    .like-count {
+      font-size: var(--text-sm);
+      color: var(--color-gray-600);
+    }
+
+    /* Flight Stats Image */
+    .flight-stats {
+      width: 100%;
+      height: auto;
+      margin: var(--space-5) 0;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      margin-top: var(--space-8);
+      padding-top: var(--space-6);
+      padding-bottom: var(--space-6);
+      border-top: 1px solid var(--color-gray-200);
+    }
+
+    .contact-section h3 {
+      margin-bottom: var(--space-3);
+    }
+
+    .social-links-inline {
+      display: flex;
+      gap: var(--space-5);
+    }
+
+    .social-links-inline a {
+      font-size: var(--text-base);
+    }
+
+    /* Signature */
+    .signature {
+      font-style: normal;
+      margin-top: var(--space-5);
+    }
+
+    /* Subscriber Count */
+    .subscriber-count {
+      font-size: var(--text-sm);
+      color: var(--color-gray-600);
+      margin-top: var(--space-2);
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+
+    /* Tablet */
+    @media (max-width: 768px) {
+      :root {
+        --text-4xl: 48px;
+        --space-header: 50px;
+      }
+
+      .site-container {
+        padding: 0 var(--space-4);
+      }
+
+      .content {
+        max-width: 100%;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      :root {
+        --text-4xl: 32px;
+        --text-base: 14px;
+        --space-header: 32px;
+      }
+
+      body {
+        line-height: 1.6;
+      }
+
+      .site-container {
+        padding: 0 var(--space-4);
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      h2.tagline {
+        font-size: var(--text-base);
+      }
+
+      h2.section-title {
+        font-size: var(--text-base);
+        margin-bottom: var(--space-4);
+      }
+
+      h3 {
+        font-size: var(--text-md);
+      }
+
+      .site-nav {
+        margin-top: var(--space-4);
+      }
+
+      .site-nav ul {
+        flex-wrap: wrap;
+        gap: var(--space-4);
+      }
+
+      .profile-image,
+      .flight-stats {
+        margin: var(--space-4) 0;
+      }
+
+      p {
+        margin-bottom: var(--space-4);
+      }
+
+      .contact-section {
+        margin-top: var(--space-6);
+        padding-top: var(--space-5);
+        padding-bottom: var(--space-8);
+      }
+
+      .social-links-inline {
+        gap: var(--space-6);
+      }
+
+      .social-links-inline a {
+        font-size: var(--text-md);
+        padding: var(--space-2) 0;
+      }
+    }
+
+    /* Small phones */
+    @media (max-width: 360px) {
+      :root {
+        --text-4xl: 28px;
+      }
+
+      .site-container {
+        padding: 0 var(--space-3);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-container">
+    <!-- Header -->
+    <header class="site-header">
+      <h1><a href="/">ABE DIAZ</a></h1>
+      <h2 class="tagline">Seattle/Tech/Evangelist</h2>
+
+      <nav class="site-nav">
+        <ul>
+          <li><a href="/">HOME</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="site-main">
+      <!-- Content Area -->
+      <article class="content">
+        <h2 class="section-title">ABOUT ME</h2>
+
+        <p>A passionate technologist. I attend as many conferences as I can, travel as much as I can with my amazing wife and try to eat some amazing food; all while meeting passionate and interesting people around the world.</p>
+
+        <img
+          src="./images/profile.jpg"
+          alt="Abe Diaz"
+          class="profile-image"
+          loading="lazy"
+        >
+
+        <p>Sr. Technical Program Manager on the Disaster Relief by Amazon team. Born and raised in Puerto Rico; holds a BS in Computer Engineering from the <a href="http://uprm.edu/" class="accent-link">UPR-Mayaguez</a> and a MS in Information Security from Lipscomb University. Worked on mobile technologies for several years including at Deloitte building an enterprise app marketplace with over 40 apps and iPad applications for the top leaders in the company including the CEO. Later joined NBC News as the mobile program manager before joining Amazon. At Amazon I worked on payments, royalties and revenue automation for Prime Video. In 2017 I had the chance to participate as a technical volunteer in <a href="https://seattletimes.com/business/amazon/amazon-disaster-response-team-aids-recovery-efforts-from-houston-to-indonesia/" class="accent-link">filling a plane with relief items for Puerto Rico after Hurricane Maria</a>. Being able to mobilize the technology, people and resources of Amazon for a cause like this was "the experience of a lifetime". After that volunteer opportunity I decided to join the <a href="http://amazon.com/disasterrelief" class="accent-link">Disaster Relief by Amazon</a> team permanently and I'm now in charge of our corporate in-kind donations and mobile disaster pickup points program.</p>
+
+        <p>If you are interested in connecting professionally check out my LinkedIn page <a href="http://linkedin.com/in/abediaz" class="accent-link">http://linkedin.com/in/abediaz</a>. If you prefer pictures follow me on Instagram <a href="http://instagram.com/abe238" class="accent-link">http://instagram.com/abe238</a> or Twitter <a href="http://twitter.com/abe238" class="accent-link">http://twitter.com/abe238</a>.</p>
+
+        <p>Likes: Traveling (see <a href="https://www.jetitup.com/MyStats" class="accent-link">stats</a> below), <a href="https://www.locustcider.com/" class="accent-link">Cider</a>, <a href="https://www.raspberrypi.org/" class="accent-link">RaspberryPis</a>, <a href="https://en.wikipedia.org/wiki/Ice_bath#Ice_baths_versus_cold_baths" class="accent-link">Ice Baths</a> and <a href="http://contrastshowers.com/" class="accent-link">Contrast Showers</a></p>
+
+        <img
+          src="./images/flight-stats.png"
+          alt="Flight Stats Infographic"
+          class="flight-stats"
+          loading="lazy"
+        >
+
+      </article>
+    </main>
+
+    <!-- Contact Section -->
+    <footer class="contact-section">
+      <h3>CONTACT ME:</h3>
+      <div class="social-links-inline">
+        <a href="http://linkedin.com/in/abediaz" class="accent-link">LinkedIn</a>
+        <a href="http://twitter.com/abe238" class="accent-link">Twitter</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
