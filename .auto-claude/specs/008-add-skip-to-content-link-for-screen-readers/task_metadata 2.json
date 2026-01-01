@@ -1,0 +1,12 @@
+{
+  "sourceType": "ideation",
+  "ideationType": "ui_ux_improvements",
+  "ideaId": "uiux-003",
+  "rationale": "WCAG 2.4.1 requires bypass blocks for keyboard navigation. Without a skip link, screen reader users must tab through all navigation items before reaching main content",
+  "category": "ui_ux",
+  "uiuxCategory": "accessibility",
+  "affectedFiles": [
+    "index.html"
+  ],
+  "problemSolved": "No skip link exists. Users must navigate through the header (h1, tagline, nav) before reaching the main content. No ARIA landmarks or roles are used (grep found 0 aria- or role= attributes)."
+}
