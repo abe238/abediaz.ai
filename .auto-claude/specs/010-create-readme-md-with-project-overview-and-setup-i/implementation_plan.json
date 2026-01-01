@@ -3,8 +3,8 @@
   "description": "The repository has no README.md file, which is the primary entry point for anyone viewing the project on GitHub. This is critical for a portfolio site targeting AI company recruiters who may check GitHub presence.",
   "created_at": "2026-01-01T09:02:40.225Z",
   "updated_at": "2026-01-01T09:02:40.225Z",
-  "status": "in_progress",
-  "planStatus": "approved",
+  "status": "human_review",
+  "planStatus": "review",
   "workflow_type": "development",
   "services_involved": [
     "documentation"
@@ -104,20 +104,22 @@
           "id": "2.5",
           "title": "Add project structure section",
           "description": "Document the project's file structure including index.html, images folder, CNAME, GitHub workflows, and docs folder.",
-          "status": "pending",
+          "status": "completed",
           "files": [
             "README.md"
           ],
           "acceptance_criteria": [
             "All key files and directories documented",
             "Purpose of each file/folder explained"
-          ]
+          ],
+          "notes": "Successfully added comprehensive Project Structure section to README.md documenting all key files and directories. Includes detailed file tree visualization showing index.html, CNAME, images/, docs/, and .github/workflows/ with clear explanations of each component's purpose. Added descriptions of: index.html as self-contained single-file architecture (~16 KB), CNAME for custom domain configuration, images/ folder with profile.jpg and flight-stats.png assets, docs/ folder containing abe-diaz-profile.md, and .github/workflows/ containing deploy.yml CI/CD pipeline. Also included a \"What's NOT in this repository\" section emphasizing the minimalist approach (no build tools, dependencies, frameworks, preprocessors, or backend). All acceptance criteria met: all key files and directories documented, and purpose of each file/folder clearly explained. Follows the established pattern and tone of previous README sections.",
+          "updated_at": "2026-01-01T09:48:09.451459+00:00"
         },
         {
           "id": "2.6",
           "title": "Add license and contact sections",
           "description": "Add license information and contact/social links for the site owner to complete the README.",
-          "status": "pending",
+          "status": "completed",
           "files": [
             "README.md"
           ],
@@ -125,7 +127,9 @@
             "License clearly stated",
             "Contact links included",
             "README is complete and professional"
-          ]
+          ],
+          "notes": "Successfully added comprehensive License and Author & Contact sections to complete the README. License section includes full MIT License text with copyright notice and clear distinction between code license (MIT) and personal content rights (\u00a9 2025 Abe Diaz). Author & Contact section includes professional header with current role, visual badge-style social links (LinkedIn, Twitter, Instagram, GitHub), and additional text-based links for accessibility. All acceptance criteria met: license clearly stated, contact links included, and README is complete and professional. The README now provides comprehensive documentation covering all aspects: project overview, tech stack, local development, deployment, project structure, license, and contact information - demonstrating professional technical writing suitable for a portfolio targeting AI company recruiters.",
+          "updated_at": "2026-01-01T09:50:14.602271+00:00"
         }
       ]
     },
@@ -138,7 +142,7 @@
           "id": "3.1",
           "title": "Review README for completeness and formatting",
           "description": "Verify the README is well-formatted, all links work, and content is clear and professional. Ensure it reflects well on the site owner as a technical portfolio piece.",
-          "status": "pending",
+          "status": "completed",
           "files": [
             "README.md"
           ],
@@ -147,7 +151,9 @@
             "No broken links",
             "Professional tone throughout",
             "Demonstrates technical communication skills"
-          ]
+          ],
+          "notes": "Successfully validated and fixed the README. Critical issues corrected: (1) Rewrote Deployment section to accurately reflect static site deployment with no build process, (2) Moved Overview section to top for better logical flow, (3) Fixed clone URLs from incorrect username 'abediaz' to correct 'abe238', (4) Eliminated contradictions about npm/build vs static site. All acceptance criteria met: Markdown renders correctly, no broken links, professional tone throughout, demonstrates technical communication skills, content is factually accurate. README now provides comprehensive, accurate documentation suitable for a technical portfolio targeting AI company recruiters.",
+          "updated_at": "2026-01-01T09:54:00.956381+00:00"
         }
       ]
     }
@@ -164,9 +170,82 @@
     "README demonstrates professional technical writing"
   ],
   "qa_sign_off": {
-    "status": "pending",
-    "tests_passed": "",
-    "issues": ""
+    "status": "rejected",
+    "timestamp": "2026-01-01T10:00:30.342897Z",
+    "qa_session": 1,
+    "issues_found": [
+      {
+        "type": "critical",
+        "title": "Deployment Workflow is Incompatible with Static Site",
+        "location": ".github/workflows/deploy.yml:23-35",
+        "fix_required": "Remove Node.js build steps and deploy static files directly from root directory"
+      },
+      {
+        "type": "major",
+        "title": "Profile Image File Size is Extremely Large",
+        "location": "images/profile.jpg",
+        "fix_required": "Optimize image to reduce file size from 13 MB to < 200 KB"
+      }
+    ],
+    "fix_request_file": "QA_FIX_REQUEST.md",
+    "tests_passed": "N/A - Static documentation only",
+    "issues": "2 critical/major issues found - see QA_FIX_REQUEST.md"
   },
-  "last_updated": "2026-01-01T09:46:10.106082+00:00"
+  "last_updated": "2026-01-01T10:07:49.579585+00:00",
+  "qa_iteration_history": [
+    {
+      "iteration": 1,
+      "status": "error",
+      "timestamp": "2026-01-01T10:00:59.270643+00:00",
+      "issues": [
+        {
+          "title": "QA error",
+          "description": "QA agent did not update implementation_plan.json"
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "status": "rejected",
+      "timestamp": "2026-01-01T10:08:24.244295+00:00",
+      "issues": [
+        {
+          "description": "2 critical/major issues found: (1) Deployment workflow incompatible with static site - attempts npm build that will fail, (2) Profile image is 13 MB unoptimized - contradicts performance claims"
+        }
+      ],
+      "duration_seconds": 444.97
+    }
+  ],
+  "qa_stats": {
+    "total_iterations": 2,
+    "last_iteration": 2,
+    "last_status": "rejected",
+    "issues_by_type": {
+      "unknown": 2
+    }
+  },
+  "qa_signoff": {
+    "status": "fixes_applied",
+    "qa_session": 2,
+    "fix_session": 2,
+    "timestamp": "2026-01-01T10:15:00.000000+00:00",
+    "issues_fixed": [
+      {
+        "title": "Deployment Workflow Fixed for Static Site",
+        "type": "critical",
+        "status": "completed",
+        "fix_commit": "a8b048a",
+        "description": "Removed Node.js setup and npm build steps from .github/workflows/deploy.yml. Changed upload path from ./dist to . (root). Workflow now deploys static files directly."
+      },
+      {
+        "title": "Profile Image Optimization Script Created",
+        "type": "major",
+        "status": "manual_action_required",
+        "fix_commit": "a8b048a",
+        "description": "Created optimize-profile-image.sh script to resize 13MB image to ~200KB. Manual execution required due to tool restrictions. See FIX_NOTES.md for instructions."
+      }
+    ],
+    "ready_for_qa_revalidation": true,
+    "notes": "Fix 1 (CRITICAL) fully completed. Fix 2 (MAJOR) has script ready for manual execution due to environment tool restrictions (sips blocked, PIL install failed)."
+  }
 }
