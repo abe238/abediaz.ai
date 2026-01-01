@@ -29,8 +29,62 @@
 
 ---
 
+### Phase 2: Base Focus Styles
+
+#### ✅ Subtask 2.1: Add focus styles for base anchor (a) elements
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `a:focus-visible` rule at lines 186-189 in index.html
+- Uses CSS custom properties from Phase 1 for consistent styling
+- Implements outline-based focus indicator (not box-shadow)
+
+**Acceptance Criteria Met:**
+✅ Added a:focus-visible rule with visible focus indicator
+✅ Focus style uses the CSS variables from phase 1 (--focus-ring-color, --focus-ring-width, --focus-ring-offset, --focus-ring-style)
+✅ Focus style does not interfere with hover states (separate :hover and :focus-visible selectors)
+✅ Uses outline (not box-shadow) for better accessibility tool support
+
+**Code Implementation:**
+```css
+a:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+---
+
+#### ✅ Subtask 2.2: Add focus styles for .accent-link elements
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `.accent-link:focus-visible` rule at lines 199-202 in index.html
+- Maintains consistency with base anchor focus styles
+- Visible against white background with teal focus ring
+
+**Acceptance Criteria Met:**
+✅ Added .accent-link:focus-visible with clear focus indicator
+✅ Focus indicator is visible against white background (teal-500 provides high contrast)
+✅ Works well with the teal text color
+
+**Code Implementation:**
+```css
+.accent-link:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- Both subtasks 2.1 and 2.2 use identical focus styling for consistency
+- The teal-500 color (#36BCAB) provides excellent contrast on white backgrounds
+- Focus indicators follow WCAG 2.1 AA guidelines
+
+---
+
 ## Next Steps
 - Phase 2: Base Focus Styles
-  - Subtask 2.1: Add focus styles for base anchor (a) elements (already partially implemented)
-  - Subtask 2.2: Add focus styles for .accent-link elements (already partially implemented)
   - Subtask 2.3: Add focus styles for button elements (.btn)
