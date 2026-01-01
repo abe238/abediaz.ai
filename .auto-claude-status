@@ -1,0 +1,25 @@
+{
+  "active": true,
+  "spec": "007-update-http-links-to-https-for-security",
+  "state": "building",
+  "subtasks": {
+    "completed": 9,
+    "total": 12,
+    "in_progress": 1,
+    "failed": 0
+  },
+  "phase": {
+    "current": "Add Security Attributes to External Links",
+    "id": null,
+    "total": 2
+  },
+  "workers": {
+    "active": 0,
+    "max": 1
+  },
+  "session": {
+    "number": 6,
+    "started_at": "2026-01-01T01:43:04.266533"
+  },
+  "last_update": "2026-01-01T01:51:47.366701"
+}
