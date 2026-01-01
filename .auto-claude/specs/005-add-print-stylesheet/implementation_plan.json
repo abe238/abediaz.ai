@@ -64,8 +64,8 @@
           "files": [
             "index.html"
           ],
-          "notes": "Removed flex/grid layouts for print by setting .site-main to display: block, removed flex and max-width constraints from .content and .sidebar (set to 100% width), converted .social-links-inline from flex to block with inline links. Added 12pt margin-top to .sidebar for proper spacing. All elements now flow in single-column layout for paper printing.",
-          "updated_at": "2026-01-01T09:15:00.000000+00:00"
+          "notes": "Optimized layout for single-column print by converting all flex/grid layouts to block display, setting content/sidebar/main to 100% width with no padding/margin constraints, and adding proper pt-based spacing for sections, headers, widgets, and images to ensure optimal paper margins.",
+          "updated_at": "2026-01-01T09:44:40.345967+00:00"
         }
       ]
     },
@@ -138,5 +138,5 @@
     "No awkward page breaks in the middle of sections"
   ],
   "estimated_effort": "small",
-  "last_updated": "2026-01-01T09:15:00.000000+00:00"
+  "last_updated": "2026-01-01T09:44:40.345981+00:00"
 }

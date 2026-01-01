@@ -628,6 +628,21 @@
         text-decoration: underline;
       }
 
+      /* Display URLs after links (exclude internal anchors) */
+      a[href]:not([href^='#'])::after {
+        content: " (" attr(href) ")";
+        font-size: 10pt;
+        color: var(--color-black);
+        font-style: italic;
+      }
+
+      /* Exclude navigation and social links from showing URLs */
+      .site-nav a::after,
+      .social-links a::after,
+      .social-links-inline a::after {
+        content: none;
+      }
+
       /* Layout Optimization - Single Column for Print */
       .site-main {
         display: block;
