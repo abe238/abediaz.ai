@@ -5,8 +5,8 @@ Add visible focus indicators to all interactive elements (links, buttons, form i
 
 ## Progress Summary
 - Total Subtasks: 10
-- Completed: 2
-- Remaining: 8
+- Completed: 3
+- Remaining: 7
 - Status: In Progress
 
 ---
@@ -62,7 +62,29 @@ Added a:focus-visible rule for all anchor elements with visible focus indicator 
 
 ---
 
+### ✅ Subtask 2.2: Add focus styles for .accent-link elements [COMPLETED]
+**Date:** 2026-01-01
+**Commit:** beeb24b
+
+**Implementation:**
+Added .accent-link:focus-visible rule for accent link elements with visible focus indicator using CSS custom properties:
+- outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color)
+- outline-offset: var(--focus-ring-offset)
+
+**Acceptance Criteria Met:**
+✓ Added .accent-link:focus-visible with clear focus indicator
+✓ Focus indicator is visible against white background (teal #36BCAB on white)
+✓ Works well with the teal text color - consistent with brand colors
+
+**Notes:**
+- Uses same CSS variables as base anchor focus styles for consistency
+- Teal outline (#36BCAB) provides excellent contrast on white background
+- Complements the teal text color (#36BCAB) of accent links
+- Applied to all .accent-link elements (LinkedIn, Twitter, external links, etc.)
+- Maintains visual consistency across all link types
+
+---
+
 ## Next Steps
 **Phase 2: Base Focus Styles (continued)**
-- Subtask 2.2: Add focus styles for .accent-link elements
 - Subtask 2.3: Add focus styles for button elements (.btn)
