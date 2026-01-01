@@ -99,7 +99,7 @@
             "Add proper focus ring/outline that is visible",
             "Border color change can remain but should be supplemented with focus ring"
           ],
-          "status": "pending",
+          "status": "completed",
           "priority": "high",
           "estimated_complexity": "simple"
         },
@@ -180,7 +180,7 @@
     }
   ],
   "total_subtasks": 10,
-  "completed_subtasks": 4,
+  "completed_subtasks": 5,
   "final_acceptance": [
     "All interactive elements (links, buttons, inputs) have visible focus states",
     "Focus indicators use consistent styling via CSS variables",

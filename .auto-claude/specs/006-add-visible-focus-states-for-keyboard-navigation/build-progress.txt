@@ -115,6 +115,42 @@ a:focus-visible {
 
 ---
 
+### Phase 3: Component Focus Styles
+
+#### ✅ Subtask 3.1: Fix email input focus state (remove outline: none)
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Removed `outline: none` from `.email-form input[type="email"]:focus` at line 320
+- Added proper focus ring using CSS variables (lines 320-323 in index.html)
+- Kept border color change for additional visual feedback
+
+**Acceptance Criteria Met:**
+✅ Removed 'outline: none' from .email-form input[type='email']:focus
+✅ Added proper focus ring/outline that is visible
+✅ Border color change remains but is now supplemented with focus ring
+
+**Code Implementation:**
+```css
+.email-form input[type="email"]:focus {
+  border-color: var(--color-teal-500);
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- Follows the same pattern as base focus styles (subtasks 2.1, 2.2, 2.3)
+- Uses CSS custom properties from Phase 1 for consistency
+- Email input now has both border color change and visible outline for focus
+- Teal focus ring provides excellent contrast for keyboard navigation
+
+---
+
 ## Next Steps
-- Phase 3: Component Focus Styles
-  - Subtask 3.1: Fix email input focus state (remove outline: none)
+- Phase 3: Component Focus Styles (continued)
+  - Subtask 3.2: Add focus styles for navigation links
+  - Subtask 3.3: Add focus styles for share buttons (.share-btn)
+  - Subtask 3.4: Add focus styles for like buttons (.like-btn)
+  - Subtask 3.5: Add focus styles for header/title link (h1 a)
