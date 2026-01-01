@@ -1,0 +1,25 @@
+{
+  "active": true,
+  "spec": "002-add-favicon-and-touch-icons",
+  "state": "building",
+  "subtasks": {
+    "completed": 2,
+    "total": 5,
+    "in_progress": 1,
+    "failed": 0
+  },
+  "phase": {
+    "current": "Asset Generation",
+    "id": null,
+    "total": 3
+  },
+  "workers": {
+    "active": 0,
+    "max": 1
+  },
+  "session": {
+    "number": 3,
+    "started_at": "2026-01-01T01:43:12.862846"
+  },
+  "last_update": "2026-01-01T01:58:53.287912"
+}
