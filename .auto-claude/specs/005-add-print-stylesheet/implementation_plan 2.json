@@ -60,12 +60,11 @@
           "id": "2.2",
           "title": "Optimize layout for single-column print",
           "description": "Remove flex/grid layouts, set content to full width, remove max-width constraints, and ensure proper spacing for paper margins",
-          "status": "completed",
+          "status": "pending",
           "files": [
             "index.html"
           ],
-          "notes": "Optimized layout for single-column print by converting all flex/grid layouts to block display, setting content/sidebar/main to 100% width with no padding/margin constraints, and adding proper pt-based spacing for sections, headers, widgets, and images to ensure optimal paper margins.",
-          "updated_at": "2026-01-01T09:44:40.345967+00:00"
+          "notes": "Print should be simple single-column flow"
         }
       ]
     },
@@ -78,23 +77,21 @@
           "id": "3.1",
           "title": "Show link URLs after link text",
           "description": "Use CSS ::after pseudo-element to display link URLs in parentheses after link text for important links. Exclude internal navigation links and keep URLs concise",
-          "status": "completed",
+          "status": "pending",
           "files": [
             "index.html"
           ],
-          "notes": "Added CSS ::after pseudo-element to display link URLs in parentheses after link text. Excluded internal anchor links using :not([href^='#']) selector and excluded navigation/social links to keep output concise. URLs styled with 10pt italic font for readability.",
-          "updated_at": "2026-01-01T09:46:43.215611+00:00"
+          "notes": "Use a[href]:not([href^='#'])::after pattern"
         },
         {
           "id": "3.2",
           "title": "Optimize images for print",
           "description": "Ensure profile image prints at reasonable size, hide decorative images if needed, and add page-break rules to prevent awkward image splits",
-          "status": "completed",
+          "status": "pending",
           "files": [
             "index.html"
           ],
-          "notes": "Added image optimization for print: general img rule with max-width: 100%, profile-image set to max-width: 3in for reasonable print size, added break-inside: avoid and page-break-inside: avoid to both .profile-image and .flight-stats to prevent awkward page splits. Both images remain visible as informational content.",
-          "updated_at": "2026-01-01T09:49:42.395838+00:00"
+          "notes": "Use break-inside: avoid for images, max-width: 100%"
         }
       ]
     },
@@ -107,23 +104,21 @@
           "id": "4.1",
           "title": "Add page break controls",
           "description": "Prevent orphans/widows, avoid breaks inside important sections, ensure headings don't appear alone at bottom of page, and add break-after for natural section divisions",
-          "status": "completed",
+          "status": "pending",
           "files": [
             "index.html"
           ],
-          "notes": "Added comprehensive page break controls to print stylesheet: orphans/widows set to 3 for paragraphs, break-inside: avoid for major sections (.content, .widget, .contact-section), break-after: avoid for section titles (h2, h3, .widget-title) to keep them with content, break-after: auto for natural divisions (.site-header, .content), and break-inside: avoid for social links. Uses both modern (break-*) and legacy (page-break-*) properties for maximum browser compatibility.",
-          "updated_at": "2026-01-01T09:51:33.733755+00:00"
+          "notes": "Use break-before, break-after, break-inside properties"
         },
         {
           "id": "4.2",
           "title": "Test and refine print output",
           "description": "Manual testing using browser print preview, verify all elements display correctly, ensure contact information is visible, and make final adjustments",
-          "status": "completed",
+          "status": "pending",
           "files": [
             "index.html"
           ],
-          "notes": "Created comprehensive TESTING_GUIDE.md with manual testing instructions. Verified implementation includes all required features: @page setup, hidden interactive elements, single-column layout, print-optimized typography (12pt serif), underlined links with URLs, properly sized images (profile max 3in), page break controls, and visible contact section. No code issues found. Ready for manual browser testing via print preview (Ctrl+P/Cmd+P). Browser-specific considerations documented for Chrome, Firefox, Safari, and Edge.",
-          "updated_at": "2026-01-01T09:54:08.314608+00:00"
+          "notes": "Document any browser-specific considerations"
         }
       ]
     }
@@ -142,5 +137,5 @@
     "No awkward page breaks in the middle of sections"
   ],
   "estimated_effort": "small",
-  "last_updated": "2026-01-01T09:54:08.314617+00:00"
+  "last_updated": "2026-01-01T09:11:39.896109+00:00"
 }
