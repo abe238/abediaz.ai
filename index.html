@@ -145,36 +145,29 @@
        ======================================== */
     .skip-link {
       position: absolute;
+      left: -10000px;
+      top: auto;
       width: 1px;
       height: 1px;
-      padding: 0;
-      margin: -1px;
       overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
     }
 
-    .skip-link:focus-visible {
-      position: fixed;
-      top: var(--space-2);
-      left: var(--space-2);
+    .skip-link:focus {
+      position: absolute;
+      left: var(--space-3);
+      top: var(--space-3);
       width: auto;
       height: auto;
-      padding: var(--space-3) var(--space-4);
-      margin: 0;
       overflow: visible;
-      clip: auto;
-      white-space: normal;
+      padding: var(--space-3) var(--space-4);
       background-color: var(--color-teal-500);
       color: var(--color-white);
-      font-size: var(--text-base);
-      font-weight: var(--font-bold);
       text-decoration: none;
-      border: 2px solid var(--color-white);
+      font-weight: var(--font-bold);
+      font-size: var(--text-md);
       border-radius: var(--radius-sm);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       z-index: 9999;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     /* ========================================
@@ -891,7 +884,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="site-main" id="main-content" tabindex="-1">
+    <main id="main-content" class="site-main" tabindex="-1">
       <!-- Content Area -->
       <article class="content">
         <h2 class="section-title">ABOUT ME</h2>
