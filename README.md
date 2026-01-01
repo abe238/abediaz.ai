@@ -38,6 +38,101 @@ This architecture demonstrates that not every project needs a complex frameworkâ
 
 ---
 
+## Local Development
+
+Since this is a **static HTML site** with no build process, getting started is remarkably simple. No Node.js, npm, or build tools required!
+
+### Prerequisites
+
+- **Modern web browser** (Chrome, Firefox, Safari, Edge)
+- **Git** (for cloning the repository)
+- *(Optional)* **Local web server** for advanced testing
+
+### Clone the Repository
+
+```bash
+# Clone via HTTPS
+git clone https://github.com/abediaz/abediaz.ai.git
+
+# Or clone via SSH
+git clone git@github.com:abediaz/abediaz.ai.git
+
+# Navigate to the project directory
+cd abediaz.ai
+```
+
+### Running Locally
+
+You have multiple options for viewing the site locally:
+
+#### Option 1: Direct File Access (Simplest)
+
+Simply open `index.html` in your browser:
+
+```bash
+# macOS
+open index.html
+
+# Linux
+xdg-open index.html
+
+# Windows
+start index.html
+```
+
+Or double-click `index.html` in your file explorer.
+
+**Note:** This method works perfectly for this static site, but some advanced features (like service workers or certain CORS-restricted resources) may require a local server.
+
+#### Option 2: Python HTTP Server
+
+If you have Python installed (most macOS/Linux systems do by default):
+
+```bash
+# Python 3
+python -m http.server 8000
+
+# Python 2
+python -m SimpleHTTPServer 8000
+```
+
+Then visit: [http://localhost:8000](http://localhost:8000)
+
+#### Option 3: Node.js HTTP Server
+
+If you have Node.js installed:
+
+```bash
+# Using npx (no installation required)
+npx serve
+
+# Or install serve globally
+npm install -g serve
+serve
+```
+
+Then visit: [http://localhost:3000](http://localhost:3000) (or the port shown in the output)
+
+#### Option 4: VS Code Live Server
+
+If you use Visual Studio Code:
+
+1. Install the "Live Server" extension by Ritwick Dey
+2. Right-click `index.html` and select "Open with Live Server"
+3. The site will open automatically in your browser with live reload
+
+### Making Changes
+
+Since all code is in `index.html` with inline CSS, you can edit directly:
+
+1. Open `index.html` in your favorite editor
+2. Make your changes
+3. Refresh your browser to see updates (or use live reload with a local server)
+
+**No build step, no bundlers, no transpilationâ€”just edit and refresh!**
+
+---
+
 ## Overview
 
 This is the personal portfolio website for **Abe Diaz**, a passionate technologist and Sr. Technical Program Manager on the Disaster Relief by Amazon team. The site serves as a professional online presence showcasing technical expertise, leadership experience, and personal interests.
