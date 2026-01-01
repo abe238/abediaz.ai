@@ -4343,9 +4343,393 @@ RESPONSIVE CHANGES
 
 ### Breakpoints
 
-*This section will document the three breakpoint system (768px, 480px, 360px) with what changes at each breakpoint.*
+The design system uses a **desktop-first responsive strategy** with three strategic breakpoints that adapt the design for progressively smaller screens. Each breakpoint introduces specific overrides to maintain readability, usability, and visual hierarchy.
 
-**Coming Soon:** Responsive breakpoint documentation and adaptation patterns.
+#### Design Rationale
+
+The breakpoint system is designed around **real-world device categories** rather than arbitrary pixel values:
+
+1. **768px (Tablet)** - iPads and tablet devices in portrait mode
+2. **480px (Mobile)** - Standard smartphones in portrait orientation
+3. **360px (Small Phones)** - Compact Android devices and older iPhones
+
+This **desktop-first approach** (`max-width` media queries) means:
+- Base styles are optimized for desktop/larger screens
+- Each breakpoint progressively simplifies and condenses the layout
+- Override only what's necessary—most styles cascade from desktop defaults
+
+#### Breakpoint Overview
+
+| Breakpoint | Media Query | Target Devices | Strategy | Changes |
+|------------|-------------|----------------|----------|---------|
+| **Desktop** | Default (>768px) | Laptops, desktops, large tablets | Base styles | All default design tokens |
+| **Tablet** | `@media (max-width: 768px)` | iPads, medium tablets | Moderate scaling | Reduced h1 size, header padding, full-width content |
+| **Mobile** | `@media (max-width: 480px)` | Smartphones | Aggressive adaptation | Smaller typography, flexible navigation, compact spacing |
+| **Small Mobile** | `@media (max-width: 360px)` | Compact phones | Minimal refinement | Further h1 reduction, tighter padding |
+
+---
+
+#### Desktop (Default, >768px)
+
+The desktop layout represents the **canonical design** with full spacing, large typography, and two-column layout.
+
+**No media queries required** - these are the default CSS variable values:
+
+```css
+:root {
+  --text-4xl: 80px;
+  --text-base: 13px;
+  --space-header: 70px;
+}
+
+body {
+  line-height: 1.75;
+}
+
+.site-container {
+  max-width: var(--container-max); /* 860px */
+  padding: 0 var(--space-6); /* 24px */
+}
+
+.content {
+  max-width: var(--content-width); /* 580px */
+}
+```
+
+**Characteristics:**
+- Two-column layout (content + sidebar)
+- Large h1 (80px) with dramatic visual impact
+- Generous spacing throughout (24px container padding, 70px header padding)
+- Optimal line-height (1.75) for comfortable reading
+
+---
+
+#### Tablet (≤768px)
+
+The first breakpoint begins adapting the design for **medium-sized screens** like iPads and tablets.
+
+```css
+@media (max-width: 768px) {
+  :root {
+    --text-4xl: 48px;       /* h1 reduced from 80px → 48px */
+    --space-header: 50px;   /* header padding reduced from 70px → 50px */
+  }
+
+  .site-container {
+    padding: 0 var(--space-4); /* 16px horizontal padding */
+  }
+
+  .content {
+    max-width: 100%;        /* content area takes full width */
+  }
+}
+```
+
+**Key Changes:**
+
+| Element | Desktop Value | Tablet Value | Change | Rationale |
+|---------|---------------|--------------|--------|-----------|
+| h1 size (`--text-4xl`) | 80px | 48px | -40% | Prevents overflow, maintains hierarchy |
+| Header padding (`--space-header`) | 70px | 50px | -29% | Conserves vertical space |
+| Container padding | 24px | 16px | -33% | More content width on narrower screens |
+| Content max-width | 580px | 100% | Full width | Eliminates sidebar, uses all available space |
+
+**Visual Impact:**
+- h1 is still large (48px) but won't overwhelm tablet screens
+- Content area expands to full width (sidebar may collapse or stack below)
+- Slightly tighter padding creates more breathing room for content
+- Header reduces vertical space consumption
+
+---
+
+#### Mobile (≤480px)
+
+The mobile breakpoint introduces **significant adaptations** for smartphone screens, prioritizing readability and touch-friendly interactions.
+
+```css
+@media (max-width: 480px) {
+  /* CSS Variable Overrides */
+  :root {
+    --text-4xl: 32px;       /* h1 dramatically reduced: 48px → 32px */
+    --text-base: 14px;      /* body text increased: 13px → 14px */
+    --space-header: 32px;   /* header padding further reduced: 50px → 32px */
+  }
+
+  /* Base Element Adjustments */
+  body {
+    line-height: 1.6;       /* tighter line-height: 1.75 → 1.6 */
+  }
+
+  .site-container {
+    padding: 0 var(--space-4); /* maintains 16px padding */
+  }
+
+  /* Typography Refinements */
+  h1 {
+    letter-spacing: -1px;   /* tighten spacing to compensate for size reduction */
+  }
+
+  h2.tagline {
+    font-size: var(--text-base); /* 14px (uses updated --text-base) */
+  }
+
+  h2.section-title {
+    font-size: var(--text-base);      /* 14px */
+    margin-bottom: var(--space-4);    /* 16px */
+  }
+
+  h3 {
+    font-size: var(--text-md); /* 14px */
+  }
+
+  /* Navigation Adaptations */
+  .site-nav {
+    margin-top: var(--space-4); /* 16px */
+  }
+
+  .site-nav ul {
+    flex-wrap: wrap;            /* navigation items wrap on small screens */
+    gap: var(--space-4);        /* 16px gap between nav items */
+  }
+
+  /* Content Components */
+  .profile-image,
+  .flight-stats {
+    margin: var(--space-4) 0;   /* 16px vertical margin (reduced from 20px) */
+  }
+
+  p {
+    margin-bottom: var(--space-4); /* 16px paragraph spacing */
+  }
+
+  /* Footer Section */
+  .contact-section {
+    margin-top: var(--space-6);     /* 24px */
+    padding-top: var(--space-5);    /* 20px */
+    padding-bottom: var(--space-8); /* 32px */
+  }
+
+  /* Social Links */
+  .social-links-inline {
+    gap: var(--space-6); /* 24px gap between social links */
+  }
+
+  .social-links-inline a {
+    font-size: var(--text-md);      /* 14px */
+    padding: var(--space-2) 0;      /* 8px vertical padding */
+  }
+}
+```
+
+**Key Changes:**
+
+| Element/Property | Desktop | Mobile | Change | Rationale |
+|------------------|---------|--------|--------|-----------|
+| h1 size | 80px | 32px | -60% | Prevents overflow on small screens |
+| Body text size | 13px | 14px | +8% | Improves readability on mobile |
+| Body line-height | 1.75 | 1.6 | -9% | Conserves vertical space |
+| Header padding | 70px | 32px | -54% | Significant space savings |
+| h1 letter-spacing | 0 | -1px | Tighter | Compensates for dramatic size reduction |
+| Navigation layout | Single row | Wrapping | Flexible | Touch-friendly, prevents overflow |
+| Image margins | 20px | 16px | -20% | Tighter spacing for mobile |
+| Heading sizes | Various | Smaller | Unified | All headings use base or md sizes |
+
+**Mobile Strategy:**
+
+1. **Typography Scaling**: Dramatic h1 reduction (80px → 32px) with compensatory letter-spacing
+2. **Body Text Enhancement**: Increase base font size (13px → 14px) for better mobile readability
+3. **Spacing Reduction**: Tighter vertical rhythms conserve screen real estate
+4. **Navigation Flexibility**: Wrapping navigation ensures touch targets remain accessible
+5. **Line-Height Optimization**: Slightly tighter (1.6) balances readability with space efficiency
+
+---
+
+#### Small Mobile (≤360px)
+
+The final breakpoint provides **minimal refinements** for compact Android phones and older iPhones with very small screens.
+
+```css
+@media (max-width: 360px) {
+  :root {
+    --text-4xl: 28px;       /* h1 further reduced: 32px → 28px */
+  }
+
+  .site-container {
+    padding: 0 var(--space-3); /* 12px horizontal padding (reduced from 16px) */
+  }
+}
+```
+
+**Key Changes:**
+
+| Element | Mobile (480px) | Small Mobile (360px) | Change | Rationale |
+|---------|----------------|----------------------|--------|-----------|
+| h1 size | 32px | 28px | -12.5% | Final reduction for tiny screens |
+| Container padding | 16px | 12px | -25% | Maximize content width on narrowest devices |
+
+**Small Mobile Philosophy:**
+- **Minimal intervention**: Only adjust what's absolutely necessary
+- **h1 refinement**: Ensures header fits comfortably on 320-360px screens
+- **Padding reduction**: Every pixel counts—reduce horizontal padding to maximize content area
+- **Everything else cascades**: All mobile (480px) styles still apply
+
+---
+
+#### Desktop-First vs Mobile-First
+
+This design system uses a **desktop-first approach** with `max-width` media queries.
+
+**Why Desktop-First?**
+
+✅ **Pros:**
+- Base styles represent the "ideal" design without constraints
+- Simpler mental model: start complex, progressively simplify
+- Easier to remove/condense than to add complexity
+- Matches the design process: design for desktop, then adapt for mobile
+
+❌ **Cons:**
+- Not the modern "mobile-first" best practice for progressive enhancement
+- Larger CSS file size for mobile users (though negligible for this small system)
+
+**Mobile-First Alternative:**
+
+A mobile-first approach would use `min-width` queries and start with mobile as the base:
+
+```css
+/* Base styles = Mobile (not used in this system) */
+:root { --text-4xl: 28px; }
+
+/* Progressively enhance for larger screens */
+@media (min-width: 361px) { :root { --text-4xl: 32px; } }
+@media (min-width: 481px) { :root { --text-4xl: 48px; } }
+@media (min-width: 769px) { :root { --text-4xl: 80px; } }
+```
+
+**Current System Trade-offs:**
+- Desktop-first aligns with this site's **desktop-centric audience** (technologist portfolio)
+- Simplifies development: easier to override than build up
+- Still fully responsive and mobile-friendly—just different implementation strategy
+
+---
+
+#### Responsive Design Patterns
+
+**Common Adaptation Patterns:**
+
+1. **Typography Scaling**
+   - Reduce large typography dramatically (h1: 80px → 48px → 32px → 28px)
+   - Increase small typography slightly (body: 13px → 14px on mobile)
+   - Adjust line-height to balance readability with space constraints
+
+2. **Spacing Condensation**
+   - Header padding: 70px → 50px → 32px
+   - Container padding: 24px → 16px → 12px
+   - Component margins: 20px → 16px on mobile
+
+3. **Layout Simplification**
+   - Two-column → Single column (content max-width: 580px → 100%)
+   - Fixed widths → Fluid/responsive widths
+   - Flexbox wrapping for navigation and inline elements
+
+4. **Touch Target Optimization**
+   - Navigation gap increases on mobile (20px → 16px, allows wrapping)
+   - Social link padding increases (8px vertical padding on mobile)
+   - Buttons maintain minimum 44x44px touch target size
+
+---
+
+#### Best Practices
+
+**✅ Do:**
+
+- ✅ Test on real devices at each breakpoint (especially 360px for budget Android phones)
+- ✅ Use CSS variables for values that change across breakpoints (`--text-4xl`, `--space-header`)
+- ✅ Override only what's necessary—let desktop styles cascade when possible
+- ✅ Consider touch targets on mobile (minimum 44x44px recommended)
+- ✅ Test navigation wrapping at 480px with varying content lengths
+- ✅ Verify h1 doesn't overflow at each breakpoint, especially with longer names
+- ✅ Use browser DevTools responsive mode to test all three breakpoints
+
+**❌ Don't:**
+
+- ❌ Don't add breakpoints for specific devices (iPad Pro, iPhone X, etc.)—the three breakpoints cover all cases
+- ❌ Don't override CSS variables unnecessarily—only change what needs to change
+- ❌ Don't create new spacing values in media queries—use existing CSS variables
+- ❌ Don't forget to test wrapping behavior for navigation and social links
+- ❌ Don't reduce font sizes below 14px on mobile (accessibility concern)
+- ❌ Don't create device-specific hacks—stick to the three established breakpoints
+
+---
+
+#### Accessibility Considerations
+
+**Responsive Accessibility:**
+
+1. **Font Size Minimums**
+   - Mobile body text increases to 14px (from 13px) for better readability
+   - Never goes below 11px (form inputs) on any device
+   - Respects user font size preferences (uses px but scalable with browser zoom)
+
+2. **Touch Targets**
+   - Navigation links have adequate spacing (16px gap on mobile, allows wrapping)
+   - Social links include 8px vertical padding on mobile
+   - Buttons maintain minimum touch target size across breakpoints
+
+3. **Spacing & Breathing Room**
+   - Line-height reduces minimally (1.75 → 1.6) to preserve readability
+   - Container padding ensures content never touches screen edges (12px minimum)
+   - Header padding (32px minimum on mobile) prevents cramped appearance
+
+4. **Reading Order & Flow**
+   - Single-column layout on mobile maintains logical reading order
+   - Navigation wraps naturally without disrupting tab order
+   - Content-first approach ensures primary content is accessible
+
+---
+
+#### Breakpoint Quick Reference
+
+**Responsive CSS Variables:**
+
+| Variable | Desktop (>768px) | Tablet (≤768px) | Mobile (≤480px) | Small Mobile (≤360px) |
+|----------|------------------|-----------------|-----------------|------------------------|
+| `--text-4xl` | 80px | 48px | 32px | 28px |
+| `--text-base` | 13px | 13px | 14px | 14px |
+| `--space-header` | 70px | 50px | 32px | 32px |
+
+**Responsive Layout Changes:**
+
+| Element | Desktop | Tablet | Mobile | Small Mobile |
+|---------|---------|--------|--------|--------------|
+| `.site-container` padding | 24px | 16px | 16px | 12px |
+| `.content` max-width | 580px | 100% | 100% | 100% |
+| `body` line-height | 1.75 | 1.75 | 1.6 | 1.6 |
+| `h1` letter-spacing | 0 | 0 | -1px | -1px |
+| `.site-nav ul` | No wrap | No wrap | Wraps | Wraps |
+
+**Component-Specific Adaptations (Mobile only, ≤480px):**
+
+- `h2.tagline`, `h2.section-title`, `h3` → All use `--text-base` or `--text-md`
+- `.site-nav` → `margin-top: 16px`, `gap: 16px`, `flex-wrap: wrap`
+- `.profile-image`, `.flight-stats` → `margin: 16px 0`
+- `p` → `margin-bottom: 16px`
+- `.contact-section` → Adjusted padding (24px / 20px / 32px)
+- `.social-links-inline` → `gap: 24px`, `font-size: 14px`, `padding: 8px 0`
+
+---
+
+#### Testing Checklist
+
+Before deploying responsive changes, verify:
+
+- [ ] **768px**: h1 (48px) fits comfortably, content expands to full width
+- [ ] **480px**: Navigation wraps gracefully, h1 (32px) doesn't overflow, body text is readable at 14px
+- [ ] **360px**: h1 (28px) fits within narrow width, 12px container padding provides adequate margins
+- [ ] All breakpoints: Touch targets are at least 44x44px, text contrast meets WCAG AA standards
+- [ ] Test on actual devices: iPad (768px), iPhone (480px), budget Android phone (360px)
+- [ ] Verify content never touches screen edges at any breakpoint
+- [ ] Ensure navigation remains usable when items wrap
+- [ ] Check that images scale proportionally and don't overflow
 
 ---
 
