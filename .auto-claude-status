@@ -1,17 +1,17 @@
 {
   "active": true,
-  "spec": "017-i-can-t-see-the-image-on-the-html-page",
+  "spec": "018-the-newsletter-widget-looks-weird-and-squished-ue-",
   "state": "complete",
   "subtasks": {
-    "completed": 2,
-    "total": 2,
+    "completed": 1,
+    "total": 1,
     "in_progress": 0,
     "failed": 0
   },
   "phase": {
-    "current": "Fix Image Display",
+    "current": "Implementation",
     "id": 1,
-    "total": 2
+    "total": 1
   },
   "workers": {
     "active": 0,
@@ -19,7 +19,7 @@
   },
   "session": {
     "number": 1,
-    "started_at": "2026-01-01T03:55:44.682937"
+    "started_at": "2026-01-01T14:03:07.198530"
   },
-  "last_update": "2026-01-01T03:56:47.355892"
+  "last_update": "2026-01-01T14:04:10.702952"
 }
