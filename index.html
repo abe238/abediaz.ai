@@ -622,6 +622,44 @@
         widows: 3;
       }
 
+      /* Page Break Controls */
+      /* Prevent awkward breaks in sections */
+      article,
+      .content,
+      .widget,
+      .contact-section {
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+      }
+
+      /* Section titles should stay with their content */
+      h2.section-title,
+      h3,
+      .widget-title {
+        break-after: avoid-page;
+        page-break-after: avoid;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Natural section divisions - allow breaks after major sections */
+      .site-header {
+        break-after: auto;
+        page-break-after: auto;
+      }
+
+      .content {
+        break-after: auto;
+        page-break-after: auto;
+      }
+
+      /* Keep social links together */
+      .social-links,
+      .social-links-inline {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
       /* Links - ensure readability */
       a {
         color: var(--color-black);
