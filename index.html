@@ -315,7 +315,7 @@
       border: none;
       border-radius: var(--radius-sm);
       cursor: pointer;
-      transition: background-color var(--transition-normal);
+      transition: background-color var(--transition-normal), color var(--transition-normal), border-color var(--transition-normal);
     }
 
     .btn-primary {
@@ -325,6 +325,17 @@
 
     .btn-primary:hover {
       background-color: #005a8c;
+      color: var(--color-white);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-teal-500);
+      border: 1px solid var(--color-teal-500);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--color-teal-500);
       color: var(--color-white);
     }
 

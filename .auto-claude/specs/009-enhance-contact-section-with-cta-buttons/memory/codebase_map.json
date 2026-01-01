@@ -1,0 +1,10 @@
+{
+  "discovered_files": {
+    "index.html": {
+      "description": "Contact section at lines 593-599 has plain text links (LinkedIn, Twitter) with .accent-link class. Existing button styles (.btn, .btn-primary) at lines 308-329 are unused. Only .btn-primary exists - need to create .btn-secondary for variety.",
+      "category": "component",
+      "discovered_at": "2026-01-01T09:05:26.508402+00:00"
+    }
+  },
+  "last_updated": "2026-01-01T09:05:26.508417+00:00"
+}
