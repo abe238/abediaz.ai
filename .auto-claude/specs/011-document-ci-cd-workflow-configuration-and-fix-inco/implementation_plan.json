@@ -30,7 +30,7 @@
           "subtask_id": "1.2",
           "title": "Verify workflow syntax",
           "description": "Ensure the updated workflow has valid YAML syntax and follows GitHub Actions best practices",
-          "status": "completed",
+          "status": "pending",
           "files": [".github/workflows/deploy.yml"],
           "acceptance_criteria": [
             "YAML syntax is valid",
