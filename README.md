@@ -298,6 +298,63 @@ This minimalist approach prioritizes **simplicity, performance, and maintainabil
 
 ---
 
+## License
+
+This project is licensed under the **MIT License** - see below for details.
+
+```
+MIT License
+
+Copyright (c) 2025 Abe Diaz
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+**Note:** While the code is MIT licensed, the personal content (images, profile information, and biography) is © 2025 Abe Diaz. Please do not reuse personal content without permission.
+
+---
+
+## Author & Contact
+
+**Abe Diaz**
+*Seattle / Tech / Evangelist*
+
+Sr. Manager - Disaster Relief at Amazon
+Greater Seattle Area
+
+### Connect with me:
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-abediaz-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/abediaz)
+[![Twitter](https://img.shields.io/badge/Twitter-@abe238-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/abe238)
+[![Instagram](https://img.shields.io/badge/Instagram-@abe238-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/abe238)
+[![GitHub](https://img.shields.io/badge/GitHub-abe238-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/abe238)
+
+### Other Links:
+
+- 🌐 **Website:** [abediaz.ai](https://abediaz.ai)
+- 💼 **LinkedIn:** [linkedin.com/in/abediaz](https://linkedin.com/in/abediaz)
+- 🐦 **Twitter/X:** [twitter.com/abe238](https://twitter.com/abe238)
+- 📸 **Instagram:** [instagram.com/abe238](https://instagram.com/abe238)
+- 💻 **GitHub:** [github.com/abe238](https://github.com/abe238)
+
+---
+
 ## Overview
 
 This is the personal portfolio website for **Abe Diaz**, a passionate technologist and Sr. Technical Program Manager on the Disaster Relief by Amazon team. The site serves as a professional online presence showcasing technical expertise, leadership experience, and personal interests.
