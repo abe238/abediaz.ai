@@ -1,0 +1,25 @@
+{
+  "active": true,
+  "spec": "011-document-ci-cd-workflow-configuration-and-fix-inco",
+  "state": "building",
+  "subtasks": {
+    "completed": 0,
+    "total": 6,
+    "in_progress": 1,
+    "failed": 0
+  },
+  "phase": {
+    "current": "Fix GitHub Actions Workflow",
+    "id": null,
+    "total": 2
+  },
+  "workers": {
+    "active": 0,
+    "max": 1
+  },
+  "session": {
+    "number": 2,
+    "started_at": "2026-01-01T01:42:57.523327"
+  },
+  "last_update": "2026-01-01T01:44:45.014491"
+}
