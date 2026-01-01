@@ -148,9 +148,38 @@ a:focus-visible {
 
 ---
 
+#### ✅ Subtask 3.2: Add focus styles for navigation links
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `.site-nav a:focus-visible` rule at lines 238-241 in index.html
+- Uses CSS custom properties from Phase 1 for consistent styling
+- Focus state is distinguishable from hover state (outline vs color change)
+
+**Acceptance Criteria Met:**
+✅ Added .site-nav a:focus-visible with visible focus indicator
+✅ Focus state is distinguishable from hover state (hover changes color, focus adds outline)
+
+**Code Implementation:**
+```css
+.site-nav a:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- Follows the same pattern as base focus styles (subtasks 2.1, 2.2, 2.3)
+- Uses CSS custom properties from Phase 1 for consistency
+- Hover state changes text color to teal, focus state adds teal outline
+- Both states can be active simultaneously for better UX
+- Teal focus ring provides excellent contrast for keyboard navigation
+
+---
+
 ## Next Steps
 - Phase 3: Component Focus Styles (continued)
-  - Subtask 3.2: Add focus styles for navigation links
   - Subtask 3.3: Add focus styles for share buttons (.share-btn)
   - Subtask 3.4: Add focus styles for like buttons (.like-btn)
   - Subtask 3.5: Add focus styles for header/title link (h1 a)
