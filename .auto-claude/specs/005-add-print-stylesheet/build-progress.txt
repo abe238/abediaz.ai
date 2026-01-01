@@ -11,16 +11,21 @@
   - Added 12pt margin-top to .sidebar for proper spacing
   - All elements now flow in single-column layout optimized for paper
 
+- [x] Subtask 3.1: Show link URLs after link text
+  - Added CSS ::after pseudo-element to display URLs in parentheses
+  - Excluded internal anchor links using :not([href^='#'])
+  - Excluded navigation and social links to keep output concise
+  - Styled URLs with 10pt italic font for readability
+
 ### Implementation Plan Summary
 | Phase | Name | Subtasks | Status |
 |-------|------|----------|--------|
 | 1 | Print Base Styles | 2 | ✅ Complete |
 | 2 | Typography and Layout | 2 | ✅ Complete |
-| 3 | Links and Images | 2 | Pending |
+| 3 | Links and Images | 2 | 🔄 In Progress (1/2) |
 | 4 | Page Breaks and Polish | 2 | Pending |
 
 ### Next Steps
-- Subtask 3.1: Show link URLs after link text
 - Subtask 3.2: Optimize images for print
 - Subtask 4.1: Add page break controls
 - Subtask 4.2: Test and refine print output
