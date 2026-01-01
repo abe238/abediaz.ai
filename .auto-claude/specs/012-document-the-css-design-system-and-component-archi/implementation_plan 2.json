@@ -1,0 +1,248 @@
+{
+  "feature": "Document the CSS design system and component architecture",
+  "description": "Create comprehensive documentation for the CSS design system currently embedded in index.html (~520 lines). The documentation will cover design tokens (colors, typography, spacing), component styles, layout patterns, and responsive behavior.",
+  "created_at": "2026-01-01T09:02:48.779Z",
+  "updated_at": "2026-01-01T09:05:00.000Z",
+  "status": "in_progress",
+  "planStatus": "approved",
+  "workflow_type": "documentation",
+  "services_involved": [
+    "docs"
+  ],
+  "spec_file": "spec.md",
+  "phases": [
+    {
+      "id": "phase-1",
+      "name": "Foundation Documentation",
+      "description": "Document the design tokens (CSS variables) including colors, typography, spacing, and other primitives",
+      "subtasks": [
+        {
+          "id": "1.1",
+          "title": "Create design system documentation structure",
+          "description": "Set up the documentation file structure with main design-system.md file in docs/ directory",
+          "status": "completed",
+          "acceptance_criteria": [
+            "docs/design-system.md created with clear section headers",
+            "Table of contents linking to all major sections",
+            "Introduction explaining the design philosophy"
+          ],
+          "estimated_effort": "small",
+          "notes": "Created docs/design-system.md with comprehensive structure including table of contents, design philosophy, and section placeholders for all future documentation phases. All acceptance criteria met: clear section headers, TOC linking to major sections, and introduction explaining design philosophy.",
+          "updated_at": "2026-01-01T09:07:32.895242+00:00"
+        },
+        {
+          "id": "1.2",
+          "title": "Document color palette and rationale",
+          "description": "Document all color primitives with hex values, usage guidelines, and accessibility notes. Cover blacks, whites, grays, teal accent, and blue variants.",
+          "status": "completed",
+          "acceptance_criteria": [
+            "All 14 color variables documented with hex codes",
+            "Color usage guidelines (primary, accent, neutral, semantic)",
+            "Visual color swatches representation in markdown",
+            "Accessibility considerations for contrast ratios"
+          ],
+          "estimated_effort": "medium",
+          "notes": "Documented all 14 color primitives with comprehensive details. Created organized sections for Foundation colors (black/white), Neutral grays (8-step scale with Active vs Reserved status), and Accent colors (teal primary, blue for platforms). Included hex codes, visual unicode swatches, detailed usage guidelines, WCAG 2.1 accessibility contrast ratios for all color combinations, and best practices. Added visual palette reference section. All acceptance criteria met: 14 color variables with hex codes, usage guidelines, visual swatches, and accessibility notes with contrast ratios. Commit: b81b29c",
+          "updated_at": "2026-01-01T09:11:57.476590+00:00"
+        },
+        {
+          "id": "1.3",
+          "title": "Document typography system",
+          "description": "Document font families (Oswald, Helvetica Neue, System), font sizes, font weights, and their intended usage",
+          "status": "pending",
+          "acceptance_criteria": [
+            "Font stack documentation for heading, body, and system fonts",
+            "Font size scale documented (xs through 4xl)",
+            "Font weight options documented",
+            "Typography pairing guidelines"
+          ],
+          "estimated_effort": "small"
+        },
+        {
+          "id": "1.4",
+          "title": "Document spacing and layout tokens",
+          "description": "Document the spacing scale, layout dimensions, border radii, and transition values",
+          "status": "pending",
+          "acceptance_criteria": [
+            "4px-based spacing scale documented (space-1 through space-10)",
+            "Layout dimensions documented (content-width, sidebar-width, container-max, gap)",
+            "Border radius options documented",
+            "Transition values and when to use each"
+          ],
+          "estimated_effort": "small"
+        }
+      ]
+    },
+    {
+      "id": "phase-2",
+      "name": "Component Documentation",
+      "description": "Document all UI components with usage patterns, variants, and code examples",
+      "subtasks": [
+        {
+          "id": "2.1",
+          "title": "Document layout components",
+          "description": "Document structural layout components: site-container, site-header, site-nav, site-main, content, sidebar, site-footer",
+          "status": "pending",
+          "acceptance_criteria": [
+            "Each layout component documented with purpose",
+            "HTML structure examples provided",
+            "CSS class requirements documented",
+            "Flex/grid layout patterns explained"
+          ],
+          "estimated_effort": "medium"
+        },
+        {
+          "id": "2.2",
+          "title": "Document typography components",
+          "description": "Document heading variants (h1, h2.tagline, h2.section-title, h3), paragraph styles, and link styles (default, accent-link)",
+          "status": "pending",
+          "acceptance_criteria": [
+            "Each typography variant documented with use cases",
+            "HTML examples for each variant",
+            "Link interaction states documented (hover, focus)"
+          ],
+          "estimated_effort": "small"
+        },
+        {
+          "id": "2.3",
+          "title": "Document interactive components",
+          "description": "Document buttons (btn, btn-primary), form inputs (email-form), and interactive elements (like-btn, share-btn)",
+          "status": "pending",
+          "acceptance_criteria": [
+            "Button variants and states documented",
+            "Form input styling guidelines",
+            "Interactive state transitions documented",
+            "Accessibility considerations for interactive elements"
+          ],
+          "estimated_effort": "medium"
+        },
+        {
+          "id": "2.4",
+          "title": "Document content components",
+          "description": "Document widget, profile-image, flight-stats, contact-section, social-links, share-section, signature, and subscriber-count components",
+          "status": "pending",
+          "acceptance_criteria": [
+            "Each content component purpose documented",
+            "HTML structure examples",
+            "Styling variations explained",
+            "Component composition patterns"
+          ],
+          "estimated_effort": "medium"
+        }
+      ]
+    },
+    {
+      "id": "phase-3",
+      "name": "Responsive & Advanced Patterns",
+      "description": "Document responsive breakpoints, mobile adaptations, and advanced CSS patterns",
+      "subtasks": [
+        {
+          "id": "3.1",
+          "title": "Document responsive breakpoints",
+          "description": "Document the three breakpoint system (768px, 480px, 360px) with what changes at each breakpoint",
+          "status": "pending",
+          "acceptance_criteria": [
+            "Breakpoint values and rationale documented",
+            "Variable overrides at each breakpoint listed",
+            "Component adaptations at each breakpoint explained",
+            "Mobile-first vs desktop-first approach clarified"
+          ],
+          "estimated_effort": "medium"
+        },
+        {
+          "id": "3.2",
+          "title": "Document CSS reset and base styles",
+          "description": "Document the CSS reset approach and base body/html styles",
+          "status": "pending",
+          "acceptance_criteria": [
+            "Reset methodology explained (box-sizing, margin/padding)",
+            "Font smoothing approach documented",
+            "Base typography settings explained",
+            "Browser normalization notes"
+          ],
+          "estimated_effort": "small"
+        },
+        {
+          "id": "3.3",
+          "title": "Create component quick reference",
+          "description": "Create a quick reference table/section for rapid lookup of all components and tokens",
+          "status": "pending",
+          "acceptance_criteria": [
+            "Quick reference table with all CSS variables",
+            "Component class name reference list",
+            "Common patterns cheat sheet"
+          ],
+          "estimated_effort": "small"
+        }
+      ]
+    },
+    {
+      "id": "phase-4",
+      "name": "Finalization",
+      "description": "Review, cross-link, and finalize documentation",
+      "subtasks": [
+        {
+          "id": "4.1",
+          "title": "Add usage examples and best practices",
+          "description": "Add practical code examples showing how to combine components and follow design system patterns",
+          "status": "pending",
+          "acceptance_criteria": [
+            "Code snippets for common patterns",
+            "Do's and don'ts section",
+            "Best practices for extending the system"
+          ],
+          "estimated_effort": "small"
+        },
+        {
+          "id": "4.2",
+          "title": "Review and finalize documentation",
+          "description": "Review all documentation for accuracy, add cross-references, ensure consistency",
+          "status": "pending",
+          "acceptance_criteria": [
+            "All sections reviewed for accuracy against source CSS",
+            "Internal cross-references working",
+            "Consistent formatting throughout",
+            "Final table of contents updated"
+          ],
+          "estimated_effort": "small"
+        }
+      ]
+    }
+  ],
+  "final_acceptance": [
+    "docs/design-system.md is complete and comprehensive",
+    "All 14 color tokens documented with usage guidelines",
+    "All 10 typography tokens documented",
+    "All 11 spacing tokens documented",
+    "All 15+ components documented with examples",
+    "Responsive breakpoints fully documented",
+    "Quick reference section provides fast lookup"
+  ],
+  "qa_status": {
+    "status": "not_started",
+    "issues": [],
+    "tests_passed": []
+  },
+  "metadata": {
+    "total_subtasks": 13,
+    "estimated_total_effort": "medium",
+    "primary_files": [
+      "index.html",
+      "docs/design-system.md"
+    ],
+    "output_files": [
+      "docs/design-system.md"
+    ],
+    "css_lines_analyzed": 520,
+    "design_tokens_count": {
+      "colors": 14,
+      "typography": 10,
+      "spacing": 11,
+      "layout": 4,
+      "borders": 2,
+      "transitions": 2
+    },
+    "components_count": 15
+  },
+  "last_updated": "2026-01-01T09:11:57.476599+00:00"
+}
