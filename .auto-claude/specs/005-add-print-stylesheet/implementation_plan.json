@@ -60,11 +60,12 @@
           "id": "2.2",
           "title": "Optimize layout for single-column print",
           "description": "Remove flex/grid layouts, set content to full width, remove max-width constraints, and ensure proper spacing for paper margins",
-          "status": "pending",
+          "status": "completed",
           "files": [
             "index.html"
           ],
-          "notes": "Print should be simple single-column flow"
+          "notes": "Removed flex/grid layouts for print by setting .site-main to display: block, removed flex and max-width constraints from .content and .sidebar (set to 100% width), converted .social-links-inline from flex to block with inline links. Added 12pt margin-top to .sidebar for proper spacing. All elements now flow in single-column layout for paper printing.",
+          "updated_at": "2026-01-01T09:15:00.000000+00:00"
         }
       ]
     },
@@ -137,5 +138,5 @@
     "No awkward page breaks in the middle of sections"
   ],
   "estimated_effort": "small",
-  "last_updated": "2026-01-01T09:11:39.896109+00:00"
+  "last_updated": "2026-01-01T09:15:00.000000+00:00"
 }
