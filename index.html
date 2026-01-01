@@ -632,12 +632,16 @@
       .site-main {
         display: block;
         width: 100%;
+        padding: 0;
+        margin: 0;
       }
 
       .content {
         flex: none;
         max-width: 100%;
         width: 100%;
+        padding: 0;
+        margin: 0;
       }
 
       .sidebar {
@@ -645,6 +649,17 @@
         max-width: 100%;
         width: 100%;
         margin-top: 12pt;
+        padding: 0;
+      }
+
+      /* Remove all flex/grid layouts for print */
+      .social-links {
+        display: block;
+      }
+
+      .social-links a {
+        display: block;
+        margin-bottom: 4pt;
       }
 
       .social-links-inline {
@@ -654,6 +669,32 @@
       .social-links-inline a {
         display: inline;
         margin-right: 12pt;
+      }
+
+      /* Section Spacing for Print */
+      .site-header {
+        padding-top: 0;
+        padding-bottom: 12pt;
+        margin-bottom: 12pt;
+      }
+
+      .contact-section {
+        margin-top: 16pt;
+        padding-top: 12pt;
+        padding-bottom: 0;
+        border-top: 1pt solid var(--color-black);
+      }
+
+      .widget {
+        margin-bottom: 12pt;
+      }
+
+      /* Images - Spacing and Layout */
+      .profile-image,
+      .flight-stats {
+        margin: 12pt 0;
+        max-width: 100%;
+        height: auto;
       }
     }
   </style>
