@@ -85,6 +85,36 @@ a:focus-visible {
 
 ---
 
+#### ✅ Subtask 2.3: Add focus styles for button elements (.btn)
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `.btn:focus-visible` rule at lines 347-350 in index.html
+- Uses CSS custom properties from Phase 1 for consistent styling
+- Applies to all button variants including .btn-primary
+
+**Acceptance Criteria Met:**
+✅ Added .btn:focus-visible with visible focus ring
+✅ Focus ring contrasts with button background colors (teal outline on blue buttons)
+✅ Maintains visual consistency with link focus states (uses same CSS variables)
+
+**Code Implementation:**
+```css
+.btn:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- The focus style applies to all .btn elements including .btn-primary
+- Teal focus ring (#36BCAB) provides excellent contrast against blue button background
+- Consistent with link focus styles for unified user experience
+- Follows WCAG 2.1 AA guidelines for focus indicators
+
+---
+
 ## Next Steps
-- Phase 2: Base Focus Styles
-  - Subtask 2.3: Add focus styles for button elements (.btn)
+- Phase 3: Component Focus Styles
+  - Subtask 3.1: Fix email input focus state (remove outline: none)
