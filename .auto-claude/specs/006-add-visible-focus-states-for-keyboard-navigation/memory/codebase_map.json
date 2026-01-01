@@ -1,10 +1,10 @@
 {
   "discovered_files": {
     "index.html": {
-      "description": "Added focus-visible styles for .like-btn component at lines 434-437. Uses standard CSS custom properties (--focus-ring-color, --focus-ring-width, --focus-ring-offset, --focus-ring-style) for consistency with other interactive elements.",
+      "description": "Added h1 a:focus-visible styles at lines 147-150. Uses standard CSS custom properties (--focus-ring-color, --focus-ring-width, --focus-ring-offset, --focus-ring-style) for consistency with other interactive elements. Main site title link now has visible focus state for keyboard navigation.",
       "category": "focus-styles",
-      "discovered_at": "2026-01-01T09:58:22.835213+00:00"
+      "discovered_at": "2026-01-01T10:00:23.631110+00:00"
     }
   },
-  "last_updated": "2026-01-01T09:58:22.835233+00:00"
+  "last_updated": "2026-01-01T10:00:23.631119+00:00"
 }
