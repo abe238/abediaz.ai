@@ -1,0 +1,51 @@
+{
+  "feature": "Update GitHub Link from abediaz to abe238",
+  "spec_name": "update-github-link",
+  "workflow_type": "simple",
+  "total_phases": 1,
+  "recommended_workers": 1,
+  "phases": [
+    {
+      "phase": 1,
+      "name": "Update GitHub Link",
+      "description": "Search for and replace all instances of old GitHub URL with new URL",
+      "depends_on": [],
+      "subtasks": [
+        {
+          "id": "subtask-1-1",
+          "description": "Search for all instances of https://github.com/abediaz",
+          "service": "main",
+          "status": "completed",
+          "files_to_create": [],
+          "files_to_modify": [],
+          "patterns_from": [],
+          "verification": {
+            "type": "manual",
+            "run": "Search results show all affected files"
+          },
+          "notes": "Completed search. Found 2 instances of https://github.com/abediaz in index.html (lines 699 and 711). No @abediaz GitHub handle references found. Other abediaz references are for LinkedIn (linkedin.com/in/abediaz/) and website domain (abediaz.ai) which should not be changed.",
+          "updated_at": "2026-01-01T11:47:36.667624+00:00"
+        },
+        {
+          "id": "subtask-1-2",
+          "description": "Replace all instances of https://github.com/abediaz with https://github.com/abe238",
+          "service": "main",
+          "status": "pending",
+          "files_to_create": [],
+          "files_to_modify": [],
+          "patterns_from": [],
+          "verification": {
+            "type": "manual",
+            "run": "Verify all links updated and functional in browser"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "created_at": "2026-01-01T00:00:00Z",
+    "complexity": "simple",
+    "estimated_sessions": 1
+  },
+  "last_updated": "2026-01-01T11:47:36.667641+00:00"
+}
