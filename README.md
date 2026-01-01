@@ -133,6 +133,102 @@ Since all code is in `index.html` with inline CSS, you can edit directly:
 
 ---
 
+## Deployment
+
+This site is automatically deployed to **GitHub Pages** via a **GitHub Actions** CI/CD pipeline. Every push to the `main` branch triggers a new deployment, ensuring the live site is always up to date.
+
+### How It Works
+
+The deployment process uses the [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) workflow, which consists of two main jobs:
+
+#### 1. Build Job
+
+```yaml
+- Checkout code from repository
+- Set up Node.js environment (v20)
+- Install dependencies (npm ci)
+- Build the project (npm run build)
+- Upload build artifacts to GitHub Pages
+```
+
+The build job runs on `ubuntu-latest` and prepares the static site for deployment by:
+- Installing all npm dependencies from `package-lock.json`
+- Running the build script to generate production-ready files in the `./dist` directory
+- Uploading the `./dist` folder as a Pages artifact
+
+#### 2. Deploy Job
+
+```yaml
+- Deploy the uploaded artifact to GitHub Pages
+- Output the deployment URL
+```
+
+The deploy job waits for the build job to complete (`needs: build`) and then publishes the artifact to GitHub Pages using the official `actions/deploy-pages@v4` action.
+
+### Deployment Triggers
+
+The workflow automatically runs when:
+
+- **Push to `main`** - Any commit pushed to the main branch triggers a deployment
+- **Manual trigger** - Can be manually triggered via the GitHub Actions UI (`workflow_dispatch`)
+
+### Custom Domain Configuration
+
+The site is accessible via the custom domain **[abediaz.ai](https://abediaz.ai)**, configured through:
+
+1. **CNAME File** - The [`CNAME`](CNAME) file in the repository root contains `abediaz.ai`, which tells GitHub Pages to serve the site at this custom domain
+2. **DNS Configuration** - The domain registrar's DNS is configured with:
+   - An `A` record (or `ALIAS`/`ANAME`) pointing to GitHub Pages' IP addresses
+   - Or a `CNAME` record pointing to `<username>.github.io`
+
+This combination ensures visitors can access the site at the professional branded domain rather than the default `*.github.io` URL.
+
+### Deployment Permissions
+
+The workflow requires specific permissions to deploy to GitHub Pages:
+
+```yaml
+permissions:
+  contents: read    # Read repository contents
+  pages: write      # Deploy to GitHub Pages
+  id-token: write   # Verify deployment identity
+```
+
+These permissions follow the principle of least privilege, granting only what's necessary for the deployment process.
+
+### Concurrency Control
+
+To prevent conflicts, the workflow uses concurrency control:
+
+```yaml
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+```
+
+This ensures that if multiple deployments are triggered simultaneously, only the most recent one proceeds, canceling any in-progress deployments to avoid race conditions.
+
+### Monitoring Deployments
+
+You can monitor deployment status:
+
+- **GitHub Actions Tab** - View real-time logs and deployment history at `https://github.com/<username>/abediaz.ai/actions`
+- **Environments Tab** - Check the `github-pages` environment for deployment URLs and status
+- **Commit Status** - Each commit shows a green checkmark (✓) when deployment succeeds
+
+### Manual Deployment
+
+To manually trigger a deployment without pushing code:
+
+1. Go to the **Actions** tab in the GitHub repository
+2. Select the **"Deploy to GitHub Pages"** workflow
+3. Click **"Run workflow"** and select the `main` branch
+4. Click the green **"Run workflow"** button
+
+This is useful for redeploying after configuration changes or troubleshooting deployment issues.
+
+---
+
 ## Overview
 
 This is the personal portfolio website for **Abe Diaz**, a passionate technologist and Sr. Technical Program Manager on the Disaster Relief by Amazon team. The site serves as a professional online presence showcasing technical expertise, leadership experience, and personal interests.
