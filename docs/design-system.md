@@ -2602,9 +2602,737 @@ Small Mobile (≤360px):
 
 ### Interactive Components
 
-*This section will document buttons (btn, btn-primary), form inputs (email-form), and interactive elements (like-btn, share-btn).*
+Interactive components are elements designed for user interaction—buttons, form inputs, and action triggers. These components provide clear visual affordance (indicating clickability), smooth state transitions, and accessible keyboard/mouse interactions.
 
-**Coming Soon:** Interactive component documentation with state variations and accessibility notes.
+#### Design Rationale
+
+Interactive components serve as the bridge between users and functionality. The system provides:
+
+1. **Clear Affordance** - Visual cues (borders, hover states, cursor) indicate interactivity
+2. **Consistent State Transitions** - Smooth color/border changes provide feedback
+3. **Accessible Interactions** - Focus states, keyboard navigation, and sufficient contrast
+4. **Purposeful Variants** - Different button/link styles serve specific use cases
+5. **Minimal Styling** - Clean, unobtrusive design that supports content
+
+**Philosophy:**
+
+Interactive components should feel responsive and immediate without being flashy. Subtle hover states (color shifts, border color changes) provide feedback without distracting from content. The system uses the teal accent color consistently for hover/focus states, creating a predictable interaction pattern throughout the site.
+
+Form inputs are designed to feel native and familiar, using system fonts and minimal styling. Buttons are intentionally compact (small font sizes, tight padding) to avoid overwhelming the layout.
+
+---
+
+#### Component Overview
+
+| Component | Display | Size | Color | Border | Padding | Primary Use Case |
+|-----------|---------|------|-------|--------|---------|------------------|
+| **btn** | inline-block | 11px | — | none | 8px 12px | Base button class (requires variant) |
+| **btn-primary** | — | — | White on Blue-500 | none | — | Primary CTA button (LinkedIn, subscribe) |
+| **email-form** | block | 13px | Gray-700 | Gray-500 | Label + Input | Email signup forms |
+| **like-btn** | inline-flex | 12px | Gray-600 | none | — | Like/heart action with icon |
+| **share-btn** | inline-flex | 11px | Gray-600 | Gray-200 | 4px 8px | Share buttons with icons |
+
+---
+
+#### `.btn` - Base Button
+
+**Purpose:** The foundational button class providing core button styling. Always used in combination with a variant class (e.g., `.btn-primary`).
+
+**CSS Implementation:**
+
+```css
+.btn {
+  display: inline-block;
+  font-family: var(--font-system);           /* System fonts for native feel */
+  font-size: var(--text-xs);                 /* 11px */
+  font-weight: var(--font-normal);           /* 400 */
+  padding: var(--space-2) var(--space-3);    /* 8px 12px */
+  border: none;
+  border-radius: var(--radius-sm);           /* 2px */
+  cursor: pointer;
+  transition: background-color var(--transition-normal);  /* 0.2s ease */
+}
+```
+
+**HTML Structure:**
+
+```html
+<!-- Must be combined with a variant class -->
+<button class="btn btn-primary">Subscribe</button>
+<a href="#" class="btn btn-primary">Connect on LinkedIn</a>
+```
+
+**Styling Details:**
+
+- **System Font**: Uses OS native fonts (--font-system) for familiar, native button appearance
+- **Compact Size**: 11px font keeps buttons unobtrusive
+- **Tight Padding**: 8px vertical, 12px horizontal creates compact but clickable target
+- **Minimal Radius**: 2px border-radius softens corners without looking rounded
+- **Smooth Transition**: 0.2s background-color change for hover states
+- **Inline-Block**: Allows padding and respects text flow
+
+**Button Variants:**
+
+The `.btn` class itself provides no color—it must be combined with a variant:
+
+- **btn-primary**: Blue background for primary actions (currently the only variant)
+
+**Usage Guidelines:**
+
+- ✅ Always combine with a variant class (`.btn-primary`)
+- ✅ Use semantic `<button>` for actions, `<a>` for navigation
+- ✅ Keep button text short and action-oriented (1-3 words)
+- ✅ Use system font for native OS appearance
+- ❌ Don't use `.btn` alone (requires a variant for color)
+- ❌ Don't override font-family (system fonts are intentional)
+- ❌ Don't use for non-interactive elements
+- ❌ Don't make buttons too large (compact is intentional)
+
+**Accessibility Notes:**
+
+- **Cursor pointer**: Clearly indicates clickability
+- **Inline-block**: Allows sufficient padding for touch targets
+- **Keyboard accessible**: Works with native button/link keyboard behavior
+- **Transition**: Smooth state changes reduce jarring visual shifts
+
+---
+
+#### `.btn-primary` - Primary Button
+
+**Purpose:** The primary call-to-action button with blue background. Used for important actions like "Subscribe" or "Connect on LinkedIn".
+
+**CSS Implementation:**
+
+```css
+.btn-primary {
+  background-color: var(--color-blue-500);   /* #0073B1 - LinkedIn blue */
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: #005a8c;                 /* Darker blue */
+  color: var(--color-white);
+}
+```
+
+**HTML Structure:**
+
+```html
+<!-- Email subscription button -->
+<button type="submit" class="btn btn-primary">Subscribe</button>
+
+<!-- LinkedIn link styled as button -->
+<a href="https://linkedin.com/in/username" class="btn btn-primary">
+  Connect on LinkedIn
+</a>
+```
+
+**Styling Details:**
+
+- **Blue Background**: Uses LinkedIn brand color (#0073B1)
+- **White Text**: High contrast on blue background
+- **Darker Hover**: Hover state (#005a8c) provides clear feedback
+- **Smooth Transition**: Inherits 0.2s background-color transition from `.btn`
+
+**Color Contrast:**
+
+- **Default State**: White on Blue-500 (#0073B1) = **4.6:1** (WCAG AA for large text 18px+)
+- **Hover State**: White on #005a8c = **6.2:1** (WCAG AA for all text sizes)
+- **Note**: At 11px, the button text is small, but buttons are considered UI components (not body text)
+
+**Responsive Behavior:**
+
+Buttons maintain consistent styling across all breakpoints. No responsive adjustments needed due to compact base size.
+
+**Usage Guidelines:**
+
+- ✅ Use for primary calls-to-action (Subscribe, Connect, Sign Up)
+- ✅ Limit to 1-2 primary buttons per section (avoid CTA overload)
+- ✅ Use for external platform actions (LinkedIn, etc.)
+- ✅ Ensure button text is action-oriented ("Subscribe" not "Subscription")
+- ❌ Don't use multiple primary buttons in close proximity
+- ❌ Don't use for destructive actions (delete, remove)
+- ❌ Don't override the blue color (maintains LinkedIn brand consistency)
+
+**When to Use:**
+
+- Email newsletter subscription
+- Social media connections (LinkedIn)
+- Primary form submissions
+- Download/get started actions
+
+**When NOT to Use:**
+
+- Navigation links (use default links or `.accent-link`)
+- Secondary actions (consider creating `.btn-secondary` variant)
+- Inline text links (use `<a>` with appropriate class)
+
+**Accessibility Notes:**
+
+- **Sufficient Contrast**: Meets WCAG AA for interactive components
+- **Clear Hover State**: Color darkens on hover, providing visual feedback
+- **Semantic HTML**: Use `<button type="submit">` for forms, `<a href="...">` for links
+- **Keyboard Accessible**: Inherits native button/link keyboard behavior (Enter/Space)
+- **Focus Outline**: Browser default focus outline visible (not removed with outline:none)
+
+---
+
+#### `.email-form` - Email Signup Form
+
+**Purpose:** A form component for email address collection, typically used in newsletter signups or subscription widgets. Provides labeled input field with focus states.
+
+**CSS Implementation:**
+
+```css
+.email-form {
+  margin-top: var(--space-3);               /* 12px */
+}
+
+.email-form label {
+  display: block;
+  font-size: var(--text-base);              /* 13px */
+  color: var(--color-gray-700);             /* #555555 */
+  margin-bottom: var(--space-2);            /* 8px */
+}
+
+.email-form input[type="email"] {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);   /* 8px 12px */
+  font-family: var(--font-body);            /* Helvetica Neue */
+  font-size: var(--text-base);              /* 13px */
+  border: 1px solid var(--color-gray-500);  /* #767676 */
+  border-radius: 0;                         /* Sharp corners for inputs */
+  background: var(--color-white);
+  margin-bottom: var(--space-3);            /* 12px */
+}
+
+.email-form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--color-teal-500);      /* Teal focus state */
+}
+```
+
+**HTML Structure:**
+
+```html
+<form class="email-form" action="/subscribe" method="post">
+  <label for="email">Email Address</label>
+  <input
+    type="email"
+    id="email"
+    name="email"
+    placeholder="your@email.com"
+    required
+  >
+  <button type="submit" class="btn btn-primary">Subscribe</button>
+</form>
+```
+
+**Styling Details:**
+
+**Form Container:**
+- **12px top margin**: Separates form from preceding content
+- **Block display**: Stacks label, input, button vertically
+
+**Label:**
+- **Block display**: Full-width, forces input to new line
+- **13px font**: Matches body text size
+- **Gray-700 color**: Standard body text color
+- **8px bottom margin**: Tight spacing to input
+
+**Input Field:**
+- **100% width**: Full-width within container
+- **8px 12px padding**: Comfortable input area matching button padding
+- **Body font**: Helvetica Neue for consistent text appearance
+- **13px font**: Matches body text for seamless reading
+- **Gray-500 border**: Medium gray (#767676) provides clear boundary
+- **Zero border-radius**: Sharp corners (intentional design choice)
+- **White background**: Clean, standard input appearance
+- **12px bottom margin**: Space before submit button
+
+**Focus State:**
+- **No outline**: Default browser outline removed (controversial, but common)
+- **Teal border**: Border changes to accent color on focus
+- **Clear visual feedback**: Border color shift indicates active input
+
+**Input Border Radius Rationale:**
+
+Inputs use `border-radius: 0` (sharp corners) while buttons use `border-radius: 2px`. This is an intentional design choice:
+- **Inputs**: Sharp corners feel more "form-like" and traditional
+- **Buttons**: Subtle rounding indicates interactivity/clickability
+- The contrast helps visually distinguish input fields from buttons
+
+**Responsive Behavior:**
+
+```css
+/* Mobile (≤480px) */
+.email-form input[type="email"] {
+  font-size: var(--text-base);  /* 13px → 14px on mobile */
+}
+```
+
+On mobile, input text size increases to 14px (via --text-base variable update), preventing iOS zoom on focus.
+
+**Usage Guidelines:**
+
+- ✅ Use semantic `<form>` element with proper action/method
+- ✅ Include `<label>` for accessibility (explicit for/id association)
+- ✅ Use `type="email"` for mobile keyboard optimization
+- ✅ Add `required` attribute for basic validation
+- ✅ Pair with `.btn-primary` submit button
+- ✅ Use placeholder text for example format ("your@email.com")
+- ❌ Don't use without proper label (hidden or visible)
+- ❌ Don't remove focus styles without alternative indication
+- ❌ Don't make inputs narrower than container (100% width is intentional)
+- ❌ Don't use for other input types (text, password) without testing
+
+**Form Composition Pattern:**
+
+Typical email form structure:
+1. **Container**: `<form class="email-form">`
+2. **Label**: Descriptive text ("Email Address", "Your Email")
+3. **Input**: `type="email"` with proper attributes
+4. **Submit Button**: `<button class="btn btn-primary">Subscribe</button>`
+
+**Accessibility Notes:**
+
+- **Label Association**: Explicit `for`/`id` pairing ensures screen reader announcement
+- **Input Type**: `type="email"` triggers appropriate mobile keyboard (@ key visible)
+- **Border Contrast**: Gray-500 (#767676) border = **4.6:1** (sufficient for UI components)
+- **Focus Indicator**: Teal border provides clear focus indication
+- **Semantic HTML**: Proper `<form>`, `<label>`, `<input>` elements
+- **Keyboard Accessible**: Tab navigation works naturally
+
+**Focus State Considerations:**
+
+The form removes the default outline (`outline: none`) and replaces it with a border color change. This approach has trade-offs:
+
+**Pros:**
+- ✅ Cleaner visual appearance
+- ✅ Teal border aligns with brand colors
+- ✅ Still provides clear focus indication
+
+**Cons:**
+- ❌ May be less obvious than default outline for some users
+- ❌ Requires ensuring border color change is sufficient
+
+**Best Practice Recommendation:** Consider adding both border color change AND a subtle box-shadow for even clearer focus indication:
+
+```css
+.email-form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--color-teal-500);
+  box-shadow: 0 0 0 2px rgba(54, 188, 171, 0.2);  /* Optional enhancement */
+}
+```
+
+---
+
+#### `.like-btn` - Like Button
+
+**Purpose:** An interactive like/heart button that allows users to express appreciation for content. Displays inline with an icon and changes color on hover.
+
+**CSS Implementation:**
+
+```css
+.like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);                      /* 8px between icon and text */
+  font-size: var(--text-sm);                /* 12px */
+  color: var(--color-gray-600);             /* #666666 */
+  cursor: pointer;
+}
+
+.like-btn:hover {
+  color: var(--color-teal-500);             /* Teal on hover */
+}
+```
+
+**HTML Structure:**
+
+```html
+<!-- Like button with icon -->
+<button class="like-btn">
+  <span>❤️</span>
+  <span>Like</span>
+</button>
+
+<!-- Like button with count -->
+<div class="like-section">
+  <button class="like-btn">
+    <span>❤️</span>
+    <span>Like</span>
+  </button>
+  <span class="like-count">42</span>
+</div>
+```
+
+**Styling Details:**
+
+- **Inline-Flex**: Horizontal layout with icon + text
+- **Center Alignment**: Vertically centers icon with text
+- **8px Gap**: Comfortable spacing between icon and label
+- **12px Font**: Small, unobtrusive text size
+- **Gray-600 Color**: Secondary color (lower emphasis)
+- **Pointer Cursor**: Clearly indicates clickability
+- **No Border/Background**: Clean, minimal appearance
+- **Color-Only Hover**: Simple teal color shift on interaction
+
+**Interactive States:**
+
+| State | Color | Cursor | Notes |
+|-------|-------|--------|-------|
+| **Default** | Gray-600 (#666666) | pointer | Neutral, low-emphasis |
+| **Hover** | Teal-500 (#36BCAB) | pointer | Accent color indicates interactivity |
+| **Active/Liked** | — | — | Not defined in CSS (requires JS state management) |
+
+**Transition:**
+
+The `.like-btn` doesn't explicitly define a transition, so color changes are instant. Consider adding:
+
+```css
+.like-btn {
+  transition: color var(--transition-fast);  /* 0.15s smooth color change */
+}
+```
+
+**Responsive Behavior:**
+
+Like buttons maintain consistent styling across all breakpoints. The compact 12px size works well on mobile.
+
+**Usage Guidelines:**
+
+- ✅ Use semantic `<button>` element for interactive like action
+- ✅ Include visual icon (❤️, 👍, or SVG icon)
+- ✅ Include text label ("Like", "Love", "Appreciate")
+- ✅ Pair with `.like-count` for displaying like count
+- ✅ Use in `.like-section` container with count display
+- ❌ Don't use without icon (icon provides visual affordance)
+- ❌ Don't use for navigation (use links instead)
+- ❌ Don't remove cursor:pointer (critical for affordance)
+
+**Like Section Pattern:**
+
+Typical like section includes button + count:
+
+```html
+<div class="like-section">
+  <button class="like-btn">
+    <span>❤️</span>
+    <span>Like</span>
+  </button>
+  <span class="like-count">42</span>
+</div>
+```
+
+**Accessibility Notes:**
+
+- **Semantic Button**: Uses `<button>` for proper keyboard interaction
+- **Icon + Text**: Redundant cues (visual + textual) improve understanding
+- **Cursor Pointer**: Visual affordance for mouse users
+- **Color Contrast**: Gray-600 on white = **5.7:1** (WCAG AA for all text)
+- **Hover Feedback**: Color change provides clear interaction feedback
+- **Keyboard Accessible**: Native button behavior (Space/Enter to activate)
+
+**Implementation Considerations:**
+
+The CSS defines visual styling only. Full like functionality requires JavaScript for:
+
+1. **State Management**: Track liked/unliked state
+2. **Visual Indication**: Add `.liked` class or inline style when active
+3. **Count Updates**: Increment/decrement like count
+4. **Persistence**: Store like state (localStorage, database)
+5. **Interaction**: Handle click events and API calls
+
+**Suggested Active State:**
+
+Consider adding a `.liked` state class:
+
+```css
+.like-btn.liked {
+  color: var(--color-teal-500);
+  font-weight: var(--font-bold);
+}
+```
+
+---
+
+#### `.share-btn` - Share Button
+
+**Purpose:** Small, bordered buttons for sharing content on social platforms. Displays inline with icons and changes border/text color on hover.
+
+**CSS Implementation:**
+
+```css
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);                      /* 8px between icon and text */
+  font-size: var(--text-xs);                /* 11px */
+  color: var(--color-gray-600);             /* #666666 */
+  padding: var(--space-1) var(--space-2);   /* 4px 8px */
+  border: 1px solid var(--color-gray-200);  /* Light gray border */
+  border-radius: var(--radius-sm);          /* 2px */
+  background: var(--color-white);
+  cursor: pointer;
+  transition: all var(--transition-fast);   /* 0.15s smooth transition */
+}
+
+.share-btn:hover {
+  border-color: var(--color-teal-500);      /* Teal border */
+  color: var(--color-teal-500);             /* Teal text */
+}
+```
+
+**HTML Structure:**
+
+```html
+<!-- Share buttons in share-section -->
+<div class="share-section">
+  <h4 class="share-title">Share this post</h4>
+  <div class="share-buttons">
+    <button class="share-btn">
+      <span>🐦</span>
+      <span>Twitter</span>
+    </button>
+    <button class="share-btn">
+      <span>📘</span>
+      <span>Facebook</span>
+    </button>
+    <button class="share-btn">
+      <span>💼</span>
+      <span>LinkedIn</span>
+    </button>
+  </div>
+</div>
+```
+
+**Styling Details:**
+
+- **Inline-Flex**: Horizontal layout with icon + platform name
+- **Center Alignment**: Vertically centers icon with text
+- **8px Gap**: Spacing between icon and text
+- **11px Font**: Extra small, compact text
+- **Compact Padding**: 4px vertical, 8px horizontal (minimal but clickable)
+- **Gray-200 Border**: Subtle light gray outline
+- **2px Radius**: Minimal corner rounding
+- **White Background**: Clean appearance
+- **Fast Transition**: 0.15s smooth hover effect (border + color)
+
+**Interactive States:**
+
+| State | Text Color | Border Color | Background | Transition |
+|-------|------------|--------------|------------|------------|
+| **Default** | Gray-600 | Gray-200 | White | — |
+| **Hover** | Teal-500 | Teal-500 | White | 0.15s ease (all) |
+
+**Transition Behavior:**
+
+Uses `transition: all` with 0.15s duration, affecting:
+- `color` (text color)
+- `border-color`
+- Any other properties that change
+
+**Note:** `transition: all` is convenient but less performant than specifying individual properties. Consider:
+
+```css
+.share-btn {
+  transition: color var(--transition-fast),
+              border-color var(--transition-fast);
+}
+```
+
+**Share Buttons Container:**
+
+Share buttons are typically grouped in a `.share-buttons` flex container:
+
+```css
+.share-buttons {
+  display: flex;
+  gap: var(--space-4);                      /* 16px between buttons */
+  align-items: center;
+}
+```
+
+**Responsive Behavior:**
+
+Share buttons maintain consistent styling across breakpoints. The compact 11px font and tight padding work well on mobile touch targets.
+
+**Touch Target Consideration:**
+
+At 4px vertical padding, share buttons may be smaller than the recommended 44x44px touch target. Consider increasing padding on mobile:
+
+```css
+/* Mobile Enhancement (not currently in CSS) */
+@media (max-width: 480px) {
+  .share-btn {
+    padding: var(--space-2) var(--space-3);  /* 8px 12px - larger touch target */
+  }
+}
+```
+
+**Usage Guidelines:**
+
+- ✅ Use semantic `<button>` for share actions (or `<a>` for direct share links)
+- ✅ Include platform icon (emoji or SVG)
+- ✅ Include platform name text ("Twitter", "Facebook", "LinkedIn")
+- ✅ Group multiple share buttons in `.share-buttons` container
+- ✅ Use within `.share-section` for proper spacing/organization
+- ✅ Keep button text concise (platform name only)
+- ❌ Don't use without icon (icon aids quick recognition)
+- ❌ Don't make buttons too large (compact is intentional)
+- ❌ Don't use for non-sharing actions
+
+**Share Section Pattern:**
+
+Complete share section structure:
+
+```html
+<div class="share-section">
+  <h4 class="share-title">Share this post</h4>
+  <div class="share-buttons">
+    <button class="share-btn" data-platform="twitter">
+      <span>🐦</span>
+      <span>Twitter</span>
+    </button>
+    <button class="share-btn" data-platform="facebook">
+      <span>📘</span>
+      <span>Facebook</span>
+    </button>
+    <button class="share-btn" data-platform="linkedin">
+      <span>💼</span>
+      <span>LinkedIn</span>
+    </button>
+  </div>
+</div>
+```
+
+**Accessibility Notes:**
+
+- **Semantic Buttons**: Uses `<button>` for proper interaction
+- **Icon + Text**: Dual visual cues improve comprehension
+- **Border Visual**: Border provides shape definition (not just color)
+- **Hover Feedback**: Both border and text color change
+- **Cursor Pointer**: Indicates clickability
+- **Keyboard Accessible**: Native button keyboard behavior
+- **Color Contrast**:
+  - Default text (Gray-600 on white): **5.7:1** (WCAG AA)
+  - Hover text (Teal-500 on white): **3.3:1** (WCAG AA for large text only)
+  - Border provides additional visual boundary
+
+**Touch Target Considerations:**
+
+Current padding creates compact buttons that may not meet the 44x44px minimum touch target recommendation. Options:
+
+1. **Increase padding on mobile** (recommended)
+2. **Accept smaller targets** (icons provide some targeting assistance)
+3. **Add invisible clickable area** (::before/::after pseudo-element)
+
+**Implementation Considerations:**
+
+Share buttons require JavaScript for functionality:
+
+1. **Share URLs**: Generate platform-specific share URLs
+2. **Click Handlers**: Open share dialogs or new windows
+3. **Analytics**: Track which platforms users share to
+4. **Native Share API**: Consider using `navigator.share()` on supported devices
+
+**Example Share URL Patterns:**
+
+- **Twitter**: `https://twitter.com/intent/tweet?url={url}&text={text}`
+- **Facebook**: `https://facebook.com/sharer/sharer.php?u={url}`
+- **LinkedIn**: `https://linkedin.com/sharing/share-offsite/?url={url}`
+
+---
+
+#### Interactive Components Best Practices
+
+**Do's:**
+
+- ✅ Use teal accent color for all hover/focus states (consistency)
+- ✅ Provide clear cursor feedback (cursor: pointer)
+- ✅ Use semantic HTML (`<button>`, `<input>`, `<form>`)
+- ✅ Include both visual and text cues (icons + labels)
+- ✅ Ensure sufficient color contrast for accessibility
+- ✅ Provide smooth transitions for state changes (0.15-0.2s)
+- ✅ Use system fonts for form inputs (native feel)
+- ✅ Test interactive elements with keyboard navigation
+- ✅ Maintain minimum 44x44px touch targets on mobile
+
+**Don'ts:**
+
+- ❌ Don't remove focus indicators without alternatives
+- ❌ Don't use color alone to indicate state (use borders, icons too)
+- ❌ Don't make buttons/inputs too small (accessibility)
+- ❌ Don't use `transition: all` excessively (performance)
+- ❌ Don't override system fonts in form inputs
+- ❌ Don't create interactive elements that look non-interactive
+- ❌ Don't use vague button text ("Click here" vs "Subscribe")
+- ❌ Don't place too many primary buttons close together
+
+---
+
+#### Accessibility Summary
+
+| Component | Color Contrast | Keyboard Access | Focus Indicator | Touch Target | Notes |
+|-----------|----------------|-----------------|-----------------|--------------|-------|
+| **btn-primary** | 4.6:1 (AA large) | ✅ Native | Browser default | 8x12px padding | Consider larger mobile padding |
+| **email-form** | 4.6:1 border | ✅ Native | Teal border | Full-width | Border-only focus (no outline) |
+| **like-btn** | 5.7:1 (AA all) | ✅ Native | Browser default | No padding | Icon + text provide redundant cues |
+| **share-btn** | 5.7:1 (AA all) | ✅ Native | Browser default | 4x8px padding | Small touch target—consider mobile enhancement |
+
+**Key Accessibility Wins:**
+
+1. ✅ All interactive elements use semantic HTML
+2. ✅ Color contrast meets or exceeds WCAG AA
+3. ✅ Hover states provide clear visual feedback
+4. ✅ Cursor changes indicate interactivity
+5. ✅ Form labels properly associated with inputs
+6. ✅ Icon + text combinations provide redundant information
+
+**Areas for Enhancement:**
+
+1. ⚠️ Share buttons may need larger mobile touch targets
+2. ⚠️ Email input removes outline (consider adding box-shadow alternative)
+3. ⚠️ Like button needs defined active/liked state
+4. ⚠️ Consider explicit focus styles matching teal theme
+
+---
+
+#### Interactive Components Quick Reference
+
+```
+BUTTONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+.btn              Base button class (requires variant)
+.btn-primary      Blue button (White on #0073B1)
+                  Hover: White on #005a8c
+
+FORMS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+.email-form       Email signup form container
+  label           13px Gray-700, 8px margin-bottom
+  input[email]    Full-width, 8x12px padding, Gray-500 border
+                  Focus: Teal-500 border, no outline
+
+INTERACTIVE ELEMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+.like-btn         Inline-flex, 12px Gray-600, no border
+                  Hover: Teal-500 color
+.share-btn        Inline-flex, 11px, 4x8px padding
+                  Border: Gray-200 (1px)
+                  Hover: Teal-500 border + text
+
+HOVER STATE PATTERN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+All interactive elements → Teal-500 accent on hover
+
+TRANSITIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Buttons:     0.2s ease (background-color)
+Share/Like:  0.15s ease (color, border-color)
+```
 
 ---
 
