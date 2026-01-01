@@ -1,0 +1,134 @@
+{
+  "feature": "Create content strategy documentation linking docs/ to website sections",
+  "description": "Create documentation that maps the docs/ folder content to the live website sections, clarifying content versions, their relationships, and which content is current/authoritative.",
+  "created_at": "2026-01-01T09:02:55.253Z",
+  "updated_at": "2026-01-01T09:04:00.000Z",
+  "status": "in_progress",
+  "planStatus": "approved",
+  "workflow_type": "development",
+  "services_involved": ["docs", "index.html"],
+  "spec_file": "spec.md",
+  "phases": [
+    {
+      "id": "phase-1",
+      "name": "Research & Analysis",
+      "description": "Analyze existing content in docs/ and index.html to understand the current state and relationships",
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": "1.1",
+          "title": "Analyze docs/abe-diaz-profile.md content structure",
+          "description": "Document all sections in abe-diaz-profile.md including Identity, Professional Summary, Impact & Achievements, Work Experience, Education, Skills, Open Source, Volunteering, Press & Publications, Personal, and Social Links",
+          "status": "pending",
+          "estimated_effort": "small",
+          "files": ["docs/abe-diaz-profile.md"],
+          "notes": ""
+        },
+        {
+          "id": "1.2",
+          "title": "Analyze index.html content sections",
+          "description": "Document all content sections in the live website including About Me, profile image, bio text, likes, flight stats, and contact section",
+          "status": "pending",
+          "estimated_effort": "small",
+          "files": ["index.html"],
+          "notes": ""
+        },
+        {
+          "id": "1.3",
+          "title": "Create content mapping between docs/ and website",
+          "description": "Identify which parts of abe-diaz-profile.md are used in index.html, which are unused, and document any discrepancies in information between sources",
+          "status": "pending",
+          "estimated_effort": "medium",
+          "files": ["docs/abe-diaz-profile.md", "index.html"],
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "phase-2",
+      "name": "Content Strategy Documentation",
+      "description": "Create comprehensive content strategy documentation",
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": "2.1",
+          "title": "Create docs/CONTENT-STRATEGY.md",
+          "description": "Create the main content strategy document with sections for: Overview, Content Sources, Version History, Website Section Mapping, and Maintenance Guidelines",
+          "status": "pending",
+          "estimated_effort": "medium",
+          "files": ["docs/CONTENT-STRATEGY.md"],
+          "notes": ""
+        },
+        {
+          "id": "2.2",
+          "title": "Document content source of truth",
+          "description": "Clearly document that abe-diaz-profile.md is the authoritative source for profile information and how it relates to index.html content",
+          "status": "pending",
+          "estimated_effort": "small",
+          "files": ["docs/CONTENT-STRATEGY.md"],
+          "notes": ""
+        },
+        {
+          "id": "2.3",
+          "title": "Create website section-to-docs mapping table",
+          "description": "Create a detailed mapping table showing each website section and its corresponding source in docs/, including any content that exists in docs but not on the website",
+          "status": "pending",
+          "estimated_effort": "medium",
+          "files": ["docs/CONTENT-STRATEGY.md"],
+          "notes": ""
+        },
+        {
+          "id": "2.4",
+          "title": "Document content update workflow",
+          "description": "Add guidelines for how to update content: whether to update docs first, website first, or keep them in sync, and best practices for maintaining consistency",
+          "status": "pending",
+          "estimated_effort": "small",
+          "files": ["docs/CONTENT-STRATEGY.md"],
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "phase-3",
+      "name": "Validation & Cleanup",
+      "description": "Review, validate, and finalize the documentation",
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": "3.1",
+          "title": "Review documentation for accuracy",
+          "description": "Verify all mappings are correct, all sections are documented, and the content strategy is clear and actionable",
+          "status": "pending",
+          "estimated_effort": "small",
+          "files": ["docs/CONTENT-STRATEGY.md"],
+          "notes": ""
+        },
+        {
+          "id": "3.2",
+          "title": "Update build-progress.txt with completion notes",
+          "description": "Document what was created, key findings about content relationships, and any recommendations for future content management",
+          "status": "pending",
+          "estimated_effort": "small",
+          "files": [".auto-claude/specs/013-create-content-strategy-documentation-linking-docs/build-progress.txt"],
+          "notes": ""
+        }
+      ]
+    }
+  ],
+  "qa_signoff": {
+    "status": "pending",
+    "tests_passed": "",
+    "issues": ""
+  },
+  "metadata": {
+    "total_subtasks": 9,
+    "completed_subtasks": 0,
+    "current_phase": "phase-1"
+  },
+  "final_acceptance": [
+    "CONTENT-STRATEGY.md exists in docs/ folder",
+    "Document clearly identifies source of truth for content",
+    "Website section-to-docs mapping table is complete",
+    "Content update workflow is documented"
+  ]
+}
