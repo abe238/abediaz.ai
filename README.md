@@ -7,6 +7,24 @@
 
 ---
 
+## Overview
+
+This is the personal portfolio website for **Abe Diaz**, a passionate technologist and Sr. Technical Program Manager on the Disaster Relief by Amazon team. The site serves as a professional online presence showcasing technical expertise, leadership experience, and personal interests.
+
+**Purpose:** This portfolio targets recruiters and hiring managers at leading AI companies including Anthropic, OpenAI, and DeepMind, demonstrating both technical capabilities and attention to detail through clean, purposeful design and implementation.
+
+**Live Site:** [abediaz.ai](https://abediaz.ai)
+
+### Key Highlights
+
+- 🎨 **Clean, Professional Design** - Modern aesthetic with thoughtful typography and color system
+- 📱 **Fully Responsive** - Optimized experience across desktop, tablet, and mobile devices
+- ⚡ **Performance Focused** - Static HTML for fast loading and optimal user experience
+- 🚀 **Modern Deployment** - Automated CI/CD pipeline via GitHub Actions
+- 🌐 **Custom Domain** - Professional branding with custom domain configuration
+
+---
+
 ## Tech Stack
 
 This portfolio is intentionally minimalist, prioritizing **performance**, **maintainability**, and **simplicity** over framework complexity.
@@ -52,10 +70,10 @@ Since this is a **static HTML site** with no build process, getting started is r
 
 ```bash
 # Clone via HTTPS
-git clone https://github.com/abediaz/abediaz.ai.git
+git clone https://github.com/abe238/abediaz.ai.git
 
 # Or clone via SSH
-git clone git@github.com:abediaz/abediaz.ai.git
+git clone git@github.com:abe238/abediaz.ai.git
 
 # Navigate to the project directory
 cd abediaz.ai
@@ -139,31 +157,22 @@ This site is automatically deployed to **GitHub Pages** via a **GitHub Actions**
 
 ### How It Works
 
-The deployment process uses the [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) workflow, which consists of two main jobs:
+The deployment process uses the [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) workflow. As a **static HTML site with no build process**, the deployment is straightforward—GitHub Actions simply uploads the repository files to GitHub Pages.
 
-#### 1. Build Job
-
-```yaml
-- Checkout code from repository
-- Set up Node.js environment (v20)
-- Install dependencies (npm ci)
-- Build the project (npm run build)
-- Upload build artifacts to GitHub Pages
-```
-
-The build job runs on `ubuntu-latest` and prepares the static site for deployment by:
-- Installing all npm dependencies from `package-lock.json`
-- Running the build script to generate production-ready files in the `./dist` directory
-- Uploading the `./dist` folder as a Pages artifact
-
-#### 2. Deploy Job
+#### Workflow Overview
 
 ```yaml
-- Deploy the uploaded artifact to GitHub Pages
-- Output the deployment URL
+- Checkout repository code
+- Upload static files to GitHub Pages
+- Deploy to production
 ```
 
-The deploy job waits for the build job to complete (`needs: build`) and then publishes the artifact to GitHub Pages using the official `actions/deploy-pages@v4` action.
+The workflow runs on `ubuntu-latest` and performs these steps:
+1. **Checkout** - Retrieves the latest code from the `main` branch
+2. **Upload artifact** - Packages the static site files (primarily `index.html` and `images/`) for Pages
+3. **Deploy** - Publishes the artifact to GitHub Pages using the official `actions/deploy-pages@v4` action
+
+**No build step required!** Since this is pure HTML/CSS with no preprocessors, bundlers, or dependencies, the files are deployed exactly as they appear in the repository.
 
 ### Deployment Triggers
 
@@ -212,7 +221,7 @@ This ensures that if multiple deployments are triggered simultaneously, only the
 
 You can monitor deployment status:
 
-- **GitHub Actions Tab** - View real-time logs and deployment history at `https://github.com/<username>/abediaz.ai/actions`
+- **GitHub Actions Tab** - View real-time logs and deployment history at `https://github.com/abe238/abediaz.ai/actions`
 - **Environments Tab** - Check the `github-pages` environment for deployment URLs and status
 - **Commit Status** - Each commit shows a green checkmark (✓) when deployment succeeds
 
@@ -352,23 +361,5 @@ Greater Seattle Area
 - 🐦 **Twitter/X:** [twitter.com/abe238](https://twitter.com/abe238)
 - 📸 **Instagram:** [instagram.com/abe238](https://instagram.com/abe238)
 - 💻 **GitHub:** [github.com/abe238](https://github.com/abe238)
-
----
-
-## Overview
-
-This is the personal portfolio website for **Abe Diaz**, a passionate technologist and Sr. Technical Program Manager on the Disaster Relief by Amazon team. The site serves as a professional online presence showcasing technical expertise, leadership experience, and personal interests.
-
-**Purpose:** This portfolio targets recruiters and hiring managers at leading AI companies including Anthropic, OpenAI, and DeepMind, demonstrating both technical capabilities and attention to detail through clean, purposeful design and implementation.
-
-**Live Site:** [abediaz.ai](https://abediaz.ai)
-
-### Key Highlights
-
-- 🎨 **Clean, Professional Design** - Modern aesthetic with thoughtful typography and color system
-- 📱 **Fully Responsive** - Optimized experience across desktop, tablet, and mobile devices
-- ⚡ **Performance Focused** - Static HTML for fast loading and optimal user experience
-- 🚀 **Modern Deployment** - Automated CI/CD pipeline via GitHub Actions
-- 🌐 **Custom Domain** - Professional branding with custom domain configuration
 
 ---
