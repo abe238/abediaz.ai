@@ -95,12 +95,81 @@
 - The table supports maintenance by showing exactly where each piece of content originates
 - Discrepancies are clearly flagged for action
 
+#### 2.4 - Document content update workflow
+**Status:** ✅ COMPLETED
+**Deliverable:** Enhanced CONTENT-STRATEGY.md with Content Update Priority & Sequencing section
+**What Was Created:**
+
+1. **Decision Tree for Update Order**
+   - Visual diagram showing when to update docs first vs. website first
+   - Three distinct workflows based on content type: Factual, Creative, Emergency
+   - TL;DR summary: Factual → docs first, Creative → website first, always sync within 24 hours
+
+2. **Scenario 1: Factual/Professional Updates → DOCS FIRST**
+   - Update order: abe-diaz-profile.md → index.html → Verify alignment
+   - When to use: Job titles, work experience, education, achievements, press, skills
+   - Why docs first: Establishes authoritative record before public presentation
+   - Step-by-step process with 3-step workflow
+   - Real example: Promotion to "Senior Manager - Disaster Relief"
+
+3. **Scenario 2: Creative/Personal Updates → WEBSITE FIRST**
+   - Update order: index.html → abe-diaz-profile.md → Document change
+   - When to use: Personal interests, creative bio text, design changes, philosophy statements
+   - Why website first: Public presentation layer, allows experimentation
+   - Step-by-step process with 3-step workflow
+   - Real example: Adding "Sailing" to Likes section
+
+4. **Scenario 3: Critical Corrections → WEBSITE IMMEDIATELY**
+   - Update order: index.html (immediate) → abe-diaz-profile.md (within 1 hour) → Document
+   - When to use: Factual errors, broken links, misinformation, privacy/security issues
+   - Why website first: Highest visibility, minimize duration of incorrect information
+   - Step-by-step process with 3-step workflow
+   - Real example: Correcting employer name after acquisition
+
+5. **Keeping Content in Sync: Best Practices**
+   - Daily habits: Update in pairs, use mapping table, commit with context, set reminders
+   - Weekly habits: Spot check alignment, test links, review known issues
+   - Monthly habits: Full content audit, update version history, check external sources
+   - Quarterly habits: Strategic review, philosophy check, link rot scan
+   - Annual habits: Complete overhaul review, archive old content, redesign consideration
+
+6. **Content Synchronization Checklist**
+   - Before Making Changes: Identify type, determine order, review mapping, check SEO
+   - During Updates: Update primary first, transform content, maintain facts, update dates
+   - After Updates: Sync secondary within 24 hours, verify facts, test links, document
+   - Quality Verification: Spelling/grammar, factual accuracy, link testing, responsive design
+
+7. **Common Pitfalls to Avoid**
+   - 7 DON'Ts: Don't update one source without the other, don't skip documentation, etc.
+   - 7 DOs: Follow decision tree, set reminders, use git audit trail, review mapping
+
+8. **Troubleshooting Common Sync Issues**
+   - Issue: "Forgot to update the docs" → Solution: Set calendar reminders
+   - Issue: "Content drifted, don't know which is correct" → Solution: Use LinkedIn as tiebreaker
+   - Issue: "Creative change feels out of sync" → Solution: Remember different purposes
+   - Issue: "Too many discrepancies" → Solution: 5-step recovery process
+
+**Impact:**
+- Provides clear, actionable guidelines for maintaining content consistency
+- Eliminates ambiguity about update order (docs first vs. website first)
+- Establishes best practices for daily/weekly/monthly/quarterly/annual maintenance
+- Reduces risk of content drift between authoritative source and public presentation
+- Creates troubleshooting guide for common sync problems
+- Supports long-term content quality and accuracy
+
+**Statistics:**
+- Added 341 lines of workflow documentation
+- 3 detailed scenarios with step-by-step processes
+- 3 real-world examples with specific line numbers
+- 5 frequency-based best practice categories
+- 4 troubleshooting guides with solutions and prevention
+
 ---
 
 ## Next Steps
 
 ### Pending: Phase 2 (continued)
-- **2.4** - Document content update workflow (small effort)
+- All Phase 2 subtasks completed! ✅
 
 ### Pending: Phase 3 - Validation & Cleanup
 - **3.1** - Review documentation for accuracy (small effort)
