@@ -108,6 +108,12 @@
       /* Transitions */
       --transition-fast: 0.15s ease;
       --transition-normal: 0.2s ease;
+
+      /* Focus States */
+      --focus-ring-color: var(--color-blue-500);
+      --focus-ring-width: 2px;
+      --focus-ring-offset: 2px;
+      --focus-ring-style: solid;
     }
 
     /* ========================================
@@ -197,6 +203,11 @@
       color: var(--color-teal-500);
     }
 
+    h1 a:focus-visible {
+      outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+      outline-offset: var(--focus-ring-offset);
+    }
+
     h2.tagline {
       font-family: var(--font-body);
       font-size: var(--text-md);
@@ -236,12 +247,22 @@
       color: var(--color-teal-500);
     }
 
+    a:focus-visible {
+      outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+      outline-offset: var(--focus-ring-offset);
+    }
+
     .accent-link {
       color: var(--color-teal-500);
     }
 
     .accent-link:hover {
       text-decoration: underline;
+    }
+
+    .accent-link:focus-visible {
+      outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+      outline-offset: var(--focus-ring-offset);
     }
 
     /* ========================================
@@ -276,6 +297,11 @@
 
     .site-nav a:hover {
       color: var(--color-teal-500);
+    }
+
+    .site-nav a:focus-visible {
+      outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+      outline-offset: var(--focus-ring-offset);
     }
 
     .site-main {
@@ -340,9 +366,26 @@
       max-width: 100%;
       width: 100% !important;
       display: block;
-      border: 1px solid var(--color-gray-200) !important;
-      background-color: var(--color-white) !important;
-      border-radius: var(--radius-sm);
+      font-size: var(--text-base);
+      color: var(--color-gray-700);
+      margin-bottom: var(--space-2);
+    }
+
+    .email-form input[type="email"] {
+      width: 100%;
+      padding: var(--space-2) var(--space-3);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      border: 1px solid var(--color-gray-500);
+      border-radius: 0;
+      background: var(--color-white);
+      margin-bottom: var(--space-3);
+    }
+
+    .email-form input[type="email"]:focus {
+      border-color: var(--color-teal-500);
+      outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+      outline-offset: var(--focus-ring-offset);
     }
 
     /* Button */
@@ -366,6 +409,11 @@
     .btn-primary:hover {
       background-color: #005a8c;
       color: var(--color-white);
+    }
+
+    .btn:focus-visible {
+      outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+      outline-offset: var(--focus-ring-offset);
     }
 
     /* Social Links */
@@ -418,6 +466,11 @@
       color: var(--color-teal-500);
     }
 
+    .share-btn:focus-visible {
+      outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+      outline-offset: var(--focus-ring-offset);
+    }
+
     /* Likes */
     .like-section {
       margin-top: var(--space-4);
@@ -437,6 +490,11 @@
 
     .like-btn:hover {
       color: var(--color-teal-500);
+    }
+
+    .like-btn:focus-visible {
+      outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+      outline-offset: var(--focus-ring-offset);
     }
 
     .like-count {

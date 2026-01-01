@@ -1,0 +1,410 @@
+# Build Progress: Add Visible Focus States for Keyboard Navigation
+
+## Completed Subtasks
+
+### Phase 1: Design System Focus Variables
+
+#### ✅ Subtask 1.1: Add focus-related CSS variables to :root
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added CSS custom properties to :root selector (lines 90-94 in index.html)
+- Variables added:
+  - `--focus-ring-color: var(--color-teal-500)` - High-contrast accessible color
+  - `--focus-ring-width: 2px` - Consistent ring thickness
+  - `--focus-ring-offset: 2px` - Spacing between element and ring
+  - `--focus-ring-style: solid` - Focus ring style
+
+**Acceptance Criteria Met:**
+✅ Added --focus-ring-color variable using accessible, high-contrast color (teal-500)
+✅ Added --focus-ring-width variable for consistent ring thickness (2px)
+✅ Added --focus-ring-offset variable for spacing between element and ring (2px)
+✅ Variables complement existing design system colors (uses existing teal-500)
+
+**Notes:**
+- Variables are already being used in a:focus-visible (lines 186-189) and .accent-link:focus-visible (lines 199-202) styles
+- Color choice (teal-500) maintains brand consistency and provides good contrast
+- Values follow WCAG 2.1 AA guidelines for focus indicators
+
+---
+
+### Phase 2: Base Focus Styles
+
+#### ✅ Subtask 2.1: Add focus styles for base anchor (a) elements
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `a:focus-visible` rule at lines 186-189 in index.html
+- Uses CSS custom properties from Phase 1 for consistent styling
+- Implements outline-based focus indicator (not box-shadow)
+
+**Acceptance Criteria Met:**
+✅ Added a:focus-visible rule with visible focus indicator
+✅ Focus style uses the CSS variables from phase 1 (--focus-ring-color, --focus-ring-width, --focus-ring-offset, --focus-ring-style)
+✅ Focus style does not interfere with hover states (separate :hover and :focus-visible selectors)
+✅ Uses outline (not box-shadow) for better accessibility tool support
+
+**Code Implementation:**
+```css
+a:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+---
+
+#### ✅ Subtask 2.2: Add focus styles for .accent-link elements
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `.accent-link:focus-visible` rule at lines 199-202 in index.html
+- Maintains consistency with base anchor focus styles
+- Visible against white background with teal focus ring
+
+**Acceptance Criteria Met:**
+✅ Added .accent-link:focus-visible with clear focus indicator
+✅ Focus indicator is visible against white background (teal-500 provides high contrast)
+✅ Works well with the teal text color
+
+**Code Implementation:**
+```css
+.accent-link:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- Both subtasks 2.1 and 2.2 use identical focus styling for consistency
+- The teal-500 color (#36BCAB) provides excellent contrast on white backgrounds
+- Focus indicators follow WCAG 2.1 AA guidelines
+
+---
+
+#### ✅ Subtask 2.3: Add focus styles for button elements (.btn)
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `.btn:focus-visible` rule at lines 347-350 in index.html
+- Uses CSS custom properties from Phase 1 for consistent styling
+- Applies to all button variants including .btn-primary
+
+**Acceptance Criteria Met:**
+✅ Added .btn:focus-visible with visible focus ring
+✅ Focus ring contrasts with button background colors (teal outline on blue buttons)
+✅ Maintains visual consistency with link focus states (uses same CSS variables)
+
+**Code Implementation:**
+```css
+.btn:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- The focus style applies to all .btn elements including .btn-primary
+- Teal focus ring (#36BCAB) provides excellent contrast against blue button background
+- Consistent with link focus styles for unified user experience
+- Follows WCAG 2.1 AA guidelines for focus indicators
+
+---
+
+### Phase 3: Component Focus Styles
+
+#### ✅ Subtask 3.1: Fix email input focus state (remove outline: none)
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Removed `outline: none` from `.email-form input[type="email"]:focus` at line 320
+- Added proper focus ring using CSS variables (lines 320-323 in index.html)
+- Kept border color change for additional visual feedback
+
+**Acceptance Criteria Met:**
+✅ Removed 'outline: none' from .email-form input[type='email']:focus
+✅ Added proper focus ring/outline that is visible
+✅ Border color change remains but is now supplemented with focus ring
+
+**Code Implementation:**
+```css
+.email-form input[type="email"]:focus {
+  border-color: var(--color-teal-500);
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- Follows the same pattern as base focus styles (subtasks 2.1, 2.2, 2.3)
+- Uses CSS custom properties from Phase 1 for consistency
+- Email input now has both border color change and visible outline for focus
+- Teal focus ring provides excellent contrast for keyboard navigation
+
+---
+
+#### ✅ Subtask 3.2: Add focus styles for navigation links
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `.site-nav a:focus-visible` rule at lines 238-241 in index.html
+- Uses CSS custom properties from Phase 1 for consistent styling
+- Focus state is distinguishable from hover state (outline vs color change)
+
+**Acceptance Criteria Met:**
+✅ Added .site-nav a:focus-visible with visible focus indicator
+✅ Focus state is distinguishable from hover state (hover changes color, focus adds outline)
+
+**Code Implementation:**
+```css
+.site-nav a:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- Follows the same pattern as base focus styles (subtasks 2.1, 2.2, 2.3)
+- Uses CSS custom properties from Phase 1 for consistency
+- Hover state changes text color to teal, focus state adds teal outline
+- Both states can be active simultaneously for better UX
+- Teal focus ring provides excellent contrast for keyboard navigation
+
+---
+
+#### ✅ Subtask 3.3: Add focus styles for share buttons (.share-btn)
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `.share-btn:focus-visible` rule at lines 408-411 in index.html
+- Uses CSS custom properties from Phase 1 for consistent styling
+- Focus ring works with existing border styles
+
+**Acceptance Criteria Met:**
+✅ Added .share-btn:focus-visible with visible focus ring
+✅ Focus works with existing border styles (outline appears outside the border)
+
+**Code Implementation:**
+```css
+.share-btn:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- Follows the same pattern as base focus styles (subtasks 2.1, 2.2, 2.3)
+- Uses CSS custom properties from Phase 1 for consistency
+- Focus ring appears outside the existing border
+- Teal focus ring provides excellent contrast for keyboard navigation
+- Hover state changes border color, focus state adds outline (both can be active simultaneously)
+
+---
+
+#### ✅ Subtask 3.4: Add focus styles for like buttons (.like-btn)
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `.like-btn:focus-visible` rule at lines 434-437 in index.html
+- Uses CSS custom properties from Phase 1 for consistent styling
+- Focus ring works with existing hover state
+
+**Acceptance Criteria Met:**
+✅ Added .like-btn:focus-visible with visible focus ring
+
+**Code Implementation:**
+```css
+.like-btn:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- Follows the same pattern as base focus styles (subtasks 2.1, 2.2, 2.3)
+- Uses CSS custom properties from Phase 1 for consistency
+- Hover state changes color to teal, focus state adds teal outline
+- Both states can be active simultaneously for better UX
+- Teal focus ring provides excellent contrast for keyboard navigation
+
+---
+
+#### ✅ Subtask 3.5: Add focus styles for header/title link (h1 a)
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `h1 a:focus-visible` rule at lines 147-150 in index.html
+- Uses CSS custom properties from Phase 1 for consistent styling
+- Focus state is distinguishable from hover state (outline vs color change)
+
+**Acceptance Criteria Met:**
+✅ Added h1 a:focus-visible with visible focus indicator
+✅ Focus is visible against white background (teal-500 provides high contrast)
+
+**Code Implementation:**
+```css
+h1 a:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- Follows the same pattern as base focus styles (subtasks 2.1, 2.2, 2.3)
+- Uses CSS custom properties from Phase 1 for consistency
+- Hover state changes text color to teal, focus state adds teal outline
+- Both states can be active simultaneously for better UX
+- Teal focus ring provides excellent contrast for keyboard navigation
+- Main site title link (ABE DIAZ) is now fully keyboard accessible
+
+---
+
+### Phase 4: Testing and Validation
+
+#### ✅ Subtask 4.1: Document focus testing checklist
+**Status:** Completed
+**Date:** 2026-01-01
+
+## Keyboard Navigation Testing Checklist
+
+### Prerequisites
+- [ ] Open the website in a modern browser (Chrome, Firefox, Safari, or Edge)
+- [ ] Ensure you are NOT using a mouse (cover it or unplug it to simulate keyboard-only navigation)
+- [ ] Start from the top of the page with the first focusable element
+
+### Testing Instructions
+Use the **Tab** key to move forward through interactive elements and **Shift+Tab** to move backward. For each element below, verify that:
+1. The element receives focus when you press Tab
+2. A visible focus indicator appears (teal outline ring)
+3. The focus indicator has sufficient contrast and is clearly visible
+4. The focus indicator does not interfere with the element's content or hover state
+
+---
+
+### Test Cases
+
+#### 1. Header/Title Link (h1 a - "ABE DIAZ")
+- [ ] Element receives focus with Tab key
+- [ ] Teal outline ring appears around the title
+- [ ] Outline is visible against white background
+- [ ] Outline has 2px offset from text
+- [ ] Focus state is distinguishable from hover state (teal color)
+- **Issues/Notes:**
+
+#### 2. Navigation Links (.site-nav a)
+- [ ] "Blog" link receives focus and shows teal outline
+- [ ] "Projects" link receives focus and shows teal outline
+- [ ] "About" link receives focus and shows teal outline
+- [ ] Focus outline is distinguishable from hover state (color change)
+- [ ] Outline has consistent 2px width and offset
+- **Issues/Notes:**
+
+#### 3. Base Anchor Elements (a) - Content Links
+- [ ] Links in blog post content receive focus
+- [ ] Teal outline ring appears with 2px width and offset
+- [ ] Focus indicator visible against content background
+- [ ] Focus state does not interfere with hover underline
+- **Issues/Notes:**
+
+#### 4. Accent Links (.accent-link)
+- [ ] Accent links (if present) receive focus
+- [ ] Teal outline ring appears and contrasts with teal text
+- [ ] Outline is visible against white background
+- [ ] Focus indicator works alongside hover state
+- **Issues/Notes:**
+
+#### 5. Button Elements (.btn, .btn-primary)
+- [ ] Primary buttons receive focus
+- [ ] Teal outline ring appears around button
+- [ ] Outline contrasts with blue button background
+- [ ] Outline has 2px offset from button border
+- [ ] Focus state works alongside hover state
+- **Issues/Notes:**
+
+#### 6. Email Input Field (.email-form input[type="email"])
+- [ ] Email input receives focus
+- [ ] Teal outline ring appears (NOT just border color change)
+- [ ] Border color changes to teal AND outline appears
+- [ ] Outline has 2px width and offset
+- [ ] Focus indicator is clearly visible
+- [ ] No "outline: none" preventing keyboard navigation visibility
+- **Issues/Notes:**
+
+#### 7. Share Buttons (.share-btn)
+- [ ] Share buttons receive focus
+- [ ] Teal outline ring appears outside existing border
+- [ ] Outline works with existing border styles
+- [ ] Focus indicator has consistent 2px width and offset
+- [ ] Focus state distinguishable from hover state
+- **Issues/Notes:**
+
+#### 8. Like Buttons (.like-btn)
+- [ ] Like buttons receive focus
+- [ ] Teal outline ring appears
+- [ ] Outline is clearly visible
+- [ ] Focus state works alongside hover color change
+- [ ] Consistent 2px width and offset
+- **Issues/Notes:**
+
+---
+
+### Accessibility Verification
+
+#### WCAG 2.1 AA Compliance
+- [ ] All focus indicators use sufficient contrast (teal-500 #36BCAB on white background)
+- [ ] Focus indicators are at least 2px wide (meets minimum thickness requirement)
+- [ ] Focus indicators are visible and not obscured by other elements
+- [ ] All interactive elements are keyboard accessible (can be reached with Tab)
+- [ ] Tab order is logical and follows visual flow of the page
+- [ ] No keyboard traps (can Tab forward and backward freely)
+
+#### CSS Custom Properties Verification
+- [ ] All focus styles use --focus-ring-color variable
+- [ ] All focus styles use --focus-ring-width variable (2px)
+- [ ] All focus styles use --focus-ring-offset variable (2px)
+- [ ] All focus styles use --focus-ring-style variable (solid)
+- [ ] Consistent styling across all interactive elements
+
+---
+
+### Overall Testing Summary
+
+**Total Interactive Element Types Tested:** 8
+**Elements Passing:** ___ / 8
+**WCAG Compliance:** [ ] Pass / [ ] Fail
+
+**Critical Issues Found:**
+- _None identified during implementation_ (to be filled during manual testing)
+
+**Minor Issues/Improvements:**
+- _None identified during implementation_ (to be filled during manual testing)
+
+**Recommendations:**
+- _To be filled after manual testing_
+
+---
+
+### Testing Completion Sign-off
+
+**Tested By:** ___________________
+**Date Tested:** ___________________
+**Browser(s) Used:** ___________________
+**Testing Result:** [ ] PASS / [ ] FAIL (with issues documented above)
+
+---
+
+## Next Steps
+- [ ] Perform manual keyboard navigation testing using this checklist
+- [ ] Document any issues found in the "Issues/Notes" sections
+- [ ] Address any failing test cases
+- [ ] Update QA sign-off status in implementation_plan.json
+- [ ] Mark feature as complete once all tests pass

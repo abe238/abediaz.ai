@@ -1,25 +1,25 @@
 {
   "active": true,
-  "spec": "005-add-print-stylesheet",
+  "spec": "006-add-visible-focus-states-for-keyboard-navigation",
   "state": "complete",
   "subtasks": {
-    "completed": 8,
-    "total": 8,
-    "in_progress": 0,
+    "completed": 0,
+    "total": 10,
+    "in_progress": 1,
     "failed": 0
   },
   "phase": {
-    "current": "Page Breaks and Final Polish",
+    "current": "Testing and Validation",
     "id": null,
-    "total": 2
+    "total": 1
   },
   "workers": {
     "active": 0,
     "max": 1
   },
   "session": {
-    "number": 5,
-    "started_at": "2026-01-01T01:43:06.592005"
+    "number": 9,
+    "started_at": "2026-01-01T01:43:03.869946"
   },
-  "last_update": "2026-01-01T01:56:05.210106"
+  "last_update": "2026-01-01T02:02:52.988814"
 }

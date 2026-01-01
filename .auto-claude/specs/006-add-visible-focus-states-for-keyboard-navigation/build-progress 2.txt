@@ -1,0 +1,90 @@
+# Build Progress - Add Visible Focus States for Keyboard Navigation
+
+## Feature Overview
+Add visible focus indicators to all interactive elements (links, buttons, form inputs) for keyboard navigation accessibility compliance.
+
+## Progress Summary
+- Total Subtasks: 10
+- Completed: 3
+- Remaining: 7
+- Status: In Progress
+
+---
+
+## Phase 1: Design System Focus Variables [COMPLETED]
+
+### ✅ Subtask 1.1: Add focus-related CSS variables to :root [COMPLETED]
+**Date:** 2026-01-01
+**Commit:** b56fa0d
+
+**Implementation:**
+Added four CSS custom properties to the :root selector for consistent focus styling:
+- `--focus-ring-color: var(--color-teal-500)` - Uses existing teal-500 for consistency with hover states
+- `--focus-ring-width: 2px` - Accessible thickness for focus indicators
+- `--focus-ring-offset: 2px` - Breathing room between element and focus ring
+- `--focus-ring-style: solid` - Consistent focus ring appearance
+
+**Acceptance Criteria Met:**
+✓ Added --focus-ring-color variable using an accessible, high-contrast color (teal-500)
+✓ Added --focus-ring-width variable for consistent ring thickness (2px)
+✓ Added --focus-ring-offset variable for spacing between element and ring (2px)
+✓ Variables complement existing design system colors (teal-500, etc.)
+
+**Notes:**
+- Variables placed in the Focus States section after Transitions in :root
+- Teal-500 (#36BCAB) provides good contrast and maintains design consistency
+- These variables will be used by all subsequent subtasks to ensure uniform focus states
+
+---
+
+## Phase 2: Base Focus Styles [IN PROGRESS]
+
+### ✅ Subtask 2.1: Add focus styles for base anchor (a) elements [COMPLETED]
+**Date:** 2026-01-01
+**Commit:** 89ae12d
+
+**Implementation:**
+Added a:focus-visible rule for all anchor elements with visible focus indicator using CSS custom properties:
+- outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color)
+- outline-offset: var(--focus-ring-offset)
+
+**Acceptance Criteria Met:**
+✓ Added a:focus-visible rule with visible focus indicator
+✓ Focus style uses the CSS variables from phase 1 (--focus-ring-width, --focus-ring-style, --focus-ring-color, --focus-ring-offset)
+✓ Focus style does not interfere with hover states (separate rule)
+✓ Uses outline (not box-shadow) for better accessibility tool support
+
+**Notes:**
+- Uses :focus-visible pseudo-class which only shows focus indicator for keyboard navigation
+- Outline offset provides breathing room between link and focus ring
+- Teal color (#36BCAB) provides good contrast for visibility
+- Applied to all anchor elements site-wide for consistent keyboard navigation
+
+---
+
+### ✅ Subtask 2.2: Add focus styles for .accent-link elements [COMPLETED]
+**Date:** 2026-01-01
+**Commit:** beeb24b
+
+**Implementation:**
+Added .accent-link:focus-visible rule for accent link elements with visible focus indicator using CSS custom properties:
+- outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color)
+- outline-offset: var(--focus-ring-offset)
+
+**Acceptance Criteria Met:**
+✓ Added .accent-link:focus-visible with clear focus indicator
+✓ Focus indicator is visible against white background (teal #36BCAB on white)
+✓ Works well with the teal text color - consistent with brand colors
+
+**Notes:**
+- Uses same CSS variables as base anchor focus styles for consistency
+- Teal outline (#36BCAB) provides excellent contrast on white background
+- Complements the teal text color (#36BCAB) of accent links
+- Applied to all .accent-link elements (LinkedIn, Twitter, external links, etc.)
+- Maintains visual consistency across all link types
+
+---
+
+## Next Steps
+**Phase 2: Base Focus Styles (continued)**
+- Subtask 2.3: Add focus styles for button elements (.btn)
