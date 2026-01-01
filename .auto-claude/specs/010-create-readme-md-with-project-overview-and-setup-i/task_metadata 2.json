@@ -1,0 +1,8 @@
+{
+  "sourceType": "ideation",
+  "ideationType": "documentation_gaps",
+  "ideaId": "doc-001",
+  "rationale": "A README is the first thing visitors see. For a personal brand site targeting recruiters at Anthropic, OpenAI, and DeepMind, having a professional, well-documented GitHub presence demonstrates attention to detail and technical communication skills. Currently there's no explanation of what the site is, how to run it locally, or how the deployment works.",
+  "category": "documentation",
+  "priority": "high"
+}

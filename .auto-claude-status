@@ -1,25 +1,25 @@
 {
   "active": true,
-  "spec": "015-analyze-what-is-this-feature-in-the-website-actual",
+  "spec": "010-create-readme-md-with-project-overview-and-setup-i",
   "state": "complete",
   "subtasks": {
-    "completed": 3,
-    "total": 3,
+    "completed": 8,
+    "total": 8,
     "in_progress": 0,
     "failed": 0
   },
   "phase": {
-    "current": "Newsletter Widget Replacement",
+    "current": "Validation",
     "id": null,
-    "total": 3
+    "total": 1
   },
   "workers": {
     "active": 0,
     "max": 1
   },
   "session": {
-    "number": 1,
-    "started_at": "2026-01-01T03:48:26.567950"
+    "number": 5,
+    "started_at": "2026-01-01T01:42:58.724839"
   },
-  "last_update": "2026-01-01T03:52:16.297151"
+  "last_update": "2026-01-01T01:54:25.080148"
 }
