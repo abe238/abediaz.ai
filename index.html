@@ -534,6 +534,16 @@
       .social-links-inline {
         gap: var(--space-3);
       }
+
+      /* Contact CTA buttons - ensure adequate touch targets (min 44px) */
+      .btn {
+        padding: var(--space-4) var(--space-5);
+        font-size: var(--text-md);
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
 
     /* Small phones */
@@ -544,6 +554,16 @@
 
       .site-container {
         padding: 0 var(--space-3);
+      }
+
+      /* Adjust button spacing for very small screens */
+      .social-links-inline {
+        gap: var(--space-2);
+      }
+
+      .btn {
+        padding: var(--space-4) var(--space-4);
+        font-size: var(--text-sm);
       }
     }
   </style>
