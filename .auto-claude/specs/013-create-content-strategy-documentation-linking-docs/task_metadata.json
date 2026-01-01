@@ -1,8 +1,0 @@
-{
-  "sourceType": "ideation",
-  "ideationType": "documentation_gaps",
-  "ideaId": "doc-004",
-  "rationale": "The content strategy documents are valuable research but their relationship to the actual index.html is unclear. The site's current content differs significantly from the docs/website-content-ai-leadership-v2.md which is marked as the latest version. A mapping document would help maintain consistency.",
-  "category": "documentation",
-  "priority": "medium"
-}

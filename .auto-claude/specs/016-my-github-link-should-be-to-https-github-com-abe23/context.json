@@ -1,7 +1,0 @@
-{
-  "task_description": "My Github link should be to https://github.com/abe238 not to https://github.com/abediaz Change this all over the page.",
-  "workflow_type": "feature",
-  "scoped_services": ["main"],
-  "files_to_modify": [],
-  "created_at": "2026-01-01T00:00:00Z"
-}

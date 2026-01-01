@@ -1,4 +1,0 @@
-{
-  "task_description": "Analyze what is this feature in the website actually doing!\n\nGet Updates\nEmail Address\nyour@email.com\n Subscribe\n1,234 subscribers\n\nIt feels like this is fake or non-functional. If that is the case then find a way to redirect them to my abediaz.substack.com URL which is where my newsletter subscribe is. This is the embed for it:\n\n<iframe src=\"https://abediaz.substack.com/embed\" width=\"480\" height=\"320\" style=\"border:1px solid #EEE; background:white;\" frameborder=\"0\" scrolling=\"no\"></iframe>",
-  "workflow_type": "feature"
-}
