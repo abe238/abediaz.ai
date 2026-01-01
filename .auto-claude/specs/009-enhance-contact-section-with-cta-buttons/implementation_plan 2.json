@@ -3,8 +3,8 @@
   "description": "Transform the contact section plain text links (LinkedIn, Twitter) into prominent, button-styled call-to-action elements using existing .btn and .btn-primary CSS classes to make it easier for AI company recruiters to contact Abe.",
   "created_at": "2026-01-01T09:02:05.112Z",
   "updated_at": "2026-01-01T09:05:00.000Z",
-  "status": "human_review",
-  "planStatus": "review",
+  "status": "in_progress",
+  "planStatus": "complete",
   "phases": [
     {
       "id": "phase-1",
@@ -84,7 +84,7 @@
           "id": "3.2",
           "title": "Update social-links-inline layout for buttons",
           "description": "Adjust the .social-links-inline container styles to properly display button-styled elements instead of inline text links. May need gap adjustment and flex-wrap for mobile.",
-          "status": "completed",
+          "status": "pending",
           "estimated_effort": "small",
           "files": [
             "index.html"
@@ -94,9 +94,7 @@
             "Adequate spacing between buttons",
             "Buttons wrap gracefully on mobile if needed",
             "Consistent with overall site design"
-          ],
-          "notes": "Successfully updated .social-links-inline container styles to properly display button-styled elements. Added flex-wrap: wrap for graceful wrapping on narrow screens, align-items: center for proper vertical alignment, and adjusted gap from var(--space-5) to var(--space-4) (16px on desktop, 12px on mobile). Removed mobile overrides for font-size and padding that were designed for text links, allowing buttons to maintain their own styling. Buttons now display properly side by side on desktop and wrap gracefully on mobile devices.",
-          "updated_at": "2026-01-01T09:44:37.337268+00:00"
+          ]
         }
       ]
     },
@@ -109,7 +107,7 @@
           "id": "4.1",
           "title": "Add responsive styles for contact buttons",
           "description": "Update mobile media queries to ensure contact CTA buttons are properly sized and spaced on smaller screens. Buttons should be easily tappable (min 44px touch target) on mobile devices.",
-          "status": "completed",
+          "status": "pending",
           "estimated_effort": "small",
           "files": [
             "index.html"
@@ -119,9 +117,7 @@
             "Appropriate spacing on small screens",
             "Text remains readable on all screen sizes",
             "Buttons don't overflow container on narrow screens"
-          ],
-          "notes": "Successfully added mobile responsive styles for contact CTA buttons. At 480px (mobile): buttons have min-height: 44px, padding: 16px 20px, font-size: 14px, and use inline-flex for proper alignment. At 360px (small phones): buttons reduce to padding: 16px and font-size: 12px to prevent overflow. Gap between buttons is 12px on mobile and 8px on small phones. All buttons maintain adequate touch targets (min 44px) while ensuring text readability and preventing container overflow on narrow screens.",
-          "updated_at": "2026-01-01T09:47:01.639826+00:00"
+          ]
         }
       ]
     },
@@ -134,7 +130,7 @@
           "id": "5.1",
           "title": "Visual verification and final review",
           "description": "Verify the contact section buttons display correctly, are accessible, and provide a clear call-to-action for visitors. Check that links work and styling is consistent.",
-          "status": "completed",
+          "status": "pending",
           "estimated_effort": "small",
           "files": [
             "index.html"
@@ -145,9 +141,7 @@
             "Hover states are visible and functional",
             "Implementation matches spec intent",
             "No visual regressions elsewhere on the page"
-          ],
-          "notes": "Comprehensive verification completed. All acceptance criteria met: \u2705 Buttons visually stand out as CTAs with clear hierarchy (LinkedIn primary/solid blue, Twitter secondary/teal outline), \u2705 Both links functional with correct URLs, \u2705 Hover states provide smooth visual feedback (primary darkens, secondary fills with teal), \u2705 Responsive design with 44px min-height on mobile meeting WCAG touch target guidelines, \u2705 No visual regressions detected. Implementation is production-ready. See verification-report.md for detailed analysis.",
-          "updated_at": "2026-01-01T09:49:42.152291+00:00"
+          ]
         }
       ]
     }
@@ -167,31 +161,9 @@
   "total_subtasks": 5,
   "estimated_total_effort": "1-2 hours",
   "qa_signoff": {
-    "status": "approved",
-    "qa_session": 0,
-    "issues_found": [
-      {
-        "description": "None - All acceptance criteria met. 20/20 validation checks passed. Implementation is production-ready."
-      }
-    ],
-    "tests_passed": {},
-    "timestamp": "2026-01-01T09:56:52.484853+00:00",
-    "ready_for_qa_revalidation": false
+    "status": "pending",
+    "issues": "",
+    "tests_passed": ""
   },
-  "last_updated": "2026-01-01T09:56:52.484868+00:00",
-  "qa_iteration_history": [
-    {
-      "iteration": 1,
-      "status": "approved",
-      "timestamp": "2026-01-01T09:58:39.849189+00:00",
-      "issues": [],
-      "duration_seconds": 464.7
-    }
-  ],
-  "qa_stats": {
-    "total_iterations": 1,
-    "last_iteration": 1,
-    "last_status": "approved",
-    "issues_by_type": {}
-  }
+  "last_updated": "2026-01-01T09:11:30.612722+00:00"
 }
