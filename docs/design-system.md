@@ -5468,19 +5468,1127 @@ Standard:          var(--transition-normal)  0.2s ease
 
 ## Usage Examples
 
+This section demonstrates real-world patterns for combining components and following design system principles. These examples show how individual design tokens and components work together to create cohesive, accessible interfaces.
+
+---
+
+### Complete Page Layouts
+
+#### Example 1: Basic Article Page
+
+This example shows the complete structure for a simple article page with header, content, and footer.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article Title | Abe Diaz</title>
+</head>
+<body>
+  <div class="site-container">
+    <!-- Header with navigation -->
+    <header class="site-header">
+      <h1><a href="/">ABE DIAZ</a></h1>
+      <h2 class="tagline">Seattle/Tech/Evangelist</h2>
+
+      <nav class="site-nav">
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a href="/about">ABOUT</a></li>
+          <li><a href="/contact">CONTACT</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main content area -->
+    <main class="site-main">
+      <article class="content">
+        <h2 class="section-title">ARTICLE TITLE</h2>
+
+        <p>Opening paragraph with <a href="#" class="accent-link">accent links</a>
+        for external references.</p>
+
+        <img
+          src="/images/article-image.jpg"
+          alt="Descriptive alt text"
+          class="profile-image"
+          loading="lazy"
+        >
+
+        <p>Additional content paragraphs flow naturally with proper spacing
+        from the design system tokens.</p>
+      </article>
+    </main>
+
+    <!-- Footer contact section -->
+    <footer class="contact-section">
+      <h3>CONTACT ME:</h3>
+      <div class="social-links-inline">
+        <a href="https://linkedin.com/in/username" class="accent-link">LinkedIn</a>
+        <a href="https://twitter.com/username" class="accent-link">Twitter</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+```
+
+**Key Design Decisions:**
+
+- **Semantic HTML**: Uses proper semantic tags (`<header>`, `<main>`, `<article>`, `<footer>`)
+- **Single Container**: `.site-container` provides max-width and centering
+- **Vertical Rhythm**: Components naturally stack with consistent spacing
+- **Responsive**: Layout adapts automatically at defined breakpoints
+- **Accessibility**: Proper heading hierarchy (h1 → h2 → h3) and alt text on images
+
+---
+
+#### Example 2: Two-Column Layout with Sidebar
+
+This example demonstrates a content-sidebar layout pattern for richer pages.
+
+```html
+<div class="site-container">
+  <header class="site-header">
+    <h1><a href="/">ABE DIAZ</a></h1>
+    <h2 class="tagline">Seattle/Tech/Evangelist</h2>
+
+    <nav class="site-nav">
+      <ul>
+        <li><a href="/">HOME</a></li>
+        <li><a href="/blog">BLOG</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    <!-- Primary content: 580px width -->
+    <article class="content">
+      <h2 class="section-title">BLOG POST TITLE</h2>
+
+      <p>Main article content goes here with proper paragraph spacing.</p>
+
+      <h3>Section Heading</h3>
+      <p>Subsection content maintains proper hierarchy.</p>
+
+      <!-- Share section for engagement -->
+      <div class="share-section">
+        <p><strong>Share this post:</strong></p>
+        <button class="share-btn">Twitter</button>
+        <button class="share-btn">LinkedIn</button>
+        <button class="share-btn">Facebook</button>
+      </div>
+    </article>
+
+    <!-- Sidebar: 240px width with 40px gap -->
+    <aside class="sidebar">
+      <!-- About widget -->
+      <div class="widget">
+        <h4 class="widget-title">ABOUT</h4>
+        <p>Brief bio or description of the site author.</p>
+      </div>
+
+      <!-- Newsletter signup widget -->
+      <div class="widget">
+        <h4 class="widget-title">NEWSLETTER</h4>
+        <form class="email-form">
+          <label for="email">Subscribe for updates:</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="your@email.com"
+            required
+          >
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+        <p class="subscriber-count">Join 1,234 subscribers</p>
+      </div>
+
+      <!-- Social links widget -->
+      <div class="widget">
+        <h4 class="widget-title">CONNECT</h4>
+        <div class="social-links">
+          <a href="#">LinkedIn</a>
+          <a href="#">Twitter</a>
+          <a href="#">GitHub</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="contact-section">
+    <h3>GET IN TOUCH</h3>
+    <div class="social-links-inline">
+      <a href="#" class="accent-link">Email</a>
+      <a href="#" class="accent-link">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+```
+
+**Key Design Decisions:**
+
+- **Flexbox Layout**: `.site-main` uses flexbox to create the two-column layout
+- **Fixed Widths**: Content (580px) + Gap (40px) + Sidebar (240px) = Container (860px)
+- **Widget Pattern**: Reusable `.widget` containers with consistent spacing
+- **Form Integration**: `.email-form` follows design system patterns
+- **Responsive Collapse**: At 768px breakpoint, layout stacks to single column
+
+---
+
+### Component Combinations
+
+#### Pattern 1: Interactive Article Engagement
+
+Combine share buttons with like functionality for reader engagement.
+
+```html
+<article class="content">
+  <h2 class="section-title">ENGAGING ARTICLE</h2>
+
+  <p>Your article content with meaningful information.</p>
+
+  <!-- Engagement section -->
+  <div class="share-section">
+    <!-- Like button with icon support -->
+    <button class="like-btn" aria-label="Like this article">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+      Like
+    </button>
+
+    <!-- Share buttons -->
+    <p><strong>Share this:</strong></p>
+    <button class="share-btn">Twitter</button>
+    <button class="share-btn">LinkedIn</button>
+    <button class="share-btn">Copy Link</button>
+  </div>
+
+  <!-- Author signature -->
+  <p class="signature">— Abe Diaz</p>
+</article>
+```
+
+**Why This Works:**
+
+- `.share-section` provides visual separation with top border
+- `.like-btn` uses inline-flex for icon + text alignment
+- `.share-btn` maintains consistent styling with hover states
+- `.signature` adds personal touch at article end
+- All spacing follows the 4px rhythm (20px, 24px values)
+
+---
+
+#### Pattern 2: Sidebar Widget Stack
+
+Create a cohesive sidebar experience with multiple widget types.
+
+```html
+<aside class="sidebar">
+  <!-- Profile widget -->
+  <div class="widget">
+    <img
+      src="/images/avatar.jpg"
+      alt="Profile photo"
+      class="profile-image"
+    >
+    <h4 class="widget-title">ABE DIAZ</h4>
+    <p>Technical Program Manager passionate about technology,
+    disaster relief, and connecting people.</p>
+  </div>
+
+  <!-- Newsletter widget -->
+  <div class="widget">
+    <h4 class="widget-title">NEWSLETTER</h4>
+    <form class="email-form">
+      <label for="newsletter-email">Get weekly updates:</label>
+      <input
+        type="email"
+        id="newsletter-email"
+        placeholder="your@email.com"
+        required
+      >
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+    <p class="subscriber-count">Join 2,500+ readers</p>
+  </div>
+
+  <!-- Recent posts widget -->
+  <div class="widget">
+    <h4 class="widget-title">RECENT POSTS</h4>
+    <p><a href="/post-1">Understanding Design Systems</a></p>
+    <p><a href="/post-2">CSS Architecture Best Practices</a></p>
+    <p><a href="/post-3">Building Accessible Interfaces</a></p>
+  </div>
+
+  <!-- Social widget -->
+  <div class="widget">
+    <h4 class="widget-title">FOLLOW</h4>
+    <div class="social-links">
+      <a href="https://linkedin.com/in/username">LinkedIn</a>
+      <a href="https://twitter.com/username">Twitter</a>
+      <a href="https://github.com/username">GitHub</a>
+    </div>
+  </div>
+</aside>
+```
+
+**Why This Works:**
+
+- Each `.widget` has consistent 24px bottom margin (auto-applied)
+- `.widget-title` uses uppercase Oswald for visual hierarchy
+- `.widget p` uses smaller 12px font for compact sidebar content
+- `.social-links` provides vertical stack with 8px gaps
+- `.subscriber-count` adds social proof with subtle styling
+- All widgets follow the same structural pattern for consistency
+
+---
+
+#### Pattern 3: Typography Hierarchy
+
+Demonstrate proper heading hierarchy and link usage.
+
+```html
+<article class="content">
+  <!-- Page title -->
+  <h2 class="section-title">DESIGN SYSTEM GUIDE</h2>
+
+  <!-- Introduction paragraph -->
+  <p>This guide explains how to use the design system effectively.
+  Learn more about <a href="#tokens" class="accent-link">design tokens</a>
+  and <a href="#components" class="accent-link">components</a>.</p>
+
+  <!-- Section with subsection -->
+  <h3>Getting Started</h3>
+  <p>Begin by understanding the core principles. Regular links like
+  <a href="#intro">this one</a> use default black styling, while external
+  references like the <a href="https://example.com" class="accent-link">official docs</a>
+  use accent styling.</p>
+
+  <h3>Design Tokens</h3>
+  <p>Design tokens provide the foundation for consistent styling across
+  the entire system.</p>
+
+  <!-- Nested content -->
+  <h3>Components</h3>
+  <p>Components combine tokens to create reusable interface patterns.</p>
+</article>
+```
+
+**Why This Works:**
+
+- **h2.section-title**: Used once per page as primary heading (28px, uppercase)
+- **h3**: Used for content sections (16px, uppercase, maintains hierarchy)
+- **Default links**: Black with teal hover for internal navigation
+- **.accent-link**: Teal color for external links and primary CTAs
+- **Paragraph spacing**: Automatic 20px margin-bottom maintains rhythm
+- **Heading spacing**: h3 has 24px top, 16px bottom for clear sections
+
+---
+
+#### Pattern 4: Form with Primary CTA
+
+Create effective forms using design system components.
+
+```html
+<div class="widget">
+  <h4 class="widget-title">GET STARTED</h4>
+
+  <form class="email-form">
+    <!-- Form label -->
+    <label for="signup-email">
+      Enter your email to receive updates:
+    </label>
+
+    <!-- Email input with proper attributes -->
+    <input
+      type="email"
+      id="signup-email"
+      name="email"
+      placeholder="your@email.com"
+      aria-describedby="email-help"
+      required
+    >
+
+    <!-- Helper text -->
+    <p id="email-help" class="subscriber-count" style="margin-top: var(--space-2);">
+      We respect your privacy. Unsubscribe anytime.
+    </p>
+
+    <!-- Primary CTA button -->
+    <button type="submit" class="btn btn-primary">
+      Subscribe Now
+    </button>
+
+    <!-- Alternative secondary action -->
+    <a href="/privacy" class="btn" style="margin-top: var(--space-2);">
+      View Privacy Policy
+    </a>
+  </form>
+
+  <!-- Social proof -->
+  <p class="subscriber-count">
+    Trusted by 5,000+ subscribers
+  </p>
+</div>
+```
+
+**Why This Works:**
+
+- `.email-form` provides consistent form styling (24px bottom margin)
+- `label` uses 12px font-size, gray-700 color for readability
+- `input` has teal focus state (4.6:1 contrast ratio) for accessibility
+- `.btn-primary` uses LinkedIn blue (#0073B1) for strong visual hierarchy
+- `.btn` (secondary) maintains subtle styling for less important actions
+- `.subscriber-count` adds social proof without overwhelming
+- Helper text uses proper `aria-describedby` for screen readers
+- Spacing uses design tokens (--space-2 for tight elements)
+
+---
+
+#### Pattern 5: Content with Inline Images
+
+Integrate images within article content properly.
+
+```html
+<article class="content">
+  <h2 class="section-title">TRAVEL ADVENTURES</h2>
+
+  <p>I'm passionate about traveling and experiencing different cultures
+  around the world.</p>
+
+  <!-- Profile/content image -->
+  <img
+    src="/images/travel-photo.jpg"
+    alt="Abe Diaz at the Eiffel Tower in Paris"
+    class="profile-image"
+    loading="lazy"
+    width="580"
+    height="387"
+  >
+
+  <p>Each journey teaches me something new about people, technology,
+  and the world we share.</p>
+
+  <!-- Data visualization / infographic -->
+  <img
+    src="/images/flight-stats.png"
+    alt="Flight statistics showing 50 countries visited and 200,000+ miles flown"
+    class="flight-stats"
+    loading="lazy"
+    width="580"
+    height="400"
+  >
+
+  <p>These numbers represent more than just miles—they represent
+  connections, experiences, and memories.</p>
+</article>
+```
+
+**Why This Works:**
+
+- `.profile-image`: Full-width photos (max-width: 580px) with 20px vertical margin
+- `.flight-stats`: Infographics with 20px margin, no max-width constraint
+- Both classes use `loading="lazy"` for performance
+- Width/height attributes prevent layout shift during load
+- Alt text provides meaningful descriptions for accessibility
+- Images are contextually placed within content flow
+- Responsive: Both change to 16px margin at 768px breakpoint
+
+---
+
 ### Best Practices
 
-*This section will provide practical code examples showing how to combine components and follow design system patterns.*
+#### Design Token Usage
 
-**Coming Soon:** Usage examples and best practices.
+**DO:**
+✓ Always use CSS variables for styling
+```css
+.custom-component {
+  color: var(--color-gray-700);
+  font-size: var(--text-base);
+  margin-bottom: var(--space-5);
+}
+```
+
+✓ Maintain the 4px spacing rhythm
+```css
+.custom-spacing {
+  /* Good: Divisible by 4 */
+  padding: var(--space-4) var(--space-6); /* 16px 24px */
+  margin-top: var(--space-8); /* 32px */
+}
+```
+
+✓ Use semantic color choices
+```css
+.article-text {
+  color: var(--color-gray-700); /* Body text */
+}
+
+.article-heading {
+  color: var(--color-black); /* Headings */
+}
+
+.external-link {
+  color: var(--color-teal-500); /* Accent/CTAs */
+}
+```
+
+**DON'T:**
+✗ Avoid hardcoded values
+```css
+/* Bad: Hardcoded instead of using tokens */
+.bad-component {
+  color: #555555; /* Use var(--color-gray-700) */
+  font-size: 13px; /* Use var(--text-base) */
+  margin: 15px; /* Not on 4px rhythm */
+}
+```
+
+✗ Don't break the spacing rhythm
+```css
+/* Bad: Random spacing values */
+.bad-spacing {
+  margin: 7px; /* Not divisible by 4 */
+  padding: 15px 22px; /* Random values */
+}
+```
+
+✗ Don't create arbitrary colors
+```css
+/* Bad: New colors not in the palette */
+.bad-color {
+  color: #FF5733; /* Not in design system */
+  background: linear-gradient(...); /* Adds unnecessary complexity */
+}
+```
+
+---
+
+#### Component Composition
+
+**DO:**
+✓ Combine components semantically
+```html
+<!-- Good: Semantic structure with proper nesting -->
+<article class="content">
+  <h2 class="section-title">ARTICLE TITLE</h2>
+  <p>Content paragraph with <a href="#" class="accent-link">proper links</a>.</p>
+
+  <div class="share-section">
+    <button class="share-btn">Share</button>
+  </div>
+</article>
+```
+
+✓ Use proper heading hierarchy
+```html
+<!-- Good: Logical h1 → h2 → h3 progression -->
+<h1>ABE DIAZ</h1>
+<h2 class="tagline">Seattle/Tech/Evangelist</h2>
+
+<h2 class="section-title">MAIN SECTION</h2>
+<h3>Subsection Title</h3>
+```
+
+✓ Apply classes to appropriate elements
+```html
+<!-- Good: Classes match element semantics -->
+<nav class="site-nav">
+  <ul>
+    <li><a href="/">HOME</a></li>
+  </ul>
+</nav>
+
+<form class="email-form">
+  <label for="email">Email:</label>
+  <input type="email" id="email">
+</form>
+```
+
+**DON'T:**
+✗ Don't nest components incorrectly
+```html
+<!-- Bad: Improper nesting -->
+<div class="widget">
+  <div class="content"> <!-- Don't nest .content inside .widget -->
+    <h2 class="section-title">TITLE</h2>
+  </div>
+</div>
+```
+
+✗ Don't skip heading levels
+```html
+<!-- Bad: Jumping from h1 to h3 -->
+<h1>ABE DIAZ</h1>
+<h3>Section</h3> <!-- Should be h2 -->
+```
+
+✗ Don't misuse component classes
+```html
+<!-- Bad: Using layout classes on wrong elements -->
+<button class="site-container">Click me</button> <!-- Wrong element -->
+<div class="btn">Not a button</div> <!-- Should use <button> -->
+```
+
+---
+
+#### Responsive Design
+
+**DO:**
+✓ Design mobile-first mentally, even with desktop-first CSS
+```css
+/* Good: Base styles work on all sizes */
+.component {
+  padding: var(--space-4);
+  font-size: var(--text-base);
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .component {
+    padding: var(--space-3);
+  }
+}
+```
+
+✓ Test at all breakpoints (768px, 480px, 360px)
+```css
+/* Good: Thoughtful responsive adjustments */
+.site-header {
+  padding-top: var(--space-header); /* 70px */
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    padding-top: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding-top: 32px;
+  }
+}
+```
+
+✓ Ensure touch targets are at least 44×44px on mobile
+```css
+/* Good: Adequate touch targets */
+.share-btn,
+.like-btn {
+  padding: var(--space-2) var(--space-4); /* 8px 16px */
+  min-height: 44px; /* Ensures mobile usability */
+}
+```
+
+**DON'T:**
+✗ Don't forget to test on actual devices
+```css
+/* Bad: Assuming desktop behavior */
+.component {
+  cursor: pointer; /* Mobile has no cursor */
+  hover: /* effect */; /* Mobile has no hover */
+}
+```
+
+✗ Don't create too many breakpoints
+```css
+/* Bad: Over-engineering breakpoints */
+@media (max-width: 1200px) { /* Not in system */ }
+@media (max-width: 992px) { /* Not in system */ }
+@media (max-width: 768px) { /* OK */ }
+@media (max-width: 640px) { /* Not in system */ }
+@media (max-width: 480px) { /* OK */ }
+```
+
+✗ Don't make text too small on mobile
+```css
+/* Bad: Unreadable mobile text */
+@media (max-width: 480px) {
+  body {
+    font-size: 10px; /* Too small! Minimum is 12px */
+  }
+}
+```
+
+---
+
+#### Accessibility
+
+**DO:**
+✓ Use semantic HTML elements
+```html
+<!-- Good: Semantic structure -->
+<header class="site-header">...</header>
+<nav class="site-nav">...</nav>
+<main class="site-main">...</main>
+<article class="content">...</article>
+<aside class="sidebar">...</aside>
+<footer class="contact-section">...</footer>
+```
+
+✓ Provide meaningful alt text
+```html
+<!-- Good: Descriptive alt text -->
+<img
+  src="/profile.jpg"
+  alt="Abe Diaz presenting at a technology conference in Seattle"
+  class="profile-image"
+>
+
+<img
+  src="/stats.png"
+  alt="Flight statistics: 50 countries visited, 200,000 miles flown"
+  class="flight-stats"
+>
+```
+
+✓ Ensure sufficient color contrast
+```css
+/* Good: All combinations meet WCAG AA (4.5:1 minimum) */
+.text {
+  color: var(--color-gray-700); /* 7.4:1 on white */
+}
+
+.btn-primary {
+  background: var(--color-blue-500); /* 4.6:1 with white text */
+  color: var(--color-white);
+}
+```
+
+✓ Support keyboard navigation
+```css
+/* Good: Clear focus states */
+a:focus,
+button:focus,
+input:focus {
+  outline: 2px solid var(--color-teal-500);
+  outline-offset: 2px;
+}
+```
+
+**DON'T:**
+✗ Don't use divs for everything
+```html
+<!-- Bad: Non-semantic markup -->
+<div class="header">
+  <div class="navigation">
+    <div class="nav-item">Home</div>
+  </div>
+</div>
+```
+
+✗ Don't omit alt text or use generic descriptions
+```html
+<!-- Bad: Missing or poor alt text -->
+<img src="/photo.jpg" alt=""> <!-- Missing -->
+<img src="/photo.jpg" alt="image"> <!-- Generic -->
+<img src="/photo.jpg" alt="photo123.jpg"> <!-- Filename -->
+```
+
+✗ Don't rely only on color to convey meaning
+```html
+<!-- Bad: Color-only indication -->
+<p style="color: red;">Error</p> <!-- Needs icon or text -->
+
+<!-- Good: Multiple indicators -->
+<p style="color: var(--color-red-500);">
+  <strong>Error:</strong> Please check your input
+</p>
+```
+
+✗ Don't remove focus outlines without replacement
+```css
+/* Bad: Removes keyboard navigation visibility */
+*:focus {
+  outline: none; /* Never do this! */
+}
+
+/* Good: Custom focus styling */
+*:focus {
+  outline: 2px solid var(--color-teal-500);
+  outline-offset: 2px;
+}
+```
+
+---
+
+### Extending the Design System
+
+When adding new components or patterns to the design system, follow these guidelines to maintain consistency and quality.
+
+#### Before Adding New Tokens
+
+**Ask yourself:**
+
+1. **Can existing tokens solve this need?**
+   - Review the [Quick Reference](#quick-reference) to see if a token already exists
+   - Consider if a slight adjustment to usage could work with existing values
+
+2. **Does this token fit the system's philosophy?**
+   - Minimalism: Is this token truly necessary?
+   - Consistency: Does it align with the 4px rhythm (spacing) or existing scales (typography)?
+   - Accessibility: Does it meet WCAG standards?
+
+3. **Will this token be reused?**
+   - One-off values should be inline styles or component-specific
+   - Only promote to token status if used 3+ times
+
+**Adding a new color:**
+
+```css
+/* ❌ DON'T: Add arbitrary colors */
+:root {
+  --color-random-pink: #FF69B4; /* Breaks palette cohesion */
+}
+
+/* ✅ DO: Extend existing color families */
+:root {
+  --color-gray-400: #888888; /* Fills gap in gray scale */
+}
+
+/* Document in this guide with:
+   - Hex value
+   - Use case
+   - Contrast ratios
+   - When to use vs. existing colors
+*/
+```
+
+**Adding new spacing:**
+
+```css
+/* ❌ DON'T: Break the 4px rhythm */
+:root {
+  --space-7: 26px; /* Not divisible by 4 */
+}
+
+/* ✅ DO: Maintain 4px multiples */
+:root {
+  --space-7: 28px; /* 4px × 7 */
+}
+
+/* Ensure it fits logically:
+   --space-6: 24px;
+   --space-7: 28px;  ← New value
+   --space-8: 32px;
+*/
+```
+
+**Adding new typography:**
+
+```css
+/* ❌ DON'T: Create random sizes */
+:root {
+  --text-random: 15px; /* Doesn't fit scale */
+}
+
+/* ✅ DO: Extend the typographic scale logically */
+:root {
+  --text-xl: 18px; /* Fits between --text-lg (16px) and --text-4xl (80px) */
+}
+
+/* Consider:
+   - When will this be used? (e.g., pull quotes, callouts)
+   - Does it create clear hierarchy?
+   - Does it adapt responsively?
+*/
+```
+
+---
+
+#### Creating New Components
+
+**1. Start with Semantic HTML**
+
+```html
+<!-- ❌ BAD: Div soup -->
+<div class="new-component">
+  <div class="new-component-title">Title</div>
+  <div class="new-component-content">
+    <div class="new-component-text">Text</div>
+  </div>
+</div>
+
+<!-- ✅ GOOD: Semantic structure -->
+<aside class="callout">
+  <h4 class="callout-title">Important Note</h4>
+  <p>This is a callout box for highlighting important information.</p>
+</aside>
+```
+
+**2. Use Existing Design Tokens**
+
+```css
+/* ❌ BAD: Hardcoded values */
+.callout {
+  background: #F5F5F5;
+  border-left: 4px solid #36BCAB;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+}
+
+/* ✅ GOOD: Design system tokens */
+.callout {
+  background-color: var(--color-gray-50);
+  border-left: var(--space-1) solid var(--color-teal-500);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-5);
+  border-radius: var(--radius-sm);
+}
+
+.callout-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-md);
+  font-weight: var(--font-bold);
+  color: var(--color-black);
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+}
+
+.callout p {
+  font-size: var(--text-sm);
+  color: var(--color-gray-700);
+  margin-bottom: 0; /* Last child */
+}
+```
+
+**3. Consider Responsive Behavior**
+
+```css
+/* Add responsive adaptations where needed */
+@media (max-width: 768px) {
+  .callout {
+    padding: var(--space-2) var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+}
+```
+
+**4. Test for Accessibility**
+
+```html
+<!-- Ensure proper ARIA attributes if needed -->
+<aside class="callout" role="complementary" aria-label="Important note">
+  <h4 class="callout-title">Security Notice</h4>
+  <p>Always use HTTPS for sensitive data.</p>
+</aside>
+```
+
+**5. Document the Component**
+
+Add to the [Component Documentation](#components) section with:
+- **Purpose**: What problem does this solve?
+- **CSS Implementation**: Full CSS code
+- **HTML Structure**: Example markup
+- **Usage Guidelines**: When to use, when not to use
+- **Accessibility Notes**: ARIA requirements, contrast ratios
+- **Responsive Behavior**: How it adapts at breakpoints
+
+---
+
+#### Contributing Checklist
+
+Before submitting a new component or token to the design system:
+
+- [ ] **Necessity Check**: Can existing patterns solve this need?
+- [ ] **Naming**: Follows BEM-like conventions (`.component-name`, `.component-name__element`)
+- [ ] **Tokens**: Uses CSS variables exclusively (no hardcoded values)
+- [ ] **Spacing**: Maintains 4px rhythm for all spacing values
+- [ ] **Typography**: Uses system fonts and type scale
+- [ ] **Colors**: Uses palette colors or extends existing families logically
+- [ ] **Accessibility**: Meets WCAG 2.1 AA standards (contrast, semantics, keyboard)
+- [ ] **Responsive**: Tested at all three breakpoints (768px, 480px, 360px)
+- [ ] **Browser Support**: Works in Chrome, Firefox, Safari, Edge (current versions)
+- [ ] **Documentation**: Added to design-system.md with full details
+- [ ] **Examples**: Provided usage examples in documentation
+- [ ] **Consistency**: Follows existing patterns for similar components
 
 ---
 
 ### Do's and Don'ts
 
-*This section will provide guidance on correct and incorrect usage of the design system.*
+#### Color Usage
 
-**Coming Soon:** Do's and don'ts guidance.
+**DO:**
+✓ Use `--color-gray-700` (#555555) for body text
+✓ Use `--color-black` (#000000) for headings
+✓ Use `--color-teal-500` (#36BCAB) for accent elements and CTAs
+✓ Use `--color-gray-200` (#DDDDDD) for borders and dividers
+✓ Ensure all text has 4.5:1 contrast ratio minimum (WCAG AA)
+
+**DON'T:**
+✗ Don't use light grays (50, 100) for text
+✗ Don't create new accent colors outside the palette
+✗ Don't use teal for large text blocks (reserve for accents)
+✗ Don't use insufficient contrast combinations
+
+---
+
+#### Typography
+
+**DO:**
+✓ Use Oswald for all headings (h1-h6, `.section-title`, `.widget-title`)
+✓ Use Helvetica Neue for body text, paragraphs, and UI elements
+✓ Use system fonts for form inputs to match OS conventions
+✓ Maintain proper heading hierarchy (h1 → h2 → h3, never skip)
+✓ Use `--text-base` (13px) for standard body text
+
+**DON'T:**
+✗ Don't mix font families arbitrarily
+✗ Don't use Oswald for body text (too bold/condensed)
+✗ Don't create text smaller than 12px (minimum for accessibility)
+✗ Don't use ALL CAPS for long paragraphs (uppercase is for headings/labels)
+✗ Don't skip heading levels (e.g., h1 to h3)
+
+---
+
+#### Spacing
+
+**DO:**
+✓ Always use spacing tokens (`--space-1` through `--space-10`)
+✓ Maintain 4px base unit (all spacing divisible by 4)
+✓ Use `--space-5` (20px) for paragraph bottom margins
+✓ Use `--space-6` (24px) for section spacing
+✓ Use `--space-4` (16px) for general component padding
+
+**DON'T:**
+✗ Don't use arbitrary spacing values (e.g., 15px, 22px, 37px)
+✗ Don't create spacing that breaks the 4px rhythm
+✗ Don't over-space elements (maintain visual proximity for related items)
+✗ Don't under-space touch targets on mobile (minimum 44×44px)
+
+---
+
+#### Layout
+
+**DO:**
+✓ Use `.site-container` as the outermost wrapper (max-width: 860px)
+✓ Use `.content` (580px) and `.sidebar` (240px) for two-column layouts
+✓ Let `.site-main` handle flexbox layout automatically
+✓ Use semantic HTML5 elements (`<header>`, `<main>`, `<article>`, `<aside>`, `<footer>`)
+✓ Design for single-column mobile collapse at 768px
+
+**DON'T:**
+✗ Don't create wider containers than `--container-max` (860px)
+✗ Don't use fixed heights (allow content to flow naturally)
+✗ Don't nest `.site-container` inside itself
+✗ Don't use three-column layouts (system supports one or two columns)
+✗ Don't fight the flexbox layout with custom widths
+
+---
+
+#### Components
+
+**DO:**
+✓ Use `.btn` for base button styles, add `.btn-primary` for CTAs
+✓ Use `.accent-link` for external links and important internal links
+✓ Use `.widget` for sidebar content modules
+✓ Use `.section-title` for h2 section headings
+✓ Use `.tagline` for h2 subheadings under h1
+
+**DON'T:**
+✗ Don't apply `.btn` to non-interactive elements
+✗ Don't use `.accent-link` on every link (reserve for emphasis)
+✗ Don't nest structural components incorrectly (e.g., `.content` inside `.widget`)
+✗ Don't create custom button styles—extend `.btn` instead
+✗ Don't mix component classes inappropriately
+
+---
+
+#### Forms
+
+**DO:**
+✓ Use `.email-form` for newsletter signup forms
+✓ Always include proper `<label>` elements with `for` attributes
+✓ Use `required` attribute for mandatory fields
+✓ Provide visual focus states (teal border on input focus)
+✓ Include helper text for complex inputs
+
+**DON'T:**
+✗ Don't use placeholder text as labels
+✗ Don't omit `<label>` elements
+✗ Don't create multi-column form layouts on mobile
+✗ Don't remove focus states
+✗ Don't use red for errors without accompanying text
+
+---
+
+#### Responsive Design
+
+**DO:**
+✓ Test at all three breakpoints: 768px (tablet), 480px (mobile), 360px (small mobile)
+✓ Reduce header spacing on mobile (70px → 50px → 32px)
+✓ Stack two-column layouts to single column at 768px
+✓ Increase base font size to 14px at 480px for readability
+✓ Ensure touch targets are at least 44×44px on mobile
+
+**DON'T:**
+✗ Don't create breakpoints outside the system (768px, 480px, 360px only)
+✗ Don't make mobile font sizes smaller than desktop
+✗ Don't hide important content on mobile
+✗ Don't create horizontal scrolling on mobile
+✗ Don't assume mouse interaction (use touch-friendly patterns)
+
+---
+
+#### Accessibility
+
+**DO:**
+✓ Use semantic HTML elements for their intended purpose
+✓ Provide meaningful alt text for all images
+✓ Ensure 4.5:1 contrast ratio for normal text, 3:1 for large text
+✓ Support keyboard navigation with visible focus states
+✓ Use ARIA attributes when semantic HTML isn't sufficient
+
+**DON'T:**
+✗ Don't rely only on color to convey meaning
+✗ Don't remove focus outlines without providing alternatives
+✗ Don't use automatic carousels or auto-playing media
+✗ Don't create keyboard traps
+✗ Don't use generic link text like "click here" or "read more"
+
+---
+
+#### Performance
+
+**DO:**
+✓ Use `loading="lazy"` for images below the fold
+✓ Specify `width` and `height` attributes on images
+✓ Use CSS transitions for subtle animations (0.15s or 0.2s)
+✓ Minimize use of JavaScript for styling (CSS-first approach)
+✓ Load web fonts with `display=swap` for faster text rendering
+
+**DON'T:**
+✗ Don't use heavy JavaScript frameworks for simple interactions
+✗ Don't create complex CSS animations that impact performance
+✗ Don't load unnecessary web font weights/styles
+✗ Don't use large unoptimized images
+✗ Don't create deep nesting in CSS selectors (impacts performance)
+
+---
+
+#### Maintenance
+
+**DO:**
+✓ Document new components in design-system.md
+✓ Use CSS variables for all new values
+✓ Follow existing naming conventions
+✓ Test changes across all breakpoints
+✓ Update documentation when patterns change
+
+**DON'T:**
+✗ Don't add inline styles (use classes and design tokens)
+✗ Don't create one-off components without documentation
+✗ Don't modify existing tokens without updating documentation
+✗ Don't break existing component patterns
+✗ Don't leave TODO comments in production code
 
 ---
 
