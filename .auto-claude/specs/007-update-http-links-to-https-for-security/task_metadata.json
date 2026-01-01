@@ -1,0 +1,12 @@
+{
+  "sourceType": "ideation",
+  "ideationType": "ui_ux_improvements",
+  "ideaId": "uiux-002",
+  "rationale": "Multiple external links use insecure HTTP protocol instead of HTTPS, which can trigger browser security warnings and appears unprofessional to tech-savvy recruiters",
+  "category": "ui_ux",
+  "uiuxCategory": "usability",
+  "affectedFiles": [
+    "index.html"
+  ],
+  "problemSolved": "Lines 576-597 contain multiple http:// links: uprm.edu, linkedin.com/in/abediaz (2x), instagram.com/abe238, twitter.com/abe238 (2x), amazon.com/disasterrelief, contrastshowers.com. These trigger mixed content warnings and are less secure."
+}

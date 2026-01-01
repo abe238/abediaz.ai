@@ -1,0 +1,295 @@
+{
+  "feature": "Update HTTP Links to HTTPS for Security",
+  "description": "Convert all external HTTP links to HTTPS and add proper security attributes to prevent mixed content warnings and improve security posture",
+  "created_at": "2026-01-01T09:01:47.801Z",
+  "updated_at": "2026-01-01T09:15:00.000Z",
+  "status": "human_review",
+  "planStatus": "review",
+  "phases": [
+    {
+      "phase_number": 1,
+      "name": "Update HTTP Links in Main Bio Section",
+      "description": "Convert HTTP links to HTTPS in the main biography paragraph (lines 576-580)",
+      "subtasks": [
+        {
+          "id": "1.1",
+          "title": "Update UPR-Mayaguez link",
+          "description": "Convert http://uprm.edu/ to https://uprm.edu/ on line 576",
+          "status": "completed",
+          "file_path": "index.html",
+          "technical_details": "Simple protocol change for university website link",
+          "acceptance_criteria": [
+            "Link uses HTTPS protocol",
+            "Link is accessible and works correctly"
+          ],
+          "notes": "Successfully updated http://uprm.edu/ to https://uprm.edu/ on line 576 of index.html. The link now uses secure HTTPS protocol.",
+          "updated_at": "2026-01-01T09:07:09.032128+00:00"
+        },
+        {
+          "id": "1.2",
+          "title": "Update Amazon Disaster Relief link",
+          "description": "Convert http://amazon.com/disasterrelief to https://amazon.com/disasterrelief on line 576",
+          "status": "completed",
+          "file_path": "index.html",
+          "technical_details": "Simple protocol change for Amazon Disaster Relief page link",
+          "acceptance_criteria": [
+            "Link uses HTTPS protocol",
+            "Link is accessible and works correctly"
+          ],
+          "notes": "Successfully converted http://amazon.com/disasterrelief to https://amazon.com/disasterrelief on line 576 of index.html",
+          "updated_at": "2026-01-01T09:09:13.745980+00:00"
+        },
+        {
+          "id": "1.3",
+          "title": "Update LinkedIn link and text in bio",
+          "description": "Convert http://linkedin.com/in/abediaz to https://linkedin.com/in/abediaz (both href and display text) on line 578",
+          "status": "completed",
+          "file_path": "index.html",
+          "technical_details": "Update both the href attribute and the visible link text to use HTTPS",
+          "acceptance_criteria": [
+            "Link href uses HTTPS protocol",
+            "Display text uses HTTPS protocol",
+            "Link is accessible and works correctly"
+          ],
+          "notes": "Successfully converted http://linkedin.com/in/abediaz to https://linkedin.com/in/abediaz on line 578 of index.html. Both the href attribute and display text now use secure HTTPS protocol.",
+          "updated_at": "2026-01-01T09:10:39.114093+00:00"
+        },
+        {
+          "id": "1.4",
+          "title": "Update Instagram link and text in bio",
+          "description": "Convert http://instagram.com/abe238 to https://instagram.com/abe238 (both href and display text) on line 578",
+          "status": "completed",
+          "file_path": "index.html",
+          "technical_details": "Update both the href attribute and the visible link text to use HTTPS",
+          "acceptance_criteria": [
+            "Link href uses HTTPS protocol",
+            "Display text uses HTTPS protocol",
+            "Link is accessible and works correctly"
+          ],
+          "notes": "Successfully converted http://instagram.com/abe238 to https://instagram.com/abe238 on line 578 of index.html. Both the href attribute and display text now use secure HTTPS protocol.",
+          "updated_at": "2026-01-01T09:12:50.336442+00:00"
+        },
+        {
+          "id": "1.5",
+          "title": "Update Twitter link and text in bio",
+          "description": "Convert http://twitter.com/abe238 to https://twitter.com/abe238 (both href and display text) on line 578",
+          "status": "completed",
+          "file_path": "index.html",
+          "technical_details": "Update both the href attribute and the visible link text to use HTTPS",
+          "acceptance_criteria": [
+            "Link href uses HTTPS protocol",
+            "Display text uses HTTPS protocol",
+            "Link is accessible and works correctly"
+          ],
+          "notes": "Successfully converted http://twitter.com/abe238 to https://twitter.com/abe238 on line 578 of index.html. Both the href attribute and display text now use secure HTTPS protocol.",
+          "updated_at": "2026-01-01T09:15:00.000000+00:00"
+        },
+        {
+          "id": "1.6",
+          "title": "Update Contrast Showers link",
+          "description": "Convert http://contrastshowers.com/ to https://contrastshowers.com/ on line 580",
+          "status": "completed",
+          "file_path": "index.html",
+          "technical_details": "Simple protocol change for external website link",
+          "acceptance_criteria": [
+            "Link uses HTTPS protocol",
+            "Link is accessible and works correctly"
+          ],
+          "notes": "Successfully converted http://contrastshowers.com/ to https://contrastshowers.com/ on line 580 of index.html. The link now uses secure HTTPS protocol.",
+          "updated_at": "2026-01-01T09:45:51.897578+00:00"
+        }
+      ]
+    },
+    {
+      "phase_number": 2,
+      "name": "Update HTTP Links in Footer Section",
+      "description": "Convert HTTP links to HTTPS in the contact/footer section (lines 596-597)",
+      "subtasks": [
+        {
+          "id": "2.1",
+          "title": "Update LinkedIn link in footer",
+          "description": "Convert http://linkedin.com/in/abediaz to https://linkedin.com/in/abediaz on line 596",
+          "status": "completed",
+          "file_path": "index.html",
+          "technical_details": "Simple protocol change for footer LinkedIn link",
+          "acceptance_criteria": [
+            "Link uses HTTPS protocol",
+            "Link is accessible and works correctly"
+          ],
+          "notes": "Successfully converted http://linkedin.com/in/abediaz to https://linkedin.com/in/abediaz on line 596 of index.html in the footer section. The href attribute now uses secure HTTPS protocol.",
+          "updated_at": "2026-01-01T09:47:51.405598+00:00"
+        },
+        {
+          "id": "2.2",
+          "title": "Update Twitter link in footer",
+          "description": "Convert http://twitter.com/abe238 to https://twitter.com/abe238 on line 597",
+          "status": "completed",
+          "file_path": "index.html",
+          "technical_details": "Simple protocol change for footer Twitter link",
+          "acceptance_criteria": [
+            "Link uses HTTPS protocol",
+            "Link is accessible and works correctly"
+          ],
+          "notes": "Successfully converted http://twitter.com/abe238 to https://twitter.com/abe238 on line 597 of index.html. The href attribute now uses secure HTTPS protocol, making it consistent with the LinkedIn link on line 596.",
+          "updated_at": "2026-01-01T09:49:43.430134+00:00"
+        }
+      ]
+    },
+    {
+      "phase_number": 3,
+      "name": "Add Security Attributes to External Links",
+      "description": "Add rel='noopener noreferrer' and target='_blank' to all external links for improved security",
+      "subtasks": [
+        {
+          "id": "3.1",
+          "title": "Add security attributes to bio external links",
+          "description": "Add target='_blank' rel='noopener noreferrer' to all external links on lines 576-580",
+          "status": "completed",
+          "file_path": "index.html",
+          "technical_details": "Add security attributes to prevent tabnabbing attacks and improve user experience by opening external links in new tabs",
+          "acceptance_criteria": [
+            "All external links have target='_blank'",
+            "All external links have rel='noopener noreferrer'"
+          ],
+          "notes": "Successfully added target='_blank' rel='noopener noreferrer' to all 11 external links on lines 576-580 of index.html. All external links now have proper security attributes to prevent tabnabbing attacks and will open in new tabs.",
+          "updated_at": "2026-01-01T09:51:27.970608+00:00"
+        },
+        {
+          "id": "3.2",
+          "title": "Add security attributes to footer external links",
+          "description": "Add target='_blank' rel='noopener noreferrer' to footer links on lines 596-597",
+          "status": "completed",
+          "file_path": "index.html",
+          "technical_details": "Add security attributes to footer LinkedIn and Twitter links",
+          "acceptance_criteria": [
+            "Footer links have target='_blank'",
+            "Footer links have rel='noopener noreferrer'"
+          ],
+          "notes": "Successfully added target='_blank' rel='noopener noreferrer' to both footer links (LinkedIn and Twitter) on lines 596-597 of index.html. All footer external links now have proper security attributes to prevent tabnabbing attacks and will open in new tabs.",
+          "updated_at": "2026-01-01T09:52:43.602115+00:00"
+        }
+      ]
+    },
+    {
+      "phase_number": 4,
+      "name": "Verification and Testing",
+      "description": "Verify all links work correctly and no HTTP links remain",
+      "subtasks": [
+        {
+          "id": "4.1",
+          "title": "Verify no HTTP links remain",
+          "description": "Run grep/search to confirm no http:// links remain in the codebase (excluding metadata files)",
+          "status": "completed",
+          "file_path": "index.html",
+          "technical_details": "Use grep to search for 'http://' in index.html and confirm 0 matches",
+          "acceptance_criteria": [
+            "No http:// links found in index.html",
+            "All external links use HTTPS"
+          ],
+          "notes": "Verification complete: No http:// links found in index.html. All HTTP links have been successfully converted to HTTPS. Only metadata files in .auto-claude directory contain http:// references for documentation purposes.",
+          "updated_at": "2026-01-01T09:53:49.560848+00:00"
+        },
+        {
+          "id": "4.2",
+          "title": "Validate HTML structure",
+          "description": "Ensure all link tags are properly formed with valid attributes",
+          "status": "completed",
+          "file_path": "index.html",
+          "technical_details": "Check that all anchor tags have proper href, target, rel, and class attributes",
+          "acceptance_criteria": [
+            "All anchor tags are valid HTML",
+            "No syntax errors in updated links"
+          ],
+          "notes": "HTML validation completed successfully. Verified that all 15 anchor tags are properly formed with valid attributes. All 13 external links use HTTPS protocol and have proper security attributes (target='_blank' rel='noopener noreferrer'). All href attributes are properly quoted with no syntax errors. HTML structure is valid and all tags are balanced.",
+          "updated_at": "2026-01-01T09:57:34.460060+00:00"
+        }
+      ]
+    }
+  ],
+  "workflow_type": "development",
+  "services_involved": [
+    "index.html"
+  ],
+  "final_acceptance": [
+    "All HTTP links converted to HTTPS",
+    "All external links have rel='noopener noreferrer' attribute",
+    "All external links open in new tab with target='_blank'",
+    "No browser mixed content warnings",
+    "All links remain accessible and functional"
+  ],
+  "spec_file": "spec.md",
+  "total_http_links": 8,
+  "files_affected": [
+    "index.html"
+  ],
+  "links_to_update": [
+    {
+      "line": 576,
+      "from": "http://uprm.edu/",
+      "to": "https://uprm.edu/"
+    },
+    {
+      "line": 576,
+      "from": "http://amazon.com/disasterrelief",
+      "to": "https://amazon.com/disasterrelief"
+    },
+    {
+      "line": 578,
+      "from": "http://linkedin.com/in/abediaz",
+      "to": "https://linkedin.com/in/abediaz"
+    },
+    {
+      "line": 578,
+      "from": "http://instagram.com/abe238",
+      "to": "https://instagram.com/abe238"
+    },
+    {
+      "line": 578,
+      "from": "http://twitter.com/abe238",
+      "to": "https://twitter.com/abe238"
+    },
+    {
+      "line": 580,
+      "from": "http://contrastshowers.com/",
+      "to": "https://contrastshowers.com/"
+    },
+    {
+      "line": 596,
+      "from": "http://linkedin.com/in/abediaz",
+      "to": "https://linkedin.com/in/abediaz"
+    },
+    {
+      "line": 597,
+      "from": "http://twitter.com/abe238",
+      "to": "https://twitter.com/abe238"
+    }
+  ],
+  "last_updated": "2026-01-01T10:04:44.004601+00:00",
+  "qa_signoff": {
+    "status": "approved",
+    "qa_session": 0,
+    "issues_found": [
+      {
+        "description": "None - All acceptance criteria passed. 8 HTTP links converted to HTTPS, 13/13 external links have proper security attributes, HTML valid, no regressions."
+      }
+    ],
+    "tests_passed": {},
+    "timestamp": "2026-01-01T10:04:44.004589+00:00",
+    "ready_for_qa_revalidation": false
+  },
+  "qa_iteration_history": [
+    {
+      "iteration": 1,
+      "status": "approved",
+      "timestamp": "2026-01-01T10:05:15.339908+00:00",
+      "issues": [],
+      "duration_seconds": 415.52
+    }
+  ],
+  "qa_stats": {
+    "total_iterations": 1,
+    "last_iteration": 1,
+    "last_status": "approved",
+    "issues_by_type": {}
+  }
+}
