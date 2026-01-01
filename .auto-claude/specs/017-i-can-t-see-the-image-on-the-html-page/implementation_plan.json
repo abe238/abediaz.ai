@@ -29,14 +29,16 @@
           "id": "subtask-1-2",
           "description": "Fix image path or restore missing image file to display flight statistics correctly",
           "service": "main",
-          "status": "pending",
+          "status": "completed",
           "files_to_create": [],
           "files_to_modify": [],
           "patterns_from": [],
           "verification": {
             "type": "manual",
             "run": "Open HTML page in browser and verify flight statistics image displays with all 50+ countries visible"
-          }
+          },
+          "notes": "Fixed image path in index.html line 639: Changed src from './images/flight-stats.jpg' to './images/flight-stats.png'. The actual image file in the images directory is flight-stats.png. Image now correctly references the existing PNG file and will display the 50+ countries flight statistics visualization.",
+          "updated_at": "2026-01-01T11:56:26.478774+00:00"
         }
       ]
     }
@@ -46,5 +48,5 @@
     "complexity": "simple",
     "estimated_sessions": 1
   },
-  "last_updated": "2026-01-01T11:56:07.997788+00:00"
+  "last_updated": "2026-01-01T11:56:26.478787+00:00"
 }
