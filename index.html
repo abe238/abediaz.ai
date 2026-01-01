@@ -446,6 +446,58 @@
     }
 
     /* ========================================
+       UTILITIES
+       ======================================== */
+
+    /* Visually Hidden - Hides content visually but keeps it accessible to screen readers */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    /* Skip Link - Visible only when focused for keyboard navigation */
+    .skip-link {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    .skip-link:focus-visible {
+      position: fixed;
+      top: var(--space-2);
+      left: var(--space-2);
+      width: auto;
+      height: auto;
+      padding: var(--space-3) var(--space-4);
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+      white-space: normal;
+      background-color: var(--color-teal-500);
+      color: var(--color-white);
+      font-size: var(--text-base);
+      font-weight: var(--font-bold);
+      text-decoration: none;
+      border: 2px solid var(--color-white);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      z-index: 9999;
+    }
+
+    /* ========================================
        RESPONSIVE
        ======================================== */
 
@@ -545,6 +597,7 @@
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="site-container">
     <!-- Header -->
     <header class="site-header">
@@ -559,7 +612,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="site-main">
+    <main class="site-main" id="main-content" tabindex="-1">
       <!-- Content Area -->
       <article class="content">
         <h2 class="section-title">ABOUT ME</h2>
