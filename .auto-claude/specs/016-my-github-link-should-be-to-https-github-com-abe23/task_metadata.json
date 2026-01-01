@@ -1,0 +1,18 @@
+{
+  "sourceType": "manual",
+  "model": "opus",
+  "thinkingLevel": "high",
+  "isAutoProfile": true,
+  "phaseModels": {
+    "spec": "haiku",
+    "planning": "sonnet",
+    "coding": "opus",
+    "qa": "haiku"
+  },
+  "phaseThinking": {
+    "spec": "medium",
+    "planning": "high",
+    "coding": "medium",
+    "qa": "medium"
+  }
+}

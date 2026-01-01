@@ -1,0 +1,62 @@
+{
+  "complexity": "simple",
+  "workflow_type": "feature",
+  "confidence": 0.95,
+  "reasoning": "Straightforward find-and-replace operation to update a GitHub profile link. Single service, no dependencies, no infrastructure changes, easily verified.",
+
+  "analysis": {
+    "scope": {
+      "estimated_files": 3,
+      "estimated_services": 1,
+      "is_cross_cutting": false,
+      "notes": "URL update likely affects homepage, footer, and possibly config/metadata files. Localized changes."
+    },
+    "integrations": {
+      "external_services": [],
+      "new_dependencies": [],
+      "research_needed": false,
+      "notes": "No external integrations or dependencies required."
+    },
+    "infrastructure": {
+      "docker_changes": false,
+      "database_changes": false,
+      "config_changes": false,
+      "notes": "No infrastructure changes needed for this URL update."
+    },
+    "knowledge": {
+      "patterns_exist": true,
+      "research_required": false,
+      "unfamiliar_tech": [],
+      "notes": "Simple text replacement using standard tools. No new patterns or technologies involved."
+    },
+    "risk": {
+      "level": "low",
+      "concerns": [],
+      "notes": "Minimal risk: just updating a URL. Easy to verify and rollback if needed."
+    }
+  },
+
+  "recommended_phases": [
+    "discovery",
+    "quick_spec",
+    "validation"
+  ],
+
+  "flags": {
+    "needs_research": false,
+    "needs_self_critique": false,
+    "needs_infrastructure_setup": false
+  },
+
+  "validation_recommendations": {
+    "risk_level": "low",
+    "skip_validation": false,
+    "minimal_mode": true,
+    "test_types_required": [],
+    "security_scan_required": false,
+    "staging_deployment_required": false,
+    "reasoning": "Simple URL update with no functional code changes. Validation consists of verifying the link appears correctly throughout the page and the URL is properly formatted."
+  },
+
+  "created_at": "2026-01-01T00:00:00Z"
+}
