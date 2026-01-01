@@ -2,11 +2,14 @@
   "feature": "Add image optimization guidelines and asset documentation",
   "description": "The images/ folder contains a 13.9MB profile image (6510x4286 Canon EOS R photo) which is extremely large for web use. This spec creates documentation for image requirements, optimization practices, and updates HTML for responsive images to dramatically improve page load performance.",
   "created_at": "2026-01-01T09:02:59.441Z",
-  "updated_at": "2026-01-01T09:55:00.000Z",
-  "status": "completed",
-  "planStatus": "approved",
+  "updated_at": "2026-01-01T10:27:41.431Z",
+  "status": "done",
+  "planStatus": "completed",
   "workflow_type": "development",
-  "services_involved": ["docs", "frontend"],
+  "services_involved": [
+    "docs",
+    "frontend"
+  ],
   "spec_file": "spec.md",
   "phases": [
     {
@@ -55,7 +58,9 @@
           "description": "The current profile.jpg is 13.9MB at 6510x4286 resolution. Add specific optimization instructions to IMAGES.md: resize to max 1200px width for main display, create 580px version for inline display (matching content-width CSS variable), target file size under 200KB. Document the process and add a checklist for image optimization.",
           "estimated_minutes": 15,
           "status": "completed",
-          "dependencies": ["1.1"],
+          "dependencies": [
+            "1.1"
+          ],
           "acceptance_criteria": [
             "IMAGES.md includes specific optimization steps for profile.jpg",
             "Recommended dimensions documented (580px width for content display)",
@@ -70,7 +75,9 @@
           "description": "Update index.html profile image tag to include width/height attributes for CLS prevention, add explicit dimensions, and document the srcset pattern for when optimized images are available. Ensure loading='lazy' is maintained.",
           "estimated_minutes": 10,
           "status": "completed",
-          "dependencies": ["2.1"],
+          "dependencies": [
+            "2.1"
+          ],
           "acceptance_criteria": [
             "Profile image tag includes width and height attributes",
             "Dimensions set appropriately for content display",
@@ -92,7 +99,9 @@
           "description": "Ensure all HTML changes are valid and documentation is clear and actionable. Verify that the image optimization workflow is documented step-by-step. Create build-progress.txt with summary of changes.",
           "estimated_minutes": 10,
           "status": "completed",
-          "dependencies": ["2.2"],
+          "dependencies": [
+            "2.2"
+          ],
           "acceptance_criteria": [
             "HTML is valid (no syntax errors)",
             "Documentation includes step-by-step optimization workflow",

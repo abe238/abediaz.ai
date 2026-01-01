@@ -47,5 +47,8 @@
     "complexity": "simple",
     "estimated_sessions": 1
   },
-  "last_updated": "2026-01-01T11:47:36.667641+00:00"
+  "last_updated": "2026-01-01T11:47:36.667641+00:00",
+  "status": "human_review",
+  "planStatus": "review",
+  "updated_at": "2026-01-01T12:01:18.393Z"
 }
