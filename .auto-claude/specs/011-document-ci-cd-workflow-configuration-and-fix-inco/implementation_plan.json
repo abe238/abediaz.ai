@@ -81,7 +81,7 @@
           "subtask_id": "3.1",
           "title": "Validate workflow with syntax check",
           "description": "Run a local validation of the GitHub Actions workflow syntax to ensure it will execute correctly",
-          "status": "pending",
+          "status": "completed",
           "files": [".github/workflows/deploy.yml"],
           "acceptance_criteria": [
             "Workflow passes syntax validation",
