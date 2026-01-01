@@ -1,0 +1,73 @@
+{
+  "feature": "Add Structured Data JSON-LD for Person Schema",
+  "description": "Add Schema.org Person structured data using JSON-LD format in the <head> section. Improves search engine understanding and enables rich snippets for the profile.",
+  "created_at": "2026-01-01T09:01:25.624Z",
+  "updated_at": "2026-01-01T09:03:00.000Z",
+  "status": "in_progress",
+  "planStatus": "approved",
+  "workflow_type": "development",
+  "services_involved": ["index.html"],
+  "phases": [
+    {
+      "id": "phase-1",
+      "name": "Implementation",
+      "description": "Add JSON-LD Person schema to the HTML head section",
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": "1.1",
+          "title": "Add JSON-LD Person Schema to index.html",
+          "description": "Create and add a JSON-LD script block with Schema.org Person structured data to the <head> section. Include: @context, @type (Person), name, jobTitle, worksFor (Organization), url, image, sameAs (social profiles), and description.",
+          "status": "pending",
+          "files": ["index.html"],
+          "acceptance_criteria": [
+            "JSON-LD script tag added to <head> section after Twitter meta tags",
+            "Uses @context: https://schema.org",
+            "Uses @type: Person",
+            "Includes name: Abe Diaz",
+            "Includes jobTitle: Sr. Technical Program Manager",
+            "Includes worksFor with @type Organization and name Amazon (Disaster Relief by Amazon)",
+            "Includes url: https://abediaz.ai/",
+            "Includes image: https://abediaz.ai/images/profile.jpg",
+            "Includes sameAs array with LinkedIn, Twitter, and Instagram URLs",
+            "Includes description from existing meta description"
+          ],
+          "estimated_minutes": 10,
+          "notes": "Schema.org Person schema provides search engines with explicit structured data about the person, enabling rich snippets in search results."
+        }
+      ]
+    },
+    {
+      "id": "phase-2",
+      "name": "Validation",
+      "description": "Verify the JSON-LD is valid and correctly structured",
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": "2.1",
+          "title": "Validate JSON-LD syntax",
+          "description": "Verify that the JSON-LD block is valid JSON and follows Schema.org Person specification. Check that the script tag has correct type attribute.",
+          "status": "pending",
+          "files": ["index.html"],
+          "acceptance_criteria": [
+            "JSON-LD is syntactically valid JSON",
+            "Script tag has type=\"application/ld+json\"",
+            "All required Person properties are present",
+            "URLs are absolute and valid",
+            "worksFor uses nested Organization type correctly"
+          ],
+          "estimated_minutes": 5,
+          "notes": "Can test by extracting the JSON-LD and validating with a JSON parser."
+        }
+      ]
+    }
+  ],
+  "final_acceptance": [
+    "JSON-LD Person schema is present in the <head> section of index.html",
+    "Schema follows Schema.org Person specification",
+    "All person data (name, job, employer, social links, image) is included",
+    "JSON-LD syntax is valid",
+    "HTML page still renders correctly"
+  ],
+  "spec_file": "spec.md"
+}

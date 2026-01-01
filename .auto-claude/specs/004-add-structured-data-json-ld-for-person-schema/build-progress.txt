@@ -1,0 +1,30 @@
+# Build Progress: Add Structured Data JSON-LD for Person Schema
+
+## Status: Planning Complete
+
+### 2026-01-01 - Implementation Plan Created
+
+**Spec Analysis:**
+- Task: Add Schema.org Person structured data using JSON-LD format
+- Location: <head> section of index.html (after existing Twitter meta tags)
+- Purpose: Improve search engine understanding and enable rich snippets
+
+**Existing Data Identified:**
+- Name: Abe Diaz
+- Job Title: Sr. Technical Program Manager
+- Employer: Disaster Relief by Amazon
+- URL: https://abediaz.ai/
+- Image: https://abediaz.ai/images/profile.jpg
+- Social Links:
+  - LinkedIn: https://linkedin.com/in/abediaz
+  - Twitter: https://twitter.com/abe238
+  - Instagram: https://instagram.com/abe238
+- Description: "A passionate technologist. Sr. Technical Program Manager on the Disaster Relief by Amazon team."
+
+**Implementation Plan:**
+- Phase 1: Implementation (1 subtask)
+  - 1.1: Add JSON-LD Person Schema to index.html
+- Phase 2: Validation (1 subtask)
+  - 2.1: Validate JSON-LD syntax
+
+**Next Step:** Begin Phase 1 - Implementation
