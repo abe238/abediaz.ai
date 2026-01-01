@@ -1,37 +1,57 @@
+# GitHub Actions workflow to deploy static site to GitHub Pages
+# This workflow is triggered on every push to main and can also be manually triggered
 name: Deploy to GitHub Pages
 
+# Trigger conditions for this workflow
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+    branches: [ main ]  # Automatically deploy when code is pushed to main branch
+  workflow_dispatch:    # Allow manual triggering from GitHub Actions UI
 
+# Required permissions for GitHub Pages deployment
+# These permissions are needed for the GITHUB_TOKEN used by the workflow
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: read   # Read access to repository contents for checkout
+  pages: write     # Write access to GitHub Pages for deployment
+  id-token: write  # Write access to ID token for authentication with GitHub Pages
 
+# Concurrency control - prevents multiple deployments from running simultaneously
+# This ensures that only one deployment runs at a time and cancels any in-progress
+# deployments when a new one is triggered
 concurrency:
-  group: "pages"
-  cancel-in-progress: true
+  group: "pages"              # Group name for concurrency control
+  cancel-in-progress: true    # Cancel any in-progress deployment when a new one starts
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  # Build job: Prepares the static site files for deployment
+  # For this static site, we simply package the repository contents as-is
+  build:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Check out the repository code
+      # This downloads the repository contents to the GitHub Actions runner
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
+      # Step 2: Upload the static site files as a GitHub Pages artifact
+      # The artifact is uploaded from the repository root (.) which contains
+      # index.html and all static assets (images/, docs/, etc.)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: .  # Upload entire repository root directory
 
+  # Deploy job: Takes the built artifact and deploys it to GitHub Pages
+  # This job only runs after the build job completes successfully
+  deploy:
+    environment:
+      name: github-pages                                # Deployment environment name
+      url: ${{ steps.deployment.outputs.page_url }}    # URL of deployed site (set after deployment)
+    needs: build                                        # This job depends on the build job completing first
+    runs-on: ubuntu-latest
+    steps:
+      # Deploy the artifact to GitHub Pages
+      # This step uses the artifact created in the build job and publishes it
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        id: deployment                  # ID used to reference this step's outputs
+        uses: actions/deploy-pages@v4   # Official GitHub Pages deployment action

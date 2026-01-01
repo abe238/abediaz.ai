@@ -1,25 +1,25 @@
 {
   "active": true,
-  "spec": "009-enhance-contact-section-with-cta-buttons",
-  "state": "complete",
+  "spec": "011-document-ci-cd-workflow-configuration-and-fix-inco",
+  "state": "building",
   "subtasks": {
-    "completed": 6,
+    "completed": 0,
     "total": 6,
-    "in_progress": 0,
+    "in_progress": 1,
     "failed": 0
   },
   "phase": {
     "current": "Verification and Testing",
     "id": null,
-    "total": 1
+    "total": 2
   },
   "workers": {
     "active": 0,
     "max": 1
   },
   "session": {
-    "number": 3,
-    "started_at": "2026-01-01T01:43:01.041887"
+    "number": 5,
+    "started_at": "2026-01-01T01:42:57.523327"
   },
-  "last_update": "2026-01-01T01:50:55.144865"
+  "last_update": "2026-01-01T01:56:00.064215"
 }
