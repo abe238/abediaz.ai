@@ -627,6 +627,34 @@
         color: var(--color-black);
         text-decoration: underline;
       }
+
+      /* Layout Optimization - Single Column for Print */
+      .site-main {
+        display: block;
+        width: 100%;
+      }
+
+      .content {
+        flex: none;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .sidebar {
+        flex: none;
+        max-width: 100%;
+        width: 100%;
+        margin-top: 12pt;
+      }
+
+      .social-links-inline {
+        display: block;
+      }
+
+      .social-links-inline a {
+        display: inline;
+        margin-right: 12pt;
+      }
     }
   </style>
 </head>
