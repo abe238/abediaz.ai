@@ -8,11 +8,12 @@
 - [x] Analyzed index.html structure (header, main, footer)
 - [x] Created implementation_plan.json with 2 phases, 5 subtasks
 - [x] Subtask 1.1: Added skip link HTML as first element after <body> (line 548)
+- [x] Subtask 1.2: Added id="main-content" and tabindex="-1" to <main> element (line 563)
+- [x] Subtask 1.3: Added CSS for skip link (visually hidden, visible on focus with high contrast)
 
 ## Next Steps
-1. Add id="main-content" to <main> element (subtask 1.2)
-2. Add visually-hidden CSS for skip link (subtask 1.3)
-3. Verify implementation meets WCAG 2.4.1
+1. Validate HTML structure (subtask 2.1)
+2. Verify accessibility implementation (subtask 2.2)
 
 ## Technical Notes
 - Single file implementation (index.html)
