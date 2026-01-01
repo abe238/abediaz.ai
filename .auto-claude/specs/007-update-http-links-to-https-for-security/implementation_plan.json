@@ -158,13 +158,15 @@
           "id": "3.2",
           "title": "Add security attributes to footer external links",
           "description": "Add target='_blank' rel='noopener noreferrer' to footer links on lines 596-597",
-          "status": "pending",
+          "status": "completed",
           "file_path": "index.html",
           "technical_details": "Add security attributes to footer LinkedIn and Twitter links",
           "acceptance_criteria": [
             "Footer links have target='_blank'",
             "Footer links have rel='noopener noreferrer'"
-          ]
+          ],
+          "notes": "Successfully added target='_blank' rel='noopener noreferrer' to both footer links (LinkedIn and Twitter) on lines 596-597 of index.html. All footer external links now have proper security attributes to prevent tabnabbing attacks and will open in new tabs.",
+          "updated_at": "2026-01-01T09:52:43.602115+00:00"
         }
       ]
     },
@@ -177,13 +179,15 @@
           "id": "4.1",
           "title": "Verify no HTTP links remain",
           "description": "Run grep/search to confirm no http:// links remain in the codebase (excluding metadata files)",
-          "status": "pending",
+          "status": "completed",
           "file_path": "index.html",
           "technical_details": "Use grep to search for 'http://' in index.html and confirm 0 matches",
           "acceptance_criteria": [
             "No http:// links found in index.html",
             "All external links use HTTPS"
-          ]
+          ],
+          "notes": "Verification complete: No http:// links found in index.html. All HTTP links have been successfully converted to HTTPS. Only metadata files in .auto-claude directory contain http:// references for documentation purposes.",
+          "updated_at": "2026-01-01T09:53:49.560848+00:00"
         },
         {
           "id": "4.2",
@@ -258,5 +262,5 @@
       "to": "https://twitter.com/abe238"
     }
   ],
-  "last_updated": "2026-01-01T09:51:27.970616+00:00"
+  "last_updated": "2026-01-01T09:53:49.560859+00:00"
 }
