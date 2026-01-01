@@ -191,7 +191,7 @@
     "tests_passed": "N/A - Static documentation only",
     "issues": "2 critical/major issues found - see QA_FIX_REQUEST.md"
   },
-  "last_updated": "2026-01-01T10:07:49.579585+00:00",
+  "last_updated": "2026-01-01T10:21:43.577271+00:00",
   "qa_iteration_history": [
     {
       "iteration": 1,
@@ -214,38 +214,37 @@
         }
       ],
       "duration_seconds": 444.97
+    },
+    {
+      "iteration": 3,
+      "status": "rejected",
+      "timestamp": "2026-01-01T10:22:12.949015+00:00",
+      "issues": [
+        {
+          "description": "1 critical issue: Profile image is 13 MB unoptimized (should be <200 KB). Contradicts README performance claims. Script created but requires manual execution due to environment restrictions."
+        }
+      ],
+      "duration_seconds": 534.84
     }
   ],
   "qa_stats": {
-    "total_iterations": 2,
-    "last_iteration": 2,
+    "total_iterations": 3,
+    "last_iteration": 3,
     "last_status": "rejected",
     "issues_by_type": {
-      "unknown": 2
+      "unknown": 3
     }
   },
   "qa_signoff": {
-    "status": "fixes_applied",
-    "qa_session": 2,
-    "fix_session": 2,
-    "timestamp": "2026-01-01T10:15:00.000000+00:00",
-    "issues_fixed": [
+    "status": "rejected",
+    "qa_session": 3,
+    "issues_found": [
       {
-        "title": "Deployment Workflow Fixed for Static Site",
-        "type": "critical",
-        "status": "completed",
-        "fix_commit": "a8b048a",
-        "description": "Removed Node.js setup and npm build steps from .github/workflows/deploy.yml. Changed upload path from ./dist to . (root). Workflow now deploys static files directly."
-      },
-      {
-        "title": "Profile Image Optimization Script Created",
-        "type": "major",
-        "status": "manual_action_required",
-        "fix_commit": "a8b048a",
-        "description": "Created optimize-profile-image.sh script to resize 13MB image to ~200KB. Manual execution required due to tool restrictions. See FIX_NOTES.md for instructions."
+        "description": "1 critical issue: Profile image is 13 MB unoptimized (should be <200 KB). Contradicts README performance claims. Script created but requires manual execution due to environment restrictions."
       }
     ],
-    "ready_for_qa_revalidation": true,
-    "notes": "Fix 1 (CRITICAL) fully completed. Fix 2 (MAJOR) has script ready for manual execution due to environment tool restrictions (sips blocked, PIL install failed)."
+    "tests_passed": {},
+    "timestamp": "2026-01-01T10:21:43.577263+00:00",
+    "ready_for_qa_revalidation": false
   }
 }
