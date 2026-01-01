@@ -1,0 +1,8 @@
+{
+  "sourceType": "ideation",
+  "ideationType": "documentation_gaps",
+  "ideaId": "doc-003",
+  "rationale": "As the site evolves (multi-page structure, modular CSS planned), having documented design system guidelines will ensure consistency. The current inline CSS has good organization with section comments but lacks a standalone design reference.",
+  "category": "documentation",
+  "priority": "medium"
+}

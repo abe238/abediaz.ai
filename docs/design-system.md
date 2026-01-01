@@ -1794,9 +1794,809 @@ FLEXBOX PATTERNS
 
 ### Typography Components
 
-*This section will document heading variants (h1, h2.tagline, h2.section-title, h3), paragraph styles, and link styles.*
+Typography components are the semantic HTML elements styled with the design system's typography tokens. These components establish content hierarchy, improve readability, and provide consistent styling for text elements throughout the site.
 
-**Coming Soon:** Typography component documentation with usage examples.
+#### Design Rationale
+
+Typography components serve as the foundation for content structure and hierarchy. The system provides:
+
+1. **Clear Visual Hierarchy** - Multiple heading variants create distinct levels of importance
+2. **Semantic HTML** - Uses proper heading elements (h1, h2, h3) for accessibility and SEO
+3. **Purposeful Variants** - Different heading styles serve specific use cases (tagline vs section-title)
+4. **Consistent Link Behavior** - Two link variants (default and accent) provide flexible interaction patterns
+5. **Readability-Focused** - Paragraph styles optimized for comfortable reading
+
+**Philosophy:**
+
+The typography component system balances visual impact with readability. Large, bold headings (h1) create immediate visual anchors, while subtle variants (h2.tagline) provide supporting context without competing for attention. The dual link system allows for both subtle integration (default black links) and high-visibility calls-to-action (accent teal links).
+
+---
+
+#### Component Overview
+
+| Component | Font Family | Size | Weight | Color | Transform | Primary Use Case |
+|-----------|-------------|------|--------|-------|-----------|------------------|
+| **h1** | Oswald | 80px | Bold | Black | UPPERCASE | Main page title, site branding |
+| **h2.tagline** | Helvetica Neue | 14px | Light | Gray-600 | none | Subtitle, de-emphasized secondary text |
+| **h2.section-title** | Oswald | 14px | Bold | Black | UPPERCASE | Major section headings |
+| **h3** | Oswald | 16px | Bold | Gray-700 | UPPERCASE | Subsection headings, widget titles |
+| **p** | Helvetica Neue | 13px | Normal | Gray-700 | none | Body text, paragraphs |
+| **a** (default) | Helvetica Neue | inherited | Normal | Black | none | Default inline links |
+| **a.accent-link** | Helvetica Neue | inherited | Normal | Teal-500 | none | Emphasized links, CTAs |
+
+---
+
+#### `h1` - Main Heading
+
+**Purpose:** The primary page heading, typically used for site branding or page title. Creates maximum visual impact with large size and bold uppercase styling.
+
+**CSS Implementation:**
+
+```css
+h1 {
+  font-family: var(--font-heading);     /* Oswald */
+  font-size: var(--text-4xl);           /* 80px */
+  font-weight: var(--font-bold);        /* 700 */
+  line-height: 1;
+  color: var(--color-black);
+  text-transform: uppercase;
+  letter-spacing: 0;
+  margin-bottom: 0;
+}
+
+h1 a {
+  color: inherit;                        /* Inherits black */
+  text-decoration: none;
+}
+
+h1 a:hover {
+  color: var(--color-teal-500);
+}
+```
+
+**HTML Structure:**
+
+```html
+<!-- Site branding (current implementation) -->
+<h1><a href="/">ABE DIAZ</a></h1>
+
+<!-- Standalone heading -->
+<h1>PAGE TITLE</h1>
+```
+
+**Styling Details:**
+
+- **Font**: Oswald at 80px creates dramatic visual impact
+- **UPPERCASE**: Maximizes Oswald's geometric strength
+- **Black color**: Highest contrast for maximum prominence
+- **Line-height 1**: Tight spacing for compact, powerful appearance
+- **Zero margin-bottom**: Allows tight pairing with h2.tagline
+- **Zero letter-spacing**: Oswald is designed for tight uppercase tracking
+
+**Responsive Behavior:**
+
+| Breakpoint | Font Size | Letter Spacing | Notes |
+|------------|-----------|----------------|-------|
+| Desktop (>768px) | **80px** | 0 | Full impact size |
+| Tablet (≤768px) | **48px** | 0 | Reduced for medium screens |
+| Mobile (≤480px) | **32px** | -1px | Dramatically reduced, tighter spacing |
+| Small Mobile (≤360px) | **28px** | -1px | Further reduction for tiny screens |
+
+The dramatic size reduction (80px → 32px → 28px) prevents horizontal overflow on mobile devices. The negative letter-spacing (-1px) on mobile compensates for the reduced size, maintaining visual density.
+
+**Usage Guidelines:**
+
+- ✅ Use **once per page** as the primary heading (site branding or page title)
+- ✅ Always use UPPERCASE text to match the styling
+- ✅ Use semantic h1 element (not styled divs)
+- ✅ Keep text short and impactful (2-5 words typically)
+- ✅ Links in h1 inherit black color and hover to teal
+- ❌ Don't use multiple h1 elements on one page (bad for SEO)
+- ❌ Don't use for body content or section headings (use h2.section-title instead)
+- ❌ Don't override font-size outside responsive breakpoints
+- ❌ Don't add margin-bottom (designed to pair tightly with h2.tagline)
+
+**Accessibility Notes:**
+
+- **Semantic HTML**: h1 element provides proper document structure for screen readers
+- **High Contrast**: Black on white (21:1 ratio) exceeds WCAG AAA
+- **Large Text**: 80px is highly readable for users with low vision
+- **Hover States**: Links have clear color change (black → teal)
+
+---
+
+#### `h2.tagline` - Tagline/Subtitle
+
+**Purpose:** A light, de-emphasized subtitle that appears directly below h1. Used for taglines, subtitles, or secondary descriptive text.
+
+**CSS Implementation:**
+
+```css
+h2.tagline {
+  font-family: var(--font-body);        /* Helvetica Neue */
+  font-size: var(--text-md);            /* 14px */
+  font-weight: var(--font-light);       /* 300 */
+  color: var(--color-gray-600);         /* #666666 */
+  text-transform: none;
+  margin-top: var(--space-1);           /* 4px */
+}
+```
+
+**HTML Structure:**
+
+```html
+<h1><a href="/">ABE DIAZ</a></h1>
+<h2 class="tagline">Seattle/Tech/Evangelist</h2>
+```
+
+**Styling Details:**
+
+- **Font**: Helvetica Neue (body font) creates contrast with Oswald h1
+- **Light weight (300)**: Creates subtle, de-emphasized appearance
+- **Gray-600 color**: Secondary color reduces visual prominence
+- **14px size**: Larger than body text (13px) but much smaller than h1
+- **Sentence case**: No text-transform (unlike other headings)
+- **4px margin-top**: Tight spacing pairs with h1 (which has margin-bottom: 0)
+
+**Responsive Behavior:**
+
+```css
+/* Mobile (≤480px) */
+h2.tagline {
+  font-size: var(--text-base);  /* 14px → 14px (no change, but var updates) */
+}
+```
+
+On mobile, the tagline effectively remains 14px but uses the --text-base variable which updates to 14px, keeping it consistent with body text.
+
+**Usage Guidelines:**
+
+- ✅ Use immediately after h1 as a subtitle or tagline
+- ✅ Use sentence case or lowercase (not UPPERCASE)
+- ✅ Keep text concise (2-7 words typically)
+- ✅ Use to add context or personality to h1
+- ✅ Only use font-light (300) weight - available in Helvetica Neue
+- ❌ Don't use for section headings (use h2.section-title instead)
+- ❌ Don't use multiple taglines per page
+- ❌ Don't use without a preceding h1
+- ❌ Don't use for body content or emphasis
+
+**Best Practices:**
+
+**When to use h2.tagline:**
+- Site tagline/motto below site name
+- Subtitle describing page purpose
+- Descriptive text adding context to h1
+- Personal descriptor (e.g., "Seattle/Tech/Evangelist")
+
+**When NOT to use h2.tagline:**
+- Section headings (use h2.section-title)
+- Body content (use p)
+- Navigation or links
+
+**Accessibility Notes:**
+
+- **Color Contrast**: Gray-600 on white (5.7:1) meets WCAG AA for all text sizes
+- **Semantic h2**: Properly structured heading hierarchy (h1 → h2)
+- **Light Weight**: May be harder to read for some users - use sparingly
+- **Supporting Content**: Provides context to h1 without being critical content
+
+---
+
+#### `h2.section-title` - Section Headings
+
+**Purpose:** Major section headings that divide content into distinct areas. Bold, uppercase Oswald headings create clear visual breaks and content organization.
+
+**CSS Implementation:**
+
+```css
+h2.section-title {
+  font-family: var(--font-heading);     /* Oswald */
+  font-size: var(--text-md);            /* 14px */
+  font-weight: var(--font-bold);        /* 700 */
+  color: var(--color-black);
+  text-transform: uppercase;
+  margin-bottom: var(--space-5);        /* 20px */
+}
+```
+
+**HTML Structure:**
+
+```html
+<h2 class="section-title">ABOUT ME</h2>
+<p>Section content...</p>
+
+<h2 class="section-title">RECENT WORK</h2>
+<p>More content...</p>
+```
+
+**Styling Details:**
+
+- **Font**: Oswald (heading font) matches h1 for consistency
+- **Bold weight (700)**: Strong visual presence
+- **Black color**: High emphasis, matches h1
+- **14px size**: Smaller than h1 but distinct from body text
+- **UPPERCASE**: Consistent with other Oswald headings
+- **20px margin-bottom**: Generous spacing separates heading from content
+- **Line-height 1**: Tight, compact (inherited from h1-h6 reset)
+
+**Responsive Behavior:**
+
+```css
+/* Mobile (≤480px) */
+h2.section-title {
+  font-size: var(--text-base);          /* 14px → 14px (no effective change) */
+  margin-bottom: var(--space-4);        /* 20px → 16px */
+}
+```
+
+On mobile:
+- Font size effectively stays 14px (--text-base updates to 14px on mobile)
+- Bottom margin reduces from 20px to 16px to conserve vertical space
+
+**Usage Guidelines:**
+
+- ✅ Use for major section divisions (About, Work, Contact, etc.)
+- ✅ Always use UPPERCASE text
+- ✅ Use multiple times per page to organize content
+- ✅ Maintain heading hierarchy (h1 → h2.section-title → h3)
+- ✅ Use semantic h2 element
+- ❌ Don't use for the main page title (use h1)
+- ❌ Don't use for subtle subtitles (use h2.tagline)
+- ❌ Don't use sentence case (breaks design consistency)
+- ❌ Don't skip heading levels (h1 → h3 without h2)
+
+**Best Practices:**
+
+**When to use h2.section-title:**
+- Major content sections (About, Portfolio, Services, Contact)
+- Blog post sections or chapters
+- Content category headings
+- Primary content divisions
+
+**Common Patterns:**
+
+```html
+<!-- Content section pattern -->
+<h2 class="section-title">ABOUT ME</h2>
+<p>Paragraph content...</p>
+<p>More content...</p>
+
+<!-- Multiple sections -->
+<h2 class="section-title">EXPERIENCE</h2>
+<p>Experience details...</p>
+
+<h2 class="section-title">EDUCATION</h2>
+<p>Education details...</p>
+```
+
+**Accessibility Notes:**
+
+- **Proper Hierarchy**: h2 follows h1, maintains logical document structure
+- **High Contrast**: Black on white (21:1) exceeds WCAG AAA
+- **Semantic HTML**: Screen readers identify section structure
+- **Adequate Spacing**: 20px margin-bottom creates clear visual separation
+
+---
+
+#### `h3` - Subsection Headings
+
+**Purpose:** Subsection headings within content sections. Smaller than h2.section-title but still visually distinct, used for organizing content within major sections.
+
+**CSS Implementation:**
+
+```css
+h3 {
+  font-family: var(--font-heading);     /* Oswald */
+  font-size: var(--text-lg);            /* 16px */
+  font-weight: var(--font-bold);        /* 700 */
+  line-height: 1;
+  color: var(--color-gray-700);         /* #555555 */
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);        /* 12px */
+}
+```
+
+**HTML Structure:**
+
+```html
+<h2 class="section-title">SERVICES</h2>
+
+<h3>WEB DEVELOPMENT</h3>
+<p>Description of web development services...</p>
+
+<h3>CONSULTING</h3>
+<p>Description of consulting services...</p>
+```
+
+**Styling Details:**
+
+- **Font**: Oswald (heading font)
+- **16px size**: Larger than body (13px) and h2.section-title (14px) for hierarchy
+- **Bold weight (700)**: Strong emphasis
+- **Gray-700 color**: Slightly less prominent than black headings (creates hierarchy)
+- **UPPERCASE**: Consistent with other Oswald headings
+- **12px margin-bottom**: Moderate spacing before content
+- **Line-height 1**: Tight, compact appearance
+
+**Note on Hierarchy:** Interestingly, h3 (16px) is visually **larger** than h2.section-title (14px). The hierarchy is maintained through color (black vs gray-700) and positioning rather than size alone. This creates visual variety while maintaining clear structure.
+
+**Responsive Behavior:**
+
+```css
+/* Mobile (≤480px) */
+h3 {
+  font-size: var(--text-md);  /* 16px → 14px */
+}
+```
+
+On mobile:
+- Font size reduces from 16px to 14px to conserve space
+- This brings h3 to the same size as h2.section-title on mobile
+- Hierarchy maintained through color and context
+
+**Usage Guidelines:**
+
+- ✅ Use within sections for subsection headings
+- ✅ Use after h2.section-title in heading hierarchy
+- ✅ Always use UPPERCASE text
+- ✅ Use for widget titles, contact sections, content subdivisions
+- ✅ Multiple h3 elements can appear within one h2 section
+- ❌ Don't use as the primary page heading (use h1)
+- ❌ Don't use for major sections (use h2.section-title)
+- ❌ Don't skip heading levels in hierarchy
+- ❌ Don't use sentence case
+
+**Common Use Cases:**
+
+- Widget titles (Subscribe, Connect, Recent Posts)
+- Contact section headings (Contact Me, Follow Me)
+- Content subdivisions within major sections
+- FAQ question headings
+- Service or product category names
+
+**Best Practices:**
+
+```html
+<!-- Within a major section -->
+<h2 class="section-title">PORTFOLIO</h2>
+
+<h3>WEB PROJECTS</h3>
+<p>Project descriptions...</p>
+
+<h3>MOBILE APPS</h3>
+<p>App descriptions...</p>
+
+<!-- Widget titles -->
+<aside class="sidebar">
+  <div class="widget">
+    <h3>SUBSCRIBE</h3>
+    <p>Get updates...</p>
+  </div>
+</aside>
+```
+
+**Accessibility Notes:**
+
+- **Proper Hierarchy**: h3 follows h2, maintains document outline
+- **Color Contrast**: Gray-700 on white (7.4:1) meets WCAG AAA
+- **Semantic Structure**: Screen readers navigate by heading levels
+- **Adequate Spacing**: 12px margin-bottom separates heading from content
+
+---
+
+#### `p` - Paragraphs
+
+**Purpose:** Standard body text and paragraph content. Optimized for comfortable reading with appropriate line-height and spacing.
+
+**CSS Implementation:**
+
+```css
+body {
+  font-family: var(--font-body);        /* Helvetica Neue */
+  font-size: var(--text-base);          /* 13px */
+  font-weight: var(--font-normal);      /* 400 */
+  line-height: 1.75;
+  color: var(--color-gray-700);         /* #555555 */
+}
+
+p {
+  margin-bottom: 13px;
+}
+```
+
+**HTML Structure:**
+
+```html
+<p>This is a standard paragraph with body text. It uses Helvetica Neue at 13px with comfortable line-height of 1.75 for optimal readability.</p>
+
+<p>Paragraphs automatically have 13px margin-bottom for vertical rhythm.</p>
+```
+
+**Styling Details:**
+
+- **Font**: Helvetica Neue (body font)
+- **13px size**: Optimized for comfortable reading at typical screen distances
+- **Normal weight (400)**: Standard reading weight
+- **Gray-700 color**: Softer than black, reduces eye strain for body text
+- **Line-height 1.75**: Generous spacing for comfortable reading (exceeds WCAG 1.5 recommendation)
+- **13px margin-bottom**: Matches font size for consistent vertical rhythm
+
+**Responsive Behavior:**
+
+```css
+/* Mobile (≤480px) */
+:root {
+  --text-base: 14px;  /* Increases from 13px */
+}
+
+body {
+  line-height: 1.6;   /* Slightly tighter from 1.75 */
+}
+
+p {
+  margin-bottom: var(--space-4);  /* 16px instead of 13px */
+}
+```
+
+On mobile:
+- Font size increases to 14px for better readability on small screens
+- Line-height reduces to 1.6 to conserve vertical space
+- Margin-bottom increases to 16px (--space-4) for clearer separation
+
+**Usage Guidelines:**
+
+- ✅ Use for all body text and content paragraphs
+- ✅ Rely on inherited body styles (no need to style p directly)
+- ✅ Use gray-700 color for standard text (inherited)
+- ✅ Maintain 1.75 line-height for readability
+- ❌ Don't use paragraphs for headings (use h1, h2, h3)
+- ❌ Don't override line-height to less than 1.5 (reduces readability)
+- ❌ Don't use black color for body text (too harsh for long reading)
+
+**Line Length & Readability:**
+
+With content-width of 580px and 13px font size:
+- Approximately **60-75 characters per line**
+- Falls within optimal range (50-75 chars) for comfortable reading
+- Prevents overly long lines that reduce comprehension
+
+**Best Practices:**
+
+- Keep paragraphs focused (3-5 sentences typically)
+- Use paragraph breaks to create visual rhythm
+- Don't override inherited body styles unless necessary
+- Maintain consistent spacing between paragraphs
+
+**Accessibility Notes:**
+
+- **Color Contrast**: Gray-700 on white (7.4:1) exceeds WCAG AAA for body text
+- **Readable Size**: 13px exceeds minimum recommended (12px)
+- **Generous Line-Height**: 1.75 improves readability for dyslexic users
+- **Mobile Increase**: Text increases to 14px on mobile prevents squinting
+
+---
+
+#### `a` - Default Links
+
+**Purpose:** Standard inline links within content. Default styling uses black color for subtle integration, with teal hover state for clear interaction feedback.
+
+**CSS Implementation:**
+
+```css
+a {
+  color: var(--color-black);
+  text-decoration: none;
+  transition: color var(--transition-normal);  /* 0.2s ease */
+}
+
+a:hover {
+  color: var(--color-teal-500);
+}
+```
+
+**HTML Structure:**
+
+```html
+<p>I work at <a href="https://amazon.com">Amazon</a> on the Disaster Relief team.</p>
+
+<h1><a href="/">ABE DIAZ</a></h1>
+```
+
+**Styling Details:**
+
+- **Default color**: Black (same as headings) for subtle integration
+- **No underline**: text-decoration: none (cleaner appearance)
+- **Smooth transition**: 0.2s color change on hover
+- **Hover color**: Teal-500 provides clear interactive feedback
+- **Inherits font**: Uses surrounding text font (Oswald in headings, Helvetica in body)
+
+**Interaction States:**
+
+| State | Color | Underline | Notes |
+|-------|-------|-----------|-------|
+| Default | Black | None | Subtle integration with text |
+| Hover | Teal-500 | None | Clear interactive feedback |
+| Focus | Teal-500 | None | Same as hover (browser default focus ring appears) |
+| Visited | Black | None | No visited state styling |
+
+**Usage Guidelines:**
+
+- ✅ Use for inline links within paragraphs
+- ✅ Use for navigation links
+- ✅ Use for heading links (h1, h3, etc.)
+- ✅ Rely on hover state to indicate interactivity
+- ✅ Use when links should integrate subtly with content
+- ❌ Don't add underlines (already styled without)
+- ❌ Don't override transition timing (maintains consistency)
+- ❌ Don't use for high-emphasis CTAs (use .accent-link instead)
+
+**When to Use Default Links:**
+
+- Navigation menu items
+- Inline references within paragraphs
+- Footer links
+- Site branding (h1 link)
+- Secondary links that shouldn't draw primary attention
+
+**Accessibility Considerations:**
+
+**Potential Issue:** Links without underlines can be hard to distinguish from surrounding text, especially for users with color blindness.
+
+**Mitigations in this system:**
+- **Hover state**: Clear color change to teal provides feedback
+- **Context**: Links typically appear in contexts where they're expected (navigation, known clickable areas)
+- **Color change**: Black → teal on hover is noticeable
+- **Consider**: Adding underlines for better accessibility, or use .accent-link for critical links
+
+**Best Practice:** For critical links or calls-to-action within body text, use `.accent-link` instead, which provides better visual distinction.
+
+**Accessibility Notes:**
+
+- **Color Contrast**: Black on white (21:1) exceeds WCAG AAA
+- **Hover Feedback**: Teal color change provides clear interaction cue
+- **Keyboard Accessible**: Focus states work (browser default focus ring)
+- **Limitation**: Lack of underline may reduce discoverability - consider context
+
+---
+
+#### `.accent-link` - Emphasized Links
+
+**Purpose:** High-visibility links that stand out from surrounding content. Used for calls-to-action, external links, and emphasized references that should draw attention.
+
+**CSS Implementation:**
+
+```css
+.accent-link {
+  color: var(--color-teal-500);
+}
+
+.accent-link:hover {
+  text-decoration: underline;
+}
+```
+
+**HTML Structure:**
+
+```html
+<p>Check out my LinkedIn page at <a href="http://linkedin.com/in/abediaz" class="accent-link">http://linkedin.com/in/abediaz</a>.</p>
+
+<p>I graduated from <a href="http://uprm.edu/" class="accent-link">UPR-Mayaguez</a> with a degree in Computer Engineering.</p>
+```
+
+**Styling Details:**
+
+- **Teal color**: Highly visible, indicates interactivity
+- **No underline by default**: Clean appearance
+- **Underline on hover**: Adds additional interaction feedback
+- **Inherits transition**: Uses 0.2s transition from base `a` styles
+- **Stacks with `a`**: Extends default link behavior
+
+**Interaction States:**
+
+| State | Color | Underline | Notes |
+|-------|-------|-----------|-------|
+| Default | Teal-500 | None | High visibility |
+| Hover | Teal-500 | Underline | Additional emphasis on hover |
+| Focus | Teal-500 | Underline (on hover) | Follows hover behavior |
+| Visited | Teal-500 | None | No visited state distinction |
+
+**Usage Guidelines:**
+
+- ✅ Use for calls-to-action within body text
+- ✅ Use for external links that should stand out
+- ✅ Use for emphasized references or important links
+- ✅ Use when you want links to be immediately visible
+- ✅ Use for URLs displayed as text (e.g., http://linkedin.com/in/abediaz)
+- ❌ Don't overuse - reduces effectiveness if everything is accented
+- ❌ Don't use for navigation (too prominent)
+- ❌ Don't use in headings (already have hover states)
+
+**When to Use .accent-link:**
+
+1. **External references** - Links to other websites, institutions, products
+2. **Calls-to-action** - "Check out my work", "Follow me on Twitter"
+3. **Emphasized links** - Links that are important to the narrative
+4. **Displayed URLs** - When showing the actual URL as link text
+5. **Social media links** - Links to LinkedIn, Twitter, Instagram
+
+**When NOT to Use .accent-link:**
+
+1. Navigation menu items (use default styling)
+2. Footer links (usually de-emphasized)
+3. H1 branding links (use default)
+4. Every link in a paragraph (dilutes emphasis)
+
+**Comparison: Default vs Accent Links:**
+
+```html
+<!-- Default link - subtle integration -->
+<p>I work at <a href="https://amazon.com">Amazon</a>.</p>
+<!-- Link is black, blends with text, teal on hover -->
+
+<!-- Accent link - high visibility -->
+<p>Connect with me on <a href="http://linkedin.com/in/abediaz" class="accent-link">LinkedIn</a>.</p>
+<!-- Link is teal, stands out, underlines on hover -->
+```
+
+**Best Practices:**
+
+- Use accent links sparingly (2-5 per page maximum)
+- Reserve for truly important or actionable links
+- Balance with default links to create hierarchy
+- Use for social media and portfolio links
+- Consider user intent - what do you want users to click?
+
+**Accessibility Notes:**
+
+- **High Visibility**: Teal color (3.3:1 contrast) is noticeable but below WCAG AA for small text
+- **Size Matters**: Teal meets WCAG AA for large text (18px+) only
+- **Underline on Hover**: Provides additional non-color cue
+- **Better for Color Blindness**: Stands out more than default black links
+- **Recommendation**: Accent links are more accessible than default links due to color distinction
+
+**Accessibility Contrast:**
+
+- Teal-500 on white: **3.3:1** (WCAG AA for large text only)
+- Use accent links for larger text (14px+) or ensure underline for smaller sizes
+- The underline on hover helps users with color vision deficiencies
+
+---
+
+#### Typography Components Best Practices
+
+**Heading Hierarchy:**
+
+- ✅ Always use h1 once per page as the primary heading
+- ✅ Follow logical hierarchy: h1 → h2 → h3 (don't skip levels)
+- ✅ Use h2.tagline for subtitles, h2.section-title for sections
+- ✅ Use h3 for subsections within h2.section-title areas
+- ✅ Use semantic HTML for accessibility and SEO
+- ❌ Don't use multiple h1 elements
+- ❌ Don't skip heading levels (e.g., h1 → h3 without h2)
+- ❌ Don't use headings for styling (use CSS classes on p or div)
+
+**Typography Pairing:**
+
+```html
+<!-- Correct heading hierarchy -->
+<h1><a href="/">ABE DIAZ</a></h1>
+<h2 class="tagline">Seattle/Tech/Evangelist</h2>
+
+<h2 class="section-title">ABOUT ME</h2>
+<p>Paragraph content...</p>
+
+<h3>BACKGROUND</h3>
+<p>More content...</p>
+```
+
+**Link Usage:**
+
+- ✅ Use default links for navigation and subtle inline references
+- ✅ Use accent links for CTAs and emphasized references
+- ✅ Limit accent links to 2-5 per page
+- ✅ Ensure links have clear hover states
+- ✅ Use descriptive link text ("read the article" not "click here")
+- ❌ Don't make everything an accent link
+- ❌ Don't override link transitions
+- ❌ Don't use vague link text
+
+**Paragraph Spacing:**
+
+- ✅ Let paragraphs inherit body styles
+- ✅ Maintain 13px (or 14px mobile) margin-bottom
+- ✅ Keep line-height at 1.75 (1.6 mobile)
+- ✅ Use content-width (580px) for optimal line length
+- ❌ Don't reduce line-height below 1.5
+- ❌ Don't create overly long paragraphs (reduces scannability)
+
+**Responsive Typography:**
+
+- ✅ Test all typography at mobile breakpoints (480px, 360px)
+- ✅ Trust the responsive CSS variables (--text-4xl, --text-base)
+- ✅ Verify heading hierarchy remains clear on mobile
+- ✅ Ensure adequate touch targets for links (minimum 44px)
+- ❌ Don't override responsive font sizes without testing
+- ❌ Don't create layouts that cause horizontal scrolling
+
+---
+
+#### Typography Accessibility Summary
+
+| Element | Color | Contrast | WCAG Level | Notes |
+|---------|-------|----------|------------|-------|
+| h1 | Black on white | 21:1 | AAA | All sizes |
+| h2.tagline | Gray-600 on white | 5.7:1 | AA | All sizes |
+| h2.section-title | Black on white | 21:1 | AAA | All sizes |
+| h3 | Gray-700 on white | 7.4:1 | AAA | 14px+ |
+| p | Gray-700 on white | 7.4:1 | AAA | 13px+ |
+| a (default) | Black on white | 21:1 | AAA | Lacks underline - may reduce discoverability |
+| a.accent-link | Teal-500 on white | 3.3:1 | AA (Large) | 18px+ only; underline on hover helps |
+
+**Accessibility Best Practices:**
+
+1. **Use Semantic HTML**: Always use h1, h2, h3, p elements (not styled divs)
+2. **Maintain Hierarchy**: Logical heading structure helps screen reader navigation
+3. **Sufficient Contrast**: All text meets WCAG AA minimum (most exceed AAA)
+4. **Readable Sizes**: All text 13px+ exceeds minimum recommendations
+5. **Line-Height**: 1.75 for body text exceeds WCAG 1.5 recommendation
+6. **Link Distinction**: Consider adding underlines or using accent links for critical CTAs
+7. **Focus States**: Ensure keyboard users can see focus (browser default focus rings present)
+
+---
+
+#### Typography Components Quick Reference
+
+```
+HEADINGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+h1                Oswald 80px Bold UPPERCASE Black
+                  (48px tablet, 32px mobile, 28px small mobile)
+                  Use: Main page title, site branding (once per page)
+
+h2.tagline        Helvetica 14px Light Gray-600
+                  Use: Subtitle below h1, de-emphasized secondary text
+
+h2.section-title  Oswald 14px Bold UPPERCASE Black
+                  Use: Major section headings, content divisions
+
+h3                Oswald 16px Bold UPPERCASE Gray-700
+                  (14px mobile)
+                  Use: Subsections, widget titles, contact headings
+
+BODY TEXT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+p                 Helvetica 13px Normal Gray-700 (lh: 1.75)
+                  (14px mobile, lh: 1.6)
+                  Margin-bottom: 13px (16px mobile)
+                  Use: All body text and paragraphs
+
+LINKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+a (default)       Color: Black → Teal-500 on hover
+                  No underline, 0.2s transition
+                  Use: Navigation, inline references, subtle links
+
+a.accent-link     Color: Teal-500, underline on hover
+                  Use: CTAs, emphasized links, external references
+                  Limit: 2-5 per page
+
+HIERARCHY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+h1 > h2.section-title > h3 > p
+     h2.tagline (pairs with h1)
+
+RESPONSIVE CHANGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Mobile (≤480px):
+  h1: 80px → 32px (letter-spacing: -1px)
+  h3: 16px → 14px
+  p: 13px → 14px, line-height: 1.75 → 1.6
+  h2.section-title margin-bottom: 20px → 16px
+
+Small Mobile (≤360px):
+  h1: 32px → 28px
+```
 
 ---
 

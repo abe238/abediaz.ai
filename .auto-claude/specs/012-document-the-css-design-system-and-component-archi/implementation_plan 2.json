@@ -49,31 +49,27 @@
           "id": "1.3",
           "title": "Document typography system",
           "description": "Document font families (Oswald, Helvetica Neue, System), font sizes, font weights, and their intended usage",
-          "status": "completed",
+          "status": "pending",
           "acceptance_criteria": [
             "Font stack documentation for heading, body, and system fonts",
             "Font size scale documented (xs through 4xl)",
             "Font weight options documented",
             "Typography pairing guidelines"
           ],
-          "estimated_effort": "small",
-          "notes": "Comprehensive typography documentation completed. Documented all three font families (Oswald for headings, Helvetica Neue for body, System fonts for UI elements) with detailed font stacks and fallback strategies. Documented complete font size scale (xs: 11px, sm: 12px, base: 13px, md: 14px, lg: 16px, 4xl: 80px) with responsive behavior and usage guidelines. Documented font weight system (light: 300, normal: 400, bold: 700) with specific use cases. Added comprehensive typography pairing guidelines showing how Oswald and Helvetica Neue work together to create hierarchy. Included line-height and letter-spacing documentation, responsive typography behavior across all breakpoints, accessibility considerations (readability, cognitive accessibility, responsive accessibility), and practical usage examples. All acceptance criteria met: font stack documentation for heading/body/system fonts, font size scale documented with responsive values, font weight options documented with usage guidelines, and typography pairing guidelines with hierarchy principles. Commit: 2158a8e",
-          "updated_at": "2026-01-01T09:46:06.480223+00:00"
+          "estimated_effort": "small"
         },
         {
           "id": "1.4",
           "title": "Document spacing and layout tokens",
           "description": "Document the spacing scale, layout dimensions, border radii, and transition values",
-          "status": "completed",
+          "status": "pending",
           "acceptance_criteria": [
             "4px-based spacing scale documented (space-1 through space-10)",
             "Layout dimensions documented (content-width, sidebar-width, container-max, gap)",
             "Border radius options documented",
             "Transition values and when to use each"
           ],
-          "estimated_effort": "small",
-          "notes": "Comprehensive spacing and layout documentation completed. Documented all 9 spacing values (space-1 through space-header) with 4px base unit system, multipliers, and usage guidelines. Added layout dimensions (content-width: 580px, sidebar-width: 240px, container-max: 860px, gap: 40px) with visual ASCII diagram showing layout math (580 + 40 + 240 = 860). Documented border radii (radius-sm: 2px, radius-md: 3px) with design philosophy explaining minimal aesthetic. Added transition values (transition-fast: 0.15s, transition-normal: 0.2s) with timing rationale, easing choice explanation, and property-specific guidelines. Included responsive behavior documentation (space-header adjusts: 70px \u2192 50px \u2192 32px across breakpoints). Created comprehensive best practices sections with Do's and Don'ts for spacing, layout, border radii, and transitions. Added quick reference section for rapid lookup of all values. Followed existing documentation patterns from color palette and typography sections with tables, rationale, accessibility notes, and usage guidelines. All acceptance criteria met: 4px-based spacing scale documented, layout dimensions documented with rationale, border radius options documented, and transition values documented with usage guidelines. Commit: 4375bf0",
-          "updated_at": "2026-01-01T09:50:02.036126+00:00"
+          "estimated_effort": "small"
         }
       ]
     },
@@ -86,16 +82,14 @@
           "id": "2.1",
           "title": "Document layout components",
           "description": "Document structural layout components: site-container, site-header, site-nav, site-main, content, sidebar, site-footer",
-          "status": "completed",
+          "status": "pending",
           "acceptance_criteria": [
             "Each layout component documented with purpose",
             "HTML structure examples provided",
             "CSS class requirements documented",
             "Flex/grid layout patterns explained"
           ],
-          "estimated_effort": "medium",
-          "notes": "Comprehensive layout components documentation completed. Documented all 7 structural components: .site-container (outer wrapper with max-width centering), .site-header (header with responsive top padding 70px\u219250px\u219232px), .site-nav (flexbox horizontal navigation with 20px gaps), .site-main (flexbox two-column wrapper), .content (primary 580px content area), .sidebar (secondary 240px sidebar area), and .site-footer (footer with border-top separator). Each component documented with: purpose/rationale, CSS implementation with code examples, HTML structure examples, layout behavior details, responsive adaptations across all breakpoints, typography/styling specifications, usage guidelines with Do's and Don'ts, and accessibility considerations. Added comprehensive sections: component overview table, layout patterns (single-column and two-column), layout best practices, responsive behavior summary table showing padding/spacing changes across breakpoints, accessibility considerations (semantic HTML, reading order, touch targets), and flexbox patterns quick reference. All acceptance criteria met: each layout component documented with purpose, HTML structure examples provided for all components, CSS class requirements documented with code blocks, and flex/grid layout patterns explained in detail. Commit: b08e3f5",
-          "updated_at": "2026-01-01T09:53:40.569320+00:00"
+          "estimated_effort": "medium"
         },
         {
           "id": "2.2",
@@ -250,5 +244,5 @@
     },
     "components_count": 15
   },
-  "last_updated": "2026-01-01T09:53:40.569333+00:00"
+  "last_updated": "2026-01-01T09:11:57.476599+00:00"
 }
