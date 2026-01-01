@@ -125,7 +125,7 @@
             "Add .share-btn:focus-visible with visible focus ring",
             "Focus should work with existing border styles"
           ],
-          "status": "pending",
+          "status": "completed",
           "priority": "medium",
           "estimated_complexity": "simple"
         },
@@ -137,7 +137,7 @@
           "acceptance_criteria": [
             "Add .like-btn:focus-visible with visible focus ring"
           ],
-          "status": "pending",
+          "status": "completed",
           "priority": "medium",
           "estimated_complexity": "simple"
         },
@@ -180,7 +180,7 @@
     }
   ],
   "total_subtasks": 10,
-  "completed_subtasks": 6,
+  "completed_subtasks": 8,
   "final_acceptance": [
     "All interactive elements (links, buttons, inputs) have visible focus states",
     "Focus indicators use consistent styling via CSS variables",

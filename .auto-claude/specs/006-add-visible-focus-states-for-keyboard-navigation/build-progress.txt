@@ -178,8 +178,96 @@ a:focus-visible {
 
 ---
 
+#### ✅ Subtask 3.3: Add focus styles for share buttons (.share-btn)
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `.share-btn:focus-visible` rule at lines 408-411 in index.html
+- Uses CSS custom properties from Phase 1 for consistent styling
+- Focus ring works with existing border styles
+
+**Acceptance Criteria Met:**
+✅ Added .share-btn:focus-visible with visible focus ring
+✅ Focus works with existing border styles (outline appears outside the border)
+
+**Code Implementation:**
+```css
+.share-btn:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- Follows the same pattern as base focus styles (subtasks 2.1, 2.2, 2.3)
+- Uses CSS custom properties from Phase 1 for consistency
+- Focus ring appears outside the existing border
+- Teal focus ring provides excellent contrast for keyboard navigation
+- Hover state changes border color, focus state adds outline (both can be active simultaneously)
+
+---
+
+#### ✅ Subtask 3.4: Add focus styles for like buttons (.like-btn)
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `.like-btn:focus-visible` rule at lines 434-437 in index.html
+- Uses CSS custom properties from Phase 1 for consistent styling
+- Focus ring works with existing hover state
+
+**Acceptance Criteria Met:**
+✅ Added .like-btn:focus-visible with visible focus ring
+
+**Code Implementation:**
+```css
+.like-btn:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- Follows the same pattern as base focus styles (subtasks 2.1, 2.2, 2.3)
+- Uses CSS custom properties from Phase 1 for consistency
+- Hover state changes color to teal, focus state adds teal outline
+- Both states can be active simultaneously for better UX
+- Teal focus ring provides excellent contrast for keyboard navigation
+
+---
+
+#### ✅ Subtask 3.5: Add focus styles for header/title link (h1 a)
+**Status:** Completed
+**Date:** 2026-01-01
+
+**Implementation Details:**
+- Added `h1 a:focus-visible` rule at lines 147-150 in index.html
+- Uses CSS custom properties from Phase 1 for consistent styling
+- Focus state is distinguishable from hover state (outline vs color change)
+
+**Acceptance Criteria Met:**
+✅ Added h1 a:focus-visible with visible focus indicator
+✅ Focus is visible against white background (teal-500 provides high contrast)
+
+**Code Implementation:**
+```css
+h1 a:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+```
+
+**Notes:**
+- Follows the same pattern as base focus styles (subtasks 2.1, 2.2, 2.3)
+- Uses CSS custom properties from Phase 1 for consistency
+- Hover state changes text color to teal, focus state adds teal outline
+- Both states can be active simultaneously for better UX
+- Teal focus ring provides excellent contrast for keyboard navigation
+- Main site title link (ABE DIAZ) is now fully keyboard accessible
+
+---
+
 ## Next Steps
-- Phase 3: Component Focus Styles (continued)
-  - Subtask 3.3: Add focus styles for share buttons (.share-btn)
-  - Subtask 3.4: Add focus styles for like buttons (.like-btn)
-  - Subtask 3.5: Add focus styles for header/title link (h1 a)
+- Phase 4: Testing and Validation
+  - Subtask 4.1: Document focus testing checklist
