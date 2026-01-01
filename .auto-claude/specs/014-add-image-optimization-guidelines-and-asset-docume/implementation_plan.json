@@ -69,14 +69,15 @@
           "title": "Update HTML with responsive image markup",
           "description": "Update index.html profile image tag to include width/height attributes for CLS prevention, add explicit dimensions, and document the srcset pattern for when optimized images are available. Ensure loading='lazy' is maintained.",
           "estimated_minutes": 10,
-          "status": "pending",
+          "status": "completed",
           "dependencies": ["2.1"],
           "acceptance_criteria": [
             "Profile image tag includes width and height attributes",
             "Dimensions set appropriately for content display",
             "loading='lazy' attribute maintained",
             "Comment added noting future srcset optimization"
-          ]
+          ],
+          "notes": "Updated index.html profile image with width='580' height='382' attributes for CLS prevention. Dimensions calculated from original 6510x4286 image maintaining aspect ratio. Added comprehensive comment documenting future srcset pattern with 580w and 1200w variants. Maintained loading='lazy' attribute. Committed in 5dabcd4."
         }
       ]
     },
