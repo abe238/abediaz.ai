@@ -542,6 +542,40 @@
         padding: 0 var(--space-3);
       }
     }
+
+    /* ========================================
+       PRINT STYLES
+       ======================================== */
+    @media print {
+      /* Page Setup */
+      @page {
+        margin: 0.75in;
+        size: letter;
+      }
+
+      /* Base Reset for Print */
+      * {
+        background: transparent !important;
+        color: var(--color-black) !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      /* Body Typography */
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 12pt;
+        line-height: 1.5;
+        color: var(--color-black);
+        background: var(--color-white);
+      }
+
+      /* Container */
+      .site-container {
+        max-width: 100%;
+        padding: 0;
+      }
+    }
   </style>
 </head>
 <body>
