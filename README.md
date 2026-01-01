@@ -229,6 +229,75 @@ This is useful for redeploying after configuration changes or troubleshooting de
 
 ---
 
+## Project Structure
+
+This project follows a **simple, flat architecture** optimized for static site hosting. Here's a breakdown of the repository structure:
+
+```
+abediaz.ai/
+├── index.html                    # Main website file (single-page portfolio)
+├── CNAME                         # Custom domain configuration for GitHub Pages
+├── README.md                     # Project documentation (this file)
+├── .gitignore                    # Git ignore rules
+│
+├── images/                       # Image assets for the portfolio
+│   ├── profile.jpg              # Profile photo (main header image)
+│   └── flight-stats.png         # Flight statistics visualization
+│
+├── docs/                         # Additional documentation
+│   └── abe-diaz-profile.md      # Detailed professional profile and background
+│
+└── .github/                      # GitHub configuration and automation
+    └── workflows/
+        └── deploy.yml            # GitHub Actions deployment workflow
+```
+
+### Key Files & Directories
+
+#### `index.html`
+The **entire website** in a single, self-contained HTML file (~16 KB). Contains:
+- All HTML markup with semantic structure
+- Inline CSS with custom properties and responsive media queries
+- Google Fonts integration (Oswald typeface)
+- Meta tags for SEO, Open Graph, and Twitter Cards
+- No external JavaScript—pure HTML/CSS
+
+**Design decision:** Single-file architecture eliminates build complexity while maintaining full functionality for a portfolio site.
+
+#### `CNAME`
+Custom domain configuration file containing `abediaz.ai`. This tells GitHub Pages to:
+- Serve the site at the custom domain instead of `*.github.io`
+- Handle SSL certificate provisioning automatically
+- Redirect traffic appropriately
+
+#### `images/`
+Static image assets referenced by `index.html`:
+- **`profile.jpg`** - Professional headshot displayed in the hero section
+- **`flight-stats.png`** - Visualization showing travel statistics (hobbies section)
+
+**Note:** Images are optimized for web delivery with appropriate dimensions and compression.
+
+#### `docs/`
+Contains supplementary documentation:
+- **`abe-diaz-profile.md`** - Extended professional profile with detailed background, experience, and interests. This provides additional context beyond what's displayed on the main site.
+
+#### `.github/workflows/`
+GitHub Actions automation:
+- **`deploy.yml`** - CI/CD pipeline that builds and deploys the site to GitHub Pages on every push to `main`. See the [Deployment](#deployment) section for details.
+
+### What's NOT in this repository
+
+To keep the repository clean and focused:
+- ❌ **No build tools** - No webpack, Vite, or bundlers
+- ❌ **No dependencies** - No `node_modules`, `package.json`, or npm packages
+- ❌ **No frameworks** - No React, Vue, or other JavaScript frameworks
+- ❌ **No preprocessors** - No Sass, Less, or PostCSS
+- ❌ **No backend** - No server-side code or APIs
+
+This minimalist approach prioritizes **simplicity, performance, and maintainability**.
+
+---
+
 ## Overview
 
 This is the personal portfolio website for **Abe Diaz**, a passionate technologist and Sr. Technical Program Manager on the Disaster Relief by Amazon team. The site serves as a professional online presence showcasing technical expertise, leadership experience, and personal interests.

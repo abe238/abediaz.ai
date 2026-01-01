@@ -1,0 +1,25 @@
+{
+  "active": true,
+  "spec": "010-create-readme-md-with-project-overview-and-setup-i",
+  "state": "building",
+  "subtasks": {
+    "completed": 5,
+    "total": 8,
+    "in_progress": 1,
+    "failed": 0
+  },
+  "phase": {
+    "current": "README Creation",
+    "id": null,
+    "total": 6
+  },
+  "workers": {
+    "active": 0,
+    "max": 1
+  },
+  "session": {
+    "number": 3,
+    "started_at": "2026-01-01T01:42:58.724839"
+  },
+  "last_update": "2026-01-01T01:46:40.248977"
+}

@@ -1,0 +1,34 @@
+{
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  },
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Read(./**)",
+      "Write(./**)",
+      "Edit(./**)",
+      "Glob(./**)",
+      "Grep(./**)",
+      "Read(/Users/abediaz/Documents/GitHub/abediaz.ai/.worktrees/010-create-readme-md-with-project-overview-and-setup-i/**)",
+      "Write(/Users/abediaz/Documents/GitHub/abediaz.ai/.worktrees/010-create-readme-md-with-project-overview-and-setup-i/**)",
+      "Edit(/Users/abediaz/Documents/GitHub/abediaz.ai/.worktrees/010-create-readme-md-with-project-overview-and-setup-i/**)",
+      "Glob(/Users/abediaz/Documents/GitHub/abediaz.ai/.worktrees/010-create-readme-md-with-project-overview-and-setup-i/**)",
+      "Grep(/Users/abediaz/Documents/GitHub/abediaz.ai/.worktrees/010-create-readme-md-with-project-overview-and-setup-i/**)",
+      "Read(/Users/abediaz/Documents/GitHub/abediaz.ai/.worktrees/010-create-readme-md-with-project-overview-and-setup-i/.auto-claude/specs/010-create-readme-md-with-project-overview-and-setup-i/**)",
+      "Write(/Users/abediaz/Documents/GitHub/abediaz.ai/.worktrees/010-create-readme-md-with-project-overview-and-setup-i/.auto-claude/specs/010-create-readme-md-with-project-overview-and-setup-i/**)",
+      "Edit(/Users/abediaz/Documents/GitHub/abediaz.ai/.worktrees/010-create-readme-md-with-project-overview-and-setup-i/.auto-claude/specs/010-create-readme-md-with-project-overview-and-setup-i/**)",
+      "Bash(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "mcp__context7__resolve-library-id(*)",
+      "mcp__context7__get-library-docs(*)",
+      "mcp__graphiti-memory__search_nodes(*)",
+      "mcp__graphiti-memory__search_facts(*)",
+      "mcp__graphiti-memory__add_episode(*)",
+      "mcp__graphiti-memory__get_episodes(*)",
+      "mcp__graphiti-memory__get_entity_edge(*)"
+    ]
+  }
+}
