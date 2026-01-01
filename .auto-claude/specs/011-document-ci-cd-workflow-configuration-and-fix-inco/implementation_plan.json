@@ -62,7 +62,7 @@
           "subtask_id": "2.2",
           "title": "Add workflow documentation comments",
           "description": "Add inline comments to deploy.yml explaining each step for future maintainability",
-          "status": "pending",
+          "status": "completed",
           "files": [".github/workflows/deploy.yml"],
           "acceptance_criteria": [
             "Each workflow job has a descriptive comment",
