@@ -1,0 +1,12 @@
+{
+  "sourceType": "ideation",
+  "ideationType": "ui_ux_improvements",
+  "ideaId": "uiux-001",
+  "rationale": "The current CSS removes focus outlines on email inputs with 'outline: none' and provides no focus styling for links or buttons. This makes keyboard navigation impossible for users who cannot use a mouse, including those with motor impairments.",
+  "category": "ui_ux",
+  "uiuxCategory": "accessibility",
+  "affectedFiles": [
+    "index.html"
+  ],
+  "problemSolved": "Only one focus style exists (email input) which removes the default outline. Links and the navigation have no visible focus states. The CSS line 303-304 shows: .email-form input[type=\"email\"]:focus { outline: none; }"
+}

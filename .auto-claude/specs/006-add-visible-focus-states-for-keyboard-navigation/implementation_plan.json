@@ -49,7 +49,7 @@
             "Focus style should not interfere with hover states",
             "Use outline (not box-shadow) for better accessibility tool support"
           ],
-          "status": "completed",
+          "status": "pending",
           "priority": "high",
           "estimated_complexity": "simple"
         },
@@ -63,7 +63,7 @@
             "Focus indicator should be visible against white background",
             "Should work well with the teal text color"
           ],
-          "status": "completed",
+          "status": "pending",
           "priority": "high",
           "estimated_complexity": "simple"
         },
@@ -180,7 +180,7 @@
     }
   ],
   "total_subtasks": 10,
-  "completed_subtasks": 3,
+  "completed_subtasks": 1,
   "final_acceptance": [
     "All interactive elements (links, buttons, inputs) have visible focus states",
     "Focus indicators use consistent styling via CSS variables",
