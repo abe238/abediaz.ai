@@ -378,6 +378,347 @@ The following content exists in `abe-diaz-profile.md` but is **intentionally exc
 
 ## Maintenance Guidelines
 
+### Content Update Priority & Sequencing
+
+> **TL;DR:** For factual updates → Update docs first. For creative/personal content → Update website first. Always sync both within 24 hours.
+
+#### The Golden Rule: Update Order Matters
+
+Different types of content have different update priorities. Follow this decision tree:
+
+```
+┌─────────────────────────────────────────┐
+│   What type of content are you updating? │
+└────────────┬────────────────────────────┘
+             │
+        ┌────┴────┐
+        │         │
+   FACTUAL    CREATIVE/PERSONAL
+   UPDATES    UPDATES
+        │         │
+        ↓         ↓
+   ┌────────┐  ┌────────┐
+   │ DOCS   │  │WEBSITE │
+   │ FIRST  │  │ FIRST  │
+   └───┬────┘  └────┬───┘
+       │            │
+       ↓            ↓
+   ┌────────┐  ┌────────┐
+   │WEBSITE │  │  DOCS  │
+   │ SECOND │  │ SECOND │
+   └────────┘  └────────┘
+```
+
+---
+
+#### Scenario 1: Factual/Professional Updates → **DOCS FIRST**
+
+**Update Order:** `abe-diaz-profile.md` → `index.html` → Verify alignment
+
+**When to use this workflow:**
+- Job title, role, or company changes
+- Work experience updates (dates, responsibilities)
+- Education or certification additions
+- Contact information changes
+- Achievements, awards, or metrics
+- Press coverage or publications
+- Skills or expertise updates
+
+**Why docs first?**
+- `abe-diaz-profile.md` is the **authoritative source of truth**
+- Establishes the factual record before public presentation
+- Prevents discrepancies from being introduced
+- Creates audit trail for professional history
+- Enables verification before website publication
+
+**Step-by-step process:**
+
+1. **Update `abe-diaz-profile.md` FIRST** ⭐ PRIMARY SOURCE
+   ```
+   ✓ Update the relevant section (Work Experience, Education, etc.)
+   ✓ Verify dates, titles, and facts are accurate
+   ✓ Add "Last updated: [Month Year]" at top of document
+   ✓ Save and commit changes with descriptive message
+   ```
+
+2. **Review and sync to `index.html` SECOND** 📝 DERIVATIVE
+   ```
+   ✓ Identify which website sections need updates (use mapping table)
+   ✓ Update website content to match profile.md facts
+   ✓ Transform data into narrative form (website is story-focused)
+   ✓ Update meta description and SEO tags if needed
+   ✓ Verify all changes align with minimalist philosophy
+   ```
+
+3. **Verify alignment THIRD** ✅ QUALITY CHECK
+   ```
+   ✓ Check that facts match between both sources
+   ✓ Ensure dates, titles, companies are identical
+   ✓ Test all links and references
+   ✓ Preview website changes locally
+   ✓ Update CONTENT-STRATEGY.md → Version History section
+   ```
+
+**Example:**
+```
+Change: Promotion to "Senior Manager - Disaster Relief"
+
+Step 1: Update abe-diaz-profile.md
+  → Work Experience table: Add new role with Feb 2025 date
+  → Identity table: Update current title
+  → Professional Summary: Update if mission changed
+
+Step 2: Update index.html
+  → Line 7 (meta description): Update title
+  → Line 576 (main bio): Update role description
+  → Verify Open Graph tags
+
+Step 3: Verify
+  → Confirm title matches across both files
+  → Test website preview
+  → Update CONTENT-STRATEGY.md Version History
+```
+
+---
+
+#### Scenario 2: Creative/Personal Updates → **WEBSITE FIRST**
+
+**Update Order:** `index.html` → `abe-diaz-profile.md` → Document change
+
+**When to use this workflow:**
+- Personal interests or hobbies (Likes section)
+- Creative biography text or storytelling
+- Website design or layout changes
+- New external link curation
+- Personal philosophy statements
+- Narrative tone adjustments
+
+**Why website first?**
+- `index.html` is the **public presentation layer**
+- Personal interests are curated for public consumption
+- Creative content is written for the website context
+- Profile.md serves as archive, not creative source
+- Allows experimentation with public messaging
+
+**Step-by-step process:**
+
+1. **Update `index.html` FIRST** 🌐 PUBLIC FACING
+   ```
+   ✓ Modify the relevant section (Likes, About Me, etc.)
+   ✓ Ensure new content fits minimalist philosophy
+   ✓ Add/update external links if needed
+   ✓ Test responsive design and mobile view
+   ✓ Preview changes before publishing
+   ```
+
+2. **Archive to `abe-diaz-profile.md` SECOND** 📚 HISTORICAL RECORD
+   ```
+   ✓ Update Personal section to match website
+   ✓ Maintain comprehensive list (profile can have more detail)
+   ✓ Keep historical interests even if removed from website
+   ✓ Add date note for when interest was added/changed
+   ```
+
+3. **Document the change THIRD** 📋 MAINTENANCE LOG
+   ```
+   ✓ Update CONTENT-STRATEGY.md → Version History
+   ✓ Note what was changed and when
+   ✓ Update mapping table if structure changed significantly
+   ```
+
+**Example:**
+```
+Change: Add new interest "Sailing" to Likes section
+
+Step 1: Update index.html
+  → Line 580: Add "Sailing" with link to sailing.org
+  → Ensure list stays concise (5-6 items max)
+  → Remove older interest if list gets too long
+
+Step 2: Update abe-diaz-profile.md
+  → Personal → Interests: Add "Sailing" with context
+  → Keep removed interest in profile (archive purpose)
+
+Step 3: Document
+  → Update Version History with change date
+```
+
+---
+
+#### Scenario 3: Critical Corrections → **WEBSITE IMMEDIATELY, DOCS NEXT**
+
+**Update Order:** `index.html` (immediate) → `abe-diaz-profile.md` (within 1 hour) → Document issue
+
+**When to use this workflow:**
+- Factual errors discovered on live site
+- Broken critical links
+- Misinformation that could cause confusion
+- Privacy or security concerns
+- Legal or compliance issues
+
+**Why website first in emergencies?**
+- `index.html` has **highest visibility** (public facing)
+- Minimize duration of incorrect information
+- Fix public issue before updating internal docs
+- Exception to normal "docs first" rule for factual updates
+
+**Step-by-step process:**
+
+1. **FIX `index.html` IMMEDIATELY** 🚨 EMERGENCY
+   ```
+   ✓ Correct the error or broken content
+   ✓ Test fix works correctly
+   ✓ Deploy/publish changes immediately
+   ✓ Note what was changed and why
+   ```
+
+2. **UPDATE `abe-diaz-profile.md` WITHIN 1 HOUR** 📝 RESTORE ALIGNMENT
+   ```
+   ✓ Correct the same information in profile.md
+   ✓ Ensure both sources now match
+   ✓ Add note about when error was corrected
+   ```
+
+3. **DOCUMENT IN KNOWN ISSUES** ⚠️ TRANSPARENCY
+   ```
+   ✓ Add to CONTENT-STRATEGY.md → Known Issues (if needed)
+   ✓ Add dated entry to Version History
+   ✓ Note: Error, correction date, and what was fixed
+   ✓ Review why error occurred (prevent future issues)
+   ```
+
+**Example:**
+```
+Issue: Website shows old employer name after acquisition
+
+Step 1: Fix index.html immediately
+  → Update company name throughout site
+  → Test all references and links
+  → Publish changes
+
+Step 2: Update abe-diaz-profile.md within 1 hour
+  → Correct Work Experience section
+  → Ensure dates and facts align with website
+
+Step 3: Document the correction
+  → Add to Version History: "Corrected employer name [date]"
+  → Review content sync process to prevent future drift
+```
+
+---
+
+#### Keeping Content in Sync: Best Practices
+
+##### Daily Habits
+- ✅ **Make updates in pairs**: Never update one source without considering the other
+- ✅ **Use the mapping table**: Reference Website Section Mapping to find related content
+- ✅ **Commit with context**: Git commit messages should mention which sources were updated
+- ✅ **Set reminders**: If you update one source, schedule the second update within 24 hours
+
+##### Weekly Habits
+- ✅ **Spot check alignment**: Compare 3-5 random facts between docs and website
+- ✅ **Test all links**: Run link checker on both profile.md and index.html
+- ✅ **Review Known Issues**: Check if any documented issues can be resolved
+
+##### Monthly Habits
+- ✅ **Full content audit**: Review all sections for alignment (use mapping table as checklist)
+- ✅ **Update Version History**: Document all changes made during the month
+- ✅ **Check external sources**: Verify LinkedIn profile matches docs/website
+
+##### Quarterly Habits
+- ✅ **Strategic review**: Evaluate if any unused profile content should be added to website
+- ✅ **Philosophy check**: Ensure website still follows minimalist principles
+- ✅ **Link rot scan**: Check all external links in both sources for broken URLs
+
+##### Annual Habits
+- ✅ **Complete overhaul review**: Full audit of content strategy effectiveness
+- ✅ **Archive old content**: Move outdated information to archive section in profile.md
+- ✅ **Redesign consideration**: Evaluate if website structure still serves goals
+
+---
+
+#### Content Synchronization Checklist
+
+Use this checklist every time you make a content update:
+
+**Before Making Changes:**
+- [ ] Identify update type: Factual, Creative, or Emergency?
+- [ ] Determine correct update order based on type
+- [ ] Review mapping table to identify all affected sections
+- [ ] Check if change affects SEO or meta tags
+
+**During Updates:**
+- [ ] Update primary source first (based on type)
+- [ ] Transform content appropriately for each format
+  - Docs: Structured, comprehensive, data-focused
+  - Website: Narrative, minimalist, story-focused
+- [ ] Maintain consistent facts across both sources
+- [ ] Update "Last updated" dates
+
+**After Updates:**
+- [ ] Update secondary source within 24 hours
+- [ ] Verify facts match between both sources
+- [ ] Test all new/modified links
+- [ ] Update CONTENT-STRATEGY.md → Version History
+- [ ] Update mapping table if structure changed
+- [ ] Commit changes with descriptive messages
+
+**Quality Verification:**
+- [ ] Spelling and grammar check
+- [ ] Factual accuracy verification
+- [ ] Link testing (internal and external)
+- [ ] Mobile/responsive design check (if HTML changed)
+- [ ] Open Graph preview (if meta tags changed)
+- [ ] Alignment spot check (3-5 random facts)
+
+---
+
+#### Common Pitfalls to Avoid
+
+❌ **DON'T:**
+- Update website without planning to update docs (creates drift)
+- Make factual changes to website before updating authoritative docs
+- Skip documentation in Version History ("I'll remember" = you won't)
+- Batch multiple unrelated updates without tracking each one
+- Copy-paste between sources without transforming for context
+- Leave one source outdated for more than 24 hours
+- Update LinkedIn without syncing to internal docs
+
+✅ **DO:**
+- Follow the decision tree for every update
+- Set calendar reminders to sync second source
+- Use git commits to create audit trail
+- Review mapping table before and after changes
+- Transform content appropriately for each format
+- Document reasons when deviating from guidelines
+- Keep a update log (Version History serves this purpose)
+
+---
+
+#### Troubleshooting Common Sync Issues
+
+**Issue: "I updated the website but forgot to update the docs"**
+- ✅ Solution: Set a recurring calendar task "Sync website → docs" 24 hours after website update
+- ✅ Prevention: Use a git pre-commit hook reminder to check if both sources need updates
+
+**Issue: "The content drifted and now I don't know which is correct"**
+- ✅ Solution: Check LinkedIn profile as tiebreaker for job titles/dates, use most recent update for other content
+- ✅ Prevention: Update Version History immediately when making changes (creates timestamp trail)
+
+**Issue: "I made a creative change to website bio and docs feel out of sync"**
+- ✅ Solution: Creative/narrative changes don't need perfect sync—docs can remain factual while website is creative
+- ✅ Prevention: Remember that website is story-focused, profile.md is data-focused. Identical facts ≠ identical text.
+
+**Issue: "Too many discrepancies accumulated, where do I start?"**
+- ✅ Solution:
+  1. Fix critical factual errors first (job title, dates)
+  2. Use mapping table to systematically check each section
+  3. Document all found discrepancies in Known Issues
+  4. Fix high-visibility website content before internal docs
+  5. Update Version History with "Content sync audit completed [date]"
+
+---
+
 ### Source of Truth Hierarchy
 
 1. **For current role/title information:**
