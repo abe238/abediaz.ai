@@ -7,6 +7,37 @@
 
 ---
 
+## Tech Stack
+
+This portfolio is intentionally minimalist, prioritizing **performance**, **maintainability**, and **simplicity** over framework complexity.
+
+### Core Technologies
+
+- **Static HTML/CSS** - Single-file architecture (`index.html`) with inline CSS for zero build overhead and maximum performance
+- **Oswald Google Font** - Bold, modern typeface from Google Fonts for heading typography
+- **Responsive Design** - Mobile-first CSS with media queries supporting desktop (768px+), tablet, and mobile (480px, 360px) breakpoints
+- **CSS Custom Properties** - Design system variables for colors, typography, spacing, and layout consistency
+- **Semantic HTML5** - Accessible markup with proper meta tags, Open Graph, and Twitter Card support
+
+### Deployment & Infrastructure
+
+- **GitHub Pages** - Static site hosting with custom domain support
+- **GitHub Actions** - Automated CI/CD pipeline that builds and deploys on every push to `main`
+- **Custom Domain** - Professional branding via `abediaz.ai` with DNS configuration through CNAME
+
+### Design Philosophy
+
+**Why static HTML?**
+- ⚡ **Performance** - Near-instant page loads with no JavaScript framework overhead
+- 🔒 **Security** - Minimal attack surface with no backend or database
+- 💰 **Cost** - Free hosting via GitHub Pages
+- 🛠️ **Simplicity** - Easy to maintain, update, and understand
+- ♿ **Accessibility** - Works everywhere, including low-bandwidth connections and assistive technologies
+
+This architecture demonstrates that not every project needs a complex framework—sometimes the simplest solution is the best solution.
+
+---
+
 ## Overview
 
 This is the personal portfolio website for **Abe Diaz**, a passionate technologist and Sr. Technical Program Manager on the Disaster Relief by Amazon team. The site serves as a professional online presence showcasing technical expertise, leadership experience, and personal interests.
