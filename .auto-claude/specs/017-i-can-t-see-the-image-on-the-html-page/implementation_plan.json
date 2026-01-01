@@ -1,0 +1,50 @@
+{
+  "feature": "Fix Missing Flight Statistics Image",
+  "workflow_type": "simple",
+  "total_phases": 1,
+  "recommended_workers": 1,
+  "phases": [
+    {
+      "phase": 1,
+      "name": "Fix Image Display",
+      "description": "Locate the HTML page with flight statistics and fix the missing image",
+      "depends_on": [],
+      "subtasks": [
+        {
+          "id": "subtask-1-1",
+          "description": "Locate HTML file containing flight statistics and identify broken image reference",
+          "service": "main",
+          "status": "completed",
+          "files_to_create": [],
+          "files_to_modify": [],
+          "patterns_from": [],
+          "verification": {
+            "type": "manual",
+            "run": "Find HTML file with flight stats and locate img/image element in code"
+          },
+          "notes": "Located HTML file (./index.html) containing flight statistics visualization. Identified broken image reference: src attribute references './images/flight-stats.jpg' but the actual file is './images/flight-stats.png'. File extension mismatch is causing the image to fail to load. Ready for fix in subtask-1-2.",
+          "updated_at": "2026-01-01T11:56:07.997781+00:00"
+        },
+        {
+          "id": "subtask-1-2",
+          "description": "Fix image path or restore missing image file to display flight statistics correctly",
+          "service": "main",
+          "status": "pending",
+          "files_to_create": [],
+          "files_to_modify": [],
+          "patterns_from": [],
+          "verification": {
+            "type": "manual",
+            "run": "Open HTML page in browser and verify flight statistics image displays with all 50+ countries visible"
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "created_at": "2026-01-01T11:53:19.729Z",
+    "complexity": "simple",
+    "estimated_sessions": 1
+  },
+  "last_updated": "2026-01-01T11:56:07.997788+00:00"
+}
