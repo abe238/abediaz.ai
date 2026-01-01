@@ -1,25 +1,25 @@
 {
   "active": true,
-  "spec": "004-add-structured-data-json-ld-for-person-schema",
-  "state": "building",
+  "spec": "005-add-print-stylesheet",
+  "state": "complete",
   "subtasks": {
-    "completed": 0,
-    "total": 0,
-    "in_progress": 1,
+    "completed": 8,
+    "total": 8,
+    "in_progress": 0,
     "failed": 0
   },
   "phase": {
-    "current": "Implementation",
+    "current": "Page Breaks and Final Polish",
     "id": null,
-    "total": 1
+    "total": 2
   },
   "workers": {
     "active": 0,
     "max": 1
   },
   "session": {
-    "number": 2,
-    "started_at": "2026-01-01T01:03:19.419201"
+    "number": 5,
+    "started_at": "2026-01-01T01:43:06.592005"
   },
-  "last_update": "2026-01-01T01:04:59.986801"
+  "last_update": "2026-01-01T01:56:05.210106"
 }

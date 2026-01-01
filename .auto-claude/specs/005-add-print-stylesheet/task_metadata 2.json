@@ -1,0 +1,12 @@
+{
+  "sourceType": "ideation",
+  "ideationType": "code_improvements",
+  "ideaId": "ci-005",
+  "rationale": "The responsive @media query pattern is already established (tablet, mobile, small phones). Adding @media print follows the exact same pattern structure. For a portfolio targeting recruiters, printability is valuable.",
+  "category": "feature",
+  "estimatedEffort": "small",
+  "complexity": "small",
+  "affectedFiles": [
+    "index.html"
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "feature": "Add Print Stylesheet",
+  "description": "Add print-optimized CSS using @media print. Hides navigation, adjusts typography for paper, ensures links are readable, and optimizes layout for printing the resume/profile page.",
+  "created_at": "2026-01-01T09:01:37.539Z",
+  "updated_at": "2026-01-01T09:05:00.000Z",
+  "status": "in_progress",
+  "planStatus": "complete",
+  "workflow_type": "development",
+  "services_involved": [
+    "index.html"
+  ],
+  "spec_file": "spec.md",
+  "phases": [
+    {
+      "id": "phase-1",
+      "name": "Print Base Styles",
+      "description": "Add @media print query with base styles for paper output",
+      "subtasks": [
+        {
+          "id": "1.1",
+          "title": "Add @media print query block with page setup",
+          "description": "Create the @media print block after existing responsive queries. Set page margins, background removal, and base typography adjustments for paper (black text, white background, serif body font for readability)",
+          "status": "completed",
+          "files": [
+            "index.html"
+          ],
+          "notes": "Added @media print block with @page margins (0.75in), background removal (transparent), serif font (Georgia), 12pt font size, black text, white background, and full-width container. Follows existing responsive media query pattern.",
+          "updated_at": "2026-01-01T09:06:31.422720+00:00"
+        },
+        {
+          "id": "1.2",
+          "title": "Hide non-essential interactive elements",
+          "description": "Hide navigation (.site-nav), share buttons (.share-section, .share-btn), like buttons (.like-section, .like-btn), email forms (.email-form), and any interactive elements that don't make sense on paper",
+          "status": "completed",
+          "files": [
+            "index.html"
+          ],
+          "notes": "Added display: none !important rules for .site-nav, .share-section, .share-btn, .like-section, .like-btn, and .email-form to hide all interactive elements in print output. Follows existing print stylesheet pattern with proper comments and formatting.",
+          "updated_at": "2026-01-01T09:08:46.121027+00:00"
+        }
+      ]
+    },
+    {
+      "id": "phase-2",
+      "name": "Typography and Layout Optimization",
+      "description": "Optimize typography and layout for paper printing",
+      "subtasks": [
+        {
+          "id": "2.1",
+          "title": "Adjust typography for print",
+          "description": "Set appropriate font sizes in pt units for print, adjust line-height for paper readability, ensure headings are properly sized, and use print-friendly colors (black text)",
+          "status": "completed",
+          "files": [
+            "index.html"
+          ],
+          "notes": "Added comprehensive typography adjustments for print: h1=24pt, h2.tagline=11pt, h2.section-title=14pt, h3=12pt. Set line-height to 1.2 for headings and 1.6 for paragraphs. Added orphans/widows controls, page-break-after: avoid for headings, and ensured black text with underlined links for print clarity. All spacing uses pt units appropriate for print media.",
+          "updated_at": "2026-01-01T09:11:39.896099+00:00"
+        },
+        {
+          "id": "2.2",
+          "title": "Optimize layout for single-column print",
+          "description": "Remove flex/grid layouts, set content to full width, remove max-width constraints, and ensure proper spacing for paper margins",
+          "status": "pending",
+          "files": [
+            "index.html"
+          ],
+          "notes": "Print should be simple single-column flow"
+        }
+      ]
+    },
+    {
+      "id": "phase-3",
+      "name": "Links and Images",
+      "description": "Make links readable on paper and optimize images",
+      "subtasks": [
+        {
+          "id": "3.1",
+          "title": "Show link URLs after link text",
+          "description": "Use CSS ::after pseudo-element to display link URLs in parentheses after link text for important links. Exclude internal navigation links and keep URLs concise",
+          "status": "pending",
+          "files": [
+            "index.html"
+          ],
+          "notes": "Use a[href]:not([href^='#'])::after pattern"
+        },
+        {
+          "id": "3.2",
+          "title": "Optimize images for print",
+          "description": "Ensure profile image prints at reasonable size, hide decorative images if needed, and add page-break rules to prevent awkward image splits",
+          "status": "pending",
+          "files": [
+            "index.html"
+          ],
+          "notes": "Use break-inside: avoid for images, max-width: 100%"
+        }
+      ]
+    },
+    {
+      "id": "phase-4",
+      "name": "Page Breaks and Final Polish",
+      "description": "Add page break controls and final refinements",
+      "subtasks": [
+        {
+          "id": "4.1",
+          "title": "Add page break controls",
+          "description": "Prevent orphans/widows, avoid breaks inside important sections, ensure headings don't appear alone at bottom of page, and add break-after for natural section divisions",
+          "status": "pending",
+          "files": [
+            "index.html"
+          ],
+          "notes": "Use break-before, break-after, break-inside properties"
+        },
+        {
+          "id": "4.2",
+          "title": "Test and refine print output",
+          "description": "Manual testing using browser print preview, verify all elements display correctly, ensure contact information is visible, and make final adjustments",
+          "status": "pending",
+          "files": [
+            "index.html"
+          ],
+          "notes": "Document any browser-specific considerations"
+        }
+      ]
+    }
+  ],
+  "qa_signoff": {
+    "status": "pending",
+    "tests_passed": "",
+    "issues": ""
+  },
+  "final_acceptance": [
+    "Print preview shows clean single-column layout",
+    "Navigation and interactive elements are hidden",
+    "Links show URLs in parentheses for paper reference",
+    "Images print at appropriate sizes without breaking",
+    "Contact information is clearly visible",
+    "No awkward page breaks in the middle of sections"
+  ],
+  "estimated_effort": "small",
+  "last_updated": "2026-01-01T09:11:39.896109+00:00"
+}

@@ -592,6 +592,229 @@
         padding: 0 var(--space-3);
       }
     }
+
+    /* ========================================
+       PRINT STYLES
+       ======================================== */
+    @media print {
+      /* Page Setup */
+      @page {
+        margin: 0.75in;
+        size: letter;
+      }
+
+      /* Base Reset for Print */
+      * {
+        background: transparent !important;
+        color: var(--color-black) !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      /* Body Typography */
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 12pt;
+        line-height: 1.5;
+        color: var(--color-black);
+        background: var(--color-white);
+      }
+
+      /* Container */
+      .site-container {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      /* Hide Interactive Elements */
+      .site-nav,
+      .share-section,
+      .share-btn,
+      .like-section,
+      .like-btn,
+      .email-form {
+        display: none !important;
+      }
+
+      /* Typography Adjustments for Print */
+      h1, h2, h3, h4, h5, h6 {
+        line-height: 1.2;
+        page-break-after: avoid;
+      }
+
+      h1 {
+        font-size: 24pt;
+        margin-bottom: 4pt;
+      }
+
+      h2.tagline {
+        font-size: 11pt;
+        line-height: 1.3;
+        margin-top: 2pt;
+        margin-bottom: 12pt;
+      }
+
+      h2.section-title {
+        font-size: 14pt;
+        margin-top: 16pt;
+        margin-bottom: 8pt;
+      }
+
+      h3 {
+        font-size: 12pt;
+        margin-bottom: 6pt;
+      }
+
+      p {
+        margin-bottom: 10pt;
+        line-height: 1.6;
+        orphans: 3;
+        widows: 3;
+      }
+
+      /* Page Break Controls */
+      /* Prevent awkward breaks in sections */
+      article,
+      .content,
+      .widget,
+      .contact-section {
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+      }
+
+      /* Section titles should stay with their content */
+      h2.section-title,
+      h3,
+      .widget-title {
+        break-after: avoid-page;
+        page-break-after: avoid;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Natural section divisions - allow breaks after major sections */
+      .site-header {
+        break-after: auto;
+        page-break-after: auto;
+      }
+
+      .content {
+        break-after: auto;
+        page-break-after: auto;
+      }
+
+      /* Keep social links together */
+      .social-links,
+      .social-links-inline {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Links - ensure readability */
+      a {
+        color: var(--color-black);
+        text-decoration: underline;
+      }
+
+      /* Display URLs after links (exclude internal anchors) */
+      a[href]:not([href^='#'])::after {
+        content: " (" attr(href) ")";
+        font-size: 10pt;
+        color: var(--color-black);
+        font-style: italic;
+      }
+
+      /* Exclude navigation and social links from showing URLs */
+      .site-nav a::after,
+      .social-links a::after,
+      .social-links-inline a::after {
+        content: none;
+      }
+
+      /* Layout Optimization - Single Column for Print */
+      .site-main {
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .content {
+        flex: none;
+        max-width: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar {
+        flex: none;
+        max-width: 100%;
+        width: 100%;
+        margin-top: 12pt;
+        padding: 0;
+      }
+
+      /* Remove all flex/grid layouts for print */
+      .social-links {
+        display: block;
+      }
+
+      .social-links a {
+        display: block;
+        margin-bottom: 4pt;
+      }
+
+      .social-links-inline {
+        display: block;
+      }
+
+      .social-links-inline a {
+        display: inline;
+        margin-right: 12pt;
+      }
+
+      /* Section Spacing for Print */
+      .site-header {
+        padding-top: 0;
+        padding-bottom: 12pt;
+        margin-bottom: 12pt;
+      }
+
+      .contact-section {
+        margin-top: 16pt;
+        padding-top: 12pt;
+        padding-bottom: 0;
+        border-top: 1pt solid var(--color-black);
+      }
+
+      .widget {
+        margin-bottom: 12pt;
+      }
+
+      /* Images - Spacing and Layout */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .profile-image {
+        margin: 12pt 0;
+        max-width: 3in;
+        height: auto;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .flight-stats {
+        margin: 12pt 0;
+        max-width: 100%;
+        height: auto;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        page-break-before: auto;
+      }
+    }
   </style>
 </head>
 <body>
