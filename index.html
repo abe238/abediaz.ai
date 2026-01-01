@@ -566,10 +566,24 @@
 
         <p>A passionate technologist. I attend as many conferences as I can, travel as much as I can with my amazing wife and try to eat some amazing food; all while meeting passionate and interesting people around the world.</p>
 
+        <!-- Profile image with explicit dimensions for CLS prevention
+             TODO: When optimized images are created, add responsive srcset:
+             <img src="./images/profile-580.jpg"
+                  srcset="./images/profile-580.jpg 580w,
+                          ./images/profile-1200.jpg 1200w"
+                  sizes="(max-width: 768px) 100vw, 580px"
+                  width="580" height="382"
+                  alt="Abe Diaz"
+                  class="profile-image"
+                  loading="lazy">
+             See docs/IMAGES.md for optimization guidelines.
+        -->
         <img
           src="./images/profile.jpg"
           alt="Abe Diaz"
           class="profile-image"
+          width="580"
+          height="382"
           loading="lazy"
         >
 
