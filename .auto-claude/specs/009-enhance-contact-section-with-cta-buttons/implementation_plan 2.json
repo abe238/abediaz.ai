@@ -1,0 +1,169 @@
+{
+  "feature": "Enhance Contact Section with CTA Buttons",
+  "description": "Transform the contact section plain text links (LinkedIn, Twitter) into prominent, button-styled call-to-action elements using existing .btn and .btn-primary CSS classes to make it easier for AI company recruiters to contact Abe.",
+  "created_at": "2026-01-01T09:02:05.112Z",
+  "updated_at": "2026-01-01T09:05:00.000Z",
+  "status": "in_progress",
+  "planStatus": "complete",
+  "phases": [
+    {
+      "id": "phase-1",
+      "name": "Add Secondary Button Style",
+      "description": "Create a secondary/outline button style variation to complement the primary button, allowing visual hierarchy between buttons",
+      "subtasks": [
+        {
+          "id": "1.1",
+          "title": "Add .btn-secondary CSS class",
+          "description": "Add a secondary button style with teal accent color (matching the existing accent-link hover color) to create visual variety between CTA buttons. The primary button (LinkedIn) should be more prominent with solid fill, while secondary (Twitter) uses an outline style.",
+          "status": "completed",
+          "estimated_effort": "small",
+          "files": [
+            "index.html"
+          ],
+          "acceptance_criteria": [
+            ".btn-secondary class added to styles",
+            "Uses teal accent color (--color-teal-500) for border and text",
+            "Transparent background with visible border",
+            "Hover state with teal background and white text",
+            "Maintains consistent sizing with .btn-primary"
+          ],
+          "notes": "Successfully added .btn-secondary CSS class with teal accent color (--color-teal-500). The secondary button style features transparent background, teal border and text, with hover state showing teal background and white text. Updated base .btn transition to smoothly handle all property changes. Maintains consistent sizing with .btn-primary.",
+          "updated_at": "2026-01-01T09:06:48.129960+00:00"
+        }
+      ]
+    },
+    {
+      "id": "phase-2",
+      "name": "Update Contact Section HTML",
+      "description": "Transform the contact section links from plain text to styled buttons",
+      "subtasks": [
+        {
+          "id": "2.1",
+          "title": "Apply button classes to contact links",
+          "description": "Update the LinkedIn and Twitter links in the contact section to use the .btn class along with .btn-primary (for LinkedIn, the primary professional contact) and .btn-secondary (for Twitter).",
+          "status": "completed",
+          "estimated_effort": "small",
+          "files": [
+            "index.html"
+          ],
+          "acceptance_criteria": [
+            "LinkedIn link has classes: btn btn-primary",
+            "Twitter link has classes: btn btn-secondary",
+            "Links remain functional with correct href values",
+            "Remove accent-link class from these elements"
+          ],
+          "notes": "Successfully updated LinkedIn and Twitter links in the contact section to use button classes. LinkedIn now uses 'btn btn-primary' for prominence as the primary professional contact, while Twitter uses 'btn btn-secondary' for the teal outline style. Removed the accent-link class from both elements. Links remain fully functional with correct href values.",
+          "updated_at": "2026-01-01T09:09:21.651314+00:00"
+        }
+      ]
+    },
+    {
+      "id": "phase-3",
+      "name": "Enhance Button Styling for Contact Section",
+      "description": "Adjust button styles for better visual impact as CTA elements",
+      "subtasks": [
+        {
+          "id": "3.1",
+          "title": "Increase button size and prominence",
+          "description": "Update .btn base styles to use larger padding and font size for better visual impact as CTA buttons. The current 11px font and 8px/12px padding is quite small for prominent CTAs.",
+          "status": "completed",
+          "estimated_effort": "small",
+          "files": [
+            "index.html"
+          ],
+          "acceptance_criteria": [
+            "Button padding increased for better click target",
+            "Font size increased for better readability",
+            "Maintains proportional appearance",
+            "Works well on both desktop and mobile"
+          ],
+          "notes": "Successfully updated .btn base styles for better visual impact as CTA buttons. Increased font-size from var(--text-xs) (11px) to var(--text-md) (14px) for better readability. Increased padding from var(--space-2) var(--space-3) (8px 12px) to var(--space-3) var(--space-5) (12px 20px) for better click targets and visual prominence. These changes apply to both .btn-primary and .btn-secondary buttons in the contact section while maintaining proportional appearance.",
+          "updated_at": "2026-01-01T09:11:30.612715+00:00"
+        },
+        {
+          "id": "3.2",
+          "title": "Update social-links-inline layout for buttons",
+          "description": "Adjust the .social-links-inline container styles to properly display button-styled elements instead of inline text links. May need gap adjustment and flex-wrap for mobile.",
+          "status": "pending",
+          "estimated_effort": "small",
+          "files": [
+            "index.html"
+          ],
+          "acceptance_criteria": [
+            "Buttons display properly side by side on desktop",
+            "Adequate spacing between buttons",
+            "Buttons wrap gracefully on mobile if needed",
+            "Consistent with overall site design"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase-4",
+      "name": "Mobile Responsiveness",
+      "description": "Ensure CTA buttons work well on all screen sizes",
+      "subtasks": [
+        {
+          "id": "4.1",
+          "title": "Add responsive styles for contact buttons",
+          "description": "Update mobile media queries to ensure contact CTA buttons are properly sized and spaced on smaller screens. Buttons should be easily tappable (min 44px touch target) on mobile devices.",
+          "status": "pending",
+          "estimated_effort": "small",
+          "files": [
+            "index.html"
+          ],
+          "acceptance_criteria": [
+            "Buttons have adequate touch targets on mobile (min 44px)",
+            "Appropriate spacing on small screens",
+            "Text remains readable on all screen sizes",
+            "Buttons don't overflow container on narrow screens"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase-5",
+      "name": "Verification and Testing",
+      "description": "Verify implementation works correctly",
+      "subtasks": [
+        {
+          "id": "5.1",
+          "title": "Visual verification and final review",
+          "description": "Verify the contact section buttons display correctly, are accessible, and provide a clear call-to-action for visitors. Check that links work and styling is consistent.",
+          "status": "pending",
+          "estimated_effort": "small",
+          "files": [
+            "index.html"
+          ],
+          "acceptance_criteria": [
+            "Buttons visually stand out as CTAs",
+            "Both LinkedIn and Twitter links work correctly",
+            "Hover states are visible and functional",
+            "Implementation matches spec intent",
+            "No visual regressions elsewhere on the page"
+          ]
+        }
+      ]
+    }
+  ],
+  "workflow_type": "development",
+  "services_involved": [
+    "frontend"
+  ],
+  "final_acceptance": [
+    "Contact section links are styled as prominent CTA buttons",
+    "LinkedIn uses primary button style (solid blue)",
+    "Twitter uses secondary button style (teal outline)",
+    "Buttons are responsive and work on all screen sizes",
+    "Links remain functional and accessible"
+  ],
+  "spec_file": "spec.md",
+  "total_subtasks": 5,
+  "estimated_total_effort": "1-2 hours",
+  "qa_signoff": {
+    "status": "pending",
+    "issues": "",
+    "tests_passed": ""
+  },
+  "last_updated": "2026-01-01T09:11:30.612722+00:00"
+}

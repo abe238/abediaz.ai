@@ -385,13 +385,13 @@
     .btn {
       display: inline-block;
       font-family: var(--font-system);
-      font-size: var(--text-xs);
+      font-size: var(--text-md);
       font-weight: var(--font-normal);
-      padding: var(--space-2) var(--space-3);
+      padding: var(--space-3) var(--space-5);
       border: none;
       border-radius: var(--radius-sm);
       cursor: pointer;
-      transition: background-color var(--transition-normal);
+      transition: background-color var(--transition-normal), color var(--transition-normal), border-color var(--transition-normal);
     }
 
     .btn-primary {
@@ -404,9 +404,15 @@
       color: var(--color-white);
     }
 
-    .btn:focus-visible {
-      outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
-      outline-offset: var(--focus-ring-offset);
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-teal-500);
+      border: 1px solid var(--color-teal-500);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--color-teal-500);
+      color: var(--color-white);
     }
 
     /* Social Links */
@@ -516,11 +522,9 @@
 
     .social-links-inline {
       display: flex;
-      gap: var(--space-5);
-    }
-
-    .social-links-inline a {
-      font-size: var(--text-base);
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      align-items: center;
     }
 
     /* Signature */
@@ -624,12 +628,17 @@
       }
 
       .social-links-inline {
-        gap: var(--space-6);
+        gap: var(--space-3);
       }
 
-      .social-links-inline a {
+      /* Contact CTA buttons - ensure adequate touch targets (min 44px) */
+      .btn {
+        padding: var(--space-4) var(--space-5);
         font-size: var(--text-md);
-        padding: var(--space-2) 0;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
     }
 
@@ -641,6 +650,16 @@
 
       .site-container {
         padding: 0 var(--space-3);
+      }
+
+      /* Adjust button spacing for very small screens */
+      .social-links-inline {
+        gap: var(--space-2);
+      }
+
+      .btn {
+        padding: var(--space-4) var(--space-4);
+        font-size: var(--text-sm);
       }
     }
 
@@ -963,8 +982,8 @@
     <section class="contact-section">
       <h3>Get In Touch</h3>
       <div class="social-links-inline">
-        <a href="https://linkedin.com/in/abediaz" class="accent-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://twitter.com/abe238" class="accent-link" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="http://linkedin.com/in/abediaz" class="btn btn-primary">LinkedIn</a>
+        <a href="http://twitter.com/abe238" class="btn btn-secondary">Twitter</a>
       </div>
       <div class="signature">
         <p>Best,<br>Abe</p>

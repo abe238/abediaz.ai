@@ -1,0 +1,12 @@
+{
+  "sourceType": "ideation",
+  "ideationType": "ui_ux_improvements",
+  "ideaId": "uiux-004",
+  "rationale": "The target audience (AI company recruiters) needs a clear way to contact Abe. Currently, contact links are plain text and easily missed. The CSS already defines button styles (.btn, .btn-primary) that are not being used.",
+  "category": "ui_ux",
+  "uiuxCategory": "visual",
+  "affectedFiles": [
+    "index.html"
+  ],
+  "problemSolved": "Contact section (lines 593-599) contains plain text links in a simple flex container. The CSS defines .btn and .btn-primary styles (lines 309-329) but they are not used. The section lacks visual hierarchy and prominence."
+}
