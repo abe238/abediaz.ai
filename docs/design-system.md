@@ -1102,9 +1102,693 @@ Components are reusable UI patterns built using the design tokens. Each componen
 
 ### Layout Components
 
-*This section will document structural components: site-container, site-header, site-nav, site-main, content, sidebar, site-footer.*
+Layout components form the structural foundation of the site. These components establish the page architecture, content flow, and responsive behavior. Built using modern flexbox patterns, they provide a clean two-column layout on desktop that gracefully adapts to single-column on mobile.
 
-**Coming Soon:** Layout component documentation with HTML structure examples.
+#### Design Rationale
+
+The layout system is designed around these principles:
+
+1. **Content-First Architecture** - The layout prioritizes readable content width (580px) over maximizing screen usage
+2. **Flexible Two-Column Pattern** - Desktop layout supports content + sidebar; mobile stacks vertically
+3. **Semantic HTML Structure** - Uses proper semantic elements (header, nav, main, article, footer)
+4. **Flexbox-Based** - Modern flexbox provides reliable, predictable layout behavior
+5. **Responsive by Default** - Layout adapts naturally at defined breakpoints without complex overrides
+
+**Philosophy:**
+
+The layout system uses a **container-constrained, content-focused** approach rather than full-width edge-to-edge design. This creates comfortable reading experiences and prevents content from becoming overwhelming on large screens. The two-column pattern (content + sidebar) follows classic blog/portfolio layouts where the primary content dominates (580px) and the sidebar provides supplementary information (240px).
+
+---
+
+#### Component Overview
+
+| Component | Purpose | Layout Method | Responsive Behavior |
+|-----------|---------|---------------|---------------------|
+| `.site-container` | Outer page container | Block with max-width centering | Max-width adapts, padding reduces on mobile |
+| `.site-header` | Page header with branding and navigation | Block with vertical padding | Padding reduces on smaller screens |
+| `.site-nav` | Navigation menu | Flexbox horizontal list | Wraps on mobile, gaps adjust |
+| `.site-main` | Main content wrapper | Flexbox two-column | Becomes single-column on tablet (≤768px) |
+| `.content` | Primary content area | Flex item with fixed width | Becomes full-width on tablet (≤768px) |
+| `.sidebar` | Secondary content area (widgets) | Flex item with fixed width | Stacks below content on tablet (≤768px) |
+| `.site-footer` | Page footer | Block with border separator | Padding adjusts on mobile |
+
+---
+
+#### `.site-container`
+
+**Purpose:** The outer container that wraps all page content, centers it horizontally, and provides consistent horizontal padding.
+
+**CSS Implementation:**
+
+```css
+.site-container {
+  max-width: var(--content-width);     /* 580px */
+  margin: 0 auto;                       /* Centers horizontally */
+  padding: 0 var(--space-5);           /* 20px left/right */
+}
+```
+
+**HTML Structure:**
+
+```html
+<div class="site-container">
+  <!-- All page content goes here -->
+  <header class="site-header">...</header>
+  <main class="site-main">...</main>
+  <footer class="contact-section">...</footer>
+</div>
+```
+
+**Layout Behavior:**
+
+- **Max-width**: Constrains content to `580px` (optimal reading width)
+- **Centering**: `margin: 0 auto` centers the container horizontally
+- **Horizontal Padding**: `20px` prevents content from touching viewport edges on small screens
+- **Responsive**: Padding reduces to `16px` on mobile (≤480px) and `12px` on small phones (≤360px)
+
+**Responsive Overrides:**
+
+```css
+/* Mobile (≤480px) */
+.site-container {
+  padding: 0 var(--space-4);  /* 16px */
+}
+
+/* Small phones (≤360px) */
+.site-container {
+  padding: 0 var(--space-3);  /* 12px */
+}
+```
+
+**Usage Guidelines:**
+
+- ✅ Use as the outermost wrapper for all page content
+- ✅ Only one `.site-container` per page
+- ✅ Place all major page sections inside the container
+- ❌ Don't nest multiple `.site-container` elements
+- ❌ Don't apply additional max-width constraints inside
+- ❌ Don't override the horizontal centering behavior
+
+---
+
+#### `.site-header`
+
+**Purpose:** Contains the site branding (h1), tagline (h2.tagline), and primary navigation. Provides generous top spacing to create breathing room at the top of the page.
+
+**CSS Implementation:**
+
+```css
+.site-header {
+  padding-top: var(--space-header);    /* 70px desktop, 50px tablet, 32px mobile */
+  padding-bottom: var(--space-6);      /* 24px */
+}
+```
+
+**HTML Structure:**
+
+```html
+<header class="site-header">
+  <h1><a href="/">ABE DIAZ</a></h1>
+  <h2 class="tagline">Seattle/Tech/Evangelist</h2>
+
+  <nav class="site-nav">
+    <ul>
+      <li><a href="/">HOME</a></li>
+    </ul>
+  </nav>
+</header>
+```
+
+**Layout Behavior:**
+
+- **Top Padding**: Uses `--space-header` variable (responsive: 70px → 50px → 32px)
+- **Bottom Padding**: Fixed 24px creates space before main content
+- **No Horizontal Padding**: Inherits from `.site-container`
+- **Block Layout**: Default block flow for vertical stacking
+
+**Responsive Behavior:**
+
+| Breakpoint | `padding-top` | Rationale |
+|------------|---------------|-----------|
+| Desktop (>768px) | **70px** | Generous top spacing creates elegant entrance |
+| Tablet (≤768px) | **50px** | Reduced to conserve vertical space |
+| Mobile (≤480px) | **32px** | Minimal spacing for small screens |
+
+**Content Guidelines:**
+
+- Should contain: Site branding (h1), optional tagline (h2.tagline), navigation (.site-nav)
+- May contain: Additional header widgets or meta information
+- Should NOT contain: Main content, sidebar content, or footer content
+
+**Usage Guidelines:**
+
+- ✅ Use once per page as the primary header
+- ✅ Keep content focused on branding and navigation
+- ✅ Maintain the h1 → h2.tagline → nav hierarchy
+- ❌ Don't add horizontal padding (inherited from container)
+- ❌ Don't place main content inside the header
+- ❌ Don't override --space-header without updating responsive values
+
+---
+
+#### `.site-nav`
+
+**Purpose:** Primary navigation menu using flexbox for horizontal layout with even spacing between links.
+
+**CSS Implementation:**
+
+```css
+.site-nav {
+  margin-top: var(--space-5);  /* 20px */
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  gap: var(--space-5);         /* 20px between items */
+}
+
+.site-nav a {
+  font-size: var(--text-sm);         /* 12px */
+  text-transform: uppercase;
+  color: var(--color-gray-700);
+}
+
+.site-nav a:hover {
+  color: var(--color-teal-500);
+}
+```
+
+**HTML Structure:**
+
+```html
+<nav class="site-nav">
+  <ul>
+    <li><a href="/">HOME</a></li>
+    <li><a href="/about">ABOUT</a></li>
+    <li><a href="/contact">CONTACT</a></li>
+  </ul>
+</nav>
+```
+
+**Layout Behavior:**
+
+- **Top Margin**: 20px separates navigation from tagline
+- **Flexbox List**: `display: flex` creates horizontal layout
+- **Gap**: 20px spacing between navigation items
+- **No List Styles**: `list-style: none` removes bullets
+- **Uppercase Links**: All navigation text is uppercase
+
+**Responsive Behavior:**
+
+```css
+/* Mobile (≤480px) */
+.site-nav {
+  margin-top: var(--space-4);  /* Reduced to 16px */
+}
+
+.site-nav ul {
+  flex-wrap: wrap;             /* Allows wrapping on narrow screens */
+  gap: var(--space-4);         /* Reduced to 16px */
+}
+```
+
+On mobile:
+- Navigation items can wrap to multiple lines
+- Gaps reduced to conserve space (20px → 16px)
+- Top margin reduced (20px → 16px)
+
+**Typography:**
+
+- **Font**: Inherits `--font-heading` (Oswald)
+- **Size**: 12px (--text-sm)
+- **Weight**: Bold (700) via font-heading
+- **Transform**: UPPERCASE
+- **Color**: Gray-700 default, Teal-500 on hover
+
+**Usage Guidelines:**
+
+- ✅ Use within `.site-header` for primary navigation
+- ✅ Use semantic `<nav>` element
+- ✅ Use unordered list (`<ul>`) for navigation items
+- ✅ Keep link text uppercase to match design
+- ❌ Don't add padding to individual list items (use gap)
+- ❌ Don't override list-style or display properties
+- ❌ Don't nest navigation elements
+
+**Accessibility Notes:**
+
+- Uses semantic `<nav>` element for screen readers
+- Maintains sufficient link spacing (20px) for touch targets
+- Links have clear hover states with color change
+- Uppercase text may be harder to read - use sparingly
+
+---
+
+#### `.site-main`
+
+**Purpose:** Main content wrapper that establishes the two-column flexbox layout (content + sidebar) on desktop and single-column on mobile.
+
+**CSS Implementation:**
+
+```css
+.site-main {
+  display: flex;
+  gap: var(--gap);                /* 40px */
+  padding-bottom: var(--space-10); /* 40px */
+}
+```
+
+**HTML Structure:**
+
+```html
+<main class="site-main">
+  <!-- Primary content area -->
+  <article class="content">
+    <!-- Main content here -->
+  </article>
+
+  <!-- Optional sidebar (if present) -->
+  <aside class="sidebar">
+    <!-- Sidebar widgets here -->
+  </aside>
+</main>
+```
+
+**Layout Behavior:**
+
+- **Display**: Flexbox enables side-by-side columns
+- **Gap**: 40px space between content and sidebar
+- **Direction**: Row (horizontal) by default
+- **Bottom Padding**: 40px creates space before footer
+
+**Responsive Behavior:**
+
+The layout automatically stacks on tablet/mobile due to flex children becoming full-width:
+
+```css
+/* Tablet (≤768px) */
+.content {
+  max-width: 100%;  /* Content becomes full-width */
+}
+/* Sidebar naturally stacks below content */
+```
+
+| Breakpoint | Layout | Behavior |
+|------------|--------|----------|
+| Desktop (>768px) | Two-column | Content and sidebar side-by-side with 40px gap |
+| Tablet/Mobile (≤768px) | Single-column | Sidebar stacks below content, both full-width |
+
+**Layout Math:**
+
+On desktop, the two columns plus gap should equal the container:
+```
+580px (content) + 40px (gap) + 240px (sidebar) = 860px total
+```
+
+**Note:** Current implementation uses `max-width: var(--content-width)` (580px) on `.site-container`, so the sidebar is not visible on the current site. The CSS is structured to support a two-column layout but HTML only includes `.content`.
+
+**Usage Guidelines:**
+
+- ✅ Use semantic `<main>` element for primary content wrapper
+- ✅ Include `.content` for primary content column
+- ✅ Optionally include `.sidebar` for secondary content
+- ✅ Maintain the content + sidebar order (content first in DOM)
+- ❌ Don't add more than two direct children (content + sidebar)
+- ❌ Don't override the flex display without understanding layout impact
+- ❌ Don't change the gap without considering responsive behavior
+
+**Accessibility Notes:**
+
+- Uses semantic `<main>` landmark for screen readers
+- Content appears first in DOM order (important for screen reader flow)
+- Single-column mobile layout maintains natural reading order
+
+---
+
+#### `.content`
+
+**Purpose:** Primary content area that contains the main article content, images, and text. Forms the left column in desktop two-column layout.
+
+**CSS Implementation:**
+
+```css
+.content {
+  flex: 0 0 var(--content-width);  /* Don't grow, don't shrink, 580px basis */
+  max-width: var(--content-width);  /* 580px */
+}
+```
+
+**HTML Structure:**
+
+```html
+<article class="content">
+  <h2 class="section-title">ABOUT ME</h2>
+  <p>Article content...</p>
+  <img src="./images/profile.jpg" alt="Profile" class="profile-image">
+  <p>More content...</p>
+</article>
+```
+
+**Layout Behavior:**
+
+- **Flex Basis**: 580px fixed width on desktop
+- **Flex Grow**: 0 (won't expand beyond 580px)
+- **Flex Shrink**: 0 (won't compress below 580px)
+- **Max-Width**: 580px ensures content never exceeds optimal reading width
+
+**Responsive Behavior:**
+
+```css
+/* Tablet (≤768px) */
+.content {
+  max-width: 100%;  /* Becomes full-width */
+}
+```
+
+On tablet and mobile:
+- Becomes full container width (minus padding)
+- Flex basis still 580px but max-width allows flexibility
+- Content flows naturally in single-column layout
+
+**Content Width Rationale:**
+
+580px is chosen for optimal readability:
+- At 13px body font size: ~60-75 characters per line
+- Falls within ideal range for comfortable reading
+- Prevents overly long lines that reduce comprehension
+- Matches classic blog/article layouts
+
+**Typical Content:**
+
+- Section headings (h2.section-title, h3)
+- Paragraphs and body text
+- Images (profile-image, flight-stats)
+- Links and inline content
+- Share sections, contact sections
+
+**Usage Guidelines:**
+
+- ✅ Use semantic `<article>` element when content is self-contained
+- ✅ Use `<div class="content">` for non-article content
+- ✅ Keep content focused on primary information
+- ✅ Maintain optimal line length (don't override width)
+- ❌ Don't nest multiple `.content` elements
+- ❌ Don't override flex properties without understanding layout
+- ❌ Don't exceed 580px width (reduces readability)
+
+---
+
+#### `.sidebar`
+
+**Purpose:** Secondary content area for supplementary widgets, forms, and related information. Forms the right column in desktop two-column layout.
+
+**CSS Implementation:**
+
+```css
+.sidebar {
+  flex: 0 0 var(--sidebar-width);  /* Don't grow, don't shrink, 240px basis */
+  max-width: var(--sidebar-width);  /* 240px */
+}
+```
+
+**HTML Structure:**
+
+```html
+<aside class="sidebar">
+  <div class="widget">
+    <h3 class="widget-title">SUBSCRIBE</h3>
+    <p>Get updates...</p>
+    <form class="email-form">
+      <!-- Form content -->
+    </form>
+  </div>
+
+  <div class="widget">
+    <h3 class="widget-title">CONNECT</h3>
+    <!-- Social links -->
+  </div>
+</aside>
+```
+
+**Layout Behavior:**
+
+- **Flex Basis**: 240px fixed width on desktop
+- **Flex Grow**: 0 (won't expand beyond 240px)
+- **Flex Shrink**: 0 (won't compress below 240px)
+- **Max-Width**: 240px ensures consistent sidebar width
+
+**Responsive Behavior:**
+
+On tablet (≤768px), sidebar automatically stacks below content:
+- Becomes full container width
+- Appears after content in natural DOM order
+- Maintains all widget spacing and styling
+
+**Sidebar Width Rationale:**
+
+240px provides comfortable widget space:
+- Wide enough for profile images, forms, stats
+- Narrow enough to keep content as primary focus
+- Creates 70/30 visual weight (content dominates)
+- Matches classic blog sidebar proportions
+
+**Typical Content:**
+
+- Widgets (.widget)
+- Email signup forms (.email-form)
+- Social links (.social-links)
+- Profile images
+- Related content or meta information
+
+**Current Implementation Note:**
+
+The current HTML does not include a `.sidebar` element. The CSS is structured to support it, but the site currently uses a single-column content-only layout. To add a sidebar:
+
+1. Update `.site-container` max-width from 580px to 860px
+2. Add `<aside class="sidebar">` inside `.site-main`
+3. Add widgets and content to the sidebar
+
+**Usage Guidelines:**
+
+- ✅ Use semantic `<aside>` element for sidebar
+- ✅ Place after `.content` in DOM order
+- ✅ Use `.widget` components for sidebar content
+- ✅ Keep sidebar content supplementary (not essential)
+- ❌ Don't use sidebar for critical content (mobile users see it last)
+- ❌ Don't override flex properties without understanding layout
+- ❌ Don't make sidebar wider than content area
+
+---
+
+#### `.site-footer`
+
+**Purpose:** Page footer section with border separator. Used for contact links, copyright, and supplementary information.
+
+**CSS Implementation:**
+
+```css
+.site-footer {
+  font-size: var(--text-sm);            /* 12px */
+  color: var(--color-gray-600);         /* Secondary text color */
+  padding: var(--space-5) 0;            /* 20px top/bottom */
+  border-top: 1px solid var(--color-gray-200);  /* Subtle divider */
+}
+
+.site-footer a {
+  color: var(--color-gray-600);         /* Match footer text */
+}
+```
+
+**HTML Structure:**
+
+```html
+<footer class="site-footer">
+  <p>&copy; 2026 Abe Diaz. All rights reserved.</p>
+  <p>
+    <a href="/privacy">Privacy Policy</a> ·
+    <a href="/terms">Terms of Service</a>
+  </p>
+</footer>
+```
+
+**Note:** The current implementation uses `.contact-section` for the footer rather than `.site-footer`. The `.contact-section` is styled separately but serves a similar purpose.
+
+**Layout Behavior:**
+
+- **Font Size**: 12px (smaller, de-emphasized text)
+- **Text Color**: Gray-600 (secondary color, less prominent)
+- **Top Border**: 1px gray-200 border creates visual separation
+- **Vertical Padding**: 20px top and bottom
+- **No Horizontal Padding**: Inherits from `.site-container`
+
+**Typography:**
+
+- Links inherit gray-600 color (not black)
+- Links still change to teal on hover (default link behavior)
+- Smaller font size reduces visual weight
+
+**Usage Guidelines:**
+
+- ✅ Use semantic `<footer>` element
+- ✅ Place at the end of `.site-container`
+- ✅ Keep content minimal and supplementary
+- ✅ Use for copyright, legal links, site meta information
+- ❌ Don't place critical navigation in footer
+- ❌ Don't override the border-top separator
+- ❌ Don't use for primary content
+
+**Accessibility Notes:**
+
+- Uses semantic `<footer>` landmark element
+- Maintains sufficient color contrast (gray-600 on white = 5.7:1)
+- Links have clear hover states
+
+---
+
+#### Layout Patterns & Best Practices
+
+**Common Layout Patterns:**
+
+**1. Single-Column Content (Current Implementation)**
+```html
+<div class="site-container">
+  <header class="site-header">
+    <h1>Site Title</h1>
+    <nav class="site-nav">...</nav>
+  </header>
+
+  <main class="site-main">
+    <article class="content">
+      <!-- Main content -->
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <!-- Footer content -->
+  </footer>
+</div>
+```
+
+**2. Two-Column Content + Sidebar**
+```html
+<div class="site-container">
+  <header class="site-header">...</header>
+
+  <main class="site-main">
+    <article class="content">
+      <!-- Primary content -->
+    </article>
+
+    <aside class="sidebar">
+      <div class="widget">...</div>
+      <div class="widget">...</div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">...</footer>
+</div>
+```
+
+---
+
+#### Layout Best Practices
+
+**Do's:**
+
+- ✅ Use semantic HTML5 elements (header, nav, main, article, aside, footer)
+- ✅ Maintain the established layout hierarchy
+- ✅ Let flexbox handle responsive stacking (don't force with media queries)
+- ✅ Use the gap property for spacing between flex children
+- ✅ Keep content width at 580px for optimal readability
+- ✅ Place content before sidebar in DOM order (accessibility)
+- ✅ Test layout at all breakpoints (especially 768px stack point)
+
+**Don'ts:**
+
+- ❌ Don't override max-width on `.site-container` without updating child elements
+- ❌ Don't add horizontal padding to nested layout elements (container handles this)
+- ❌ Don't use floats or positioning for layout (flexbox is cleaner)
+- ❌ Don't create layouts wider than `--container-max` (860px)
+- ❌ Don't nest multiple `.site-main` or `.site-container` elements
+- ❌ Don't override flex properties without understanding the impact
+- ❌ Don't place critical content in sidebar (mobile users see it last)
+
+---
+
+#### Responsive Layout Behavior Summary
+
+| Breakpoint | Container Padding | Header Top | Layout | Notes |
+|------------|-------------------|------------|--------|-------|
+| **Desktop (>768px)** | 20px | 70px | Two-column (content + sidebar) | Optimal desktop experience |
+| **Tablet (≤768px)** | 16px | 50px | Single-column (sidebar below) | Content stacks vertically |
+| **Mobile (≤480px)** | 16px | 32px | Single-column | Reduced spacing |
+| **Small Mobile (≤360px)** | 12px | 32px | Single-column | Minimal padding |
+
+**Key Responsive Changes:**
+
+1. **Container padding** reduces as screens get smaller (20px → 16px → 12px)
+2. **Header top spacing** dramatically reduces (70px → 50px → 32px)
+3. **Layout shifts** from two-column to single-column at 768px
+4. **Navigation wraps** on mobile with reduced gaps
+5. **Content width** becomes 100% on tablet/mobile
+
+---
+
+#### Accessibility Considerations
+
+**Semantic HTML:**
+- All layout components use proper semantic elements
+- Screen readers can identify landmarks (header, nav, main, footer)
+- Logical heading hierarchy maintained
+
+**Reading Order:**
+- Content appears before sidebar in DOM (screen readers read content first)
+- Navigation accessible via keyboard
+- Logical tab order maintained
+
+**Touch Targets:**
+- Navigation links have adequate spacing (20px gaps)
+- Links and interactive elements meet minimum size requirements
+
+**Responsive Accessibility:**
+- Single-column mobile layout maintains natural reading order
+- Touch targets don't overlap on small screens
+- Content remains readable at all breakpoints
+
+---
+
+#### Layout Components Quick Reference
+
+```
+LAYOUT STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+.site-container    Outer wrapper, max-width 580px (or 860px with sidebar)
+.site-header       Header with branding/nav, padding-top: 70px → 50px → 32px
+.site-nav          Horizontal flexbox navigation, gap: 20px
+.site-main         Main content wrapper, flexbox row, gap: 40px
+.content           Primary content, flex: 0 0 580px
+.sidebar           Secondary content, flex: 0 0 240px
+.site-footer       Footer with border-top, padding: 20px 0
+
+LAYOUT MATH (Two-Column)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+580px (content) + 40px (gap) + 240px (sidebar) = 860px (container-max)
+
+RESPONSIVE BREAKPOINTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+>768px   Two-column layout, container padding: 20px
+≤768px   Single-column stack, container padding: 16px
+≤480px   Single-column, reduced spacing
+≤360px   Minimal padding: 12px
+
+FLEXBOX PATTERNS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+.site-nav ul       display: flex, gap: 20px (horizontal list)
+.site-main         display: flex, gap: 40px (two-column)
+.content           flex: 0 0 580px (fixed-width column)
+.sidebar           flex: 0 0 240px (fixed-width column)
+```
 
 ---
 
