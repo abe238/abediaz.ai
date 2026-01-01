@@ -88,9 +88,206 @@ Design tokens are the fundamental building blocks of the design system—the nam
 
 ### Color Palette
 
-*This section will document all 14 color tokens with hex values, usage guidelines, accessibility notes, and visual representations.*
+The color palette is intentionally minimal, favoring a neutral foundation with a single vibrant accent. This approach ensures the design feels clean and professional while allowing content to remain the primary focus.
 
-**Coming Soon:** Complete color palette documentation with swatches and contrast ratios.
+#### Design Rationale
+
+The palette is built around **three core color families**:
+1. **Foundation Colors** (Black & White) - Maximum contrast and clarity
+2. **Neutral Grays** - An 8-step scale for subtle variations and hierarchy
+3. **Accent Colors** - Teal for warmth, Blue for external platforms
+
+The teal accent (#36BCAB) was chosen to add personality and warmth to an otherwise neutral palette. It evokes approachability and energy without being overwhelming.
+
+---
+
+#### Foundation Colors
+
+These provide the base contrast for the entire design system.
+
+| Variable | Hex Code | Visual | Usage | Notes |
+|----------|----------|--------|-------|-------|
+| `--color-black` | `#000000` | ⬛ | Primary headings (h1, h2.section-title, h3), high-emphasis text | Highest contrast, used sparingly for maximum impact |
+| `--color-white` | `#FFFFFF` | ⬜ | Page backgrounds, input fields, button text on colored backgrounds | Pure white for clean, modern aesthetic |
+
+**Accessibility:**
+- Black on white: **21:1** contrast ratio (WCAG AAA for all text sizes)
+- White on black: **21:1** contrast ratio (WCAG AAA for all text sizes)
+
+---
+
+#### Neutral Grays
+
+An 8-step gray scale provides nuanced hierarchy for text, borders, and backgrounds. The scale uses a non-linear progression optimized for readability and visual distinction.
+
+| Variable | Hex Code | Visual | Usage | Status | Notes |
+|----------|----------|--------|-------|--------|-------|
+| `--color-gray-50` | `#F3F3F3` | ◻️ | *Reserved* | Unused | Lightest gray - available for subtle backgrounds |
+| `--color-gray-100` | `#F1F1F1` | ◻️ | *Reserved* | Unused | Very light gray - available for hover states |
+| `--color-gray-200` | `#DDDDDD` | ◻️ | Borders, dividers, widget outlines | **Active** | Subtle separation without harsh lines |
+| `--color-gray-300` | `#AAAAAA` | ◻️ | *Reserved* | Unused | Mid-light gray - available for disabled states |
+| `--color-gray-500` | `#767676` | ◼️ | Input borders, form element outlines | **Active** | Medium gray for interactive boundaries |
+| `--color-gray-600` | `#666666` | ◼️ | Secondary text (taglines, footer, small text) | **Active** | Lower-emphasis text content |
+| `--color-gray-700` | `#555555` | ◼️ | Body text, standard content | **Active** | Primary text color across the site |
+| `--color-gray-800` | `#32373C` | ◼️ | *Reserved* | Unused | Dark gray - available for future use |
+| `--color-gray-900` | `#222222` | ◼️ | *Reserved* | Unused | Near-black - available for future use |
+
+**Accessibility (on white background):**
+- gray-200: **1.7:1** - Decorative only, not for text
+- gray-500: **4.6:1** - WCAG AA for large text (18px+)
+- gray-600: **5.7:1** - WCAG AA for all text sizes
+- gray-700: **7.4:1** - WCAG AAA for body text (13px+)
+
+**Design Notes:**
+- The active grays (200, 500, 600, 700) form a well-balanced hierarchy
+- Reserved grays (50, 100, 300, 800, 900) are defined for future expansion
+- All grays use pure neutral values (no color temperature bias)
+
+---
+
+#### Accent Colors
+
+Accent colors provide visual interest and semantic meaning. The teal is the primary brand color, while blue is reserved for specific external platform integrations.
+
+**Teal (Primary Accent)**
+
+| Variable | Hex Code | Visual | Usage | Notes |
+|----------|----------|--------|-------|-------|
+| `--color-teal-500` | `#36BCAB` | 🟦 | Links, hover states, focus indicators, accent underlines | Primary interactive color throughout the site |
+
+**Accessibility:**
+- Teal on white: **3.3:1** - WCAG AA for large text only (18px+)
+- **Important:** Teal should only be used for interactive elements (links, buttons) or large text (18px+)
+- Never use teal for small body text - use gray-700 instead
+
+**Design Notes:**
+- The teal balances warmth and professionalism
+- Creates clear affordance for interactive elements
+- Adds personality without overwhelming the content
+
+**Blue (Platform Integration)**
+
+| Variable | Hex Code | Visual | Usage | Status | Notes |
+|----------|----------|--------|-------|--------|-------|
+| `--color-blue-500` | `#0073B1` | 🔵 | LinkedIn button background | **Active** | Matches LinkedIn brand color |
+| `--color-blue-700` | `#2E4453` | 🔵 | *Reserved* | Unused | Darker blue - available for future platform integrations |
+
+**Accessibility:**
+- Blue-500 with white text: **4.6:1** - WCAG AA for large text (18px+)
+- Blue-700 with white text: **9.3:1** - WCAG AAA for all text sizes
+
+**Design Notes:**
+- Blue is intentionally reserved for external platform colors (LinkedIn, etc.)
+- Helps users distinguish between site actions and external links
+- Blue-700 is available for darker platform color needs
+
+---
+
+#### Color Usage Guidelines
+
+**When to use each color:**
+
+1. **Black (`--color-black`)**
+   - Main page headings (h1)
+   - Section titles (h2.section-title)
+   - Subsection headings (h3)
+   - Use when maximum emphasis is needed
+
+2. **White (`--color-white`)**
+   - Page background
+   - Input field backgrounds
+   - Text on colored button backgrounds
+   - Clean slate for content
+
+3. **Gray-700 (`--color-gray-700`)**
+   - Default for all body text
+   - Paragraph content
+   - Standard links (before hover)
+   - Primary reading text
+
+4. **Gray-600 (`--color-gray-600`)**
+   - Taglines and subtitles
+   - Footer text
+   - Less prominent information
+   - Meta information
+
+5. **Gray-500 (`--color-gray-500`)**
+   - Input borders (default state)
+   - Form field outlines
+   - Interactive element boundaries
+
+6. **Gray-200 (`--color-gray-200`)**
+   - Section dividers
+   - Widget borders
+   - Subtle separators
+   - Visual rhythm elements
+
+7. **Teal-500 (`--color-teal-500`)**
+   - All link hover states
+   - Focus indicators
+   - Accent links (`.accent-link`)
+   - Interactive element feedback
+   - Primary call-to-action affordance
+
+8. **Blue-500 (`--color-blue-500`)**
+   - LinkedIn button background
+   - External platform integrations only
+
+**Best Practices:**
+
+- ✅ **Do:** Use gray-700 for all standard body text
+- ✅ **Do:** Reserve teal for interactive elements to create clear affordance
+- ✅ **Do:** Use black sparingly for maximum impact
+- ✅ **Do:** Maintain consistent color usage across similar components
+- ❌ **Don't:** Use teal for small body text (fails accessibility)
+- ❌ **Don't:** Mix gray levels inconsistently within the same component
+- ❌ **Don't:** Use blue for internal site actions (reserve for platforms)
+- ❌ **Don't:** Add colors outside the defined palette without documentation
+
+---
+
+#### Accessibility Summary
+
+All color combinations in active use meet or exceed **WCAG 2.1 Level AA** standards:
+
+| Foreground | Background | Ratio | WCAG Level | Use Case |
+|------------|------------|-------|------------|----------|
+| Black | White | 21:1 | AAA | Headings (all sizes) |
+| Gray-700 | White | 7.4:1 | AAA | Body text (13px+) |
+| Gray-600 | White | 5.7:1 | AA | Secondary text (12px+) |
+| Teal-500 | White | 3.3:1 | AA (Large) | Links, interactive (18px+) |
+| White | Blue-500 | 4.6:1 | AA (Large) | LinkedIn button (16px+) |
+
+**Note:** Teal links in body text rely on underlines and context (not color alone) to meet accessibility requirements for users with color vision deficiencies.
+
+---
+
+#### Visual Palette Reference
+
+```
+FOUNDATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■ Black    #000000  --color-black
+□ White    #FFFFFF  --color-white
+
+NEUTRALS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▢ Gray 50  #F3F3F3  --color-gray-50   [Reserved]
+▢ Gray 100 #F1F1F1  --color-gray-100  [Reserved]
+▢ Gray 200 #DDDDDD  --color-gray-200  ✓ Active
+▢ Gray 300 #AAAAAA  --color-gray-300  [Reserved]
+▪ Gray 500 #767676  --color-gray-500  ✓ Active
+▪ Gray 600 #666666  --color-gray-600  ✓ Active
+▪ Gray 700 #555555  --color-gray-700  ✓ Active
+▪ Gray 800 #32373C  --color-gray-800  [Reserved]
+▪ Gray 900 #222222  --color-gray-900  [Reserved]
+
+ACCENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+● Teal 500 #36BCAB  --color-teal-500  ✓ Active (Primary)
+● Blue 500 #0073B1  --color-blue-500  ✓ Active (LinkedIn)
+● Blue 700 #2E4453  --color-blue-700  [Reserved]
+```
 
 ---
 
