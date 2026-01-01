@@ -1,0 +1,17 @@
+{
+  "task_description": "Fix missing flight statistics image display on HTML page - locate the HTML file with flight statistics visualization and correct the image reference so the 50+ countries visualization displays properly",
+  "files_to_modify": [
+    "HTML page containing flight statistics",
+    "Image file reference or asset path"
+  ],
+  "files_to_reference": [],
+  "patterns": {
+    "image_issue_types": [
+      "Incorrect file path (relative vs absolute)",
+      "Missing image file",
+      "File permission issues",
+      "Broken asset bundling/loading"
+    ]
+  },
+  "created_at": "2026-01-01T11:53:19.729Z"
+}

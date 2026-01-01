@@ -1,6 +1,6 @@
 {
   "active": true,
-  "spec": "016-my-github-link-should-be-to-https-github-com-abe23",
+  "spec": "017-i-can-t-see-the-image-on-the-html-page",
   "state": "complete",
   "subtasks": {
     "completed": 2,
@@ -9,7 +9,7 @@
     "failed": 0
   },
   "phase": {
-    "current": "Update GitHub Link",
+    "current": "Fix Image Display",
     "id": 1,
     "total": 2
   },
@@ -18,8 +18,8 @@
     "max": 1
   },
   "session": {
-    "number": 2,
-    "started_at": "2026-01-01T03:46:56.789401"
+    "number": 1,
+    "started_at": "2026-01-01T03:55:44.682937"
   },
-  "last_update": "2026-01-01T03:49:03.620025"
+  "last_update": "2026-01-01T03:56:47.355892"
 }
