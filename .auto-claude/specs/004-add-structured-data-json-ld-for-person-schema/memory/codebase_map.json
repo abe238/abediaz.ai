@@ -1,0 +1,10 @@
+{
+  "discovered_files": {
+    "index.html": {
+      "description": "Static HTML personal profile page for Abe Diaz. Contains existing Open Graph and Twitter Card meta tags in <head>. Person data available: name (Abe Diaz), jobTitle (Sr. Technical Program Manager), employer (Disaster Relief by Amazon), url (https://abediaz.ai/), image (/images/profile.jpg), social links (LinkedIn, Twitter, Instagram).",
+      "category": "architecture",
+      "discovered_at": "2026-01-01T09:04:45.478165+00:00"
+    }
+  },
+  "last_updated": "2026-01-01T09:04:45.478180+00:00"
+}

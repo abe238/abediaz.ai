@@ -1,0 +1,12 @@
+{
+  "sourceType": "ideation",
+  "ideationType": "code_improvements",
+  "ideaId": "ci-004",
+  "rationale": "The <head> section already has structured metadata (Open Graph, Twitter Cards). JSON-LD extends this same pattern for search engines. All the data needed (name, job title, employer, social links, image) is already in the HTML content.",
+  "category": "feature",
+  "estimatedEffort": "small",
+  "complexity": "small",
+  "affectedFiles": [
+    "index.html"
+  ]
+}
