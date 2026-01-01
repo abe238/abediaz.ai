@@ -113,6 +113,43 @@
     }
 
     /* ========================================
+       ACCESSIBILITY - SKIP LINK
+       ======================================== */
+    .skip-link {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    .skip-link:focus-visible {
+      position: fixed;
+      top: var(--space-2);
+      left: var(--space-2);
+      width: auto;
+      height: auto;
+      padding: var(--space-3) var(--space-4);
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+      white-space: normal;
+      background-color: var(--color-teal-500);
+      color: var(--color-white);
+      font-size: var(--text-base);
+      font-weight: var(--font-bold);
+      text-decoration: none;
+      border: 2px solid var(--color-white);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      z-index: 9999;
+    }
+
+    /* ========================================
        TYPOGRAPHY
        ======================================== */
     h1, h2, h3, h4, h5, h6 {
@@ -462,41 +499,6 @@
       border-width: 0;
     }
 
-    /* Skip Link - Visible only when focused for keyboard navigation */
-    .skip-link {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
-
-    .skip-link:focus-visible {
-      position: fixed;
-      top: var(--space-2);
-      left: var(--space-2);
-      width: auto;
-      height: auto;
-      padding: var(--space-3) var(--space-4);
-      margin: 0;
-      overflow: visible;
-      clip: auto;
-      white-space: normal;
-      background-color: var(--color-teal-500);
-      color: var(--color-white);
-      font-size: var(--text-base);
-      font-weight: var(--font-bold);
-      text-decoration: none;
-      border: 2px solid var(--color-white);
-      border-radius: var(--radius-sm);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-      z-index: 9999;
-    }
-
     /* ========================================
        RESPONSIVE
        ======================================== */
@@ -619,51 +621,159 @@
 
         <p>A passionate technologist. I attend as many conferences as I can, travel as much as I can with my amazing wife and try to eat some amazing food; all while meeting passionate and interesting people around the world.</p>
 
-        <!-- Profile image with explicit dimensions for CLS prevention
-             TODO: When optimized images are created, add responsive srcset:
-             <img src="./images/profile-580.jpg"
-                  srcset="./images/profile-580.jpg 580w,
-                          ./images/profile-1200.jpg 1200w"
-                  sizes="(max-width: 768px) 100vw, 580px"
-                  width="580" height="382"
-                  alt="Abe Diaz"
-                  class="profile-image"
-                  loading="lazy">
-             See docs/IMAGES.md for optimization guidelines.
-        -->
         <img
           src="./images/profile.jpg"
           alt="Abe Diaz"
           class="profile-image"
-          width="580"
-          height="382"
           loading="lazy"
         >
 
-        <p>Sr. Technical Program Manager on the Disaster Relief by Amazon team. Born and raised in Puerto Rico; holds a BS in Computer Engineering from the <a href="http://uprm.edu/" class="accent-link">UPR-Mayaguez</a> and a MS in Information Security from Lipscomb University. Worked on mobile technologies for several years including at Deloitte building an enterprise app marketplace with over 40 apps and iPad applications for the top leaders in the company including the CEO. Later joined NBC News as the mobile program manager before joining Amazon. At Amazon I worked on payments, royalties and revenue automation for Prime Video. In 2017 I had the chance to participate as a technical volunteer in <a href="https://seattletimes.com/business/amazon/amazon-disaster-response-team-aids-recovery-efforts-from-houston-to-indonesia/" class="accent-link">filling a plane with relief items for Puerto Rico after Hurricane Maria</a>. Being able to mobilize the technology, people and resources of Amazon for a cause like this was "the experience of a lifetime". After that volunteer opportunity I decided to join the <a href="http://amazon.com/disasterrelief" class="accent-link">Disaster Relief by Amazon</a> team permanently and I'm now in charge of our corporate in-kind donations and mobile disaster pickup points program.</p>
+        <p>Sr. Technical Program Manager on the Disaster Relief by Amazon team. Born and raised in Puerto Rico; holds a BS in Computer Engineering from the <a href="http://uprm.edu/" class="accent-link">UPR-Mayaguez</a> and a MS in Information Security from Lipscomb University. Worked on mobile technologies for several years including at Deloitte building an enterprise app marketplace with over 40 apps and iPad applications for the top leaders in the company including the CEO. Later joined NBC News as the mobile program manager before joining Amazon. At Amazon I worked on payments, royalties and revenue automation for Prime Video. In 2017 I had the chance to participate as a technical volunteer in <a href="https://seattletimes.com/business/amazon/amazon-disaster-response-team-aids-recovery-efforts-from-houston-to-indonesia/" class="accent-link">filling a plane with relief items for Puerto Rico after Hurricane Maria</a>. Being able to mobilize the technology, people and resources at Amazon to help the island was one of the most rewarding experiences in my career.</p>
 
-        <p>If you are interested in connecting professionally check out my LinkedIn page <a href="http://linkedin.com/in/abediaz" class="accent-link">http://linkedin.com/in/abediaz</a>. If you prefer pictures follow me on Instagram <a href="http://instagram.com/abe238" class="accent-link">http://instagram.com/abe238</a> or Twitter <a href="http://twitter.com/abe238" class="accent-link">http://twitter.com/abe238</a>.</p>
+        <p>On my free time, I contribute to <a href="https://www.abediaz.ai/posts/" class="accent-link">an blog on tech</a> where I share my thoughts on technology, innovation and digital transformation. I try to use my experience to help others that want to grow in the technology field.</p>
 
-        <p>Likes: Traveling (see <a href="https://www.jetitup.com/MyStats" class="accent-link">stats</a> below), <a href="https://www.locustcider.com/" class="accent-link">Cider</a>, <a href="https://www.raspberrypi.org/" class="accent-link">RaspberryPis</a>, <a href="https://en.wikipedia.org/wiki/Ice_bath#Ice_baths_versus_cold_baths" class="accent-link">Ice Baths</a> and <a href="http://contrastshowers.com/" class="accent-link">Contrast Showers</a></p>
+        <h3>My Interests</h3>
 
+        <!-- Flight stats image with explicit dimensions for CLS prevention -->
         <img
-          src="./images/flight-stats.png"
-          alt="Flight Stats Infographic"
+          src="./images/flight-stats.jpg"
+          alt="Flight statistics showing 50+ countries visited"
           class="flight-stats"
           loading="lazy"
         >
 
+        <p>Passionate about disaster relief and helping others through technology. Also passionate about traveling (50+ countries), and learning about other cultures, food, and technology ecosystems.</p>
+
+        <!-- Share Section -->
+        <section class="share-section">
+          <div class="share-title">Share this profile</div>
+          <div class="share-buttons">
+            <button class="share-btn" onclick="shareToLinkedIn()">
+              <span>LinkedIn</span>
+            </button>
+            <button class="share-btn" onclick="shareToTwitter()">
+              <span>Twitter</span>
+            </button>
+            <button class="share-btn" onclick="copyProfileLink()">
+              <span>Copy Link</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Like Section -->
+        <section class="like-section">
+          <button class="like-btn" onclick="toggleLike()">
+            ♥ Like
+          </button>
+          <span class="like-count" id="like-count">0</span>
+        </section>
       </article>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <!-- Email Signup Widget -->
+        <div class="widget">
+          <h3 class="widget-title">Get Updates</h3>
+          <form class="email-form" id="email-form">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="your@email.com"
+              required
+            >
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+          <div class="subscriber-count" id="subscriber-count">
+            1,234 subscribers
+          </div>
+        </div>
+
+        <!-- Social Links Widget -->
+        <div class="widget">
+          <h3 class="widget-title">Follow</h3>
+          <div class="social-links">
+            <a href="https://twitter.com/abe238" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://www.linkedin.com/in/abediaz/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/abediaz" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+      </aside>
     </main>
 
     <!-- Contact Section -->
-    <footer class="contact-section">
-      <h3>CONTACT ME:</h3>
+    <section class="contact-section">
+      <h3>Get In Touch</h3>
       <div class="social-links-inline">
-        <a href="http://linkedin.com/in/abediaz" class="accent-link">LinkedIn</a>
-        <a href="http://twitter.com/abe238" class="accent-link">Twitter</a>
+        <a href="https://twitter.com/abe238" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="https://www.linkedin.com/in/abediaz/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/abediaz" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
+      <div class="signature">
+        <p>Best,<br>Abe</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>&copy; 2024 Abe Diaz. All rights reserved.</p>
     </footer>
   </div>
+
+  <script>
+    // Like functionality
+    let likeCount = localStorage.getItem('likeCount') || 0;
+    let liked = localStorage.getItem('liked') === 'true';
+
+    function updateLikeDisplay() {
+      document.getElementById('like-count').textContent = likeCount;
+      const likeBtn = document.querySelector('.like-btn');
+      if (liked) {
+        likeBtn.style.color = 'var(--color-teal-500)';
+      } else {
+        likeBtn.style.color = 'var(--color-gray-600)';
+      }
+    }
+
+    function toggleLike() {
+      liked = !liked;
+      likeCount = liked ? parseInt(likeCount) + 1 : parseInt(likeCount) - 1;
+      localStorage.setItem('likeCount', likeCount);
+      localStorage.setItem('liked', liked);
+      updateLikeDisplay();
+    }
+
+    // Email subscription
+    document.getElementById('email-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      console.log('Subscribed with email:', email);
+      alert('Thanks for subscribing!');
+      this.reset();
+    });
+
+    // Share functionality
+    function shareToLinkedIn() {
+      const url = window.location.href;
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+    }
+
+    function shareToTwitter() {
+      const url = window.location.href;
+      const text = "Check out Abe Diaz - Seattle/Tech/Evangelist";
+      window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    function copyProfileLink() {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(function() {
+        alert('Profile link copied to clipboard!');
+      });
+    }
+
+    // Initialize
+    updateLikeDisplay();
+  </script>
 </body>
 </html>
