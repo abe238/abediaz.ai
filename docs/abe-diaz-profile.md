@@ -1,6 +1,8 @@
 # Abe Diaz - Complete Profile
 
-> Last updated: December 2025
+> **⭐ AUTHORITATIVE SOURCE:** This document is the single source of truth for all professional information, career history, achievements, and biographical data. The website at `index.html` derives its content from this document.
+>
+> **Last updated:** December 2025
 
 ---
 

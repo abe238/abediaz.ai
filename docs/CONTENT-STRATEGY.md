@@ -7,11 +7,59 @@
 
 ## Table of Contents
 
-1. [Overview](#overview)
-2. [Content Sources](#content-sources)
-3. [Version History](#version-history)
-4. [Website Section Mapping](#website-section-mapping)
-5. [Maintenance Guidelines](#maintenance-guidelines)
+1. [📌 Source of Truth: Quick Reference](#-source-of-truth-quick-reference)
+2. [Overview](#overview)
+3. [Content Sources](#content-sources)
+4. [Version History](#version-history)
+5. [Website Section Mapping](#website-section-mapping)
+6. [Maintenance Guidelines](#maintenance-guidelines)
+
+---
+
+## 📌 Source of Truth: Quick Reference
+
+> **IMPORTANT:** `docs/abe-diaz-profile.md` is the **single authoritative source** for all professional information, career history, achievements, and biographical data.
+
+### The Relationship
+
+```
+┌─────────────────────────────────┐
+│  abe-diaz-profile.md            │
+│  (AUTHORITATIVE SOURCE)         │
+│  ✓ Complete professional data   │
+│  ✓ Source of truth for facts    │
+│  ✓ Comprehensive timeline       │
+└────────────┬────────────────────┘
+             │
+             │ curates & selects
+             │ (~30% utilization)
+             ↓
+┌─────────────────────────────────┐
+│  index.html                     │
+│  (PUBLIC PRESENTATION)          │
+│  ✓ Minimalist narrative         │
+│  ✓ Story-focused content        │
+│  ✓ Selective details            │
+└─────────────────────────────────┘
+```
+
+### Key Principles
+
+1. **abe-diaz-profile.md is the master record**
+   - All dates, titles, companies, and achievements originate here
+   - This document maintains complete historical accuracy
+   - Updates to professional information START here
+
+2. **index.html presents a curated selection**
+   - Content is derived from abe-diaz-profile.md
+   - Transforms data into personal narrative
+   - Intentionally shows ~30% of available information
+   - Emphasizes human story over resume details
+
+3. **When information conflicts, abe-diaz-profile.md wins**
+   - Profile document is the tiebreaker for factual disputes
+   - Website should be updated to match profile document
+   - Known discrepancies are documented in Version History below
 
 ---
 
@@ -51,36 +99,65 @@ These two formats serve different purposes and intentionally maintain different 
 
 ### Primary Sources
 
-#### 1. `docs/abe-diaz-profile.md`
-- **Status:** ✅ Authoritative Source
-- **Purpose:** Comprehensive professional profile and resume reference
-- **Last Updated:** December 2025
-- **Content Coverage:**
-  - Identity and branding
-  - Professional summary with career narrative
-  - Impact & achievements (quantified)
-  - Complete work experience timeline (2009-Present)
-  - Education details
-  - Skills taxonomy (Core, Technical, Soft Skills)
-  - Open source projects portfolio
-  - Volunteering history
-  - Press & publications
-  - Personal interests and philosophy
-  - Social links
-- **Usage:** Reference document for all professional information; source of truth for dates, titles, and achievements
+#### 1. `docs/abe-diaz-profile.md` ⭐ AUTHORITATIVE SOURCE
 
-#### 2. `index.html`
+- **Status:** ✅ **Single Source of Truth**
+- **Purpose:** Master record for all professional and biographical information
+- **Authority Level:** **PRIMARY** - All other sources derive from or defer to this document
+- **Last Updated:** December 2025
+
+**What This Means:**
+- This document is the **official record** for Abe Diaz's professional profile
+- All dates, job titles, company names, and achievements are authoritative here
+- When information differs between sources, **this document is correct**
+- Updates to professional information **must start here** before being reflected elsewhere
+
+**Content Coverage:**
+  - ✅ Identity and branding (name, title, location, tagline)
+  - ✅ Professional summary with career narrative
+  - ✅ Impact & achievements (quantified metrics)
+  - ✅ Complete work experience timeline (2009-Present)
+  - ✅ Education details (degrees, institutions, years)
+  - ✅ Skills taxonomy (Core, Technical, Soft Skills)
+  - ✅ Open source projects portfolio
+  - ✅ Volunteering history
+  - ✅ Press & publications
+  - ✅ Personal interests and philosophy
+  - ✅ Social links
+
+**Relationship to Website:**
+- `index.html` is a **derivative work** that curates content from this source
+- Website shows ~30% of the information contained here
+- Website transforms structured data into narrative storytelling
+- Website intentionally omits detailed professional history for minimalist design
+
+#### 2. `index.html` 🌐 PUBLIC PRESENTATION
+
 - **Status:** ✅ Live Website
 - **Purpose:** Public-facing personal brand homepage
-- **Content Coverage:**
-  - Name and tagline
-  - Personal philosophy statement
-  - Selected career narrative (story-focused)
-  - Hurricane Maria pivot story
-  - Personal interests with external links
-  - Travel statistics (visual)
-  - Social media links
-- **Usage:** Primary public interface; curated selection from profile document
+- **Authority Level:** **SECONDARY** - Derives content from `abe-diaz-profile.md`
+- **Content Strategy:** Minimalist, story-driven presentation
+
+**What This Means:**
+- This is a **curated view** of information from `abe-diaz-profile.md`
+- Content here is **intentionally selective** (shows ~30% of available data)
+- Focuses on personal narrative rather than comprehensive resume
+- Should be **synchronized with** but not equal to the profile document
+
+**Content Coverage:**
+  - ✓ Name and tagline (from profile Identity section)
+  - ✓ Personal philosophy statement (from profile Personal section)
+  - ✓ Selected career narrative (from profile Work Experience, story-focused)
+  - ✓ Hurricane Maria pivot story (from profile Professional Summary)
+  - ✓ Personal interests with external links (from profile Personal section)
+  - ✓ Travel statistics (from profile Personal section, visual representation)
+  - ✓ Social media links (subset of profile Social Links)
+
+**Relationship to Profile Document:**
+- Every fact on the website **originates from** `abe-diaz-profile.md`
+- Website does NOT introduce new biographical information
+- Website transforms structured profile data into conversational narrative
+- Updates to website content should **verify against** profile document for accuracy
 
 #### 3. `docs/content-mapping-analysis.md`
 - **Status:** ✅ Reference Document
