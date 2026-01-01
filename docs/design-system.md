@@ -3338,9 +3338,1004 @@ Share/Like:  0.15s ease (color, border-color)
 
 ### Content Components
 
-*This section will document widget, profile-image, flight-stats, contact-section, social-links, share-section, signature, and subscriber-count components.*
+Content components are specialized elements designed to structure and present information on the site. These components include images, widget containers, social link groups, contact sections, and signature elements. Unlike layout components (which define page structure) or interactive components (which handle user actions), content components focus on displaying information in a semantically meaningful and visually consistent way.
 
-**Coming Soon:** Content component documentation with composition patterns.
+#### Design Rationale
+
+Content components provide reusable patterns for common content types:
+
+1. **Semantic Structure** - Each component uses appropriate HTML elements (article, aside, footer) for meaning
+2. **Consistent Spacing** - Predictable margins using the 4px spacing scale
+3. **Visual Hierarchy** - Section borders, headings, and spacing create clear content boundaries
+4. **Responsive Adaptation** - Components adjust spacing/sizing across breakpoints
+5. **Composition Patterns** - Components can be combined to create rich content layouts
+
+**Philosophy:**
+
+Content components should feel lightweight and unobtrusive, letting the actual content shine. They provide just enough structure and spacing to organize information without imposing heavy visual styling. Borders are minimal (1px, gray-200), spacing is generous but not excessive, and components work equally well in main content or sidebar contexts.
+
+----
+
+#### Component Overview
+
+| Component | Type | Margin | Border | Primary Use Case |
+|-----------|------|--------|--------|------------------|
+| **widget** | Container | 24px bottom | none | Sidebar content blocks |
+| **profile-image** | Image | — | none | Main content area profile photos |
+| **flight-stats** | Image | 20px vertical | none | Infographic/data visualization images |
+| **contact-section** | Section | 32px top | 1px top (gray-200) | Footer contact information |
+| **social-links** | List | — | none | Vertical social media link lists |
+| **share-section** | Section | 24px top | 1px top (gray-200) | Content sharing areas |
+| **signature** | Text | 20px top | none | Author signatures/bylines |
+| **subscriber-count** | Text | 8px top | none | Newsletter subscriber metrics |
+
+----
+
+#### `.widget` - Widget Container
+
+**Purpose:** A reusable container component for sidebar content blocks like "About", "Subscribe", or "Popular Posts". Provides consistent bottom spacing to separate multiple stacked widgets.
+
+**CSS Implementation:**
+
+```css
+.widget {
+  margin-bottom: var(--space-6);               /* 24px bottom spacing */
+}
+
+.widget-title {
+  font-family: var(--font-heading);            /* Oswald */
+  font-size: var(--text-lg);                   /* 16px */
+  font-weight: var(--font-bold);               /* 700 */
+  text-transform: uppercase;
+  color: var(--color-black);
+  margin-bottom: var(--space-3);               /* 12px */
+}
+
+.widget p {
+  font-size: var(--text-base);                 /* 13px */
+  color: var(--color-gray-700);                /* #555555 */
+}
+```
+
+**HTML Structure:**
+
+```html
+<!-- About Widget -->
+<aside class="sidebar">
+  <div class="widget">
+    <h3 class="widget-title">ABOUT</h3>
+    <p>
+      A passionate technologist attending conferences,
+      traveling, and meeting interesting people worldwide.
+    </p>
+  </div>
+
+  <!-- Subscribe Widget -->
+  <div class="widget">
+    <h3 class="widget-title">SUBSCRIBE</h3>
+    <p>Get updates delivered to your inbox.</p>
+    <form class="email-form">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" required>
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- Social Links Widget -->
+  <div class="widget">
+    <h3 class="widget-title">FOLLOW ME</h3>
+    <div class="social-links">
+      <a href="https://twitter.com/username">Twitter</a>
+      <a href="https://linkedin.com/in/username">LinkedIn</a>
+    </div>
+  </div>
+</aside>
+```
+
+**Styling Details:**
+
+**Widget Container:**
+- **24px bottom margin**: Separates stacked widgets in sidebar
+- **No border/padding**: Clean, minimal container
+- **Block display**: Full-width within sidebar
+
+**Widget Title (.widget-title):**
+- **Oswald font**: Matches site heading style
+- **16px size**: Larger than body text but smaller than main headings
+- **Bold weight**: Creates hierarchy within widget
+- **UPPERCASE**: Consistent with site heading style
+- **12px bottom margin**: Tight spacing to widget content
+
+**Widget Paragraphs:**
+- **13px base size**: Matches site body text
+- **Gray-700 color**: Standard body text color
+- **Default line-height**: 1.75 for readability
+
+**Responsive Behavior:**
+
+Widgets maintain consistent styling across all breakpoints. When sidebar is removed on mobile, widgets can be stacked in the main content area.
+
+**Usage Guidelines:**
+
+- ✅ Use in sidebar areas for grouped content
+- ✅ Stack multiple widgets vertically (margin-bottom provides spacing)
+- ✅ Include `.widget-title` for each widget (even if visually hidden)
+- ✅ Combine with other components (email-form, social-links)
+- ❌ Don't nest widgets inside widgets (flat structure only)
+- ❌ Don't override the 24px margin-bottom (maintains rhythm)
+- ❌ Don't use in main content area (use sections instead)
+- ❌ Don't add excessive content (keep widgets concise)
+
+**Composition Patterns:**
+
+Widgets commonly contain:
+- **Text only**: Simple about/bio content
+- **Form**: Email subscription forms
+- **Link lists**: Social links, recent posts
+- **Images**: Small profile photos, badges
+
+**Accessibility Notes:**
+
+- **Semantic HTML**: Use `<aside>` for sidebar, `<div class="widget">` for each widget
+- **Heading hierarchy**: Widget titles should be `<h3>` (assuming h1 is site title, h2 is section titles)
+- **Landmark regions**: Sidebar should be wrapped in `<aside>` landmark
+- **Navigation**: If widget contains navigation links, wrap in `<nav>` element
+
+----
+
+#### `.profile-image` - Profile Image
+
+**Purpose:** Full-width image component for profile photos in the main content area. Maintains aspect ratio and responsively scales to fit container width.
+
+**CSS Implementation:**
+
+```css
+.profile-image {
+  width: 100%;                                 /* Full-width of container */
+  max-width: var(--content-width);             /* 580px max */
+  height: auto;                                /* Maintain aspect ratio */
+  display: block;                              /* Remove inline spacing */
+}
+```
+
+**HTML Structure:**
+
+```html
+<article class="content">
+  <h2 class="section-title">ABOUT ME</h2>
+
+  <p>Introduction paragraph...</p>
+
+  <img
+    src="./images/profile.jpg"
+    alt="Abe Diaz"
+    class="profile-image"
+    loading="lazy"
+  >
+
+  <p>Biography continues after image...</p>
+</article>
+```
+
+**Styling Details:**
+
+- **100% width**: Fills content area width (typically 580px)
+- **580px max-width**: Matches content area width
+- **Auto height**: Preserves image aspect ratio (no distortion)
+- **Block display**: Eliminates inline image spacing issues
+- **No margin**: Uses natural paragraph spacing around it
+
+**Responsive Behavior:**
+
+| Breakpoint | Margin | Behavior |
+|------------|--------|----------|
+| **Desktop** (>768px) | Default | Full content width (580px) |
+| **Tablet** (≤768px) | 16px vertical | Slightly reduced spacing |
+| **Mobile** (≤480px) | 16px vertical | Scales to mobile content width |
+
+```css
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .profile-image,
+  .flight-stats {
+    margin: var(--space-4) 0;              /* 16px vertical */
+  }
+}
+```
+
+**Usage Guidelines:**
+
+- ✅ Use for main profile/bio photos in content area
+- ✅ Include descriptive alt text (person's name, context)
+- ✅ Use `loading="lazy"` for performance
+- ✅ Place naturally within paragraph flow
+- ✅ Optimize images (WebP format, appropriate dimensions)
+- ❌ Don't use for small thumbnails (no class needed)
+- ❌ Don't use in sidebar (consider smaller fixed width)
+- ❌ Don't apply multiple image classes simultaneously
+- ❌ Don't skip alt text (critical for accessibility)
+
+**Image Optimization:**
+
+- **Recommended width**: 1160px (2x for retina displays)
+- **Format**: WebP with JPEG fallback
+- **Compression**: 80-85% quality
+- **Aspect ratio**: 3:2 or 4:3 for portraits
+
+**Accessibility Notes:**
+
+- **Alt text required**: Describe who/what is in the photo
+- **Block display**: Integrates naturally with screen reader flow
+- **Lazy loading**: Improves performance without affecting accessibility
+- **Sufficient size**: Full-width images are easier to see for low-vision users
+
+----
+
+#### `.flight-stats` - Flight Stats Image
+
+**Purpose:** Full-width image component for data visualizations, infographics, and statistical graphics. Provides vertical spacing to separate from surrounding content.
+
+**CSS Implementation:**
+
+```css
+.flight-stats {
+  width: 100%;                                 /* Full-width of container */
+  height: auto;                                /* Maintain aspect ratio */
+  margin: var(--space-5) 0;                    /* 20px vertical spacing */
+}
+```
+
+**HTML Structure:**
+
+```html
+<article class="content">
+  <p>Travel statistics and journey details...</p>
+
+  <img
+    src="./images/flight-stats.png"
+    alt="Flight Stats Infographic showing 150 flights to 42 countries"
+    class="flight-stats"
+    loading="lazy"
+  >
+
+  <p>Additional travel information...</p>
+</article>
+```
+
+**Styling Details:**
+
+- **100% width**: Fills content area (no max-width restriction)
+- **Auto height**: Preserves infographic aspect ratio
+- **20px vertical margin**: Creates breathing room above/below
+- **No max-width**: Can exceed content width if needed
+
+**Difference from `.profile-image`:**
+
+| Property | profile-image | flight-stats |
+|----------|---------------|--------------|
+| **max-width** | 580px | none |
+| **margin** | none (uses paragraph flow) | 20px vertical |
+| **Use case** | Profile photos | Data visualizations |
+
+**Responsive Behavior:**
+
+| Breakpoint | Margin | Behavior |
+|------------|--------|----------|
+| **Desktop** (>768px) | 20px vertical | Full content width |
+| **Tablet** (≤768px) | 16px vertical | Scaled to fit |
+| **Mobile** (≤480px) | 16px vertical | Stacked display |
+
+```css
+@media (max-width: 768px) {
+  .profile-image,
+  .flight-stats {
+    margin: var(--space-4) 0;              /* 16px vertical (tighter) */
+  }
+}
+```
+
+**Usage Guidelines:**
+
+- ✅ Use for infographics, charts, and data visualizations
+- ✅ Provide detailed alt text describing the data
+- ✅ Use high-resolution images (infographics need clarity)
+- ✅ Include margin for visual separation
+- ✅ Consider text alternative for complex data
+- ❌ Don't use for decorative images (use img without class)
+- ❌ Don't use for photos (use `.profile-image` instead)
+- ❌ Don't include data only as an image (accessibility)
+- ❌ Don't use tiny fonts in infographic (hard to read)
+
+**Alt Text Best Practices:**
+
+For data visualizations, alt text should summarize key information:
+
+```html
+<!-- ❌ Poor alt text -->
+<img src="stats.png" alt="Stats" class="flight-stats">
+
+<!-- ✅ Good alt text -->
+<img
+  src="flight-stats.png"
+  alt="Flight Stats Infographic showing 150 flights across 42 countries over 5 years, with top destinations including Japan (12 trips), UK (8 trips), and Mexico (6 trips)"
+  class="flight-stats"
+>
+```
+
+**Accessibility Notes:**
+
+- **Detailed alt text**: Must describe the data, not just say "infographic"
+- **Text alternative**: Consider providing data in text/table format as well
+- **High contrast**: Ensure infographic text/colors are readable
+- **Sufficient size**: Full-width ensures legibility on all devices
+
+----
+
+#### `.contact-section` - Contact Section
+
+**Purpose:** A footer section component for contact information and social links. Features top border and generous padding to visually separate from main content.
+
+**CSS Implementation:**
+
+```css
+.contact-section {
+  margin-top: var(--space-8);                  /* 32px top margin */
+  padding-top: var(--space-6);                 /* 24px top padding */
+  padding-bottom: var(--space-6);              /* 24px bottom padding */
+  border-top: 1px solid var(--color-gray-200); /* Top border separator */
+}
+
+.contact-section h3 {
+  margin-bottom: var(--space-3);               /* 12px below heading */
+}
+```
+
+**HTML Structure:**
+
+```html
+<footer class="contact-section">
+  <h3>CONTACT ME:</h3>
+  <div class="social-links-inline">
+    <a href="https://linkedin.com/in/username" class="accent-link">LinkedIn</a>
+    <a href="https://twitter.com/username" class="accent-link">Twitter</a>
+    <a href="mailto:email@example.com" class="accent-link">Email</a>
+  </div>
+</footer>
+```
+
+**Styling Details:**
+
+**Section Container:**
+- **32px top margin**: Large gap from preceding content
+- **24px top/bottom padding**: Generous internal spacing
+- **1px top border**: Gray-200 border creates visual separation
+- **No max-width**: Spans full container width
+
+**Heading (h3):**
+- **12px bottom margin**: Tight spacing to social links
+- **Inherits h3 styles**: Oswald, 16px, bold, uppercase
+
+**Responsive Behavior:**
+
+| Breakpoint | Top Margin | Top/Bottom Padding | Changes |
+|------------|------------|-------------------|---------|
+| **Desktop** (>768px) | 32px | 24px / 24px | Standard spacing |
+| **Tablet** (≤768px) | 24px | 20px / 32px | Tighter top, more bottom |
+| **Mobile** (≤480px) | 24px | 20px / 32px | Same as tablet |
+
+```css
+@media (max-width: 768px) {
+  .contact-section {
+    margin-top: var(--space-6);                /* 24px (tighter) */
+    padding-top: var(--space-5);               /* 20px (tighter) */
+    padding-bottom: var(--space-8);            /* 32px (more breathing room) */
+  }
+}
+```
+
+**Usage Guidelines:**
+
+- ✅ Use as page footer for contact information
+- ✅ Combine with `.social-links-inline` for horizontal links
+- ✅ Use semantic `<footer>` element
+- ✅ Keep contact methods limited (3-5 links maximum)
+- ❌ Don't use multiple contact-section elements per page
+- ❌ Don't remove the top border (provides visual separation)
+- ❌ Don't place above main content (footer positioning)
+- ❌ Don't include lengthy content (keep concise)
+
+**Composition Patterns:**
+
+The contact section commonly contains:
+- **Heading**: "CONTACT ME:", "GET IN TOUCH:", "CONNECT:"
+- **Social links inline**: Horizontal list of platform links
+- **Optional**: Email address, phone, location
+- **Optional**: Newsletter signup (`.email-form`)
+
+**Accessibility Notes:**
+
+- **Semantic footer**: Use `<footer>` element (landmark role)
+- **Heading hierarchy**: Ensure h3 follows site heading structure (h1 → h2 → h3)
+- **Link text**: Use platform names, not "click here"
+- **Sufficient contrast**: Border (gray-200) and link colors meet WCAG standards
+- **Touch targets**: Links must be at least 44x44px on mobile
+
+----
+
+#### `.social-links` - Social Links (Vertical)
+
+**Purpose:** A vertical stack of social media links, typically used in sidebar widgets. Creates consistent spacing between links in a column layout.
+
+**CSS Implementation:**
+
+```css
+.social-links {
+  display: flex;
+  flex-direction: column;                      /* Vertical stack */
+  gap: var(--space-2);                         /* 8px between links */
+}
+
+.social-links a {
+  color: var(--color-gray-700);                /* #555555 */
+}
+```
+
+**HTML Structure:**
+
+```html
+<!-- In sidebar widget -->
+<div class="widget">
+  <h3 class="widget-title">FOLLOW ME</h3>
+  <div class="social-links">
+    <a href="https://twitter.com/username">Twitter</a>
+    <a href="https://linkedin.com/in/username">LinkedIn</a>
+    <a href="https://instagram.com/username">Instagram</a>
+    <a href="https://github.com/username">GitHub</a>
+  </div>
+</div>
+```
+
+**Styling Details:**
+
+- **Flexbox column**: Stacks links vertically
+- **8px gap**: Consistent spacing using modern gap property
+- **Gray-700 links**: Matches body text color (#555555)
+- **No bullets/list styles**: Clean, minimal appearance
+
+**Link Styling:**
+
+Links inside `.social-links` inherit default link styles:
+- **Gray-700 color**: `#555555` (default state)
+- **Teal-500 hover**: Accent color on hover (from global `a:hover`)
+- **Underline on hover**: Standard link behavior
+- **13px font size**: Matches body text (`--text-base`)
+
+**Responsive Behavior:**
+
+No responsive adjustments needed. The vertical stack works well on all screen sizes.
+
+**Usage Guidelines:**
+
+- ✅ Use for vertical sidebar link lists
+- ✅ Limit to 4-6 links (avoid overwhelming)
+- ✅ Use consistent platform names ("Twitter" not "@username")
+- ✅ Order by importance/usage (most used first)
+- ❌ Don't use for horizontal layouts (use `.social-links-inline`)
+- ❌ Don't add icons without text (text is primary)
+- ❌ Don't include too many platforms (focus on active ones)
+- ❌ Don't use generic text ("Social Media" vs platform names)
+
+**Comparison: Vertical vs Inline Social Links**
+
+| Property | social-links | social-links-inline |
+|----------|--------------|---------------------|
+| **Direction** | column (vertical) | row (horizontal) |
+| **Gap** | 8px | 20px (desktop), 24px (mobile) |
+| **Font size** | 13px (base) | 13px → 14px responsive |
+| **Use case** | Sidebar widgets | Footer contact section |
+
+**Accessibility Notes:**
+
+- **Descriptive links**: Platform names are clear and self-describing
+- **Sufficient spacing**: 8px gap creates distinct click targets
+- **Color contrast**: Gray-700 on white = 5.7:1 (WCAG AA)
+- **Hover feedback**: Teal color change indicates interactivity
+
+----
+
+#### `.share-section` - Share Section
+
+**Purpose:** A bordered section for content sharing options (share buttons, social sharing tools). Provides visual separation with top border and spacing.
+
+**CSS Implementation:**
+
+```css
+.share-section {
+  margin-top: var(--space-6);                  /* 24px top margin */
+  padding-top: var(--space-5);                 /* 20px top padding */
+  border-top: 1px solid var(--color-gray-200); /* Top border separator */
+}
+```
+
+**HTML Structure:**
+
+```html
+<article class="content">
+  <h2 class="section-title">ARTICLE TITLE</h2>
+  <p>Article content goes here...</p>
+
+  <!-- Share Section at end of article -->
+  <div class="share-section">
+    <h3>SHARE THIS:</h3>
+    <div>
+      <button class="share-btn">
+        <svg><!-- Twitter icon --></svg>
+        Twitter
+      </button>
+      <button class="share-btn">
+        <svg><!-- Facebook icon --></svg>
+        Facebook
+      </button>
+      <button class="share-btn">
+        <svg><!-- LinkedIn icon --></svg>
+        LinkedIn
+      </button>
+    </div>
+  </div>
+</article>
+```
+
+**Styling Details:**
+
+- **24px top margin**: Separates from article content
+- **20px top padding**: Creates space inside border
+- **1px top border**: Gray-200 border (#EEEEEE) for subtle separation
+- **No bottom padding/margin**: Relies on natural content spacing
+
+**Responsive Behavior:**
+
+No responsive adjustments defined. The component maintains consistent spacing across all breakpoints.
+
+**Usage Guidelines:**
+
+- ✅ Use at end of articles/posts for sharing options
+- ✅ Combine with `.share-btn` components
+- ✅ Include heading ("Share This:", "Share:", "Spread the word:")
+- ✅ Limit share platforms (3-5 most relevant)
+- ❌ Don't place at top of content (end of article is standard)
+- ❌ Don't use without border (visual separation is key)
+- ❌ Don't include too many platforms (creates decision fatigue)
+- ❌ Don't make sharing the primary CTA (content is primary)
+
+**Composition Patterns:**
+
+Share sections commonly contain:
+- **Heading**: Optional h3 or strong text
+- **Share buttons**: `.share-btn` elements for each platform
+- **Optional**: Share count displays
+- **Optional**: Direct social platform embed widgets
+
+**Common Use Cases:**
+
+1. **Blog post sharing**: Twitter, LinkedIn, Facebook
+2. **Portfolio sharing**: LinkedIn, Twitter, Email
+3. **Video sharing**: YouTube, Twitter, Facebook
+4. **Photo sharing**: Instagram, Twitter, Pinterest
+
+**Accessibility Notes:**
+
+- **Semantic grouping**: Wrap in `<div>` or `<aside>` (not structural)
+- **Clear heading**: "Share This" clearly indicates purpose
+- **Button labels**: Share buttons must include platform names (not icon-only)
+- **Border contrast**: Gray-200 border may be subtle (sufficient for visual users)
+
+----
+
+#### `.signature` - Signature
+
+**Purpose:** A text component for author signatures or bylines. Uses normal font style (not italic) with top spacing to separate from preceding content.
+
+**CSS Implementation:**
+
+```css
+.signature {
+  font-style: normal;                          /* Override italic default */
+  margin-top: var(--space-5);                  /* 20px top spacing */
+}
+```
+
+**HTML Structure:**
+
+```html
+<article class="content">
+  <p>Article or letter content...</p>
+
+  <p class="signature">
+    — Abe Diaz<br>
+    Seattle, WA
+  </p>
+</article>
+
+<!-- Alternative with cite element -->
+<blockquote>
+  <p>Quote content...</p>
+  <cite class="signature">Abe Diaz</cite>
+</blockquote>
+```
+
+**Styling Details:**
+
+- **Normal font style**: Explicitly sets `font-style: normal` (overrides italic)
+- **20px top margin**: Creates separation from article content
+- **Inherits body styles**: Uses standard body font, size, color, line-height
+
+**Why `font-style: normal`?**
+
+The `.signature` class is often applied to elements that default to italic:
+- `<cite>` elements (default: italic)
+- `<em>` or `<i>` elements
+- Author attribution blocks
+
+Setting `font-style: normal` ensures signatures appear upright, not italicized.
+
+**Typography:**
+
+- **Font**: Helvetica Neue (body font)
+- **Size**: 13px (--text-base)
+- **Color**: Gray-700 (#555555)
+- **Weight**: Normal (400)
+- **Line height**: 1.75
+
+**Responsive Behavior:**
+
+No responsive adjustments needed. The signature maintains consistent styling across all breakpoints.
+
+**Usage Guidelines:**
+
+- ✅ Use for author signatures at end of articles/letters
+- ✅ Use for quote attributions with `<cite>` element
+- ✅ Include em dash (—) before name for visual style
+- ✅ Keep concise (name, location, role)
+- ❌ Don't use for headers/titles (wrong semantic meaning)
+- ❌ Don't apply to interactive elements (buttons, links)
+- ❌ Don't override the 20px margin (maintains rhythm)
+- ❌ Don't include lengthy biographical information
+
+**Content Patterns:**
+
+```html
+<!-- Simple signature -->
+<p class="signature">— Abe Diaz</p>
+
+<!-- With location -->
+<p class="signature">
+  — Abe Diaz<br>
+  Seattle, WA
+</p>
+
+<!-- With role/title -->
+<p class="signature">
+  — Abe Diaz<br>
+  Sr. Technical Program Manager, Amazon
+</p>
+
+<!-- As cite element -->
+<cite class="signature">Abe Diaz, 2026</cite>
+```
+
+**Accessibility Notes:**
+
+- **Semantic HTML**: Use `<cite>` for quote attributions, `<p>` for letter signatures
+- **Normal font**: Ensures readability (italic can reduce legibility)
+- **Sufficient spacing**: 20px margin clearly separates signature from content
+- **Standard contrast**: Inherits body text color (5.7:1 ratio)
+
+----
+
+#### `.subscriber-count` - Subscriber Count
+
+**Purpose:** A small, muted text component for displaying newsletter subscriber metrics. Provides context about newsletter popularity/reach.
+
+**CSS Implementation:**
+
+```css
+.subscriber-count {
+  font-size: var(--text-sm);                   /* 12px */
+  color: var(--color-gray-600);                /* #767676 - Lighter gray */
+  margin-top: var(--space-2);                  /* 8px top spacing */
+}
+```
+
+**HTML Structure:**
+
+```html
+<!-- In subscription widget -->
+<div class="widget">
+  <h3 class="widget-title">SUBSCRIBE</h3>
+  <p>Get weekly updates delivered to your inbox.</p>
+
+  <form class="email-form">
+    <label for="email">Email Address</label>
+    <input type="email" id="email" required>
+    <button type="submit" class="btn btn-primary">Subscribe</button>
+  </form>
+
+  <p class="subscriber-count">Join 2,847 subscribers</p>
+</div>
+```
+
+**Styling Details:**
+
+- **12px font size**: Smaller than body text (13px), indicating secondary information
+- **Gray-600 color**: Lighter gray (#767676) for muted, subtle appearance
+- **8px top margin**: Tight spacing from form/preceding content
+- **Inherits**: Body font family (Helvetica Neue), normal weight (400)
+
+**Typography:**
+
+- **Font**: Helvetica Neue (body font)
+- **Size**: 12px (--text-sm)
+- **Color**: Gray-600 (#767676)
+- **Weight**: Normal (400)
+- **Line height**: Default (1.75)
+
+**Responsive Behavior:**
+
+No responsive adjustments needed. The subtle metric display works well at all screen sizes.
+
+**Usage Guidelines:**
+
+- ✅ Use for newsletter subscriber counts
+- ✅ Use for social follower counts
+- ✅ Keep text concise ("Join 2,847 subscribers")
+- ✅ Place below subscription form or social links
+- ✅ Update count periodically (avoid stale numbers)
+- ❌ Don't make subscriber count prominent (it's supplementary)
+- ❌ Don't use for primary metrics (use larger text)
+- ❌ Don't show low counts if discouraging (wait until impressive)
+- ❌ Don't use deceptive numbers (be honest about subscribers)
+
+**Content Patterns:**
+
+```html
+<!-- Subscriber count -->
+<p class="subscriber-count">Join 2,847 subscribers</p>
+
+<!-- Follower count -->
+<p class="subscriber-count">5,234 followers</p>
+
+<!-- Download count -->
+<p class="subscriber-count">Downloaded 1,203 times</p>
+
+<!-- View count -->
+<p class="subscriber-count">Viewed 12,456 times</p>
+```
+
+**Social Proof Psychology:**
+
+Subscriber counts serve as social proof, indicating:
+- **Popularity**: High numbers suggest valuable content
+- **Community**: Others are interested, creating FOMO (fear of missing out)
+- **Credibility**: Established audience implies trustworthiness
+- **Momentum**: Growing numbers indicate active, current content
+
+**Best Practices:**
+
+1. **Show when impressive**: Don't display until count is meaningful (>500)
+2. **Round numbers**: "Join 2,800+ subscribers" vs "Join 2,847 subscribers"
+3. **Keep updated**: Stale numbers look abandoned
+4. **Be honest**: Fake numbers damage credibility
+5. **Make it timely**: "Join 100+ subscribers this week" adds urgency
+
+**Accessibility Notes:**
+
+- **Sufficient contrast**: Gray-600 on white = 4.6:1 (WCAG AA)
+- **Not critical information**: Supplementary content, not required to understand CTA
+- **Screen reader friendly**: Plain text, no special formatting needed
+- **Small size acceptable**: Not primary content, so 12px is appropriate
+
+----
+
+#### Content Components Best Practices
+
+**Do's:**
+
+- ✅ Use semantic HTML elements (aside, article, footer, cite)
+- ✅ Maintain consistent spacing using design tokens
+- ✅ Provide descriptive alt text for all images
+- ✅ Combine components for rich layouts (widget + social-links)
+- ✅ Keep content concise within components
+- ✅ Use top borders for visual section separation
+- ✅ Optimize images for performance (WebP, lazy loading)
+- ✅ Follow heading hierarchy (h1 → h2 → h3)
+
+**Don'ts:**
+
+- ❌ Don't nest content components excessively (flat structure preferred)
+- ❌ Don't skip alt text on images (accessibility requirement)
+- ❌ Don't override component spacing without reason (breaks rhythm)
+- ❌ Don't use decorative borders/styling (minimal design philosophy)
+- ❌ Don't include outdated information (subscriber counts, stats)
+- ❌ Don't use generic link text ("click here", "learn more")
+- ❌ Don't create overly complex widget layouts
+- ❌ Don't place contact sections above main content
+
+----
+
+#### Composition Examples
+
+**Sidebar with Multiple Widgets:**
+
+```html
+<aside class="sidebar">
+  <!-- About Widget -->
+  <div class="widget">
+    <h3 class="widget-title">ABOUT</h3>
+    <img src="./images/avatar.jpg" alt="Abe Diaz" style="width: 100%; border-radius: 50%;">
+    <p>Passionate technologist and traveler.</p>
+  </div>
+
+  <!-- Subscribe Widget -->
+  <div class="widget">
+    <h3 class="widget-title">SUBSCRIBE</h3>
+    <p>Get updates via email.</p>
+    <form class="email-form">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" required>
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+    <p class="subscriber-count">Join 2,800+ subscribers</p>
+  </div>
+
+  <!-- Social Links Widget -->
+  <div class="widget">
+    <h3 class="widget-title">FOLLOW ME</h3>
+    <div class="social-links">
+      <a href="https://twitter.com/username">Twitter</a>
+      <a href="https://linkedin.com/in/username">LinkedIn</a>
+      <a href="https://instagram.com/username">Instagram</a>
+    </div>
+  </div>
+</aside>
+```
+
+**Article with Images and Share Section:**
+
+```html
+<article class="content">
+  <h2 class="section-title">MY TRAVEL STORY</h2>
+
+  <p>Introduction paragraph about traveling...</p>
+
+  <img
+    src="./images/profile.jpg"
+    alt="Abe Diaz at Mount Fuji, Japan"
+    class="profile-image"
+    loading="lazy"
+  >
+
+  <p>More content about the journey...</p>
+
+  <img
+    src="./images/flight-stats.png"
+    alt="Flight statistics: 150 flights to 42 countries"
+    class="flight-stats"
+    loading="lazy"
+  >
+
+  <p>Final thoughts...</p>
+
+  <p class="signature">
+    — Abe Diaz<br>
+    Seattle, WA
+  </p>
+
+  <!-- Share Section -->
+  <div class="share-section">
+    <h3>SHARE THIS STORY:</h3>
+    <button class="share-btn">Twitter</button>
+    <button class="share-btn">LinkedIn</button>
+    <button class="share-btn">Facebook</button>
+  </div>
+</article>
+```
+
+**Footer Contact Section:**
+
+```html
+<footer class="contact-section">
+  <h3>CONTACT ME:</h3>
+  <div class="social-links-inline">
+    <a href="https://linkedin.com/in/abediaz" class="accent-link">LinkedIn</a>
+    <a href="https://twitter.com/abe238" class="accent-link">Twitter</a>
+    <a href="mailto:abe@example.com" class="accent-link">Email</a>
+  </div>
+</footer>
+```
+
+----
+
+#### Accessibility Summary
+
+| Component | Semantic HTML | Alt Text | Color Contrast | Spacing | Notes |
+|-----------|---------------|----------|----------------|---------|-------|
+| **widget** | `<aside>`, `<div>` | N/A | Heading: 21:1, Body: 5.7:1 | 24px bottom | Use h3 for widget-title |
+| **profile-image** | `<img>` | ✅ Required | N/A | Natural flow | Descriptive alt text critical |
+| **flight-stats** | `<img>` | ✅ Required | N/A | 20px vertical | Describe data in alt text |
+| **contact-section** | `<footer>` | N/A | Border: 21:1 | 32px top, 24px padding | Footer landmark role |
+| **social-links** | `<div>`, `<nav>` | N/A | Links: 5.7:1 | 8px gap | Platform names required |
+| **share-section** | `<div>` | N/A | Border: 21:1 | 24px top, 20px padding | Use with share buttons |
+| **signature** | `<p>`, `<cite>` | N/A | 5.7:1 | 20px top | Semantic cite element |
+| **subscriber-count** | `<p>` | N/A | 4.6:1 (AA) | 8px top | Supplementary info |
+
+**Key Accessibility Wins:**
+
+1. ✅ All components use appropriate semantic HTML
+2. ✅ Image components require alt text (enforced by HTML spec)
+3. ✅ Color contrast meets or exceeds WCAG AA (4.5:1 minimum)
+4. ✅ Consistent spacing using 4px-based scale
+5. ✅ Clear heading hierarchy (h1 → h2 → h3)
+6. ✅ Landmark regions (footer, aside) for screen reader navigation
+
+**Areas for Enhancement:**
+
+1. ⚠️ Consider adding aria-label to widget sections
+2. ⚠️ Ensure share buttons have proper aria-labels
+3. ⚠️ Consider adding live region for subscriber count updates
+4. ⚠️ Test keyboard navigation through social links
+
+----
+
+#### Content Components Quick Reference
+
+```
+CONTAINERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+.widget           Sidebar content block
+                  Margin-bottom: 24px
+                  .widget-title → Oswald 16px UPPERCASE
+                  .widget p → 13px Gray-700
+
+IMAGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+.profile-image    Full-width profile photo
+                  Max-width: 580px, height: auto
+.flight-stats     Full-width infographic/data viz
+                  Margin: 20px vertical, height: auto
+
+SECTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+.contact-section  Footer contact area
+                  Border-top: 1px Gray-200
+                  Margin-top: 32px, Padding: 24px vertical
+.share-section    Content sharing area
+                  Border-top: 1px Gray-200
+                  Margin-top: 24px, Padding-top: 20px
+
+LINK GROUPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+.social-links     Vertical social link stack
+                  Flex-direction: column, Gap: 8px
+                  Links: Gray-700 → Teal-500 hover
+.social-links-inline  Horizontal social link row
+                  Gap: 20px (desktop), 24px (mobile)
+                  Font-size: 13px → 14px responsive
+
+TEXT ELEMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+.signature        Author signature/byline
+                  Font-style: normal, Margin-top: 20px
+.subscriber-count Newsletter metrics
+                  Font-size: 12px, Color: Gray-600
+                  Margin-top: 8px
+
+RESPONSIVE CHANGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+@768px:
+  profile-image, flight-stats → 16px vertical margin
+  contact-section → margin-top 24px, padding 20px/32px
+  social-links-inline → gap 24px, font-size 14px
+```
 
 ---
 

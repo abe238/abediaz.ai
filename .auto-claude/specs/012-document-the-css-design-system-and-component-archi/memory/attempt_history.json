@@ -35,11 +35,35 @@
         }
       ],
       "status": "completed"
+    },
+    "2.2": {
+      "attempts": [
+        {
+          "session": 4,
+          "timestamp": "2026-01-01T01:59:11.468694",
+          "approach": "Implemented: Document heading variants (h1, h2.tagline, h2.section-title, h3), paragraph styles, and link styles ",
+          "success": true,
+          "error": null
+        }
+      ],
+      "status": "completed"
+    },
+    "2.3": {
+      "attempts": [
+        {
+          "session": 5,
+          "timestamp": "2026-01-01T02:03:41.278092",
+          "approach": "Implemented: Document buttons (btn, btn-primary), form inputs (email-form), and interactive elements (like-btn, s",
+          "success": true,
+          "error": null
+        }
+      ],
+      "status": "completed"
     }
   },
   "stuck_subtasks": [],
   "metadata": {
     "created_at": "2026-01-01T01:42:56.700196",
-    "last_updated": "2026-01-01T01:53:55.122798"
+    "last_updated": "2026-01-01T02:03:41.278097"
   }
 }
