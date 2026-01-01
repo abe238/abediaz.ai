@@ -43,14 +43,14 @@ The Abe Diaz design system is built on principles of **clarity**, **simplicity**
 **Core Principles:**
 
 - **Minimalism First**: Every element serves a purpose. The design prioritizes content over decoration.
-- **Systematic Consistency**: A 4px spacing scale and carefully chosen color palette ensure visual harmony across the entire site.
+- **Systematic Consistency**: A [4px spacing scale](#spacing--layout) and carefully chosen [color palette](#color-palette) ensure visual harmony across the entire site.
 - **Performance-Conscious**: CSS-first approach with minimal JavaScript dependency for faster load times and better accessibility.
-- **Responsive by Default**: Mobile-first thinking with thoughtful breakpoints that adapt to different screen sizes without compromising the design intent.
-- **Accessibility Matters**: Color contrast ratios, semantic HTML, and keyboard navigation are first-class considerations.
+- **Responsive by Default**: Mobile-first thinking with thoughtful [breakpoints](#breakpoints) that adapt to different screen sizes without compromising the design intent.
+- **Accessibility Matters**: [Color contrast ratios](#accessibility-summary), semantic HTML, and keyboard navigation are first-class considerations.
 
 **Design Ethos:**
 
-This is a personal site for a technologist and evangelist. The design reflects the subject's personality: direct, authentic, and human. The teal accent color (#36BCAB) adds a touch of warmth to an otherwise neutral palette, while the Oswald typeface for headings provides strong visual hierarchy without being overly formal.
+This is a personal site for a technologist and evangelist. The design reflects the subject's personality: direct, authentic, and human. The [teal accent color](#accent-colors) (#36BCAB) adds a touch of warmth to an otherwise neutral palette, while the [Oswald typeface](#font-families) for headings provides strong visual hierarchy without being overly formal.
 
 The design system embraces constraints as a feature, not a limitation. By providing exactly what's needed—no more, no less—it enables rapid development while maintaining consistency.
 
@@ -58,25 +58,25 @@ The design system embraces constraints as a feature, not a limitation. By provid
 
 This documentation covers approximately 520 lines of CSS organized into:
 
-- **43 CSS Custom Properties** (Design Tokens)
-  - 14 color primitives
-  - 10 typography tokens (fonts, sizes, weights)
-  - 11 spacing values (4px-based scale)
-  - 4 layout dimensions
-  - 2 border radii
-  - 2 transition timings
+- **43 CSS Custom Properties** ([Design Tokens](#design-tokens))
+  - [14 color primitives](#color-palette)
+  - [12 typography tokens](#typography) (3 fonts, 6 sizes, 3 weights)
+  - [9 spacing values](#spacing--layout) (4px-based scale)
+  - [4 layout dimensions](#layout-dimensions)
+  - [2 border radii](#border-radii)
+  - [2 transition timings](#transition-values)
 
-- **15+ UI Components**
-  - Layout structures (container, header, sidebar, footer)
-  - Typography variants (headings, links, paragraphs)
-  - Interactive elements (buttons, forms)
-  - Content modules (widgets, profile, contact sections)
+- **15+ UI Components** ([Components](#components))
+  - [Layout structures](#layout-components) (container, header, sidebar, footer)
+  - [Typography variants](#typography-components) (headings, links, paragraphs)
+  - [Interactive elements](#interactive-components) (buttons, forms)
+  - [Content modules](#content-components) (widgets, profile, contact sections)
 
-- **3 Responsive Breakpoints**
-  - Desktop (default)
-  - Tablet (≤768px)
-  - Mobile (≤480px)
-  - Small Mobile (≤360px)
+- **3 Responsive Breakpoints** ([Responsive Design](#responsive-design))
+  - [Desktop](#desktop-default-768px) (default)
+  - [Tablet](#tablet-768px) (≤768px)
+  - [Mobile](#mobile-480px) (≤480px)
+  - [Small Mobile](#small-mobile-360px) (≤360px)
 
 The system is currently implemented as inline CSS in `index.html` and is designed to scale to a multi-page site with modular CSS architecture.
 
@@ -188,49 +188,49 @@ Accent colors provide visual interest and semantic meaning. The teal is the prim
 **When to use each color:**
 
 1. **Black (`--color-black`)**
-   - Main page headings (h1)
-   - Section titles (h2.section-title)
-   - Subsection headings (h3)
+   - Main page headings ([h1](#h1---main-heading))
+   - Section titles ([h2.section-title](#h2section-title---section-headings))
+   - Subsection headings ([h3](#h3---subsection-headings))
    - Use when maximum emphasis is needed
 
 2. **White (`--color-white`)**
    - Page background
-   - Input field backgrounds
-   - Text on colored button backgrounds
+   - Input field backgrounds ([.email-form](#email-form---email-signup-form))
+   - Text on colored button backgrounds ([.btn-primary](#btn-primary---primary-button))
    - Clean slate for content
 
 3. **Gray-700 (`--color-gray-700`)**
-   - Default for all body text
+   - Default for all body text ([paragraphs](#p---paragraphs))
    - Paragraph content
-   - Standard links (before hover)
+   - Standard links (before hover - see [links](#a---default-links))
    - Primary reading text
 
 4. **Gray-600 (`--color-gray-600`)**
-   - Taglines and subtitles
-   - Footer text
+   - Taglines and subtitles ([h2.tagline](#h2tagline---taglinesubtitle))
+   - Footer text ([.site-footer](#site-footer))
    - Less prominent information
-   - Meta information
+   - Meta information ([.subscriber-count](#subscriber-count---subscriber-count))
 
 5. **Gray-500 (`--color-gray-500`)**
-   - Input borders (default state)
+   - Input borders (default state - see [.email-form](#email-form---email-signup-form))
    - Form field outlines
    - Interactive element boundaries
 
 6. **Gray-200 (`--color-gray-200`)**
    - Section dividers
-   - Widget borders
+   - Widget borders ([.widget](#widget---widget-container))
    - Subtle separators
    - Visual rhythm elements
 
 7. **Teal-500 (`--color-teal-500`)**
-   - All link hover states
+   - All link hover states (see [links](#a---default-links))
    - Focus indicators
-   - Accent links (`.accent-link`)
+   - Accent links ([.accent-link](#accent-link---emphasized-links))
    - Interactive element feedback
    - Primary call-to-action affordance
 
 8. **Blue-500 (`--color-blue-500`)**
-   - LinkedIn button background
+   - LinkedIn button background ([.btn-primary](#btn-primary---primary-button))
    - External platform integrations only
 
 **Best Practices:**
@@ -1098,7 +1098,7 @@ Mobile   (≤480px)   Single-column stack, --space-header: 32px
 
 ## Components
 
-Components are reusable UI patterns built using the design tokens. Each component has a specific purpose and usage pattern.
+Components are reusable UI patterns built using the [design tokens](#design-tokens). Each component has a specific purpose and usage pattern. For quick reference, see the [Component Classes](#component-classes) section.
 
 ### Layout Components
 
@@ -1108,11 +1108,11 @@ Layout components form the structural foundation of the site. These components e
 
 The layout system is designed around these principles:
 
-1. **Content-First Architecture** - The layout prioritizes readable content width (580px) over maximizing screen usage
+1. **Content-First Architecture** - The layout prioritizes readable [content width](#layout-dimensions) (580px) over maximizing screen usage
 2. **Flexible Two-Column Pattern** - Desktop layout supports content + sidebar; mobile stacks vertically
 3. **Semantic HTML Structure** - Uses proper semantic elements (header, nav, main, article, footer)
 4. **Flexbox-Based** - Modern flexbox provides reliable, predictable layout behavior
-5. **Responsive by Default** - Layout adapts naturally at defined breakpoints without complex overrides
+5. **Responsive by Default** - Layout adapts naturally at defined [breakpoints](#breakpoints) without complex overrides
 
 **Philosophy:**
 
@@ -4343,7 +4343,7 @@ RESPONSIVE CHANGES
 
 ### Breakpoints
 
-The design system uses a **desktop-first responsive strategy** with three strategic breakpoints that adapt the design for progressively smaller screens. Each breakpoint introduces specific overrides to maintain readability, usability, and visual hierarchy.
+The design system uses a **desktop-first responsive strategy** with three strategic breakpoints that adapt the design for progressively smaller screens. Each breakpoint introduces specific overrides to maintain readability, usability, and visual hierarchy. See also [Layout Components](#layout-components) and [Typography](#typography) for component-specific responsive behavior.
 
 #### Design Rationale
 
@@ -4735,9 +4735,21 @@ Before deploying responsive changes, verify:
 
 ### Mobile Adaptations
 
-*This section will explain how components adapt on mobile devices and responsive design patterns.*
+Mobile adaptations are documented throughout this design system. For comprehensive mobile behavior, refer to:
 
-**Coming Soon:** Mobile adaptation documentation.
+- **[Breakpoints](#breakpoints)** - Complete breakpoint system with device targets (768px, 480px, 360px)
+- **[Responsive Typography](#responsive-typography)** - Font size adaptations across breakpoints
+- **[Responsive Layout Behavior](#responsive-layout-behavior-summary)** - How layout components adapt on mobile
+- **[Interactive Components](#interactive-components)** - Touch-friendly button and form sizing
+- **[Usage Examples](#usage-examples)** - Mobile-first code examples and best practices
+
+**Key Mobile Adaptations:**
+
+1. **Typography Scaling** - h1 reduces from 80px → 32px on mobile for better fit
+2. **Spacing Condensation** - Header padding reduces from 70px → 32px on mobile
+3. **Layout Simplification** - Two-column desktop layout becomes single-column on tablet (≤768px)
+4. **Touch Optimization** - Buttons and links maintain minimum 44px touch targets
+5. **Navigation Wrapping** - Horizontal navigation wraps to multiple rows on mobile with flexible gaps
 
 ---
 
@@ -5124,19 +5136,28 @@ Complete reference of all 43 CSS custom properties organized by category.
 | `--color-blue-500` | `#0073B1` | LinkedIn button background |
 | `--color-blue-700` | `#2E4453` | Reserved (platform integration) |
 
-#### Typography (10 tokens)
+#### Typography (12 tokens)
 
+**Font Families (3)**
 | Variable | Value | Usage |
 |----------|-------|-------|
 | `--font-heading` | `"Oswald", Helvetica, Arial, sans-serif` | Headings, navigation, buttons |
 | `--font-body` | `"Helvetica Neue", Helvetica, Arial, sans-serif` | Body text, paragraphs, links |
 | `--font-system` | `-apple-system, system-ui, "Segoe UI", Roboto, sans-serif` | Form inputs, system UI |
+
+**Font Sizes (6)**
+| Variable | Value | Usage |
+|----------|-------|-------|
 | `--text-xs` | `11px` | Form inputs, tiny labels |
 | `--text-sm` | `12px` | Navigation, buttons, footer |
 | `--text-base` | `13px` | Body text (14px on mobile ≤480px) |
 | `--text-md` | `14px` | Taglines, larger labels |
 | `--text-lg` | `16px` | h3 headings |
 | `--text-4xl` | `80px` | h1 only (48px tablet, 32px mobile, 28px small) |
+
+**Font Weights (3)**
+| Variable | Value | Usage |
+|----------|-------|-------|
 | `--font-light` | `300` | Taglines only (h2.tagline) |
 | `--font-normal` | `400` | Body text (default weight) |
 | `--font-bold` | `700` | Headings, buttons, labels |
@@ -6606,10 +6627,14 @@ This design system evolves with the site. When extending or modifying:
 
 ## Version History
 
-- **v1.0** (2026-01-01) - Initial documentation structure created
-  - Foundation sections outlined
-  - Design philosophy established
-  - Component categories defined
+- **v1.0** (2026-01-01) - Complete design system documentation
+  - Documented all 43 CSS custom properties (14 colors, 12 typography, 9 spacing, 4 layout, 2 borders, 2 transitions)
+  - Documented all 31 component classes (7 layout, 5 typography, 7 interactive, 12 content)
+  - Documented 3 responsive breakpoints with complete adaptation patterns
+  - Created comprehensive usage examples and best practices
+  - Added cross-references between related sections
+  - Included accessibility guidelines with WCAG contrast ratios
+  - Provided quick reference section for rapid lookup
 
 ---
 
