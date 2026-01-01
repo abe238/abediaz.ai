@@ -3,8 +3,8 @@
   "description": "Add print-optimized CSS using @media print. Hides navigation, adjusts typography for paper, ensures links are readable, and optimizes layout for printing the resume/profile page.",
   "created_at": "2026-01-01T09:01:37.539Z",
   "updated_at": "2026-01-01T09:05:00.000Z",
-  "status": "in_progress",
-  "planStatus": "complete",
+  "status": "human_review",
+  "planStatus": "review",
   "workflow_type": "development",
   "services_involved": [
     "index.html"
@@ -129,9 +129,16 @@
     }
   ],
   "qa_signoff": {
-    "status": "pending",
-    "tests_passed": "",
-    "issues": ""
+    "status": "approved",
+    "qa_session": 0,
+    "issues_found": [
+      {
+        "description": "None - all acceptance criteria met"
+      }
+    ],
+    "tests_passed": {},
+    "timestamp": "2026-01-01T10:03:37.873235+00:00",
+    "ready_for_qa_revalidation": false
   },
   "final_acceptance": [
     "Print preview shows clean single-column layout",
@@ -142,5 +149,20 @@
     "No awkward page breaks in the middle of sections"
   ],
   "estimated_effort": "small",
-  "last_updated": "2026-01-01T09:54:08.314617+00:00"
+  "last_updated": "2026-01-01T10:03:37.873273+00:00",
+  "qa_iteration_history": [
+    {
+      "iteration": 1,
+      "status": "approved",
+      "timestamp": "2026-01-01T10:04:12.553090+00:00",
+      "issues": [],
+      "duration_seconds": 487.33
+    }
+  ],
+  "qa_stats": {
+    "total_iterations": 1,
+    "last_iteration": 1,
+    "last_status": "approved",
+    "issues_by_type": {}
+  }
 }
