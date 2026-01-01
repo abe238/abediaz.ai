@@ -1,0 +1,196 @@
+{
+  "feature": "Add Visible Focus States for Keyboard Navigation",
+  "description": "Add visible focus indicators to all interactive elements (links, buttons, form inputs) for keyboard navigation accessibility compliance.",
+  "created_at": "2026-01-01T09:01:44.174Z",
+  "updated_at": "2026-01-01T09:06:00.000Z",
+  "status": "in_progress",
+  "planStatus": "complete",
+  "workflow_type": "development",
+  "services_involved": ["index.html"],
+  "spec_file": "spec.md",
+  "phases": [
+    {
+      "phase_id": "phase-1",
+      "name": "Design System Focus Variables",
+      "description": "Add CSS custom properties for consistent focus styling across the site",
+      "status": "completed",
+      "subtasks": [
+        {
+          "subtask_id": "1.1",
+          "title": "Add focus-related CSS variables to :root",
+          "description": "Add CSS custom properties for focus ring color, width, offset, and style to ensure consistent focus states throughout the design system",
+          "files": ["index.html"],
+          "acceptance_criteria": [
+            "Add --focus-ring-color variable using an accessible, high-contrast color",
+            "Add --focus-ring-width variable for consistent ring thickness",
+            "Add --focus-ring-offset variable for spacing between element and ring",
+            "Variables should complement existing design system colors (teal-500, etc.)"
+          ],
+          "status": "completed",
+          "priority": "high",
+          "estimated_complexity": "simple"
+        }
+      ]
+    },
+    {
+      "phase_id": "phase-2",
+      "name": "Base Focus Styles",
+      "description": "Add focus styles for base interactive elements (links and buttons)",
+      "status": "pending",
+      "subtasks": [
+        {
+          "subtask_id": "2.1",
+          "title": "Add focus styles for base anchor (a) elements",
+          "description": "Add :focus and :focus-visible styles for all link elements to ensure keyboard users can see which element is focused",
+          "files": ["index.html"],
+          "acceptance_criteria": [
+            "Add a:focus-visible rule with visible focus indicator",
+            "Focus style should use the CSS variables from phase 1",
+            "Focus style should not interfere with hover states",
+            "Use outline (not box-shadow) for better accessibility tool support"
+          ],
+          "status": "pending",
+          "priority": "high",
+          "estimated_complexity": "simple"
+        },
+        {
+          "subtask_id": "2.2",
+          "title": "Add focus styles for .accent-link elements",
+          "description": "Ensure accent-link focus states are visible and complement the teal color scheme",
+          "files": ["index.html"],
+          "acceptance_criteria": [
+            "Add .accent-link:focus-visible with clear focus indicator",
+            "Focus indicator should be visible against white background",
+            "Should work well with the teal text color"
+          ],
+          "status": "pending",
+          "priority": "high",
+          "estimated_complexity": "simple"
+        },
+        {
+          "subtask_id": "2.3",
+          "title": "Add focus styles for button elements (.btn)",
+          "description": "Add focus indicators for button components including .btn, .btn-primary",
+          "files": ["index.html"],
+          "acceptance_criteria": [
+            "Add .btn:focus-visible with visible focus ring",
+            "Focus ring should contrast with button background colors",
+            "Maintain visual consistency with link focus states"
+          ],
+          "status": "pending",
+          "priority": "high",
+          "estimated_complexity": "simple"
+        }
+      ]
+    },
+    {
+      "phase_id": "phase-3",
+      "name": "Component Focus Styles",
+      "description": "Add focus styles for specific UI components",
+      "status": "pending",
+      "subtasks": [
+        {
+          "subtask_id": "3.1",
+          "title": "Fix email input focus state (remove outline: none)",
+          "description": "Replace the current outline: none on email input focus with a proper visible focus indicator",
+          "files": ["index.html"],
+          "acceptance_criteria": [
+            "Remove 'outline: none' from .email-form input[type='email']:focus",
+            "Add proper focus ring/outline that is visible",
+            "Border color change can remain but should be supplemented with focus ring"
+          ],
+          "status": "pending",
+          "priority": "high",
+          "estimated_complexity": "simple"
+        },
+        {
+          "subtask_id": "3.2",
+          "title": "Add focus styles for navigation links",
+          "description": "Ensure .site-nav links have clear focus states",
+          "files": ["index.html"],
+          "acceptance_criteria": [
+            "Add .site-nav a:focus-visible with visible focus indicator",
+            "Focus state should be distinguishable from hover state"
+          ],
+          "status": "pending",
+          "priority": "high",
+          "estimated_complexity": "simple"
+        },
+        {
+          "subtask_id": "3.3",
+          "title": "Add focus styles for share buttons (.share-btn)",
+          "description": "Add focus indicators for share button components",
+          "files": ["index.html"],
+          "acceptance_criteria": [
+            "Add .share-btn:focus-visible with visible focus ring",
+            "Focus should work with existing border styles"
+          ],
+          "status": "pending",
+          "priority": "medium",
+          "estimated_complexity": "simple"
+        },
+        {
+          "subtask_id": "3.4",
+          "title": "Add focus styles for like buttons (.like-btn)",
+          "description": "Add focus indicators for like button components",
+          "files": ["index.html"],
+          "acceptance_criteria": [
+            "Add .like-btn:focus-visible with visible focus ring"
+          ],
+          "status": "pending",
+          "priority": "medium",
+          "estimated_complexity": "simple"
+        },
+        {
+          "subtask_id": "3.5",
+          "title": "Add focus styles for header/title link (h1 a)",
+          "description": "Ensure the main site title link has a visible focus state",
+          "files": ["index.html"],
+          "acceptance_criteria": [
+            "Add h1 a:focus-visible with visible focus indicator",
+            "Focus should be visible against white background"
+          ],
+          "status": "pending",
+          "priority": "high",
+          "estimated_complexity": "simple"
+        }
+      ]
+    },
+    {
+      "phase_id": "phase-4",
+      "name": "Testing and Validation",
+      "description": "Test keyboard navigation and verify all focus states work correctly",
+      "status": "pending",
+      "subtasks": [
+        {
+          "subtask_id": "4.1",
+          "title": "Document focus testing checklist",
+          "description": "Create a testing checklist in build-progress.txt documenting keyboard navigation testing results",
+          "files": ["build-progress.txt"],
+          "acceptance_criteria": [
+            "Document Tab key navigation through all interactive elements",
+            "Verify each element shows visible focus indicator",
+            "Note any issues or improvements needed"
+          ],
+          "status": "pending",
+          "priority": "high",
+          "estimated_complexity": "simple"
+        }
+      ]
+    }
+  ],
+  "total_subtasks": 10,
+  "completed_subtasks": 1,
+  "final_acceptance": [
+    "All interactive elements (links, buttons, inputs) have visible focus states",
+    "Focus indicators use consistent styling via CSS variables",
+    "No 'outline: none' without replacement focus styling",
+    "Keyboard navigation through the page shows clear focus position",
+    "Focus states meet WCAG 2.1 AA contrast requirements"
+  ],
+  "qa_signoff": {
+    "status": "pending",
+    "issues": "",
+    "tests_passed": ""
+  }
+}
