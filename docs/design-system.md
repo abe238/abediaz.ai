@@ -4745,17 +4745,353 @@ Before deploying responsive changes, verify:
 
 ### Reset & Base Styles
 
-*This section will document the CSS reset approach, box-sizing methodology, and base body/html styles.*
+The design system uses a minimal, modern CSS reset approach that establishes a clean foundation for all components. Rather than a heavy-handed reset that removes all browser defaults, this approach targets specific pain points for predictable, consistent styling across browsers.
 
-**Coming Soon:** CSS reset and base styles documentation.
+#### Design Rationale
+
+Modern CSS resets have evolved from the aggressive "burn it all down" approach (like CSS Reset by Eric Meyer) to more thoughtful, surgical normalization. This design system follows the **modern box-model reset** philosophy:
+
+1. **Universal Box-Sizing** - Apply `border-box` to all elements for intuitive sizing
+2. **Zero Margins & Padding** - Remove browser defaults to prevent layout surprises
+3. **Preserve Semantic Defaults** - Let browsers handle accessibility features (focus outlines, form controls)
+
+This approach provides:
+- ✅ **Predictability** - Elements behave consistently across browsers
+- ✅ **Control** - Explicit spacing decisions, no hidden browser defaults
+- ✅ **Simplicity** - Minimal reset code, easier to understand and maintain
+- ✅ **Accessibility** - Preserves important browser features like focus indicators
+
+---
+
+#### Universal Reset
+
+All elements, including pseudo-elements (`::before`, `::after`), receive the same baseline reset:
+
+```css
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+```
+
+**Property Breakdown:**
+
+| Property | Value | Rationale | Impact |
+|----------|-------|-----------|--------|
+| `box-sizing` | `border-box` | Width/height includes padding and borders (not just content) | Makes sizing calculations intuitive and predictable |
+| `margin` | `0` | Removes all browser default margins | Prevents unexpected spacing between elements |
+| `padding` | `0` | Removes all browser default padding | Ensures consistent internal spacing |
+
+**Why Border-Box?**
+
+The default CSS box model (`content-box`) is counterintuitive:
+```
+/* content-box (browser default) */
+width: 300px + padding: 20px + border: 1px = 342px actual width
+
+/* border-box (our approach) */
+width: 300px (includes padding and border) = 300px actual width
+```
+
+With `border-box`, when you set `width: 300px`, the element is **exactly 300px wide** regardless of padding or borders. This makes responsive layouts and component sizing dramatically easier.
+
+**Pseudo-Elements Included:**
+
+Including `::before` and `::after` in the reset is crucial because:
+- These elements can add unexpected layout changes if they inherit different box models
+- Ensures decorative elements (icons, dividers) behave predictably
+- Prevents edge cases where pseudo-elements break layouts
+
+---
+
+#### HTML Root Element
+
+The `<html>` element establishes the foundational typography and rendering settings for the entire document:
+
+```css
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+```
+
+**Property Breakdown:**
+
+| Property | Value | Purpose | Notes |
+|----------|-------|---------|-------|
+| `font-size` | `16px` | Sets the root font size for rem calculations | Browser default is 16px, we make it explicit |
+| `-webkit-font-smoothing` | `antialiased` | Improves font rendering on WebKit browsers (Chrome, Safari, Edge) | Makes fonts appear lighter and smoother |
+| `-moz-osx-font-smoothing` | `grayscale` | Improves font rendering on Firefox/macOS | Prevents subpixel rendering artifacts |
+
+**Root Font Size Strategy:**
+
+While the design system uses `px` units for most typography (see [Typography System](#typography-system)), the `<html>` font-size is set to `16px` to:
+- Maintain browser default for accessibility (users can still zoom)
+- Provide a stable base for any future `rem`-based spacing
+- Ensure consistent baseline across browsers
+
+**Design Note:** The design system currently uses `px` units throughout (e.g., `var(--text-base): 13px`) rather than `rem` units. This is a deliberate choice for pixel-perfect control in a single-page design. If the site expands to multiple pages or requires more flexible scaling, consider migrating to `rem`-based typography.
+
+---
+
+#### Body Element
+
+The `<body>` element establishes the default typography and color scheme for all content:
+
+```css
+body {
+  font-family: var(--font-body);      /* Helvetica Neue */
+  font-size: var(--text-base);        /* 13px */
+  font-weight: var(--font-normal);    /* 400 */
+  line-height: 1.75;                  /* 22.75px for 13px text */
+  color: var(--color-gray-700);       /* #555555 */
+  background-color: var(--color-white); /* #FFFFFF */
+}
+```
+
+**Property Breakdown:**
+
+| Property | Value | Token | Computed | Purpose |
+|----------|-------|-------|----------|---------|
+| `font-family` | `var(--font-body)` | Helvetica Neue, Helvetica, Arial, sans-serif | - | Clean, readable body text |
+| `font-size` | `var(--text-base)` | `13px` | 13px | Compact but readable base size |
+| `font-weight` | `var(--font-normal)` | `400` | 400 | Standard weight for body text |
+| `line-height` | `1.75` | - | 22.75px | Comfortable reading rhythm (1.5-1.8 is optimal) |
+| `color` | `var(--color-gray-700)` | `#555555` | Dark gray | Softer than pure black, easier on eyes |
+| `background-color` | `var(--color-white)` | `#FFFFFF` | Pure white | Clean, modern backdrop |
+
+**Typography Rationale:**
+
+- **13px base size:** Slightly smaller than the standard 16px, optimized for information density while maintaining readability. Matches Twitter's compact aesthetic.
+- **1.75 line-height:** Provides generous vertical rhythm. For 13px text, this creates ~22.75px line height (10px of breathing room between lines).
+- **Gray-700 color (#555555):** Softer than pure black (#000000), reducing eye strain during extended reading. Black is reserved for high-emphasis headings.
+
+**Accessibility:**
+
+- **Color contrast:** Gray-700 on white = **7.4:1** (WCAG AAA for normal text)
+- **Font size:** 13px is readable but approaches the minimum for comfortable reading. All interactive elements use larger sizes (14px+).
+- **Line height:** 1.75 exceeds WCAG recommendation of 1.5 for improved readability.
+
+**Inheritance:**
+
+All properties set on `<body>` cascade to child elements unless explicitly overridden. This means:
+- All text inherits Helvetica Neue unless a component specifies a different font
+- All paragraphs inherit 13px/1.75 unless explicitly styled (e.g., headings use Oswald)
+- All content inherits gray-700 unless overridden (e.g., headings use black)
+
+---
+
+#### Best Practices
+
+**Do's:**
+
+- ✅ **Do** rely on the universal reset for consistent spacing—all margins/padding are intentional
+- ✅ **Do** use design tokens (`var(--color-gray-700)`) instead of hardcoded values
+- ✅ **Do** override body defaults for specific components (headings, widgets, forms)
+- ✅ **Do** maintain the 1.75 line-height for body text to ensure readability
+- ✅ **Do** preserve the border-box model—never override it with content-box
+
+**Don'ts:**
+
+- ❌ **Don't** set margins on elements expecting browser defaults (e.g., `<p>` has no margin—add it explicitly)
+- ❌ **Don't** use `content-box` for individual components—keep border-box consistent
+- ❌ **Don't** override font-smoothing properties—they're optimized for cross-browser rendering
+- ❌ **Don't** reduce line-height below 1.5 for body text—impairs readability
+- ❌ **Don't** use pure black (#000000) for body text—reserve it for headings
 
 ---
 
 ### Browser Normalization
 
-*This section will cover font smoothing, browser-specific adjustments, and compatibility notes.*
+Modern browsers have converged on many rendering behaviors, but subtle differences remain in font rendering, form controls, and default styles. This section documents the browser-specific adjustments applied to ensure consistent visual presentation.
 
-**Coming Soon:** Browser normalization documentation.
+#### Font Smoothing
+
+Font smoothing (also called anti-aliasing) affects how browsers render text, especially on non-retina displays. Different browsers use different default rendering methods, which can make the same font look dramatically different.
+
+**WebKit Browsers (Chrome, Safari, Edge)**
+
+```css
+-webkit-font-smoothing: antialiased;
+```
+
+| Value | Effect | Notes |
+|-------|--------|-------|
+| `antialiased` | Uses grayscale anti-aliasing instead of subpixel rendering | Makes fonts appear lighter and smoother |
+| `subpixel-antialiased` (default) | Uses RGB subpixel rendering | Can cause color fringing on non-retina displays |
+| `none` | No anti-aliasing | Produces jagged edges, not recommended |
+
+**Why `antialiased`?**
+
+- Creates consistent font weights across retina and non-retina displays
+- Prevents color fringing artifacts on LCD screens
+- Matches the design aesthetic (clean, modern, minimal)
+- **Trade-off:** Text appears slightly thinner than browser default
+
+**Firefox on macOS**
+
+```css
+-moz-osx-font-smoothing: grayscale;
+```
+
+| Value | Effect | Notes |
+|-------|--------|-------|
+| `grayscale` | Uses grayscale anti-aliasing | Matches WebKit's `antialiased` behavior |
+| `auto` (default) | Browser decides based on font size and display | Can cause inconsistency |
+
+**Why `grayscale`?**
+
+- Ensures Firefox/macOS matches WebKit rendering
+- Prevents thicker/bolder text appearance in Firefox
+- Creates visual consistency across browsers on macOS
+
+**Windows & Linux:**
+
+Font smoothing properties are ignored on Windows and most Linux distributions because:
+- Windows uses ClearType (subpixel rendering) by default
+- Linux font rendering varies by distribution and configuration
+- These platforms handle font smoothing at the OS level
+
+**Visual Comparison:**
+
+```
+Default (subpixel):        Antialiased (grayscale):
+- Thicker strokes          - Thinner strokes
+- Color fringing on edges  - Clean gray edges
+- Varies by display type   - Consistent across displays
+- Higher contrast          - Softer appearance
+```
+
+---
+
+#### Cross-Browser Considerations
+
+**No Additional Normalization Required**
+
+Unlike older CSS resets (Normalize.css, Reset CSS), this design system does **not** include:
+- ❌ Form element normalization (inputs, buttons, textareas)
+- ❌ HTML5 element display fixes (`<article>`, `<section>`, etc.)
+- ❌ List style resets (`<ul>`, `<ol>`)
+- ❌ Table border/spacing normalization
+
+**Why not?**
+
+Modern browsers (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+) have largely standardized:
+- HTML5 semantic elements are universally supported
+- Form controls have consistent baseline behavior
+- Default styles are minimal and predictable
+
+**Targeted overrides are applied per-component instead:**
+- Buttons get custom styles via `.btn` and `.btn-primary` classes
+- Forms get custom styles via `.email-form` input styling
+- Lists are unstyled by default (the universal reset removes margins/padding)
+
+---
+
+#### Browser Support
+
+**Primary Target:** Modern evergreen browsers with automatic updates.
+
+| Browser | Minimum Version | Notes |
+|---------|-----------------|-------|
+| Chrome | 90+ | Full support, font smoothing applied |
+| Firefox | 88+ | Full support, grayscale smoothing on macOS |
+| Safari | 14+ | Full support, native antialiasing |
+| Edge | 90+ (Chromium) | Full support, identical to Chrome |
+
+**Degradation Strategy:**
+
+- Older browsers ignore font-smoothing properties (graceful degradation)
+- Box-sizing: border-box is supported in IE9+ (not a concern for modern sites)
+- No polyfills or vendor-prefix fallbacks are included (assumes modern browser baseline)
+
+**Testing Recommendations:**
+
+- ✅ Test on macOS Chrome/Firefox/Safari to verify font smoothing consistency
+- ✅ Test on Windows Chrome/Edge to verify no rendering issues
+- ✅ Test responsive breakpoints (768px, 480px, 360px) across browsers
+- ✅ Verify form inputs/buttons render consistently
+
+---
+
+#### Accessibility Notes
+
+**Font Smoothing & Accessibility:**
+
+The `antialiased` font smoothing makes text appear **lighter/thinner**, which can reduce readability for users with:
+- Low vision
+- Older displays (non-retina)
+- Bright ambient lighting
+
+**Mitigation strategies in this design:**
+- ✅ Strong color contrast (gray-700 on white = 7.4:1, exceeds WCAG AAA)
+- ✅ Generous line-height (1.75 for body text)
+- ✅ Readable font sizes (13px minimum, 14px+ for interactive elements)
+- ✅ Bold font-weight (700) for headings to maintain readability despite antialiasing
+
+**User Preferences:**
+
+The design does not currently respect user font smoothing preferences. Consider adding:
+
+```css
+@media (prefers-reduced-transparency: reduce) {
+  html {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+```
+
+This would restore browser default font rendering for users who prefer high contrast/reduced visual effects.
+
+**Browser Zoom:**
+
+Because the root `font-size` is set to `16px` (browser default), users can still zoom using browser controls (Cmd/Ctrl +/-). The design respects user zoom preferences.
+
+---
+
+#### Quick Reference
+
+**Reset Code:**
+
+```css
+/* Universal Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Root Element */
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Body Defaults */
+body {
+  font-family: var(--font-body);        /* Helvetica Neue */
+  font-size: var(--text-base);          /* 13px */
+  font-weight: var(--font-normal);      /* 400 */
+  line-height: 1.75;                    /* Comfortable reading */
+  color: var(--color-gray-700);         /* #555555 */
+  background-color: var(--color-white); /* #FFFFFF */
+}
+```
+
+**Key Takeaways:**
+
+| Concept | Value | Impact |
+|---------|-------|--------|
+| Box Model | `border-box` everywhere | Width/height includes padding + border |
+| Margins/Padding | `0` on all elements | No browser defaults, all spacing is explicit |
+| Root Font Size | `16px` | Standard baseline, supports user zoom |
+| Font Smoothing | `antialiased` / `grayscale` | Consistent rendering across browsers |
+| Body Font | Helvetica Neue, 13px, gray-700 | Clean, readable default |
+| Line Height | `1.75` | Generous vertical rhythm for readability |
 
 ---
 
