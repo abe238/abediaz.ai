@@ -78,11 +78,12 @@
           "id": "3.1",
           "title": "Show link URLs after link text",
           "description": "Use CSS ::after pseudo-element to display link URLs in parentheses after link text for important links. Exclude internal navigation links and keep URLs concise",
-          "status": "pending",
+          "status": "completed",
           "files": [
             "index.html"
           ],
-          "notes": "Use a[href]:not([href^='#'])::after pattern"
+          "notes": "Added CSS ::after pseudo-element to display link URLs in parentheses after link text. Excluded internal anchor links using :not([href^='#']) selector and excluded navigation/social links to keep output concise. URLs styled with 10pt italic font for readability.",
+          "updated_at": "2026-01-01T09:46:43.215611+00:00"
         },
         {
           "id": "3.2",
@@ -138,5 +139,5 @@
     "No awkward page breaks in the middle of sections"
   ],
   "estimated_effort": "small",
-  "last_updated": "2026-01-01T09:44:40.345981+00:00"
+  "last_updated": "2026-01-01T09:46:43.215622+00:00"
 }

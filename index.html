@@ -705,11 +705,26 @@
       }
 
       /* Images - Spacing and Layout */
-      .profile-image,
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .profile-image {
+        margin: 12pt 0;
+        max-width: 3in;
+        height: auto;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
       .flight-stats {
         margin: 12pt 0;
         max-width: 100%;
         height: auto;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        page-break-before: auto;
       }
     }
   </style>

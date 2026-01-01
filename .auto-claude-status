@@ -3,7 +3,7 @@
   "spec": "005-add-print-stylesheet",
   "state": "building",
   "subtasks": {
-    "completed": 4,
+    "completed": 5,
     "total": 8,
     "in_progress": 1,
     "failed": 0
@@ -18,8 +18,8 @@
     "max": 1
   },
   "session": {
-    "number": 2,
+    "number": 3,
     "started_at": "2026-01-01T01:43:06.592005"
   },
-  "last_update": "2026-01-01T01:45:14.470184"
+  "last_update": "2026-01-01T01:48:06.595766"
 }
