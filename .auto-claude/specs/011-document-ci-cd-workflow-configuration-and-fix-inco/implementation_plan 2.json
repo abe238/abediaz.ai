@@ -1,0 +1,117 @@
+{
+  "feature": "Document CI/CD workflow configuration and fix inconsistencies",
+  "description": "The GitHub Actions deploy.yml workflow references npm commands (npm ci, npm run build) but the project has no package.json. This workflow will fail on every push. The documentation should explain the intended deployment process.",
+  "created_at": "2026-01-01T09:02:46.395Z",
+  "updated_at": "2026-01-01T09:05:00.000Z",
+  "status": "in_progress",
+  "planStatus": "complete",
+  "workflow_type": "development",
+  "services_involved": ["GitHub Actions", "GitHub Pages"],
+  "spec_file": "spec.md",
+  "phases": [
+    {
+      "phase_id": "phase-1",
+      "name": "Fix GitHub Actions Workflow",
+      "description": "Update deploy.yml to properly deploy a static HTML site without Node.js/npm dependencies",
+      "subtasks": [
+        {
+          "subtask_id": "1.1",
+          "title": "Simplify deploy.yml for static site",
+          "description": "Remove Node.js setup, npm install, and npm build steps. Update the workflow to upload the project root directory directly instead of ./dist",
+          "status": "completed",
+          "files": [".github/workflows/deploy.yml"],
+          "acceptance_criteria": [
+            "Workflow no longer references Node.js or npm",
+            "Workflow uploads root directory (.) as artifact",
+            "Workflow maintains GitHub Pages deployment functionality"
+          ]
+        },
+        {
+          "subtask_id": "1.2",
+          "title": "Verify workflow syntax",
+          "description": "Ensure the updated workflow has valid YAML syntax and follows GitHub Actions best practices",
+          "status": "completed",
+          "files": [".github/workflows/deploy.yml"],
+          "acceptance_criteria": [
+            "YAML syntax is valid",
+            "Workflow follows GitHub Actions conventions",
+            "All required permissions are maintained"
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": "phase-2",
+      "name": "Add Deployment Documentation",
+      "description": "Create documentation explaining the CI/CD workflow and static site deployment process",
+      "subtasks": [
+        {
+          "subtask_id": "2.1",
+          "title": "Create DEPLOYMENT.md documentation",
+          "description": "Add a DEPLOYMENT.md file explaining the GitHub Pages deployment process, how the workflow functions, and the static site structure",
+          "status": "pending",
+          "files": ["DEPLOYMENT.md"],
+          "acceptance_criteria": [
+            "Documents the deployment workflow trigger (push to main)",
+            "Explains the static site structure (index.html, images/, docs/, CNAME)",
+            "Describes GitHub Pages configuration",
+            "Provides troubleshooting guidance"
+          ]
+        },
+        {
+          "subtask_id": "2.2",
+          "title": "Add workflow documentation comments",
+          "description": "Add inline comments to deploy.yml explaining each step for future maintainability",
+          "status": "pending",
+          "files": [".github/workflows/deploy.yml"],
+          "acceptance_criteria": [
+            "Each workflow job has a descriptive comment",
+            "Key configuration options are explained",
+            "Comments are clear and concise"
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": "phase-3",
+      "name": "Verification and Testing",
+      "description": "Verify the workflow configuration and documentation are complete and correct",
+      "subtasks": [
+        {
+          "subtask_id": "3.1",
+          "title": "Validate workflow with syntax check",
+          "description": "Run a local validation of the GitHub Actions workflow syntax to ensure it will execute correctly",
+          "status": "pending",
+          "files": [".github/workflows/deploy.yml"],
+          "acceptance_criteria": [
+            "Workflow passes syntax validation",
+            "All required fields are present",
+            "No deprecated actions are used"
+          ]
+        },
+        {
+          "subtask_id": "3.2",
+          "title": "Review static site structure completeness",
+          "description": "Verify all static assets are properly included and the site structure is deployment-ready",
+          "status": "pending",
+          "files": ["index.html", "CNAME", "images/", "docs/"],
+          "acceptance_criteria": [
+            "All referenced assets exist",
+            "CNAME is properly configured",
+            "No missing files that would cause 404s"
+          ]
+        }
+      ]
+    }
+  ],
+  "final_acceptance": [
+    "GitHub Actions workflow deploys static site without errors",
+    "Documentation clearly explains the deployment process",
+    "No npm/Node.js dependencies in workflow for static site"
+  ],
+  "qa_signoff": {
+    "status": "pending",
+    "tests_passed": [],
+    "issues": []
+  }
+}

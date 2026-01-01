@@ -1,0 +1,8 @@
+{
+  "sourceType": "ideation",
+  "ideationType": "documentation_gaps",
+  "ideaId": "doc-002",
+  "rationale": "The workflow configuration doesn't match the actual project structure (static HTML with no build step). This creates confusion and prevents automated deployments. Documentation should either explain the intended build setup or the workflow should be fixed for a static site deployment.",
+  "category": "documentation",
+  "priority": "high"
+}
