@@ -314,34 +314,6 @@
       color: var(--color-gray-700);
     }
 
-    /* Email Form */
-    .email-form {
-      margin-top: var(--space-3);
-    }
-
-    .email-form label {
-      display: block;
-      font-size: var(--text-base);
-      color: var(--color-gray-700);
-      margin-bottom: var(--space-2);
-    }
-
-    .email-form input[type="email"] {
-      width: 100%;
-      padding: var(--space-2) var(--space-3);
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      border: 1px solid var(--color-gray-500);
-      border-radius: 0;
-      background: var(--color-white);
-      margin-bottom: var(--space-3);
-    }
-
-    .email-form input[type="email"]:focus {
-      outline: none;
-      border-color: var(--color-teal-500);
-    }
-
     /* Button */
     .btn {
       display: inline-block;
@@ -473,13 +445,6 @@
     .signature {
       font-style: normal;
       margin-top: var(--space-5);
-    }
-
-    /* Subscriber Count */
-    .subscriber-count {
-      font-size: var(--text-sm);
-      color: var(--color-gray-600);
-      margin-top: var(--space-2);
     }
 
     /* ========================================
@@ -671,25 +636,6 @@
 
       <!-- Sidebar -->
       <aside class="sidebar">
-        <!-- Email Signup Widget -->
-        <div class="widget">
-          <h3 class="widget-title">Get Updates</h3>
-          <form class="email-form" id="email-form">
-            <label for="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="your@email.com"
-              required
-            >
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </form>
-          <div class="subscriber-count" id="subscriber-count">
-            1,234 subscribers
-          </div>
-        </div>
-
         <!-- Social Links Widget -->
         <div class="widget">
           <h3 class="widget-title">Follow</h3>
@@ -743,15 +689,6 @@
       localStorage.setItem('liked', liked);
       updateLikeDisplay();
     }
-
-    // Email subscription
-    document.getElementById('email-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      console.log('Subscribed with email:', email);
-      alert('Thanks for subscribing!');
-      this.reset();
-    });
 
     // Share functionality
     function shareToLinkedIn() {

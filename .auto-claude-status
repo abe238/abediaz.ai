@@ -1,17 +1,17 @@
 {
   "active": true,
-  "spec": "008-add-skip-to-content-link-for-screen-readers",
-  "state": "complete",
+  "spec": "015-analyze-what-is-this-feature-in-the-website-actual",
+  "state": "building",
   "subtasks": {
-    "completed": 5,
-    "total": 5,
-    "in_progress": 0,
+    "completed": 0,
+    "total": 3,
+    "in_progress": 1,
     "failed": 0
   },
   "phase": {
-    "current": "Testing & Verification",
+    "current": "Newsletter Widget Replacement",
     "id": null,
-    "total": 2
+    "total": 3
   },
   "workers": {
     "active": 0,
@@ -19,7 +19,7 @@
   },
   "session": {
     "number": 1,
-    "started_at": "2026-01-01T01:43:03.743699"
+    "started_at": "2026-01-01T03:48:26.567950"
   },
-  "last_update": "2026-01-01T01:46:36.712867"
+  "last_update": "2026-01-01T03:48:26.571196"
 }
