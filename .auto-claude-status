@@ -3,13 +3,13 @@
   "spec": "007-update-http-links-to-https-for-security",
   "state": "building",
   "subtasks": {
-    "completed": 9,
+    "completed": 11,
     "total": 12,
     "in_progress": 1,
     "failed": 0
   },
   "phase": {
-    "current": "Add Security Attributes to External Links",
+    "current": "Verification and Testing",
     "id": null,
     "total": 2
   },
@@ -18,8 +18,8 @@
     "max": 1
   },
   "session": {
-    "number": 6,
+    "number": 8,
     "started_at": "2026-01-01T01:43:04.266533"
   },
-  "last_update": "2026-01-01T01:51:47.366701"
+  "last_update": "2026-01-01T01:54:42.721331"
 }
