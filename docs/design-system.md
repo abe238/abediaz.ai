@@ -5097,27 +5097,372 @@ body {
 
 ## Quick Reference
 
+*Fast lookup tables for rapid development. All design tokens and component classes at a glance.*
+
+---
+
 ### CSS Variables
 
-*Quick lookup table of all CSS custom properties.*
+Complete reference of all 43 CSS custom properties organized by category.
 
-**Coming Soon:** Complete CSS variables reference table.
+#### Colors (14 tokens)
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--color-black` | `#000000` | Headings (h1, h2.section-title, h3) |
+| `--color-white` | `#FFFFFF` | Page background, input fields, button text |
+| `--color-gray-50` | `#F3F3F3` | Reserved (lightest gray) |
+| `--color-gray-100` | `#F1F1F1` | Reserved (very light gray) |
+| `--color-gray-200` | `#DDDDDD` | Borders, dividers, widget outlines |
+| `--color-gray-300` | `#AAAAAA` | Reserved (mid-light gray) |
+| `--color-gray-500` | `#767676` | Input borders, form outlines |
+| `--color-gray-600` | `#666666` | Secondary text (taglines, footer) |
+| `--color-gray-700` | `#555555` | Body text, standard content |
+| `--color-gray-800` | `#32373C` | Reserved (dark gray) |
+| `--color-gray-900` | `#222222` | Reserved (near-black) |
+| `--color-teal-500` | `#36BCAB` | Links, hover states, focus indicators |
+| `--color-blue-500` | `#0073B1` | LinkedIn button background |
+| `--color-blue-700` | `#2E4453` | Reserved (platform integration) |
+
+#### Typography (10 tokens)
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--font-heading` | `"Oswald", Helvetica, Arial, sans-serif` | Headings, navigation, buttons |
+| `--font-body` | `"Helvetica Neue", Helvetica, Arial, sans-serif` | Body text, paragraphs, links |
+| `--font-system` | `-apple-system, system-ui, "Segoe UI", Roboto, sans-serif` | Form inputs, system UI |
+| `--text-xs` | `11px` | Form inputs, tiny labels |
+| `--text-sm` | `12px` | Navigation, buttons, footer |
+| `--text-base` | `13px` | Body text (14px on mobile ≤480px) |
+| `--text-md` | `14px` | Taglines, larger labels |
+| `--text-lg` | `16px` | h3 headings |
+| `--text-4xl` | `80px` | h1 only (48px tablet, 32px mobile, 28px small) |
+| `--font-light` | `300` | Taglines only (h2.tagline) |
+| `--font-normal` | `400` | Body text (default weight) |
+| `--font-bold` | `700` | Headings, buttons, labels |
+
+#### Spacing (9 tokens)
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--space-1` | `4px` | Micro spacing, minimal gaps |
+| `--space-2` | `8px` | Extra small spacing, icon gaps |
+| `--space-3` | `12px` | Small spacing, tight margins |
+| `--space-4` | `16px` | Base unit, standard padding |
+| `--space-5` | `20px` | Medium spacing, section gaps |
+| `--space-6` | `24px` | Large spacing, major sections |
+| `--space-8` | `32px` | Extra large spacing, prominent separation |
+| `--space-10` | `40px` | 2xl spacing, maximum separation |
+| `--space-header` | `70px` | Header only (50px tablet, 32px mobile) |
+
+#### Layout (4 tokens)
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--content-width` | `580px` | Main content area width |
+| `--sidebar-width` | `240px` | Sidebar width |
+| `--container-max` | `860px` | Maximum container (580+40+240) |
+| `--gap` | `40px` | Content/sidebar separation |
+
+#### Borders (2 tokens)
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--radius-sm` | `2px` | Buttons, inputs, tags (default) |
+| `--radius-md` | `3px` | Widgets, large containers |
+
+#### Transitions (2 tokens)
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--transition-fast` | `0.15s ease` | Immediate feedback, small elements |
+| `--transition-normal` | `0.2s ease` | Standard interactions, links, buttons |
 
 ---
 
 ### Component Classes
 
-*Alphabetical list of all component class names.*
+Alphabetical reference of all component class names with their primary purpose.
 
-**Coming Soon:** Component class reference.
+#### Layout Components
+
+| Class | Purpose | Type |
+|-------|---------|------|
+| `.content` | Primary content area (580px wide, full-width on tablet) | Structural |
+| `.sidebar` | Secondary sidebar area (240px wide, stacks on tablet) | Structural |
+| `.site-container` | Outer page wrapper with centered max-width | Structural |
+| `.site-footer` | Footer area with top border separator | Structural |
+| `.site-header` | Header area with responsive top padding | Structural |
+| `.site-main` | Main content wrapper (flexbox two-column) | Structural |
+| `.site-nav` | Navigation container with horizontal flexbox | Structural |
+
+#### Typography Components
+
+| Class | Purpose | Type |
+|-------|---------|------|
+| `.accent-link` | Teal-colored link with underline on hover | Typography |
+| `h1` | Main page heading (80px → 32px mobile, uppercase, black) | Typography |
+| `h2.section-title` | Section heading (14px, uppercase, bold, black) | Typography |
+| `h2.tagline` | Subtitle/tagline (14px, light weight, gray-600) | Typography |
+| `h3` | Subsection heading (16px, uppercase, gray-700) | Typography |
+
+#### Interactive Components
+
+| Class | Purpose | Type |
+|-------|---------|------|
+| `.btn` | Base button class (11px, system font, 2px radius) | Interactive |
+| `.btn-primary` | Primary CTA button (LinkedIn blue background) | Interactive |
+| `.email-form` | Email signup form wrapper | Interactive |
+| `.like-btn` | Like/heart button with icon support | Interactive |
+| `.like-section` | Container for like button and count | Interactive |
+| `.share-btn` | Individual share button (bordered, teal on hover) | Interactive |
+| `.share-buttons` | Container for share button group | Interactive |
+
+#### Content Components
+
+| Class | Purpose | Type |
+|-------|---------|------|
+| `.contact-section` | Footer contact area with top border/padding | Content |
+| `.flight-stats` | Full-width infographic image (responsive margins) | Content |
+| `.like-count` | Like count display text | Content |
+| `.profile-image` | Full-width profile photo (max 580px) | Content |
+| `.share-section` | Bordered sharing area with top margin | Content |
+| `.share-title` | Share section heading (12px, bold) | Content |
+| `.signature` | Author byline text (normal font-style) | Content |
+| `.social-links` | Vertical flexbox link stack (8px gap) | Content |
+| `.social-links-inline` | Horizontal inline link group (20px gap, footer) | Content |
+| `.subscriber-count` | Newsletter subscriber count display | Content |
+| `.widget` | Sidebar widget container (24px bottom margin) | Content |
+| `.widget-title` | Widget heading (16px, uppercase, bold) | Content |
 
 ---
 
 ### Common Patterns
 
-*Cheat sheet of frequently used patterns and combinations.*
+Frequently used combinations and patterns for rapid implementation.
 
-**Coming Soon:** Common patterns cheat sheet.
+#### Two-Column Layout Pattern
+
+```html
+<div class="site-container">
+  <main class="site-main">
+    <div class="content">
+      <!-- Main content goes here -->
+    </div>
+    <aside class="sidebar">
+      <!-- Widgets go here -->
+    </aside>
+  </main>
+</div>
+```
+
+**Key Points:**
+- `.site-main` uses flexbox with 40px gap
+- Content is 580px, sidebar is 240px
+- Stacks vertically on tablet (≤768px)
+
+#### Sidebar Widget Pattern
+
+```html
+<div class="widget">
+  <h4 class="widget-title">Widget Title</h4>
+  <p>Widget content goes here...</p>
+</div>
+```
+
+**Key Points:**
+- 24px bottom margin between widgets
+- Widget title is 16px, uppercase, bold
+- Widget content inherits base text styles
+
+#### Email Signup Form Pattern
+
+```html
+<form class="email-form">
+  <label for="email">Your email:</label>
+  <input type="email" id="email" placeholder="you@example.com">
+  <button type="submit" class="btn btn-primary">Subscribe</button>
+</form>
+```
+
+**Key Points:**
+- Input border changes to teal on focus
+- Button uses LinkedIn blue (#0073B1)
+- Full-width input with 100% width
+
+#### Share Button Group Pattern
+
+```html
+<div class="share-section">
+  <div class="share-title">Share this:</div>
+  <div class="share-buttons">
+    <button class="share-btn">Share on X</button>
+    <button class="share-btn">Share on LinkedIn</button>
+  </div>
+</div>
+```
+
+**Key Points:**
+- Share section has top border and padding
+- Buttons have gray border, teal on hover
+- Uses 0.15s transition for fast feedback
+
+#### Section Heading Pattern
+
+```html
+<h2 class="section-title">Section Title</h2>
+<p>Section content starts here...</p>
+```
+
+**Key Points:**
+- Always uppercase, 14px, bold, black
+- 20px bottom margin
+- Use for major content sections
+
+#### Navigation Pattern
+
+```html
+<nav class="site-nav">
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+```
+
+**Key Points:**
+- Horizontal flexbox with 20px gap
+- 12px uppercase text
+- Gray-700 default, teal on hover
+
+#### Profile Image Pattern
+
+```html
+<img src="profile.jpg" alt="Profile photo" class="profile-image">
+```
+
+**Key Points:**
+- Full-width, max 580px
+- 20px vertical margin (16px on mobile)
+- Auto height preserves aspect ratio
+
+#### Contact Section Pattern
+
+```html
+<section class="contact-section">
+  <h3>Get in touch</h3>
+  <div class="social-links-inline">
+    <a href="#">Email</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">X (Twitter)</a>
+  </div>
+</section>
+```
+
+**Key Points:**
+- 32px top margin, 24px top/bottom padding
+- Gray-200 top border separator
+- Inline links with 20px gap (24px on mobile)
+
+#### Accent Link Pattern
+
+```html
+<p>Check out my <a href="#work" class="accent-link">latest work</a>.</p>
+```
+
+**Key Points:**
+- Teal color by default
+- Underline appears on hover
+- Use for emphasized links within content
+
+#### Responsive Typography Pattern
+
+```css
+/* Automatically responsive via CSS variables */
+font-size: var(--text-4xl);  /* 80px → 48px → 32px → 28px */
+font-size: var(--text-base);  /* 13px → 14px on mobile */
+```
+
+**Key Points:**
+- Use CSS variables for automatic responsiveness
+- `--text-4xl` dramatically scales down on mobile
+- `--text-base` slightly increases for mobile readability
+
+#### Spacing Stack Pattern
+
+```html
+<!-- Stack elements with consistent spacing -->
+<section>
+  <h2 class="section-title">Title</h2>      <!-- 20px bottom -->
+  <p style="margin-bottom: var(--space-5)">First paragraph</p>    <!-- 20px -->
+  <p style="margin-bottom: var(--space-5)">Second paragraph</p>   <!-- 20px -->
+  <div class="widget">Widget content</div>   <!-- 24px bottom -->
+</section>
+```
+
+**Key Points:**
+- Use `--space-5` (20px) for paragraph gaps
+- Use `--space-6` (24px) for component gaps
+- Maintain 4px-based rhythm throughout
+
+#### Button State Pattern
+
+```html
+<button class="btn btn-primary">Primary Action</button>
+<a href="#" class="btn">Secondary Action</a>
+```
+
+**Key Points:**
+- `.btn` provides base styles (padding, radius, font)
+- `.btn-primary` adds LinkedIn blue background
+- Use `<a class="btn">` for link-styled buttons
+- 0.2s transition on background color
+
+---
+
+### Quick Reference Cheat Sheet
+
+**Most Common Values:**
+```
+Colors:
+  Primary Text:      var(--color-gray-700)    #555555
+  Headings:          var(--color-black)       #000000
+  Secondary Text:    var(--color-gray-600)    #666666
+  Accent/Links:      var(--color-teal-500)    #36BCAB
+  Borders:           var(--color-gray-200)    #DDDDDD
+
+Typography:
+  Body Font:         var(--font-body)         Helvetica Neue
+  Heading Font:      var(--font-heading)      Oswald
+  Body Size:         var(--text-base)         13px
+  Button Size:       var(--text-sm)           12px
+
+Spacing:
+  Tight:             var(--space-2)           8px
+  Standard:          var(--space-4)           16px
+  Relaxed:           var(--space-5)           20px
+  Section:           var(--space-6)           24px
+
+Layout:
+  Content Width:     var(--content-width)     580px
+  Content/Sidebar:   var(--gap)               40px
+  Max Container:     var(--container-max)     860px
+```
+
+**Breakpoints:**
+```
+Desktop:       default (no media query)
+Tablet:        @media (max-width: 768px)
+Mobile:        @media (max-width: 480px)
+Small Mobile:  @media (max-width: 360px)
+```
+
+**Common Transitions:**
+```
+Fast feedback:     var(--transition-fast)    0.15s ease
+Standard:          var(--transition-normal)  0.2s ease
+```
 
 ---
 
