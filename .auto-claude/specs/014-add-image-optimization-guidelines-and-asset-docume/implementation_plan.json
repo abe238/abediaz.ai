@@ -1,0 +1,136 @@
+{
+  "feature": "Add image optimization guidelines and asset documentation",
+  "description": "The images/ folder contains a 13.9MB profile image (6510x4286 Canon EOS R photo) which is extremely large for web use. This spec creates documentation for image requirements, optimization practices, and updates HTML for responsive images to dramatically improve page load performance.",
+  "created_at": "2026-01-01T09:02:59.441Z",
+  "updated_at": "2026-01-01T09:15:00.000Z",
+  "status": "in_progress",
+  "planStatus": "approved",
+  "workflow_type": "development",
+  "services_involved": ["docs", "frontend"],
+  "spec_file": "spec.md",
+  "phases": [
+    {
+      "phase_id": "phase-1",
+      "name": "Asset Documentation",
+      "description": "Create comprehensive documentation for image guidelines and asset management",
+      "subtasks": [
+        {
+          "subtask_id": "1.1",
+          "title": "Create IMAGES.md documentation",
+          "description": "Create docs/IMAGES.md with comprehensive image optimization guidelines including: recommended file formats (WebP/JPEG/PNG usage), maximum file sizes per image type (profile: 200KB, Open Graph: 300KB, content images: 500KB), recommended dimensions for different contexts, lazy loading requirements, and optimization workflow using tools like squoosh.app or ImageOptim.",
+          "estimated_minutes": 20,
+          "status": "completed",
+          "dependencies": [],
+          "acceptance_criteria": [
+            "docs/IMAGES.md exists with clear sections for formats, sizes, dimensions",
+            "Includes specific size limits for profile, OG, and content images",
+            "Documents recommended optimization tools and workflow",
+            "Includes responsive image guidelines"
+          ],
+          "notes": "docs/IMAGES.md created with comprehensive 427-line documentation including file format guidelines, size limits, dimensions, lazy loading, optimization workflow with squoosh.app/ImageOptim, responsive images, and common pitfalls. Committed in 4759984."
+        },
+        {
+          "subtask_id": "1.2",
+          "title": "Add .gitattributes for binary files",
+          "description": "Create or update .gitattributes to properly handle image binary files with Git LFS consideration and ensure proper line ending handling.",
+          "estimated_minutes": 5,
+          "status": "pending",
+          "dependencies": [],
+          "acceptance_criteria": [
+            ".gitattributes exists with image file patterns",
+            "Proper binary handling configured for jpg, png, webp, gif, svg"
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": "phase-2",
+      "name": "Image Optimization Preparation",
+      "description": "Create optimized versions of existing images and update HTML for responsive delivery",
+      "subtasks": [
+        {
+          "subtask_id": "2.1",
+          "title": "Document profile image optimization requirements",
+          "description": "The current profile.jpg is 13.9MB at 6510x4286 resolution. Add specific optimization instructions to IMAGES.md: resize to max 1200px width for main display, create 580px version for inline display (matching content-width CSS variable), target file size under 200KB. Document the process and add a checklist for image optimization.",
+          "estimated_minutes": 15,
+          "status": "pending",
+          "dependencies": ["1.1"],
+          "acceptance_criteria": [
+            "IMAGES.md includes specific optimization steps for profile.jpg",
+            "Recommended dimensions documented (580px width for content display)",
+            "Target file size documented (<200KB)",
+            "Original high-res backup strategy documented"
+          ]
+        },
+        {
+          "subtask_id": "2.2",
+          "title": "Update HTML with responsive image markup",
+          "description": "Update index.html profile image tag to include width/height attributes for CLS prevention, add explicit dimensions, and document the srcset pattern for when optimized images are available. Ensure loading='lazy' is maintained.",
+          "estimated_minutes": 10,
+          "status": "pending",
+          "dependencies": ["2.1"],
+          "acceptance_criteria": [
+            "Profile image tag includes width and height attributes",
+            "Dimensions set appropriately for content display",
+            "loading='lazy' attribute maintained",
+            "Comment added noting future srcset optimization"
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": "phase-3",
+      "name": "Quality Assurance",
+      "description": "Verify documentation completeness and HTML correctness",
+      "subtasks": [
+        {
+          "subtask_id": "3.1",
+          "title": "Validate HTML and documentation",
+          "description": "Ensure all HTML changes are valid and documentation is clear and actionable. Verify that the image optimization workflow is documented step-by-step. Create build-progress.txt with summary of changes.",
+          "estimated_minutes": 10,
+          "status": "pending",
+          "dependencies": ["2.2"],
+          "acceptance_criteria": [
+            "HTML is valid (no syntax errors)",
+            "Documentation includes step-by-step optimization workflow",
+            "All image requirements are clearly specified",
+            "build-progress.txt updated with completion notes"
+          ]
+        }
+      ]
+    }
+  ],
+  "final_acceptance": [
+    "docs/IMAGES.md exists with comprehensive image guidelines",
+    ".gitattributes properly configured for image files",
+    "index.html updated with improved image markup",
+    "Clear optimization workflow documented for content creators",
+    "All acceptance criteria for subtasks are met"
+  ],
+  "qa_signoff": {
+    "status": "pending",
+    "tests_passed": "",
+    "issues": ""
+  },
+  "metadata": {
+    "current_issues": [
+      "profile.jpg is 13.9MB (6510x4286 Canon EOS R raw export) - 70x larger than recommended",
+      "No documentation for image requirements exists",
+      "Profile image used for both display and Open Graph without optimization",
+      "No explicit dimensions on img tags (causes CLS issues)"
+    ],
+    "target_outcomes": [
+      "Comprehensive IMAGES.md documentation with actionable guidelines",
+      "Clear size/dimension limits for all image types (profile <200KB, OG <300KB, content <500KB)",
+      "HTML updated with proper img attributes for performance",
+      "Step-by-step optimization workflow for content maintainers"
+    ],
+    "technical_notes": [
+      "Profile image should be max 580px width for inline display (matches --content-width CSS variable)",
+      "Open Graph images should be 1200x630 for optimal social sharing",
+      "WebP format recommended with JPEG fallback for browser compatibility",
+      "flight-stats.png at 142KB (2296x856) is acceptable size",
+      "Actual image file optimization requires external tools (squoosh.app, ImageOptim)"
+    ]
+  }
+}
