@@ -112,7 +112,7 @@
             "Add .site-nav a:focus-visible with visible focus indicator",
             "Focus state should be distinguishable from hover state"
           ],
-          "status": "pending",
+          "status": "completed",
           "priority": "high",
           "estimated_complexity": "simple"
         },
@@ -180,7 +180,7 @@
     }
   ],
   "total_subtasks": 10,
-  "completed_subtasks": 5,
+  "completed_subtasks": 6,
   "final_acceptance": [
     "All interactive elements (links, buttons, inputs) have visible focus states",
     "Focus indicators use consistent styling via CSS variables",
