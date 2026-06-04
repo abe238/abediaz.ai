@@ -533,6 +533,29 @@
       margin-top: var(--space-5);
     }
 
+    /* Building with AI */
+    .ai-projects {
+      list-style: none;
+      margin: 0 0 var(--space-4);
+      padding: 0;
+    }
+
+    .ai-projects li {
+      margin-bottom: var(--space-3);
+      font-size: var(--text-base);
+      color: var(--color-gray-700);
+      line-height: 1.6;
+    }
+
+    .ai-projects li a {
+      font-weight: var(--font-bold);
+    }
+
+    .ai-projects-note {
+      font-size: var(--text-sm);
+      color: var(--color-gray-600);
+    }
+
     /* ========================================
        UTILITIES
        ======================================== */
@@ -946,6 +969,17 @@
         </picture>
 
         <p>Passionate about disaster relief and helping others through technology. Also passionate about traveling (50+ countries), and learning about other cultures, food, and technology ecosystems.</p>
+
+        <h2 class="section-title">Building with AI</h2>
+        <p>A few things I've built by learning the tools the only way that sticks &mdash; shipping with them.</p>
+        <ul class="ai-projects">
+          <li><a class="accent-link" href="https://github.com/abe238/aipm-resume-analyzer" target="_blank" rel="noopener noreferrer">AI PM Résumé Analyzer</a> &mdash; CLI that scores résumés against an AI product-management framework, running Claude Sonnet 4.5, GPT-5, and Gemini side by side.</li>
+          <li><a class="accent-link" href="https://github.com/abe238/gemini-deep-research" target="_blank" rel="noopener noreferrer">Deep Research Agent</a> &mdash; an autonomous agent that plans, executes, and writes cited research reports on a topic from scratch.</li>
+          <li><a class="accent-link" href="https://github.com/abe238/project-kickoff" target="_blank" rel="noopener noreferrer">Project Kickoff</a> &mdash; scaffolds production-ready projects with security best practices and LLM-assisted setup baked in.</li>
+          <li><a class="accent-link" href="https://github.com/abe238/community-skills" target="_blank" rel="noopener noreferrer">Agent Skills</a> &mdash; an open, cross-tool collection of reusable agent skills I've built and curated for AI coding agents.</li>
+          <li><a class="accent-link" href="https://github.com/abe238/volatility-driven-decay" target="_blank" rel="noopener noreferrer">Volatility-Driven Decay</a> &mdash; AI research: adaptive memory for RAG systems, with 42 reproducible experiments across 3 domains.</li>
+        </ul>
+        <p class="ai-projects-note">And the site you're reading? Built and deployed with my own <a class="accent-link" href="https://github.com/abe238/gg-deploy" target="_blank" rel="noopener noreferrer">gg-deploy</a> (domain &rarr; GitHub Pages in 60s, with an MCP interface) &mdash; and it has a <a class="accent-link" href="https://abediaz.md" target="_blank" rel="noopener noreferrer">Markdown twin</a>.</p>
 
         <!-- Share Section -->
         <section class="share-section">
